@@ -1,0 +1,385 @@
+{
+  "Red Onion Powder": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464193",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    },
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464001",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    }
+  ],
+  "Ginger Powder": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464223",
+      "hs_code": "0910",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    },
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464032",
+      "hs_code": "0910",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    }
+  ],
+  "Pumpkin Seeds": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464162",
+      "hs_code": "12077090",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Dry Fruits/Seeds"
+    }
+  ],
+  "Flax Seeds": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464179",
+      "hs_code": "12040090",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dry Fruits/Seeds"
+    }
+  ],
+  "White Onion Powder": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464018",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    },
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464209",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    }
+  ],
+  "Garlic Powder": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464025",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    },
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464216",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    }
+  ],
+  "Sunflower Seeds": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464186",
+      "hs_code": "12060010",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dry Fruits/Seeds"
+    }
+  ],
+  "Tomato Powder": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464049",
+      "hs_code": "2002",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    },
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464230",
+      "hs_code": "2002",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    }
+  ],
+  "Potato Flakes": [
+    {
+      "packaging": "Pouch 16*18",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464056",
+      "hs_code": "1105",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    }
+  ],
+  "Mint Powder": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464063",
+      "hs_code": "1211",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Herbs/Spices"
+    }
+  ],
+  "Green Chilli Powder": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464070",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    },
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464247",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    }
+  ],
+  "Oregano": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464087",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Herbs/Spices"
+    }
+  ],
+  "Oregano Seasoning": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464094",
+      "hs_code": "0910",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Seasonings/Preservatives"
+    },
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464254",
+      "hs_code": "0910",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Seasonings/Preservatives"
+    }
+  ],
+  "Pizza Pasta Masala": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464100",
+      "hs_code": "0910",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Seasonings/Preservatives"
+    },
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464261",
+      "hs_code": "0910",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Seasonings/Preservatives"
+    }
+  ],
+  "Moringa Powder": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464117",
+      "hs_code": "1211",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Herbs/Spices"
+    }
+  ],
+  "Beetroot Powder": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464124",
+      "hs_code": "0712",
+      "igst": "0",
+      "cgst": "0",
+      "sgst": "0",
+      "sub_category": "Dehydrated Fruits and Vegetables"
+    }
+  ],
+  "Peri Peri Masala": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464131",
+      "hs_code": "0910",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Seasonings/Preservatives"
+    },
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464278",
+      "hs_code": "0910",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Seasonings/Preservatives"
+    }
+  ],
+  "Chia Seeds": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464148",
+      "hs_code": "12079990",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Dry Fruits/Seeds"
+    }
+  ],
+  "Watermelon Seeds": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464155",
+      "hs_code": "12077090",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Dry Fruits/Seeds"
+    }
+  ],
+  "Red Chilli Flakes": [
+    {
+      "packaging": "Pouch 10*14",
+      "net_content": "100",
+      "unit": "Grams",
+      "gtin": "8908031464292",
+      "hs_code": "09042219",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Herbs/Spices"
+    },
+    {
+      "packaging": "Pouch 16*18",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464308",
+      "hs_code": "09042219",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Herbs/Spices"
+    }
+  ],
+  "Basil Seeds": [
+    {
+      "packaging": "jar 27*7.5",
+      "net_content": "200",
+      "unit": "Grams",
+      "gtin": "8908031464285",
+      "hs_code": "12119092",
+      "igst": "5",
+      "cgst": "2.5",
+      "sgst": "2.5",
+      "sub_category": "Dry Fruits/Seeds"
+    }
+  ]
+}

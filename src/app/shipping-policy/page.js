@@ -69,7 +69,7 @@ export default function ShippingPolicyPage() {
       <section className="space-y-3">
         <h2 className="text-sm font-extrabold text-ink uppercase tracking-wide border-l-4 border-olive pl-3">Order Tracking</h2>
         <p className="text-sm text-muted leading-relaxed">
-          Once your order has been dispatched, you will receive a tracking link via WhatsApp or email. You can use this link to track your package in real time through our courier partner's website. If you do not receive a tracking update within 3 business days of ordering, please contact our support team.
+          Once your order has been dispatched, you will receive a tracking link via WhatsApp or email. You can use this link to track your package in real time through our courier partner&apos;s website. If you do not receive a tracking update within 3 business days of ordering, please contact our support team.
         </p>
       </section>
 

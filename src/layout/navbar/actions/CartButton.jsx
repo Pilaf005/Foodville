@@ -1,0 +1,30 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { useCart } from "@/context/CartContext";
+
+import { ActionBadge } from "./ActionBadge";
+
+function CartIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M3 4h2l1.2 12.2A2 2 0 0 0 8.2 18h9.6a2 2 0 0 0 2-1.8L21 8H6" />
+      <circle cx="9" cy="21" r="1.2" fill="currentColor" stroke="none" />
+      <circle cx="17" cy="21" r="1.2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export const CartButton = () => {
+  const { cartCount } = useCart();
+
+  return (
+    <Link href="/cart" className="relative p-2.5 rounded-full text-ink hover:text-olive hover:bg-white/70 transition min-h-[44px] min-w-[44px] flex items-center justify-center">
+      <CartIcon />
+      <ActionBadge count={cartCount} className="bg-olive" />
+    </Link>
+  );
+};
+
+export default CartButton;

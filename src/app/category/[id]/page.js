@@ -1,48 +1,28 @@
 "use client";
 
-import { use, useState, useEffect } from "react";
+import { use } from "react";
 import { getProductsByCategory, getCategoryName } from "@/data/products";
-import ProductGrid from "@/components/ProductGrid";
+import ProductGrid from "@/features/products/components/ProductGrid";
+
+// Category name overrides for IDs that getCategoryName returns "Other" for
+const CATEGORY_NAME_MAP = {
+  all:    "All Products",
+  combos: "Combo Packs",
+  bulk:   "Bulk Products",
+};
+
+function resolveCategoryName(id) {
+  if (CATEGORY_NAME_MAP[id]) return CATEGORY_NAME_MAP[id];
+  const name = getCategoryName(id);
+  return name === "Other" ? id : name;
+}
 
 export default function CategoryPage({ params: paramsPromise }) {
-  const params = use(paramsPromise);
-  const { id } = params;
+  const { id } = use(paramsPromise);
 
-  const [categoryName, setCategoryName] = useState("");
-  const [productsList, setProductsList] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Resolve category name
-    let name = "";
-    if (id === "all") {
-      name = "All Products";
-    } else {
-      name = getCategoryName(id);
-      if (name === "Other") {
-        if (id === "combos") name = "Combo Packs";
-        else if (id === "bulk") name = "Bulk Products";
-      }
-    }
-    setCategoryName(name);
-
-    // Resolve products for this category
-    const list = getProductsByCategory(id);
-    setProductsList(list);
-    setLoading(false);
-  }, [id]);
-
-  if (loading) {
-    return (
-      <div className="flex h-96 items-center justify-center text-muted">
-        <svg className="animate-spin h-8 w-8 text-olive" fill="none" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-        </svg>
-        <span className="ml-2 font-medium">Loading category products...</span>
-      </div>
-    );
-  }
+  // Both functions are synchronous — no useEffect or loading state needed
+  const categoryName = resolveCategoryName(id);
+  const productsList = getProductsByCategory(id);
 
   return (
     <div className="space-y-6 pb-12">

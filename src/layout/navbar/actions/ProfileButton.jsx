@@ -1,0 +1,35 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+function UserIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M20 21a8 8 0 1 0-16 0" />
+    </svg>
+  );
+}
+
+export const ProfileButton = () => {
+  const pathname = usePathname();
+  const isActive = pathname === "/profile";
+
+  return (
+    <Link
+      href="/profile"
+      aria-label="My Profile"
+      className={`relative p-2.5 rounded-full transition min-h-[44px] min-w-[44px] flex items-center justify-center ${
+        isActive
+          ? "text-olive bg-olive/10"
+          : "text-ink hover:text-olive hover:bg-white/70"
+      }`}
+    >
+      <UserIcon />
+    </Link>
+  );
+};
+
+export default ProfileButton;

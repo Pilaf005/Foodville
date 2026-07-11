@@ -1,10 +1,8 @@
 /**
- * Saved delivery address.
+ * Saved delivery address — Amazon-style fields, India only (no country field).
+ * The map/coordinates flow was removed: the customer types the address.
  *
- * This unifies the two divergent shapes the frontend had: the checkout flow
- * (name/completeAddress/area + map coordinates, kept in localStorage) and the
- * profile flow (receiverName/houseFlat/state/pincode, in memory). Both sets of
- * fields live here, so either UI can read what it needs.
+ * `label` ("Saved address at") is kept per product decision: Home/Work/Hotel/Other.
  */
 import mongoose from "mongoose";
 
@@ -15,22 +13,15 @@ const AddressSchema = new Schema(
     user: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
 
     label: { type: String, enum: ["Home", "Work", "Hotel", "Other"], default: "Home" },
-    receiverName: { type: String, required: true, trim: true },
-    phone: { type: String, required: true, trim: true },
 
-    houseFlat: { type: String, default: "" }, // "Flat 4B, Green Valley"
-    apartment: { type: String, default: "" }, // area / sector
-    landmark: { type: String, default: "" },
-    city: { type: String, required: true, trim: true },
-    state: { type: String, default: "" },
-    pincode: { type: String, default: "" },
-    deliveryInstructions: { type: String, default: "" },
-
-    // From the Leaflet pin-drop step of the checkout flow.
-    coordinates: {
-      lat: { type: Number },
-      lng: { type: Number },
-    },
+    receiverName: { type: String, required: true, trim: true }, // Full name (First and Last)
+    phone: { type: String, required: true, trim: true },        // Mobile number (10 digits)
+    pincode: { type: String, required: true, trim: true },      // 6-digit PIN
+    houseFlat: { type: String, required: true, trim: true },    // Flat, House no., Building, Company, Apartment
+    area: { type: String, required: true, trim: true },         // Area, Street, Sector, Village
+    landmark: { type: String, default: "", trim: true },        // E.g. near Apollo Hospital
+    city: { type: String, required: true, trim: true },         // Town/City
+    state: { type: String, required: true, trim: true },        // Indian state / UT
 
     isDefault: { type: Boolean, default: false },
   },

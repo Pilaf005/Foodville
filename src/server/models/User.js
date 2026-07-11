@@ -11,36 +11,32 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
+/**
+ * Preferences & notifications are EMBEDDED subdocuments, not a separate
+ * collection. This is the correct MongoDB relationship for strict 1:1 data
+ * that is always read with the user: one query, no join, no orphan risk.
+ * They get their own API endpoints (PUT /api/profile/preferences and
+ * /api/profile/notifications) so the client updates them independently.
+ */
 const PreferencesSchema = new Schema(
   {
     interestedCategories: { type: [String], default: [] },
-    healthGoals: { type: [String], default: [] },
-    spiceIntensity: { type: String, enum: ["mild", "medium", "spicy", "extra_spicy"], default: "medium" },
     dietaryPreference: {
       type: String,
       enum: ["vegetarian", "non_vegetarian", "vegan", "eggetarian"],
       default: "vegetarian",
     },
-    preferredPackaging: { type: String, enum: ["small", "medium", "large", "bulk"], default: "medium" },
-    shoppingFrequency: {
-      type: String,
-      enum: ["weekly", "fortnightly", "monthly", "occasionally"],
-      default: "monthly",
-    },
-    language: { type: String, default: "English" },
-    inStockOnly: { type: Boolean, default: false },
-    prioritiseOffers: { type: Boolean, default: true },
+    spiceIntensity: { type: String, enum: ["mild", "medium", "spicy", "extra_spicy"], default: "medium" },
   },
   { _id: false }
 );
 
+// Kept deliberately simple for a web store: three email toggles, no OS-style
+// push/SMS options.
 const NotificationsSchema = new Schema(
   {
     orderUpdates: { type: Boolean, default: true },
     offers: { type: Boolean, default: true },
-    emailNotifications: { type: Boolean, default: true },
-    sms: { type: Boolean, default: false },
-    pushNotifications: { type: Boolean, default: false },
     newsletter: { type: Boolean, default: false },
   },
   { _id: false }

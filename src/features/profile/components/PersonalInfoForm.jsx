@@ -1,79 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import type { CustomerProfile, Gender, Language } from "../types/profile.types";
+import { toast } from "sonner";
+import { useImageUpload } from "@/features/profile/hooks/useProfile";
 
-const GENDER_OPTIONS: { value: Gender; label: string }[] = [
+const DEFAULT_AVATAR = "/images/default-avatar.svg";
+
+const GENDER_OPTIONS = [
   { value: "male", label: "Male" },
   { value: "female", label: "Female" },
   { value: "other", label: "Other" },
   { value: "prefer_not_to_say", label: "Prefer not to say" },
 ];
 
-const LANGUAGE_OPTIONS: Language[] = [
-  "English",
-  "Hindi",
-  "Marathi",
-  "Tamil",
-  "Telugu",
-  "Bengali",
-];
+const LANGUAGE_OPTIONS = ["English", "Hindi", "Marathi", "Tamil", "Telugu", "Bengali"];
 
-interface PersonalInfoFormProps {
-  profile: CustomerProfile;
-  onSave: (updated: CustomerProfile) => void;
-}
-
-interface FormState {
-  fullName: string;
-  email: string;
-  phone: string;
-  gender: Gender;
-  dateOfBirth: string;
-  language: Language;
-}
-
-function AvatarUpload({ profile }: { profile: CustomerProfile }) {
-  return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 pb-6 border-b border-cardline">
-      <div className="relative shrink-0">
-        <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-cardline shadow-sm">
-          <img
-            src={profile.avatarUrl}
-            alt={profile.fullName}
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              const t = e.currentTarget;
-              t.onerror = null;
-              t.src =
-                "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><rect width='80' height='80' fill='%236B7F59' rx='16'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='28' font-weight='700' fill='white'>A</text></svg>";
-            }}
-          />
-        </div>
-      </div>
-      <div>
-        <p className="text-sm font-bold text-ink mb-1">Profile Picture</p>
-        <p className="text-xs text-muted mb-3">JPG, PNG or WEBP. Max 2MB.</p>
-        <button
-          type="button"
-          className="text-xs font-bold text-olive border border-olive/50 rounded-xl px-4 py-2 hover:bg-olive/5 transition active:scale-95"
-        >
-          Upload Photo
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function FormField({
-  label,
-  required,
-  children,
-}: {
-  label: string;
-  required?: boolean;
-  children: React.ReactNode;
-}) {
+function FormField({ label, required, children }) {
   return (
     <div className="space-y-1.5">
       <label className="block text-[10px] font-bold text-muted uppercase tracking-widest">
@@ -85,27 +27,81 @@ function FormField({
   );
 }
 
-export default function PersonalInfoForm({ profile, onSave }: PersonalInfoFormProps) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [saved, setSaved] = useState(false);
-  const [form, setForm] = useState<FormState>({
-    fullName: profile.fullName,
-    email: profile.email,
-    phone: profile.phone,
-    gender: profile.gender,
-    dateOfBirth: profile.dateOfBirth,
-    language: profile.language,
-  });
+function AvatarUpload({ profile, onUploaded }) {
+  const upload = useImageUpload();
 
-  function handleChange<K extends keyof FormState>(key: K, value: FormState[K]) {
-    setForm((prev) => ({ ...prev, [key]: value }));
+  async function handleFile(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const result = await upload.mutateAsync({
+      file,
+      folder: "users",
+      // A previous CUSTOM photo is replaced in R2; the bundled default is local.
+      replaceUrl: profile.avatarUrl?.startsWith("http") ? profile.avatarUrl : undefined,
+    });
+    if (result?.url) {
+      onUploaded(result.url);
+      toast.success("Profile photo updated");
+    }
   }
 
-  function handleSave() {
-    onSave({ ...profile, ...form });
+  return (
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 pb-6 border-b border-cardline">
+      <div className="relative shrink-0">
+        <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-cardline shadow-sm bg-cream">
+          <img
+            src={profile.avatarUrl || DEFAULT_AVATAR}
+            alt={profile.fullName || "Profile"}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const t = e.currentTarget;
+              t.onerror = null;
+              t.src = DEFAULT_AVATAR;
+            }}
+          />
+        </div>
+      </div>
+      <div>
+        <p className="text-sm font-bold text-ink mb-1">Profile Picture</p>
+        <p className="text-xs text-muted mb-3">JPG, PNG, WebP or AVIF. Max 4MB.</p>
+        <label className="inline-block cursor-pointer text-xs font-bold text-olive border border-olive/50 rounded-xl px-4 py-2 hover:bg-olive/5 transition active:scale-95">
+          {upload.isPending ? "Uploading…" : "Upload Photo"}
+          <input
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/avif"
+            className="hidden"
+            disabled={upload.isPending}
+            onChange={handleFile}
+          />
+        </label>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Personal information card. This carries the profile's single Edit button —
+ * the banner above deliberately has none.
+ */
+export default function PersonalInfoForm({ profile, onSave, isSaving = false }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [form, setForm] = useState({
+    fullName: profile.fullName || "",
+    phone: profile.phone || "",
+    gender: profile.gender || "prefer_not_to_say",
+    dateOfBirth: profile.dateOfBirth || "",
+    language: profile.language || "English",
+  });
+
+  const handleChange = (key, value) => setForm((prev) => ({ ...prev, [key]: value }));
+
+  function handleSaveClick() {
+    if (form.phone && !/^\d{10}$/.test(form.phone)) {
+      toast.error("Enter a valid 10-digit mobile number.");
+      return;
+    }
+    onSave(form);
     setIsEditing(false);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
   }
 
   const inputClass =
@@ -134,18 +130,8 @@ export default function PersonalInfoForm({ profile, onSave }: PersonalInfoFormPr
         )}
       </div>
 
-      {/* Saved toast */}
-      {saved && (
-        <div className="mx-6 mt-4 flex items-center gap-2 bg-green-50 border border-green-200 rounded-2xl px-4 py-2.5 text-xs font-semibold text-green-700 animate-fade-in">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          Profile updated successfully!
-        </div>
-      )}
-
       <div className="p-6 space-y-6">
-        <AvatarUpload profile={profile} />
+        <AvatarUpload profile={profile} onUploaded={(url) => onSave({ avatarUrl: url })} />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <FormField label="Full Name" required>
@@ -158,35 +144,27 @@ export default function PersonalInfoForm({ profile, onSave }: PersonalInfoFormPr
                 placeholder="Your full name"
               />
             ) : (
-              <p className={disabledClass}>{form.fullName}</p>
+              <p className={disabledClass}>{form.fullName || "—"}</p>
             )}
           </FormField>
 
-          <FormField label="Email Address" required>
-            {isEditing ? (
-              <input
-                type="email"
-                value={form.email}
-                onChange={(e) => handleChange("email", e.target.value)}
-                className={inputClass}
-                placeholder="your@email.com"
-              />
-            ) : (
-              <p className={disabledClass}>{form.email}</p>
-            )}
+          {/* Email is the login identity (OTP goes there) — never editable. */}
+          <FormField label="Email Address">
+            <p className={disabledClass}>{profile.email}</p>
           </FormField>
 
           <FormField label="Phone Number" required>
             {isEditing ? (
               <input
                 type="tel"
+                inputMode="numeric"
                 value={form.phone}
-                onChange={(e) => handleChange("phone", e.target.value)}
+                onChange={(e) => handleChange("phone", e.target.value.replace(/\D/g, "").slice(0, 10))}
                 className={inputClass}
-                placeholder="+91 XXXXX XXXXX"
+                placeholder="10-digit mobile number"
               />
             ) : (
-              <p className={disabledClass}>{form.phone}</p>
+              <p className={disabledClass}>{form.phone || "—"}</p>
             )}
           </FormField>
 
@@ -194,13 +172,11 @@ export default function PersonalInfoForm({ profile, onSave }: PersonalInfoFormPr
             {isEditing ? (
               <select
                 value={form.gender}
-                onChange={(e) => handleChange("gender", e.target.value as Gender)}
+                onChange={(e) => handleChange("gender", e.target.value)}
                 className={inputClass}
               >
                 {GENDER_OPTIONS.map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {o.label}
-                  </option>
+                  <option key={o.value} value={o.value}>{o.label}</option>
                 ))}
               </select>
             ) : (
@@ -216,6 +192,7 @@ export default function PersonalInfoForm({ profile, onSave }: PersonalInfoFormPr
                 type="date"
                 value={form.dateOfBirth}
                 onChange={(e) => handleChange("dateOfBirth", e.target.value)}
+                max={new Date().toISOString().slice(0, 10)}
                 className={inputClass}
               />
             ) : (
@@ -235,13 +212,11 @@ export default function PersonalInfoForm({ profile, onSave }: PersonalInfoFormPr
             {isEditing ? (
               <select
                 value={form.language}
-                onChange={(e) => handleChange("language", e.target.value as Language)}
+                onChange={(e) => handleChange("language", e.target.value)}
                 className={inputClass}
               >
                 {LANGUAGE_OPTIONS.map((lang) => (
-                  <option key={lang} value={lang}>
-                    {lang}
-                  </option>
+                  <option key={lang} value={lang}>{lang}</option>
                 ))}
               </select>
             ) : (
@@ -254,20 +229,20 @@ export default function PersonalInfoForm({ profile, onSave }: PersonalInfoFormPr
         {isEditing && (
           <div className="flex gap-3 pt-2 border-t border-cardline">
             <button
-              onClick={handleSave}
-              className="flex-1 sm:flex-none bg-olive hover:bg-olive-dark active:scale-[0.98] text-white text-sm font-bold px-8 py-3 rounded-2xl transition shadow-md shadow-olive/20"
+              onClick={handleSaveClick}
+              disabled={isSaving}
+              className="flex-1 sm:flex-none bg-olive hover:bg-olive-dark active:scale-[0.98] text-white text-sm font-bold px-8 py-3 rounded-2xl transition shadow-md shadow-olive/20 disabled:opacity-60"
             >
-              Save Changes
+              {isSaving ? "Saving…" : "Save Changes"}
             </button>
             <button
               onClick={() => {
                 setForm({
-                  fullName: profile.fullName,
-                  email: profile.email,
-                  phone: profile.phone,
-                  gender: profile.gender,
-                  dateOfBirth: profile.dateOfBirth,
-                  language: profile.language,
+                  fullName: profile.fullName || "",
+                  phone: profile.phone || "",
+                  gender: profile.gender || "prefer_not_to_say",
+                  dateOfBirth: profile.dateOfBirth || "",
+                  language: profile.language || "English",
                 });
                 setIsEditing(false);
               }}

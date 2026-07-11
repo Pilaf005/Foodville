@@ -51,8 +51,8 @@ export async function createOrder(userId, { addressId, address, paymentMethod })
     if (!saved) throw notFound("Delivery address not found.");
     snapshot = saved;
   }
-  if (!snapshot || !snapshot.city || !snapshot.receiverName || !snapshot.phone) {
-    throw badRequest("A delivery address with a name, phone and city is required.");
+  if (!snapshot || !snapshot.city || !snapshot.receiverName || !snapshot.phone || !snapshot.pincode) {
+    throw badRequest("A complete delivery address (name, phone, PIN code, city) is required.");
   }
 
   // Prices come from the catalog — never from the client.
@@ -71,13 +71,11 @@ export async function createOrder(userId, { addressId, address, paymentMethod })
       receiverName: snapshot.receiverName,
       phone: snapshot.phone,
       houseFlat: snapshot.houseFlat,
-      apartment: snapshot.apartment,
+      area: snapshot.area,
       landmark: snapshot.landmark,
       city: snapshot.city,
       state: snapshot.state,
       pincode: snapshot.pincode,
-      deliveryInstructions: snapshot.deliveryInstructions,
-      coordinates: snapshot.coordinates,
     },
     paymentMethod,
     paymentStatus: "pending",
@@ -97,7 +95,13 @@ export async function createOrder(userId, { addressId, address, paymentMethod })
 
 /** Called once an order is genuinely confirmed (COD placed, or payment verified). */
 export async function finaliseOrder(order) {
-  await Cart.updateOne({ user: order.user }, { $set: { items: [] } });
+  // Remove only the ORDERED items — if the customer abandoned a payment,
+  // shopped some more, then finished paying the old order, their newer cart
+  // additions must survive.
+  await Cart.updateOne(
+    { user: order.user },
+    { $pull: { items: { productId: { $in: order.items.map((i) => i.productId) } } } }
+  );
 
   await Promise.all(
     order.items.map((item) =>

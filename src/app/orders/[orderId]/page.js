@@ -5,8 +5,38 @@ import Link from "next/link";
 import { useOrder } from "@/features/orders/hooks/useOrders";
 import OrderTracker, { STATUS_BADGE } from "@/features/orders/components/OrderTracker";
 import { Skeleton } from "@/components/feedback/Skeleton";
+import { useCheckout } from "@/features/checkout/hooks/useCheckout";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 
 const inr = (n) => `₹${Number(n || 0).toLocaleString("en-IN")}`;
+
+/**
+ * Shown when an online payment was started but never finished (customer closed
+ * the Razorpay modal or the tab). Lets them pay the SAME order — no duplicate.
+ */
+function CompletePaymentCard({ order }) {
+  const { user } = useAuth();
+  const { payPendingOrder, isPaying } = useCheckout();
+
+  return (
+    <div className="animate-fade-in flex flex-col items-start justify-between gap-3 rounded-3xl border border-amber-300 bg-amber-50/70 p-5 sm:flex-row sm:items-center">
+      <div>
+        <p className="text-sm font-black uppercase tracking-tight text-ink">Payment pending</p>
+        <p className="mt-0.5 text-xs text-muted">
+          This order isn&apos;t paid yet. Complete the payment of{" "}
+          <span className="font-bold text-ink">{inr(order.amounts?.total)}</span> to confirm it.
+        </p>
+      </div>
+      <button
+        onClick={() => payPendingOrder(order, user).catch(() => {})}
+        disabled={isPaying}
+        className="shrink-0 rounded-2xl bg-olive px-6 py-3 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-olive/20 transition hover:bg-olive-dark active:scale-[0.98] disabled:opacity-60"
+      >
+        {isPaying ? "Opening…" : "Complete payment"}
+      </button>
+    </div>
+  );
+}
 
 export default function OrderTrackingPage({ params: paramsPromise }) {
   const { orderId } = use(paramsPromise);
@@ -74,6 +104,11 @@ export default function OrderTrackingPage({ params: paramsPromise }) {
         </div>
         <span className={`rounded-full px-3 py-1 text-[11px] font-bold ${badge.cls}`}>{badge.label}</span>
       </div>
+
+      {/* Abandoned-payment recovery */}
+      {order.paymentMethod === "razorpay" &&
+        order.paymentStatus === "pending" &&
+        order.status !== "cancelled" && <CompletePaymentCard order={order} />}
 
       {/* Tracker */}
       <OrderTracker order={order} />

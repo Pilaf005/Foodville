@@ -7,6 +7,12 @@ export const profileService = {
   async update(data) {
     return unwrap(await api.put("/profile", data));
   },
+  async updatePreferences(preferences) {
+    return unwrap(await api.put("/profile/preferences", preferences));
+  },
+  async updateNotifications(notifications) {
+    return unwrap(await api.put("/profile/notifications", notifications));
+  },
 };
 
 export const addressService = {

@@ -10,40 +10,17 @@ import { useProducts } from "@/features/products/hooks/useProducts";
 import { useCheckout } from "@/features/checkout/hooks/useCheckout";
 import CartItem from "@/features/cart/components/CartItem";
 import ProductCard from "@/features/products/components/ProductCard";
-import LocationModal from "@/features/checkout/components/location/LocationModal";
+import AddressPickerModal from "@/features/address/components/AddressPickerModal";
 import PaymentModal from "@/features/checkout/components/PaymentModal";
+import { useAddresses } from "@/features/profile/hooks/useProfile";
 
 import { DELIVERY_THRESHOLD, DELIVERY_CHARGE } from "@/features/cart/constants";
 
+// Exactly two methods — Razorpay Checkout itself offers UPI/cards/netbanking.
 const PAYMENT_METHOD_LABELS = {
-  cod:        "Cash on Delivery",
-  gpay:       "Google Pay UPI",
-  phonepe:    "PhonePe UPI",
-  amazonpay:  "Amazon Pay UPI",
-  card:       "Credit / Debit Card",
-  netbanking: "Netbanking",
+  cod: "Cash on Delivery",
+  razorpay: "Pay Online (UPI · Cards · Netbanking)",
 };
-
-/** Everything except COD is settled online through Razorpay. */
-const toGatewayMethod = (uiMethod) => (uiMethod === "cod" ? "cod" : "razorpay");
-
-/** The checkout LocationModal's address shape → the API's address shape. */
-function toApiAddress(a) {
-  if (!a) return null;
-  return {
-    label: a.label || "Home",
-    receiverName: a.name || a.receiverName || "",
-    phone: String(a.phone || "").replace(/\D/g, "").slice(-10),
-    houseFlat: a.completeAddress || a.houseFlat || "",
-    apartment: a.area || a.apartment || "",
-    landmark: a.landmark || "",
-    city: a.city || "",
-    state: a.state || "",
-    pincode: a.pincode || "",
-    deliveryInstructions: a.deliveryInstructions || "",
-    ...(a.coordinates?.lat != null ? { coordinates: a.coordinates } : {}),
-  };
-}
 
 // ─── Utils ────────────────────────────────────────────────────────────────
 function calcBilling(cart) {
@@ -57,11 +34,11 @@ function calcBilling(cart) {
 
 function formatAddressText(address) {
   if (!address) return "No delivery address selected";
-  return [address.completeAddress, address.area, address.city].filter(Boolean).join(", ");
+  return [address.houseFlat, address.area, address.city, address.pincode].filter(Boolean).join(", ");
 }
 
 function formatAddressLabel(address) {
-  return address ? `Delivering to ${address.label || "Home"}` : "Delivery Location";
+  return address ? `Delivering to ${address.label || "Home"}` : "Delivery Address";
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────
@@ -266,22 +243,21 @@ export default function CartPage() {
   const { cart } = useCart();
   const { user, isAuthenticated, isLoading } = useAuth();
   const { placeOrder, isPlacing } = useCheckout();
+  const { addresses } = useAddresses();
 
   const [activeAddress,  setActiveAddress]  = useState(null);
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [isLocationOpen, setIsLocationOpen] = useState(false);
   const [isPaymentOpen,  setIsPaymentOpen]  = useState(false);
 
+  // Auto-select the default saved address (or the first one) once loaded.
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem("activeAddress");
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (raw) setActiveAddress(JSON.parse(raw));
-    } catch (_) {}
-  }, []);
+    if (activeAddress || !addresses.length) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setActiveAddress(addresses.find((a) => a.isDefault) || addresses[0]);
+  }, [addresses, activeAddress]);
 
-  // Recommendations now come from the catalog API (same category as the cart).
-  const firstCategory = cart[0]?.slug ? undefined : undefined;
+  // Recommendations come from the catalog API.
   const { products: recommendationPool } = useProducts({ limit: 12, sort: "rating" });
 
   if (!cart || cart.length === 0) return <CartEmptyState />;
@@ -299,22 +275,16 @@ export default function CartPage() {
       router.push("/login?redirect=/cart");
       return;
     }
-    if (!activeAddress) {
-      setIsLocationOpen(true);
-      return;
-    }
-
-    const address = toApiAddress(activeAddress);
-    if (!address?.receiverName || !address?.phone || !address?.city) {
-      toast.error("Please add a delivery address with a name and phone number.");
+    if (!activeAddress?.id) {
       setIsLocationOpen(true);
       return;
     }
 
     try {
       await placeOrder({
-        address,
-        paymentMethod: toGatewayMethod(selectedMethod),
+        addressId: activeAddress.id, // server reads the saved address
+        address: activeAddress,      // used only to prefill Razorpay Checkout
+        paymentMethod: selectedMethod,
         user,
       });
     } catch {
@@ -360,10 +330,12 @@ export default function CartPage() {
         onPlaceOrder={handlePlaceOrder}
       />
 
-      <LocationModal
+      <AddressPickerModal
         isOpen={isLocationOpen}
         onClose={() => setIsLocationOpen(false)}
-        onAddressSaved={(addr) => setActiveAddress(addr)}
+        selectedId={activeAddress?.id}
+        onSelect={(addr) => setActiveAddress(addr)}
+        prefill={{ receiverName: user?.fullName, phone: user?.phone }}
       />
       <PaymentModal
         isOpen={isPaymentOpen}

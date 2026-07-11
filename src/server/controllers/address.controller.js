@@ -6,14 +6,12 @@ const serialize = (a) => ({
   label: a.label,
   receiverName: a.receiverName,
   phone: a.phone,
+  pincode: a.pincode,
   houseFlat: a.houseFlat,
-  apartment: a.apartment,
+  area: a.area,
   landmark: a.landmark,
   city: a.city,
   state: a.state,
-  pincode: a.pincode,
-  deliveryInstructions: a.deliveryInstructions,
-  coordinates: a.coordinates?.lat != null ? { lat: a.coordinates.lat, lng: a.coordinates.lng } : undefined,
   isDefault: !!a.isDefault,
 });
 

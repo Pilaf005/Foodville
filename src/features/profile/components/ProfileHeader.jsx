@@ -1,11 +1,6 @@
 "use client";
 
-import type { CustomerProfile } from "../types/profile.types";
-
-interface ProfileHeaderProps {
-  profile: CustomerProfile;
-  onEditClick: () => void;
-}
+const DEFAULT_AVATAR = "/images/default-avatar.svg";
 
 function VerifiedBadge() {
   return (
@@ -18,7 +13,12 @@ function VerifiedBadge() {
   );
 }
 
-export default function ProfileHeader({ profile, onEditClick }: ProfileHeaderProps) {
+/**
+ * Profile banner. The single "Edit" button lives inside the Personal
+ * Information card — this header intentionally has none (there used to be a
+ * second, non-functional one here).
+ */
+export default function ProfileHeader({ profile }) {
   return (
     <div
       className="relative rounded-3xl overflow-hidden border border-cardline"
@@ -39,16 +39,15 @@ export default function ProfileHeader({ profile, onEditClick }: ProfileHeaderPro
       <div className="relative p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5">
         {/* Avatar */}
         <div className="relative shrink-0">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl overflow-hidden border-4 border-white shadow-lg">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl overflow-hidden border-4 border-white shadow-lg bg-cream">
             <img
-              src={profile.avatarUrl}
-              alt={profile.fullName}
+              src={profile.avatarUrl || DEFAULT_AVATAR}
+              alt={profile.fullName || "Profile"}
               className="w-full h-full object-cover"
               onError={(e) => {
                 const target = e.currentTarget;
                 target.onerror = null;
-                target.src =
-                  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'><rect width='96' height='96' fill='%236B7F59' rx='24'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='36' font-weight='700' fill='white'>A</text></svg>";
+                target.src = DEFAULT_AVATAR;
               }}
             />
           </div>
@@ -59,7 +58,9 @@ export default function ProfileHeader({ profile, onEditClick }: ProfileHeaderPro
         {/* Info */}
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-1">
-            <h1 className="text-xl sm:text-2xl font-black text-ink leading-tight">{profile.fullName}</h1>
+            <h1 className="text-xl sm:text-2xl font-black text-ink leading-tight">
+              {profile.fullName || "Welcome!"}
+            </h1>
             {profile.isVerified && <VerifiedBadge />}
           </div>
 
@@ -71,12 +72,14 @@ export default function ProfileHeader({ profile, onEditClick }: ProfileHeaderPro
               </svg>
               <span className="truncate">{profile.email}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-muted">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-              <span>{profile.phone}</span>
-            </div>
+            {profile.phone && (
+              <div className="flex items-center gap-2 text-sm text-muted">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <span>{profile.phone}</span>
+              </div>
+            )}
             <div className="flex items-center gap-2 text-xs text-muted">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <rect width="18" height="18" x="3" y="4" rx="2" />
@@ -86,17 +89,6 @@ export default function ProfileHeader({ profile, onEditClick }: ProfileHeaderPro
             </div>
           </div>
         </div>
-
-        {/* Edit Button */}
-        <button
-          onClick={onEditClick}
-          className="shrink-0 flex items-center gap-2 rounded-2xl border-2 border-olive bg-white/80 hover:bg-olive hover:text-white text-olive text-xs font-bold px-4 py-3 transition-all duration-200 active:scale-95 shadow-sm min-h-[44px]"
-        >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
-          </svg>
-          Edit Profile
-        </button>
       </div>
     </div>
   );

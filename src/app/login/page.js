@@ -5,29 +5,62 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { useRequestOtp, useVerifyOtp, useAuth } from "@/features/auth/hooks/useAuth";
+import { useUpdateProfile } from "@/features/profile/hooks/useProfile";
 
 const OTP_LENGTH = 6;
+
+const GENDER_OPTIONS = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "other", label: "Other" },
+  { value: "prefer_not_to_say", label: "Prefer not to say" },
+];
 
 function LoginCard() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") || "/profile";
 
-  const { isAuthenticated, isLoading } = useAuth();
+  const { user, isAuthenticated, isLoading } = useAuth();
   const requestOtp = useRequestOtp();
   const verifyOtp = useVerifyOtp();
+  const updateProfile = useUpdateProfile();
 
-  const [step, setStep] = useState("email"); // "email" | "code"
+  const [step, setStep] = useState("email"); // "email" | "code" | "details"
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [digits, setDigits] = useState(Array(OTP_LENGTH).fill(""));
   const [cooldown, setCooldown] = useState(0);
+  const [details, setDetails] = useState({
+    fullName: "",
+    phone: "",
+    gender: "prefer_not_to_say",
+    dateOfBirth: "",
+  });
   const inputsRef = useRef([]);
 
-  // Already signed in → don't show the form.
+  // Signed-in users landing here:
+  //  - profile complete   → straight to their destination.
+  //  - profile INCOMPLETE → show the details step. This covers the abnormal
+  //    flows too: closing the tab or pressing Back right after OTP verification
+  //    leaves them logged in but half-onboarded — next time they reach /login
+  //    (directly or via the "complete your profile" banner) the step reappears
+  //    instead of being silently skipped forever.
   useEffect(() => {
-    if (!isLoading && isAuthenticated) router.replace(redirectTo);
-  }, [isLoading, isAuthenticated, router, redirectTo]);
+    if (isLoading || !isAuthenticated || step === "details") return;
+    if (!user?.fullName || !user?.phone) {
+      setDetails({
+        fullName: user?.fullName || "",
+        phone: user?.phone || "",
+        gender: user?.gender || "prefer_not_to_say",
+        dateOfBirth: user?.dateOfBirth || "",
+      });
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setStep("details");
+      return;
+    }
+    router.replace(redirectTo);
+  }, [isLoading, isAuthenticated, user, router, redirectTo, step]);
 
   // Resend countdown.
   useEffect(() => {
@@ -69,12 +102,49 @@ function LoginCard() {
     e?.preventDefault();
     if (code.length !== OTP_LENGTH) return;
     try {
-      await verifyOtp.mutateAsync({ email: email.trim().toLowerCase(), code });
-      toast.success("Welcome to Foodville!");
+      const data = await verifyOtp.mutateAsync({ email: email.trim().toLowerCase(), code });
+      const user = data?.user;
+      // First-timers (or anyone missing the basics) complete their profile now.
+      // The phone number saved here is auto-filled at checkout later.
+      if (!user?.fullName || !user?.phone) {
+        setDetails({
+          fullName: user?.fullName || "",
+          phone: user?.phone || "",
+          gender: user?.gender || "prefer_not_to_say",
+          dateOfBirth: user?.dateOfBirth || "",
+        });
+        setStep("details");
+        return;
+      }
+      toast.success("Welcome back!");
       router.replace(redirectTo);
     } catch {
       setDigits(Array(OTP_LENGTH).fill(""));
       inputsRef.current[0]?.focus();
+    }
+  }
+
+  async function handleDetailsSubmit(e) {
+    e?.preventDefault();
+    if (details.fullName.trim().length < 2) {
+      toast.error("Please enter your full name.");
+      return;
+    }
+    if (!/^\d{10}$/.test(details.phone)) {
+      toast.error("Enter a valid 10-digit mobile number.");
+      return;
+    }
+    try {
+      await updateProfile.mutateAsync({
+        fullName: details.fullName.trim(),
+        phone: details.phone,
+        gender: details.gender,
+        dateOfBirth: details.dateOfBirth,
+      });
+      toast.success("Welcome to Foodville!");
+      router.replace(redirectTo);
+    } catch {
+      /* the mutation already toasts the error */
     }
   }
 
@@ -110,16 +180,93 @@ function LoginCard() {
         {/* Header */}
         <div key={step} className="animate-fade-in mb-6 text-center">
           <h1 className="text-xl font-black uppercase tracking-tight text-ink sm:text-2xl">
-            {step === "email" ? "Sign in" : "Verify your email"}
+            {step === "email" ? "Sign in" : step === "code" ? "Verify your email" : "Complete your profile"}
           </h1>
           <p className="mt-2 text-xs text-muted sm:text-sm">
             {step === "email"
               ? "Enter your email and we'll send you a one-time code. No password needed."
-              : <>We sent a {OTP_LENGTH}-digit code to <span className="font-semibold text-ink">{email}</span></>}
+              : step === "code"
+                ? <>We sent a {OTP_LENGTH}-digit code to <span className="font-semibold text-ink">{email}</span></>
+                : "A few details to speed up checkout — your phone number is auto-filled when you order."}
           </p>
         </div>
 
-        {step === "email" ? (
+        {step === "details" ? (
+          <form onSubmit={handleDetailsSubmit} noValidate className="space-y-4">
+            <div>
+              <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted">
+                Full name <span className="text-terracotta">*</span>
+              </label>
+              <input
+                type="text"
+                autoComplete="name"
+                placeholder="First and last name"
+                value={details.fullName}
+                onChange={(e) => setDetails((d) => ({ ...d, fullName: e.target.value }))}
+                className="w-full rounded-2xl border border-cardline bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted">
+                Mobile number <span className="text-terracotta">*</span>
+              </label>
+              <input
+                type="tel"
+                inputMode="numeric"
+                autoComplete="tel-national"
+                placeholder="10-digit mobile number"
+                value={details.phone}
+                onChange={(e) => setDetails((d) => ({ ...d, phone: e.target.value.replace(/\D/g, "").slice(0, 10) }))}
+                className="w-full rounded-2xl border border-cardline bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+              />
+              <p className="mt-1 text-[11px] text-muted">Used for delivery updates and auto-filled at checkout.</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted">Gender</label>
+                <select
+                  value={details.gender}
+                  onChange={(e) => setDetails((d) => ({ ...d, gender: e.target.value }))}
+                  className="w-full rounded-2xl border border-cardline bg-white px-3 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+                >
+                  {GENDER_OPTIONS.map((o) => (
+                    <option key={o.value} value={o.value}>{o.label}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted">Date of birth</label>
+                <input
+                  type="date"
+                  value={details.dateOfBirth}
+                  max={new Date().toISOString().slice(0, 10)}
+                  onChange={(e) => setDetails((d) => ({ ...d, dateOfBirth: e.target.value }))}
+                  className="w-full rounded-2xl border border-cardline bg-white px-3 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={updateProfile.isPending}
+              className="mt-1 flex w-full items-center justify-center rounded-2xl bg-olive px-4 py-3 text-sm font-bold
+                         uppercase tracking-wide text-white transition hover:bg-olive-dark active:scale-[0.98]
+                         disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {updateProfile.isPending ? <Spinner label="Saving…" /> : "Save & continue"}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => router.replace(redirectTo)}
+              className="w-full text-center text-xs font-semibold text-muted transition hover:text-ink"
+            >
+              Skip for now
+            </button>
+          </form>
+        ) : step === "email" ? (
           <form onSubmit={handleSendCode} noValidate>
             <label htmlFor="email" className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted">
               Email address

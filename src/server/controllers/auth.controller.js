@@ -29,7 +29,9 @@ export function serializeUser(u) {
     gender: u.gender,
     dateOfBirth: u.dateOfBirth || "",
     language: u.language,
-    avatarUrl: u.avatarUrl || "",
+    // Our own bundled SVG (drawn in-house, no copyright concerns) so new users
+    // never see an empty avatar container.
+    avatarUrl: u.avatarUrl || "/images/default-avatar.svg",
     isVerified: !!u.isVerified,
     preferences: u.preferences,
     notifications: u.notifications,

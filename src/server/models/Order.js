@@ -42,13 +42,11 @@ const AddressSnapshotSchema = new Schema(
     receiverName: String,
     phone: String,
     houseFlat: String,
-    apartment: String,
+    area: String, // Area, Street, Sector, Village
     landmark: String,
     city: String,
     state: String,
     pincode: String,
-    deliveryInstructions: String,
-    coordinates: { lat: Number, lng: Number },
   },
   { _id: false }
 );

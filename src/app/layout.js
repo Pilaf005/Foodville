@@ -2,6 +2,7 @@ import "./globals.css";
 import Navbar from "@/layout/navbar";
 import Footer from "@/layout/footer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import CompleteProfileBanner from "@/components/common/CompleteProfileBanner";
 import { CartProvider } from "@/context/CartContext";
 import { WishlistProvider } from "@/context/WishlistContext";
 import AppProviders from "@/providers";
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
             <WishlistProvider>
               <div className="flex-1">
                 <Navbar />
+                <CompleteProfileBanner />
                 <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
                   {children}
                 </main>

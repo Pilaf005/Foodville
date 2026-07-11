@@ -9,15 +9,13 @@ import PersonalInfoForm from "@/features/profile/components/PersonalInfoForm";
 import AddressList from "@/features/profile/components/AddressList";
 import OrderCard from "@/features/profile/components/OrderCard";
 import WishlistCard from "@/features/profile/components/WishlistCard";
-import PaymentMethods from "@/features/profile/components/PaymentMethods";
-import RewardsCard from "@/features/profile/components/RewardsCard";
 import PreferencesSection from "@/features/profile/components/PreferencesSection";
 import NotificationSettings from "@/features/profile/components/NotificationSettings";
-import SecuritySection from "@/features/profile/components/SecuritySection";
 
-import { useProfile, useUpdateProfile, useAddresses } from "@/features/profile/hooks/useProfile";
+import { useProfile, useUpdateProfile } from "@/features/profile/hooks/useProfile";
 import { useOrders } from "@/features/orders/hooks/useOrders";
 import { useWishlist } from "@/context/WishlistContext";
+import { useLogout } from "@/features/auth/hooks/useAuth";
 
 // ─── Skeleton loader for content area ─────────────────────────────────────
 function ContentSkeleton() {
@@ -65,14 +63,54 @@ const toWishlistCard = (p) => ({
   cuisine: p.category || "",
 });
 
+// ─── Logout confirmation dialog ────────────────────────────────────────────
+function LogoutDialog({ open, onCancel, onConfirm, isPending }) {
+  if (!open) return null;
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      onClick={(e) => { if (e.target === e.currentTarget) onCancel(); }}
+    >
+      <div className="animate-scale-in w-full max-w-sm rounded-3xl border border-cardline bg-white p-6 text-center shadow-2xl">
+        <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-full bg-red-50 text-red-500">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+        </div>
+        <h3 className="text-base font-black uppercase tracking-tight text-ink">Log out?</h3>
+        <p className="mt-1 text-xs text-muted">
+          You&apos;ll need a new one-time code to sign back in.
+        </p>
+        <div className="mt-5 flex gap-2">
+          <button
+            onClick={onCancel}
+            className="flex-1 rounded-2xl border border-cardline py-2.5 text-xs font-bold uppercase text-ink transition hover:border-olive"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onConfirm}
+            disabled={isPending}
+            className="flex-1 rounded-2xl bg-red-500 py-2.5 text-xs font-bold uppercase text-white transition hover:bg-red-600 active:scale-[0.98] disabled:opacity-60"
+          >
+            {isPending ? "Logging out…" : "Log out"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Section content renderer ──────────────────────────────────────────────
-function ProfileContent({ activeSection, profile, onProfileSave, orders, ordersLoading, addresses, wishlist, onWishlistRemove }) {
+function ProfileContent({ activeSection, profile, onProfileSave, isSaving, orders, ordersLoading, wishlist, onWishlistRemove }) {
   switch (activeSection) {
     case "personal":
-      return <PersonalInfoForm profile={profile} onSave={onProfileSave} />;
+      return <PersonalInfoForm profile={profile} onSave={onProfileSave} isSaving={isSaving} />;
 
     case "addresses":
-      return <AddressList addresses={addresses} />;
+      return <AddressList prefill={{ receiverName: profile.fullName, phone: profile.phone }} />;
 
     case "orders":
       return (
@@ -142,21 +180,11 @@ function ProfileContent({ activeSection, profile, onProfileSave, orders, ordersL
         </div>
       );
 
-    case "payments":
-      // Cards/UPI are held by Razorpay, never by us — nothing sensitive is stored.
-      return <PaymentMethods savedCards={[]} upiAccounts={[]} />;
-
-    case "rewards":
-      return <RewardsCard rewards={profile?.rewards ?? { points: 0, walletBalance: 0, referralEarnings: 0, referralCode: "", tier: "bronze", coupons: [] }} />;
-
     case "preferences":
       return <PreferencesSection preferences={profile?.preferences ?? {}} />;
 
     case "notifications":
       return <NotificationSettings settings={profile?.notifications ?? {}} />;
-
-    case "security":
-      return <SecuritySection />;
 
     default:
       return <ContentSkeleton />;
@@ -166,11 +194,12 @@ function ProfileContent({ activeSection, profile, onProfileSave, orders, ordersL
 // ─── Page ─────────────────────────────────────────────────────────────────
 export default function ProfilePage() {
   const [activeSection, setActiveSection] = useState("personal");
+  const [logoutOpen, setLogoutOpen] = useState(false);
 
   const { profile, isPending } = useProfile();
   const updateProfile = useUpdateProfile();
+  const logout = useLogout();
   const { orders, isPending: ordersLoading } = useOrders();
-  const { addresses } = useAddresses();
   const { wishlist, removeFromWishlist } = useWishlist();
 
   if (isPending || !profile) {
@@ -195,11 +224,10 @@ export default function ProfilePage() {
       </div>
 
       {/* Header */}
-      <ProfileHeader profile={profile} onEditClick={() => setActiveSection("personal")} />
+      <ProfileHeader profile={profile} />
 
       {/* Admins are ordinary users with extra powers — they keep every customer
-          route, and additionally get this door into the dashboard. Customers
-          never see it, and /admin is blocked for them at the edge anyway. */}
+          route, and additionally get this door into the dashboard. */}
       {profile.role === "admin" && (
         <Link
           href="/admin"
@@ -225,14 +253,22 @@ export default function ProfilePage() {
 
       {/* Mobile tab bar */}
       <div className="lg:hidden">
-        <ProfileMobileTabs activeSection={activeSection} onSectionChange={setActiveSection} />
+        <ProfileMobileTabs
+          activeSection={activeSection}
+          onSectionChange={setActiveSection}
+          onLogout={() => setLogoutOpen(true)}
+        />
       </div>
 
       {/* Two-column layout on desktop */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left sidebar — desktop only */}
         <div className="hidden lg:block lg:col-span-3 lg:sticky lg:top-24">
-          <ProfileSidebar activeSection={activeSection} onSectionChange={setActiveSection} />
+          <ProfileSidebar
+            activeSection={activeSection}
+            onSectionChange={setActiveSection}
+            onLogout={() => setLogoutOpen(true)}
+          />
         </div>
 
         {/* Right content */}
@@ -241,14 +277,21 @@ export default function ProfilePage() {
             activeSection={activeSection}
             profile={profile}
             onProfileSave={(data) => updateProfile.mutate(data)}
+            isSaving={updateProfile.isPending}
             orders={orders.map(toOrderCard)}
             ordersLoading={ordersLoading}
-            addresses={addresses}
             wishlist={wishlist.map(toWishlistCard)}
             onWishlistRemove={removeFromWishlist}
           />
         </div>
       </div>
+
+      <LogoutDialog
+        open={logoutOpen}
+        onCancel={() => setLogoutOpen(false)}
+        onConfirm={() => logout.mutate()}
+        isPending={logout.isPending}
+      />
     </div>
   );
 }

@@ -10,6 +10,7 @@ import { CATEGORIES as HOME_CATEGORIES } from "@/features/home/constants/categor
 import Product from "@/server/models/Product";
 import Category from "@/server/models/Category";
 import Blog from "@/server/models/Blog";
+import { cacheClear } from "@/server/utils/cache";
 
 const toProductDoc = ({ id, ...rest }) => ({ numericId: id, ...rest });
 const toBlogDoc = ({ id, ...rest }) => ({ numericId: id, ...rest });
@@ -34,6 +35,8 @@ export async function seedCatalog() {
   await Category.insertMany(categoryDocs, { ordered: false });
   await Product.insertMany(productDocs, { ordered: false });
   await Blog.insertMany(blogDocs, { ordered: false });
+
+  cacheClear(); // catalog changed — drop any stale cached reads
 
   const [productCount, categoryCount, blogCount] = await Promise.all([
     Product.countDocuments(),

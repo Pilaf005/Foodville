@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 
 function UserIcon() {
   return (
@@ -15,12 +16,16 @@ function UserIcon() {
 
 export const ProfileButton = () => {
   const pathname = usePathname();
-  const isActive = pathname === "/profile";
+  const { isAuthenticated } = useAuth();
+
+  // Signed out → send them to sign in; signed in → their account.
+  const href = isAuthenticated ? "/profile" : "/login";
+  const isActive = pathname === href;
 
   return (
     <Link
-      href="/profile"
-      aria-label="My Profile"
+      href={href}
+      aria-label={isAuthenticated ? "My Profile" : "Sign in"}
       className={`relative p-2.5 rounded-full transition min-h-[44px] min-w-[44px] flex items-center justify-center ${
         isActive
           ? "text-olive bg-olive/10"
@@ -28,6 +33,10 @@ export const ProfileButton = () => {
       }`}
     >
       <UserIcon />
+      {/* Small dot marks a signed-in session */}
+      {isAuthenticated && (
+        <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border border-white bg-olive" />
+      )}
     </Link>
   );
 };

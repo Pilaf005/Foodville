@@ -1,12 +1,13 @@
 "use client";
 
 import ProductCard from "./ProductCard";
-import { getTopSellers } from "@/data/products";
+import { useTopSellers } from "@/features/products/hooks/useProducts";
+import { ProductCardSkeleton } from "@/components/feedback/Skeleton";
 
 export default function TopSellers() {
-  const topSellersList = getTopSellers().slice(0, 4);
+  const { products, isPending } = useTopSellers(4);
 
-  if (topSellersList.length === 0) return null;
+  if (!isPending && products.length === 0) return null;
 
   return (
     <div className="space-y-4">
@@ -14,9 +15,9 @@ export default function TopSellers() {
         Top Sellers
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {topSellersList.map((p) => (
-          <ProductCard key={p.id} product={p} />
-        ))}
+        {isPending
+          ? Array.from({ length: 4 }).map((_, i) => <ProductCardSkeleton key={i} />)
+          : products.map((p) => <ProductCard key={p.id} product={p} />)}
       </div>
     </div>
   );

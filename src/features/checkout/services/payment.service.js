@@ -1,18 +1,16 @@
-import api from "@/lib/api";
+import api, { unwrap } from "@/lib/api";
 
 export const paymentService = {
-  async initializePayment(paymentData) {
-    // Placeholder to init order payment
-    // const response = await api.post("/payments/initiate", paymentData);
-    // return response.data;
-    return null;
+  /** Creates the Razorpay order → { razorpayOrderId, amount, currency, keyId } */
+  async initiate(orderId) {
+    return unwrap(await api.post("/payments/initiate", { orderId }));
   },
 
-  async verifyPayment(verificationData) {
-    // Placeholder to verify payment status
-    // const response = await api.post("/payments/verify", verificationData);
-    // return response.data;
-    return null;
+  /** Server re-checks the HMAC signature; only this marks an order paid. */
+  async verify({ razorpayOrderId, razorpayPaymentId, signature }) {
+    return unwrap(
+      await api.post("/payments/verify", { razorpayOrderId, razorpayPaymentId, signature })
+    );
   },
 };
 

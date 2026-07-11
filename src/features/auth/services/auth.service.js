@@ -1,32 +1,28 @@
-import api from "@/lib/api";
+import api, { unwrap } from "@/lib/api";
 
 export const authService = {
-  async login(credentials) {
-    // Placeholder login call
-    // const response = await api.post("/auth/login", credentials);
-    // return response.data;
-    return null;
+  /** Step 1 — submit email. Creates the lead + emails a code. */
+  async requestOtp(email) {
+    return unwrap(await api.post("/auth/request-otp", { email }));
+  },
+
+  /** Step 2 — submit the code. Sets the httpOnly auth cookie on success. */
+  async verifyOtp({ email, code }) {
+    return unwrap(await api.post("/auth/verify-otp", { email, code }));
+  },
+
+  /** Current user, or null when signed out. */
+  async getCurrentUser() {
+    try {
+      return await unwrap(await api.get("/auth/me"));
+    } catch (err) {
+      if (err?.status === 401) return null;
+      throw err;
+    }
   },
 
   async logout() {
-    // Placeholder logout call
-    // const response = await api.post("/auth/logout");
-    // return response.data;
-    return null;
-  },
-
-  async register(data) {
-    // Placeholder register call
-    // const response = await api.post("/auth/register", data);
-    // return response.data;
-    return null;
-  },
-
-  async getCurrentUser() {
-    // Placeholder fetch user profile
-    // const response = await api.get("/auth/me");
-    // return response.data;
-    return null;
+    return unwrap(await api.post("/auth/logout"));
   },
 };
 

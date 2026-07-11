@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 
+import { useOrder } from "@/features/orders/hooks/useOrders";
+import { Skeleton } from "@/components/feedback/Skeleton";
 import { DELIVERY_THRESHOLD, DELIVERY_CHARGE } from "@/features/cart/constants";
 
 // ─── Utils ────────────────────────────────────────────────────────────────
@@ -324,23 +327,70 @@ function HelpSupportCard() {
   );
 }
 
+/** The API address shape → the shape this page's cards already render. */
+function toDisplayAddress(a) {
+  if (!a) return {};
+  return {
+    label: a.label,
+    name: a.receiverName,
+    phone: a.phone,
+    completeAddress: a.houseFlat,
+    area: a.apartment,
+    city: a.city,
+    coordinates: a.coordinates,
+  };
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────
-export default function OrderConfirmedPage() {
-  const [order, setOrder] = useState(null);
+function OrderConfirmedContent() {
+  const searchParams = useSearchParams();
+  const orderIdParam = searchParams.get("orderId");
 
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("lastOrder");
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (raw) setOrder(JSON.parse(raw));
-    } catch (_) {}
-  }, []);
+  // The order now comes from the database, not localStorage — so it survives a
+  // refresh, works on another device, and can't be faked by editing storage.
+  const { order, isPending, isError } = useOrder(orderIdParam);
 
-  const items         = order?.items         || [];
-  const paymentMethod = order?.paymentMethod || "cod";
-  const address       = order?.address       || {};
-  const orderId       = order?.orderId       || "ORD3496849873";
+  if (isPending) {
+    return (
+      <div className="min-h-screen bg-[#FAF9F6] px-4 py-10">
+        <div className="mx-auto max-w-6xl space-y-6">
+          <Skeleton className="h-10 w-72" />
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
+            <div className="space-y-6 lg:col-span-7">
+              <Skeleton className="h-72 w-full rounded-3xl" />
+              <Skeleton className="h-64 w-full rounded-3xl" />
+            </div>
+            <div className="space-y-6 lg:col-span-5">
+              <Skeleton className="h-64 w-full rounded-3xl" />
+              <Skeleton className="h-48 w-full rounded-3xl" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isError || !order) {
+    return (
+      <div className="flex min-h-[60vh] flex-col items-center justify-center space-y-4 px-4 text-center">
+        <span className="text-5xl">📦</span>
+        <h2 className="text-xl font-bold text-ink">Order not found</h2>
+        <p className="max-w-sm text-sm text-muted">
+          We couldn&apos;t find that order. Check your order history for the latest status.
+        </p>
+        <Link href="/profile" className="rounded-xl bg-[#6B7F59] px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-[#5a6b4a]">
+          View my orders
+        </Link>
+      </div>
+    );
+  }
+
+  const items         = order.items || [];
+  const paymentMethod = order.paymentMethod || "cod";
+  const address       = toDisplayAddress(order.address);
+  const orderId       = order.orderId;
   const billing       = calcOrderBilling(items);
+  const mapOrder      = { ...order, address };
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] py-10 px-4">
@@ -350,7 +400,7 @@ export default function OrderConfirmedPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left: Map + Timeline */}
           <div className="lg:col-span-7 space-y-6">
-            <LiveMapCard order={order} />
+            <LiveMapCard order={mapOrder} />
             <OrderTimeline paymentMethod={paymentMethod} />
           </div>
 
@@ -370,5 +420,13 @@ export default function OrderConfirmedPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function OrderConfirmedPage() {
+  return (
+    <Suspense fallback={<div className="min-h-[60vh]" />}>
+      <OrderConfirmedContent />
+    </Suspense>
   );
 }

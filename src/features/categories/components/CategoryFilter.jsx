@@ -1,16 +1,20 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { CATEGORIES } from "@/features/home/constants/categories";
+import { useCategories } from "@/features/categories/hooks/useCategories";
+import { CategoryFilterSkeleton } from "@/components/feedback/Skeleton";
 
 export default function CategoryFilter({ active }) {
   const router = useRouter();
+  const { categories, isPending } = useCategories();
+
+  if (isPending) return <CategoryFilterSkeleton />;
 
   return (
     <div className="w-full max-w-6xl mx-auto px-2 sm:px-0 py-6 sm:py-8">
       {/* 4 columns on mobile (2 rows of 4), 8 columns on desktop (1 row of 8) */}
       <div className="grid grid-cols-4 sm:grid-cols-8 gap-x-2.5 gap-y-6 sm:gap-x-4 justify-items-center w-full">
-        {CATEGORIES.map((item) => {
+        {categories.map((item) => {
           const isActive = active === item.id;
           return (
             <button

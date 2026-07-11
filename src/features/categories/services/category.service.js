@@ -1,11 +1,8 @@
-import api from "@/lib/api";
+import api, { unwrap } from "@/lib/api";
 
 export const categoryService = {
-  async getCategories() {
-    // Placeholder to fetch all categories
-    // const response = await api.get("/categories");
-    // return response.data;
-    return [];
+  async list() {
+    return unwrap(await api.get("/categories"));
   },
 };
 

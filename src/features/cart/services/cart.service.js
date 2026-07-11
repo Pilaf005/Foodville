@@ -1,32 +1,24 @@
-import api from "@/lib/api";
+import api, { unwrap } from "@/lib/api";
 
 export const cartService = {
-  async getCart() {
-    // Placeholder to fetch cart from server
-    // const response = await api.get("/cart");
-    // return response.data;
-    return [];
+  async get() {
+    return unwrap(await api.get("/cart"));
   },
-
-  async addToCart(productId, qty) {
-    // Placeholder to add item to cart
-    // const response = await api.post("/cart", { productId, qty });
-    // return response.data;
-    return null;
+  async add({ productId, qty = 1, unit = "" }) {
+    return unwrap(await api.post("/cart", { productId, qty, unit }));
   },
-
-  async removeFromCart(productId) {
-    // Placeholder to remove item from cart
-    // const response = await api.delete(`/cart/${productId}`);
-    // return response.data;
-    return null;
+  async update(productId, { qty, unit }) {
+    return unwrap(await api.put(`/cart/${productId}`, { qty, unit }));
   },
-
-  async updateQty(productId, qty) {
-    // Placeholder to update cart item quantity
-    // const response = await api.put(`/cart/${productId}`, { qty });
-    // return response.data;
-    return null;
+  async remove(productId) {
+    return unwrap(await api.delete(`/cart/${productId}`));
+  },
+  async clear() {
+    return unwrap(await api.delete("/cart"));
+  },
+  /** Fold a guest cart (and wishlist) into the account after sign-in. */
+  async merge({ items = [], wishlist = [] }) {
+    return unwrap(await api.post("/cart/merge", { items, wishlist }));
   },
 };
 

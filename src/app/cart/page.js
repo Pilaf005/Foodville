@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { useCart } from "@/context/CartContext";
-import { products } from "@/data/products";
+import { useAuth } from "@/features/auth/hooks/useAuth";
+import { useProducts } from "@/features/products/hooks/useProducts";
+import { useCheckout } from "@/features/checkout/hooks/useCheckout";
 import CartItem from "@/features/cart/components/CartItem";
 import ProductCard from "@/features/products/components/ProductCard";
 import LocationModal from "@/features/checkout/components/location/LocationModal";
@@ -13,11 +16,34 @@ import PaymentModal from "@/features/checkout/components/PaymentModal";
 import { DELIVERY_THRESHOLD, DELIVERY_CHARGE } from "@/features/cart/constants";
 
 const PAYMENT_METHOD_LABELS = {
-  cod:       "Cash on Delivery",
-  gpay:      "Google Pay UPI",
-  phonepe:   "PhonePe UPI",
-  amazonpay: "Amazon Pay UPI",
+  cod:        "Cash on Delivery",
+  gpay:       "Google Pay UPI",
+  phonepe:    "PhonePe UPI",
+  amazonpay:  "Amazon Pay UPI",
+  card:       "Credit / Debit Card",
+  netbanking: "Netbanking",
 };
+
+/** Everything except COD is settled online through Razorpay. */
+const toGatewayMethod = (uiMethod) => (uiMethod === "cod" ? "cod" : "razorpay");
+
+/** The checkout LocationModal's address shape → the API's address shape. */
+function toApiAddress(a) {
+  if (!a) return null;
+  return {
+    label: a.label || "Home",
+    receiverName: a.name || a.receiverName || "",
+    phone: String(a.phone || "").replace(/\D/g, "").slice(-10),
+    houseFlat: a.completeAddress || a.houseFlat || "",
+    apartment: a.area || a.apartment || "",
+    landmark: a.landmark || "",
+    city: a.city || "",
+    state: a.state || "",
+    pincode: a.pincode || "",
+    deliveryInstructions: a.deliveryInstructions || "",
+    ...(a.coordinates?.lat != null ? { coordinates: a.coordinates } : {}),
+  };
+}
 
 // ─── Utils ────────────────────────────────────────────────────────────────
 function calcBilling(cart) {
@@ -27,25 +53,6 @@ function calcBilling(cart) {
   const deliveryCharge    = totalSellingPrice >= DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
   const totalPayable      = totalSellingPrice + deliveryCharge;
   return { totalSellingPrice, totalMrp, totalSavings, deliveryCharge, totalPayable };
-}
-
-function getCartRecommendations(cart) {
-  const cartProductIds = new Set(cart.map((item) => String(String(item.id).split("-")[0])));
-  const cartCategories = new Set(
-    products.filter((p) => cartProductIds.has(String(p.id))).map((p) => p.category)
-  );
-
-  const recs = products
-    .filter((p) => cartCategories.has(p.category) && !cartProductIds.has(String(p.id)))
-    .slice(0, 8);
-
-  if (recs.length < 4) {
-    const extra = products
-      .filter((p) => !cartProductIds.has(String(p.id)) && !recs.some((r) => r.id === p.id))
-      .slice(0, 6);
-    recs.push(...extra);
-  }
-  return recs;
 }
 
 function formatAddressText(address) {
@@ -110,7 +117,7 @@ function CartRecommendations({ recommendations }) {
 }
 
 function CartBillPanel({
-  billing, activeAddress, selectedMethod,
+  billing, activeAddress, selectedMethod, isPlacing,
   onOpenLocation, onOpenPayment, onPlaceOrder,
 }) {
   const { totalSellingPrice, totalMrp, totalSavings, deliveryCharge, totalPayable } = billing;
@@ -204,9 +211,10 @@ function CartBillPanel({
         {selectedMethod ? (
           <button
             onClick={onPlaceOrder}
-            className="w-full bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block"
+            disabled={isPlacing}
+            className="w-full bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block disabled:opacity-60"
           >
-            PLACE ORDER — ₹{totalPayable}
+            {isPlacing ? "PLACING ORDER…" : `PLACE ORDER — ₹${totalPayable}`}
           </button>
         ) : (
           <button
@@ -222,7 +230,7 @@ function CartBillPanel({
 }
 
 // ─── Mobile sticky checkout bar ───────────────────────────────────────────
-function MobileStickyCheckout({ billing, selectedMethod, onOpenPayment, onPlaceOrder }) {
+function MobileStickyCheckout({ billing, selectedMethod, isPlacing, onOpenPayment, onPlaceOrder }) {
   const { totalPayable } = billing;
   return (
     <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-4 py-3 shadow-2xl">
@@ -234,9 +242,10 @@ function MobileStickyCheckout({ billing, selectedMethod, onOpenPayment, onPlaceO
         {selectedMethod ? (
           <button
             onClick={onPlaceOrder}
-            className="flex-1 bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md"
+            disabled={isPlacing}
+            className="flex-1 bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md disabled:opacity-60"
           >
-            PLACE ORDER
+            {isPlacing ? "PLACING…" : "PLACE ORDER"}
           </button>
         ) : (
           <button
@@ -250,10 +259,14 @@ function MobileStickyCheckout({ billing, selectedMethod, onOpenPayment, onPlaceO
     </div>
   );
 }
+
 // ─── Page ─────────────────────────────────────────────────────────────────
 export default function CartPage() {
   const router = useRouter();
-  const { cart, clearCart } = useCart();
+  const { cart } = useCart();
+  const { user, isAuthenticated, isLoading } = useAuth();
+  const { placeOrder, isPlacing } = useCheckout();
+
   const [activeAddress,  setActiveAddress]  = useState(null);
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [isLocationOpen, setIsLocationOpen] = useState(false);
@@ -267,24 +280,46 @@ export default function CartPage() {
     } catch (_) {}
   }, []);
 
+  // Recommendations now come from the catalog API (same category as the cart).
+  const firstCategory = cart[0]?.slug ? undefined : undefined;
+  const { products: recommendationPool } = useProducts({ limit: 12, sort: "rating" });
+
   if (!cart || cart.length === 0) return <CartEmptyState />;
 
-  const billing         = calcBilling(cart);
-  const recommendations = getCartRecommendations(cart);
-  const totalQty        = cart.reduce((sum, item) => sum + item.qty, 0);
+  const billing  = calcBilling(cart);
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
 
-  function handlePlaceOrder() {
-    if (!activeAddress) { setIsLocationOpen(true); return; }
-    const orderData = {
-      orderId: "ORD" + Math.floor(1000000000 + Math.random() * 9000000000),
-      items: cart,
-      payable: billing.totalPayable,
-      paymentMethod: selectedMethod,
-      address: activeAddress,
-    };
-    localStorage.setItem("lastOrder", JSON.stringify(orderData));
-    clearCart();
-    router.push("/order-confirmed");
+  const cartIds = new Set(cart.map((i) => i.id));
+  const recommendations = recommendationPool.filter((p) => !cartIds.has(p.id)).slice(0, 8);
+
+  async function handlePlaceOrder() {
+    // Checkout requires an account — this is where guests are asked to sign in.
+    if (!isLoading && !isAuthenticated) {
+      toast.info("Please sign in to place your order.");
+      router.push("/login?redirect=/cart");
+      return;
+    }
+    if (!activeAddress) {
+      setIsLocationOpen(true);
+      return;
+    }
+
+    const address = toApiAddress(activeAddress);
+    if (!address?.receiverName || !address?.phone || !address?.city) {
+      toast.error("Please add a delivery address with a name and phone number.");
+      setIsLocationOpen(true);
+      return;
+    }
+
+    try {
+      await placeOrder({
+        address,
+        paymentMethod: toGatewayMethod(selectedMethod),
+        user,
+      });
+    } catch {
+      /* useCheckout already surfaced the error */
+    }
   }
 
   return (
@@ -296,7 +331,7 @@ export default function CartPage() {
         <div className="lg:col-span-7 space-y-6 sm:space-y-8">
           <div className="bg-white rounded-3xl border border-gray-200 p-4 sm:p-6 shadow-sm">
             <div className="divide-y divide-gray-100">
-              {cart.map((item) => <CartItem key={item.id} item={item} />)}
+              {cart.map((item) => <CartItem key={`${item.id}-${item.unit}`} item={item} />)}
             </div>
           </div>
           <CartRecommendations recommendations={recommendations} />
@@ -308,6 +343,7 @@ export default function CartPage() {
             billing={billing}
             activeAddress={activeAddress}
             selectedMethod={selectedMethod}
+            isPlacing={isPlacing}
             onOpenLocation={() => setIsLocationOpen(true)}
             onOpenPayment={() => setIsPaymentOpen(true)}
             onPlaceOrder={handlePlaceOrder}
@@ -319,6 +355,7 @@ export default function CartPage() {
       <MobileStickyCheckout
         billing={billing}
         selectedMethod={selectedMethod}
+        isPlacing={isPlacing}
         onOpenPayment={() => setIsPaymentOpen(true)}
         onPlaceOrder={handlePlaceOrder}
       />

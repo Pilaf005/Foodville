@@ -24,7 +24,7 @@ export const SearchBar = ({ isMobile = false }) => {
   const handleSelectSuggestion = (name) => {
     setQuery(name);
     setIsSearchFocused(false);
-    router.push(`/?search=${encodeURIComponent(name)}`);
+    router.push(`/search?q=${encodeURIComponent(name)}`);
   };
 
   if (isMobile) {

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useMemo, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { products } from "@/data/products";
 import ProductGrid from "@/features/products/components/ProductGrid";
+import { useProducts } from "@/features/products/hooks/useProducts";
+import { ProductGridSkeleton } from "@/components/feedback/Skeleton";
 
 // ─── Constants ────────────────────────────────────────────────────────────
 const SHOP_TABS = [
@@ -33,21 +34,8 @@ const SHOP_TABS = [
   },
 ];
 
-const TAB_FILTER_MAP = {
-  "bestsellers": (p) => p.shopBy === "bestseller",
-  "newly-in":    (p) => p.shopBy === "newlyIn",
-  "value-buys":  (p) => p.shopBy === "valueBuys",
-  "trending":    (p) => p.shopBy === "trending",
-};
-
 const VALID_TAB_KEYS = SHOP_TABS.map((t) => t.key);
 const DEFAULT_TAB    = "bestsellers";
-
-// ─── Utils ────────────────────────────────────────────────────────────────
-function getTabProducts(tab) {
-  const filterFn = TAB_FILTER_MAP[tab];
-  return filterFn ? products.filter(filterFn) : products;
-}
 
 // ─── ShopSidebar ─────────────────────────────────────────────────────────
 function ShopSidebar({ activeTab, onTabChange }) {
@@ -121,8 +109,9 @@ function ShopContent() {
     if (t && VALID_TAB_KEYS.includes(t)) setActiveTab(t);
   }, [searchParams]);
 
-  const filtered   = useMemo(() => getTabProducts(activeTab), [activeTab]);
+  const { products, meta, isPending } = useProducts({ tab: activeTab, limit: 60 });
   const activeMeta = SHOP_TABS.find((t) => t.key === activeTab);
+  const count = meta?.total ?? products.length;
 
   return (
     <div className="pb-12">
@@ -145,17 +134,19 @@ function ShopContent() {
               {activeMeta?.label}
             </h2>
             <span className="text-xs font-bold text-muted uppercase tracking-wider">
-              {filtered.length} {filtered.length === 1 ? "Product" : "Products"}
+              {isPending ? "…" : `${count} ${count === 1 ? "Product" : "Products"}`}
             </span>
           </div>
 
-          {filtered.length === 0 ? (
+          {isPending ? (
+            <ProductGridSkeleton count={10} />
+          ) : products.length === 0 ? (
             <div className="text-center py-20 space-y-3">
               <span className="text-4xl">🛒</span>
               <p className="text-sm text-muted">No products found.</p>
             </div>
           ) : (
-            <ProductGrid products={filtered} />
+            <ProductGrid products={products} />
           )}
         </div>
       </div>

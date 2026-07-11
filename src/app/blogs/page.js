@@ -1,7 +1,12 @@
-import { blogs } from "@/data/blogs";
+"use client";
+
 import BlogCard from "@/components/common/BlogCard";
+import { useBlogs } from "@/features/blogs/hooks/useBlogs";
+import { BlogCardSkeleton } from "@/components/feedback/Skeleton";
 
 export default function BlogsPage() {
+  const { blogs, isPending } = useBlogs();
+
   return (
     <div className="space-y-6 pb-12">
       {/* Header */}
@@ -15,15 +20,15 @@ export default function BlogsPage() {
           </p>
         </div>
         <span className="text-xs font-bold text-muted uppercase tracking-wider">
-          {blogs.length} {blogs.length === 1 ? "Article" : "Articles"}
+          {isPending ? "…" : `${blogs.length} ${blogs.length === 1 ? "Article" : "Articles"}`}
         </span>
       </div>
 
       {/* Grid — 2-col mobile, 3-col desktop */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-        {blogs.map((blog) => (
-          <BlogCard key={blog.id} blog={blog} />
-        ))}
+        {isPending
+          ? Array.from({ length: 6 }).map((_, i) => <BlogCardSkeleton key={i} />)
+          : blogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)}
       </div>
     </div>
   );

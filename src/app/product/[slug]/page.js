@@ -2,7 +2,7 @@
 
 import { use } from "react";
 import Link from "next/link";
-import { getProductBySlug } from "@/data/products";
+import { useProduct } from "@/features/products/hooks/useProducts";
 import ProductGallery from "@/features/products/components/ProductGallery";
 import ProductInfo from "@/features/products/components/ProductInfo";
 import ProductDescription from "@/features/products/components/ProductDescription";
@@ -11,6 +11,7 @@ import WhyShopWithUs from "@/features/products/components/WhyShopWithUs";
 import ProductReviews from "@/features/products/components/ProductReviews";
 import SimilarProducts from "@/features/products/components/SimilarProducts";
 import TopSellers from "@/features/products/components/TopSellers";
+import { Skeleton } from "@/components/feedback/Skeleton";
 
 function ProductBreadcrumb({ product }) {
   return (
@@ -24,14 +25,21 @@ function ProductBreadcrumb({ product }) {
   );
 }
 
+/** Mirrors the real layout so there's no jump when the data lands. */
 function ProductLoadingState() {
   return (
-    <div className="flex h-96 items-center justify-center text-muted">
-      <svg className="animate-spin h-8 w-8 text-olive" fill="none" viewBox="0 0 24 24">
-        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-      </svg>
-      <span className="ml-2 font-medium">Loading product details...</span>
+    <div className="space-y-12 pb-16">
+      <Skeleton className="h-3 w-64" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <Skeleton className="aspect-square w-full rounded-2xl" />
+        <div className="space-y-4">
+          <Skeleton className="h-7 w-3/4" />
+          <Skeleton className="h-4 w-1/2" />
+          <Skeleton className="h-10 w-40" />
+          <Skeleton className="h-24 w-full" />
+          <Skeleton className="h-12 w-full rounded-2xl" />
+        </div>
+      </div>
     </div>
   );
 }
@@ -61,9 +69,10 @@ function resolveProductImages(product) {
 
 export default function ProductDetailPage({ params: paramsPromise }) {
   const { slug } = use(paramsPromise);
-  const product  = getProductBySlug(slug);
+  const { product, isPending, isError } = useProduct(slug);
 
-  if (!product) return <ProductNotFoundState />;
+  if (isPending) return <ProductLoadingState />;
+  if (isError || !product) return <ProductNotFoundState />;
 
   const productImages = resolveProductImages(product);
 

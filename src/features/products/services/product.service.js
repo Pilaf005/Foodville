@@ -1,25 +1,18 @@
-import api from "@/lib/api";
+import api, { unwrap } from "@/lib/api";
 
 export const productService = {
-  async getProducts(params) {
-    // Placeholder to fetch all products
-    // const response = await api.get("/products", { params });
-    // return response.data;
-    return [];
+  /** List/filter products. Returns { items, meta } (meta carries pagination). */
+  async list(params = {}) {
+    const res = await api.get("/products", { params });
+    return { items: res.data?.data ?? [], meta: res.data?.meta ?? null };
   },
 
-  async getProductBySlug(slug) {
-    // Placeholder to fetch a single product
-    // const response = await api.get(`/products/${slug}`);
-    // return response.data;
-    return null;
+  async getBySlug(slug) {
+    return unwrap(await api.get(`/products/${slug}`));
   },
 
-  async getSimilarProducts(id) {
-    // Placeholder to fetch similar products
-    // const response = await api.get(`/products/${id}/similar`);
-    // return response.data;
-    return [];
+  async getSimilar(key, limit = 8) {
+    return unwrap(await api.get(`/products/${key}/similar`, { params: { limit } }));
   },
 };
 

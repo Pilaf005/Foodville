@@ -1,28 +1,23 @@
 "use client";
 
 import { use } from "react";
-import { getProductsByCategory, getCategoryName } from "@/data/products";
 import ProductGrid from "@/features/products/components/ProductGrid";
-
-// Category name overrides for IDs that getCategoryName returns "Other" for
-const CATEGORY_NAME_MAP = {
-  all:    "All Products",
-  combos: "Combo Packs",
-  bulk:   "Bulk Products",
-};
-
-function resolveCategoryName(id) {
-  if (CATEGORY_NAME_MAP[id]) return CATEGORY_NAME_MAP[id];
-  const name = getCategoryName(id);
-  return name === "Other" ? id : name;
-}
+import { useProducts } from "@/features/products/hooks/useProducts";
+import { useCategories } from "@/features/categories/hooks/useCategories";
+import { ProductGridSkeleton } from "@/components/feedback/Skeleton";
 
 export default function CategoryPage({ params: paramsPromise }) {
   const { id } = use(paramsPromise);
 
-  // Both functions are synchronous — no useEffect or loading state needed
-  const categoryName = resolveCategoryName(id);
-  const productsList = getProductsByCategory(id);
+  const { categories } = useCategories();
+  // "all" isn't a real category — omit the filter to list everything.
+  const { products, meta, isPending } = useProducts({
+    ...(id === "all" ? {} : { category: id }),
+    limit: 60,
+  });
+
+  const categoryName = categories.find((c) => c.id === id)?.name ?? id;
+  const count = meta?.total ?? products.length;
 
   return (
     <div className="space-y-6 pb-12">
@@ -32,19 +27,21 @@ export default function CategoryPage({ params: paramsPromise }) {
           {categoryName}
         </h2>
         <span className="text-xs font-bold text-muted uppercase tracking-wider">
-          {productsList.length} {productsList.length === 1 ? "Product" : "Products"} found
+          {isPending ? "…" : `${count} ${count === 1 ? "Product" : "Products"} found`}
         </span>
       </div>
 
       {/* Products Grid */}
-      {productsList.length === 0 ? (
+      {isPending ? (
+        <ProductGridSkeleton count={10} />
+      ) : products.length === 0 ? (
         <div className="text-center py-20 bg-white/50 border border-cardline rounded-3xl space-y-3">
           <span className="text-4xl">🛒</span>
           <h3 className="font-bold text-ink">No Products Available</h3>
           <p className="text-xs text-muted">More fresh stock coming soon!</p>
         </div>
       ) : (
-        <ProductGrid products={productsList} />
+        <ProductGrid products={products} />
       )}
     </div>
   );

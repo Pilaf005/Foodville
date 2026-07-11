@@ -2,13 +2,24 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { getMatchingProducts } from "../utils/searchHelpers";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useProducts } from "@/features/products/hooks/useProducts";
+
+const SUGGESTION_LIMIT = 6;
 
 export function useNavbarSearch() {
   const router = useRouter();
   const [query, setQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchContainerRef = useRef(null);
+
+  // Only hit the API once typing pauses — no request per keystroke.
+  const debouncedQuery = useDebounce(query.trim(), 300);
+
+  const { products: matchingProducts, isFetching } = useProducts(
+    { search: debouncedQuery, limit: SUGGESTION_LIMIT },
+    { enabled: debouncedQuery.length > 1 }
+  );
 
   useEffect(() => {
     const handler = (e) => {
@@ -23,14 +34,9 @@ export function useNavbarSearch() {
   function handleSearch(e) {
     if (e) e.preventDefault();
     setIsSearchFocused(false);
-    if (query.trim()) {
-      router.push(`/?search=${encodeURIComponent(query.trim())}`);
-    } else {
-      router.push("/");
-    }
+    const q = query.trim();
+    router.push(q ? `/search?q=${encodeURIComponent(q)}` : "/search");
   }
-
-  const matchingProducts = getMatchingProducts(query);
 
   return {
     query,
@@ -39,7 +45,8 @@ export function useNavbarSearch() {
     setIsSearchFocused,
     searchContainerRef,
     handleSearch,
-    matchingProducts,
+    matchingProducts: debouncedQuery.length > 1 ? matchingProducts : [],
+    isSearching: isFetching,
     router,
   };
 }

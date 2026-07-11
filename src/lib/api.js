@@ -1,37 +1,43 @@
 import axios from "axios";
 
+/**
+ * Shared axios instance.
+ *
+ * baseURL is RELATIVE ("/api") on purpose: the API lives in this same Next app,
+ * so the same build works on localhost, on foodville.vercel.app, and on any
+ * future domain with no env change. `withCredentials` lets the browser send the
+ * httpOnly auth cookie automatically — we never touch the JWT from JS.
+ */
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api",
+  baseURL: "/api",
   withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  timeout: 20000,
+  headers: { "Content-Type": "application/json" },
 });
 
-// Request Interceptor
-api.interceptors.request.use(
-  (config) => {
-    // You can attach auth tokens here in the future
-    // const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
-    return config;
-  },
+// Normalise every failure into a real Error carrying the API's code/message,
+// so UI code can just read `err.message` / `err.code`.
+api.interceptors.response.use(
+  (response) => response,
   (error) => {
-    return Promise.reject(error);
+    const payload = error?.response?.data?.error;
+    const err = new Error(
+      payload?.message ||
+        (error.code === "ECONNABORTED"
+          ? "That took too long. Please try again."
+          : error.message || "Something went wrong. Please try again.")
+    );
+    err.code = payload?.code || error.code || "NETWORK_ERROR";
+    err.status = error?.response?.status;
+    if (payload?.details) err.details = payload.details;
+    return Promise.reject(err);
   }
 );
 
-// Response Interceptor
-api.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    // Handle global API errors (e.g., redirect on 401) here
-    return Promise.reject(error);
-  }
-);
+/** Every endpoint returns { success, data, meta } — this pulls out `data`. */
+export const unwrap = (response) => response?.data?.data;
+
+/** Pulls out `meta` (pagination etc). */
+export const unwrapMeta = (response) => response?.data?.meta;
 
 export default api;

@@ -2,13 +2,34 @@
 
 import { use } from "react";
 import Link from "next/link";
-import { getBlogBySlug } from "@/data/blogs";
+import { useBlog } from "@/features/blogs/hooks/useBlogs";
+import { Skeleton } from "@/components/feedback/Skeleton";
 
 export default function BlogDetailPage({ params: paramsPromise }) {
   const params = use(paramsPromise);
-  const blog = getBlogBySlug(params.slug);
+  const { blog, isPending, isError } = useBlog(params.slug);
 
-  if (!blog) {
+  if (isPending) {
+    return (
+      <div className="pb-16 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start mt-6">
+          <div className="md:col-span-7 space-y-5 order-1 md:order-2">
+            <Skeleton className="h-4 w-32" />
+            <Skeleton className="h-8 w-full" />
+            <Skeleton className="h-3 w-24" />
+            <Skeleton className="h-16 w-full rounded-r-xl" />
+            <Skeleton className="h-64 w-full" />
+          </div>
+          <div className="md:col-span-5 space-y-6 order-2 md:order-1">
+            <Skeleton className="aspect-[4/3] w-full rounded-2xl sm:aspect-[1.4/1]" />
+            <Skeleton className="h-56 w-full rounded-2xl" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isError || !blog) {
     return (
       <div className="text-center py-24 space-y-3">
         <span className="text-4xl">📄</span>

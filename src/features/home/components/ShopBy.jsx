@@ -1,28 +1,21 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { products } from "@/data/products";
+import { useState } from "react";
 import ProductCard from "@/features/products/components/ProductCard";
 import SectionHeader from "./SectionHeader";
 import { SHOP_BY_TABS, SHOP_BY_PREVIEW_COUNT } from "../constants/shopByTabs";
-
-const TAB_FILTER_MAP = {
-  "bestsellers": "bestseller",
-  "newly-in":    "newlyIn",
-  "value-buys":  "valueBuys",
-  "trending":    "trending",
-};
-
-function getTabProducts(tab) {
-  const filterKey = TAB_FILTER_MAP[tab];
-  return filterKey ? products.filter((p) => p.shopBy === filterKey) : [];
-}
+import { useProducts } from "@/features/products/hooks/useProducts";
+import { ProductCardSkeleton } from "@/components/feedback/Skeleton";
 
 export default function ShopBy() {
   const [activeTab, setActiveTab] = useState("bestsellers");
 
-  const tabProducts = useMemo(() => getTabProducts(activeTab), [activeTab]);
-  const preview = tabProducts.slice(0, SHOP_BY_PREVIEW_COUNT);
+  // The API maps the kebab tab key ("newly-in") to the product's shopBy value.
+  const { products, isPending } = useProducts({
+    tab: activeTab,
+    limit: SHOP_BY_PREVIEW_COUNT,
+    sort: "rating",
+  });
 
   return (
     <section>
@@ -50,11 +43,17 @@ export default function ShopBy() {
 
         {/* Product cards — grid fills full width */}
         <div className="px-4 pb-4">
-          {preview.length === 0 ? (
+          {isPending ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
+              {Array.from({ length: SHOP_BY_PREVIEW_COUNT }).map((_, i) => (
+                <ProductCardSkeleton key={i} />
+              ))}
+            </div>
+          ) : products.length === 0 ? (
             <p className="text-sm text-muted py-6 text-center">No products found.</p>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
-              {preview.map((product) => (
+              {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>

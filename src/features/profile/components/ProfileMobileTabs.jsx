@@ -4,14 +4,14 @@ import { NAV_ITEMS } from "./ProfileSidebar";
 
 export default function ProfileMobileTabs({ activeSection, onSectionChange, onLogout }) {
   return (
-    <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+    <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1.5 mobile-bleed-scroll snap-x snap-mandatory">
       {NAV_ITEMS.map((item) => {
         const isActive = activeSection === item.key;
         return (
           <button
             key={item.key}
             onClick={() => onSectionChange(item.key)}
-            className={`shrink-0 flex items-center gap-2 px-4 py-3 rounded-full border text-xs font-bold whitespace-nowrap transition-all duration-150 min-h-[44px] ${
+            className={`shrink-0 flex items-center gap-2 px-4 py-3 rounded-full border text-xs font-bold whitespace-nowrap transition-all duration-150 min-h-[44px] snap-start ${
               isActive
                 ? "bg-olive text-white border-olive shadow-sm shadow-olive/20"
                 : "bg-white text-ink border-cardline hover:border-olive/40 hover:text-olive"
@@ -26,7 +26,7 @@ export default function ProfileMobileTabs({ activeSection, onSectionChange, onLo
       {/* Logout — confirmation handled by the parent */}
       <button
         onClick={onLogout}
-        className="shrink-0 flex items-center gap-2 px-4 py-3 rounded-full border border-red-200 bg-white text-xs font-bold whitespace-nowrap text-red-500 transition-all duration-150 min-h-[44px] hover:bg-red-50"
+        className="shrink-0 flex items-center gap-2 px-4 py-3 rounded-full border border-red-200 bg-white text-xs font-bold whitespace-nowrap text-red-500 transition-all duration-150 min-h-[44px] hover:bg-red-50 snap-start"
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
           <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />

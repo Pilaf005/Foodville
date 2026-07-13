@@ -63,13 +63,13 @@ function CartEmptyState() {
 
 function CartHeader({ totalQty }) {
   return (
-    <div className="flex items-center gap-3 mb-6 sm:mb-8">
-      <Link href="/" className="p-3 rounded-full hover:bg-gray-100 transition text-gray-600" aria-label="Back to shop">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+    <div className="flex items-center gap-2 mb-4 sm:mb-8 pt-1">
+      <Link href="/" className="p-2 -ml-2 rounded-full hover:bg-black/5 transition text-ink flex items-center justify-center shrink-0" aria-label="Back to shop">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
           <path d="m15 18-6-6 6-6" />
         </svg>
       </Link>
-      <h1 className="text-xl sm:text-2xl font-black text-gray-900">Checkout ({totalQty})</h1>
+      <h1 className="text-lg sm:text-2xl font-black text-gray-900 leading-none">Checkout ({totalQty})</h1>
     </div>
   );
 }
@@ -103,15 +103,15 @@ function CartBillPanel({
   const paymentLabel = PAYMENT_METHOD_LABELS[selectedMethod] ?? selectedMethod;
 
   return (
-    <div className="bg-white rounded-3xl border border-gray-200 p-6 shadow-sm space-y-5">
-      <h3 className="text-base font-bold text-gray-900 border-b border-gray-100 pb-3">Bill details</h3>
+    <div className="bg-white rounded-2xl sm:rounded-3xl border border-cardline/60 p-4 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.02)] space-y-4 sm:space-y-5">
+      <h3 className="text-sm sm:text-base font-bold text-gray-900 border-b border-gray-100 pb-2.5 sm:pb-3">Bill details</h3>
 
       {/* Price breakdown */}
-      <div className="space-y-3 text-sm">
+      <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm">
         <div className="flex items-center justify-between text-gray-500">
           <span>Items total</span>
           <div className="flex items-baseline gap-2">
-            {totalSavings > 0 && <span className="line-through text-gray-300 text-xs">₹{totalMrp}</span>}
+            {totalSavings > 0 && <span className="line-through text-gray-300 text-[10px] sm:text-xs">₹{totalMrp}</span>}
             <span className="font-bold text-gray-800">₹{totalSellingPrice}</span>
           </div>
         </div>
@@ -133,58 +133,58 @@ function CartBillPanel({
         )}
 
         {deliveryCharge > 0 && (
-          <p className="text-[11px] text-amber-600 font-semibold bg-amber-50 rounded-xl px-3 py-2">
+          <p className="text-[10px] sm:text-[11px] text-amber-600 font-semibold bg-amber-50 rounded-xl px-3 py-2">
             Add products worth ₹{DELIVERY_THRESHOLD - totalSellingPrice} more for Free Delivery!
           </p>
         )}
       </div>
 
       {/* Total payable */}
-      <div className="border-t border-gray-100 pt-4 flex items-center justify-between">
-        <span className="text-base font-bold text-gray-900">Total Payable</span>
-        <span className="text-xl font-black text-gray-900">₹{totalPayable}</span>
+      <div className="border-t border-gray-100 pt-3.5 sm:pt-4 flex items-center justify-between">
+        <span className="text-sm sm:text-base font-bold text-gray-900">Total Payable</span>
+        <span className="text-lg sm:text-xl font-black text-gray-900">₹{totalPayable}</span>
       </div>
 
       {/* Delivery address */}
-      <div className="border-t border-gray-100 pt-4 flex items-start justify-between gap-3">
-        <div className="flex gap-3">
-          <div className="w-8 h-8 rounded-xl bg-rose-50 grid place-items-center text-rose-500 shrink-0 mt-0.5">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+      <div className="border-t border-gray-100 pt-3.5 sm:pt-4 flex items-start justify-between gap-3">
+        <div className="flex gap-2.5 sm:gap-3 min-w-0">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-rose-50 grid place-items-center text-rose-500 shrink-0 mt-0.5">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className="sm:w-4 sm:h-4">
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
             </svg>
           </div>
           <div className="min-w-0">
             <p className="text-xs font-bold text-gray-900">{addressLabel}</p>
-            <p className="text-[11px] text-gray-500 leading-snug mt-0.5 truncate max-w-[200px]">{addressText}</p>
+            <p className="text-[10px] sm:text-[11px] text-gray-500 leading-snug mt-0.5 truncate max-w-[150px] xs:max-w-[200px] sm:max-w-[250px] md:max-w-none">{addressText}</p>
           </div>
         </div>
-        <button onClick={onOpenLocation} className="text-xs font-bold text-rose-600 hover:text-rose-700 transition shrink-0 px-2 py-2 rounded-lg hover:bg-rose-50">
+        <button onClick={onOpenLocation} className="text-xs font-bold text-rose-600 hover:text-rose-700 transition shrink-0 px-2 py-1.5 rounded-lg hover:bg-rose-50">
           Change
         </button>
       </div>
 
       {/* Payment method */}
       {selectedMethod && (
-        <div className="border-t border-gray-100 pt-4 flex items-start justify-between gap-3">
-          <div className="flex gap-3">
-            <div className="w-8 h-8 rounded-xl bg-green-50 grid place-items-center text-[#6B7F59] shrink-0 mt-0.5">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+        <div className="border-t border-gray-100 pt-3.5 sm:pt-4 flex items-start justify-between gap-3">
+          <div className="flex gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-green-50 grid place-items-center text-[#6B7F59] shrink-0 mt-0.5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" className="sm:w-4 sm:h-4">
                 <rect width="20" height="14" x="2" y="5" rx="2" /><line x1="2" y1="10" x2="22" y2="10" />
               </svg>
             </div>
             <div className="min-w-0">
               <p className="text-xs font-bold text-gray-900">Payment Mode</p>
-              <p className="text-[11px] text-gray-500 leading-snug mt-0.5 capitalize">{paymentLabel}</p>
+              <p className="text-[10px] sm:text-[11px] text-gray-500 leading-snug mt-0.5 capitalize">{paymentLabel}</p>
             </div>
           </div>
-          <button onClick={onOpenPayment} className="text-xs font-bold text-[#6B7F59] transition shrink-0 px-2 py-2 rounded-lg hover:bg-[#6B7F59]/5">
+          <button onClick={onOpenPayment} className="text-xs font-bold text-[#6B7F59] transition shrink-0 px-2 py-1.5 rounded-lg hover:bg-[#6B7F59]/5">
             Change
           </button>
         </div>
       )}
 
-      {/* CTA */}
-      <div className="pt-2">
+      {/* CTA - visible on desktop, hidden on mobile since sticky bottom checkout is active */}
+      <div className="pt-2 hidden lg:block">
         {selectedMethod ? (
           <button
             onClick={onPlaceOrder}
@@ -210,7 +210,7 @@ function CartBillPanel({
 function MobileStickyCheckout({ billing, selectedMethod, isPlacing, onOpenPayment, onPlaceOrder }) {
   const { totalPayable } = billing;
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-4 py-3 shadow-2xl">
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-4 pt-3 pb-5 shadow-2xl">
       <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
         <div>
           <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Total Payable</p>
@@ -220,14 +220,14 @@ function MobileStickyCheckout({ billing, selectedMethod, isPlacing, onOpenPaymen
           <button
             onClick={onPlaceOrder}
             disabled={isPlacing}
-            className="flex-1 bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md disabled:opacity-60"
+            className="flex-1 bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md disabled:opacity-60 text-center"
           >
             {isPlacing ? "PLACING…" : "PLACE ORDER"}
           </button>
         ) : (
           <button
             onClick={onOpenPayment}
-            className="flex-1 bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md"
+            className="flex-1 bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md text-center"
           >
             CHOOSE PAYMENT
           </button>
@@ -293,18 +293,17 @@ export default function CartPage() {
   }
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-6 sm:py-8 pb-28 lg:pb-8">
+    <div className="pb-[20px] lg:pb-8">
       <CartHeader totalQty={totalQty} />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-start">
         {/* Left column: Cart items & Recommendations */}
-        <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-          <div className="bg-white rounded-3xl border border-gray-200 p-4 sm:p-6 shadow-sm">
+        <div className="lg:col-span-7 space-y-4 sm:space-y-8">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-cardline/60 p-4 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
             <div className="divide-y divide-gray-100">
               {cart.map((item) => <CartItem key={`${item.id}-${item.unit}`} item={item} />)}
             </div>
           </div>
-          <CartRecommendations recommendations={recommendations} />
         </div>
 
         {/* Right column: Sticky bill panel — desktop only visible via lg: */}
@@ -344,6 +343,6 @@ export default function CartPage() {
         onSelectMethod={(id) => setSelectedMethod(id)}
         totalPayable={billing.totalPayable}
       />
-    </main>
+    </div>
   );
 }

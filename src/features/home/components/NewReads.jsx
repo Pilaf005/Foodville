@@ -13,16 +13,26 @@ export default function NewReads() {
 
   return (
     <section>
-      {/* Outer bordered box — same style as ShopBy */}
-      <div className="rounded-2xl border border-cardline bg-white overflow-hidden">
+      {/* Outer bordered box — flat on mobile, boxed on desktop */}
+      <div className="border-0 sm:border border-cardline bg-transparent sm:bg-white rounded-none sm:rounded-2xl overflow-visible sm:overflow-hidden">
 
         <SectionHeader title="New Reads" viewAllHref="/blogs" />
 
-        {/* 3-column card grid — no dark border, subtle cardline border */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 px-4 pb-4">
-          {isPending
-            ? Array.from({ length: NEW_READS_PREVIEW_COUNT }).map((_, i) => <BlogCardSkeleton key={i} />)
-            : preview.map((blog) => <BlogCard key={blog.id} blog={blog} />)}
+        {/* 3-column card grid on desktop, scrollable row on mobile */}
+        <div className="px-0 sm:px-4 pb-4">
+          <div className="flex sm:grid gap-3.5 sm:gap-4 sm:grid-cols-3 overflow-x-auto sm:overflow-x-visible no-scrollbar mobile-bleed-scroll snap-x snap-mandatory">
+            {isPending
+              ? Array.from({ length: NEW_READS_PREVIEW_COUNT }).map((_, i) => (
+                  <div key={i} className="w-[165px] min-w-[165px] sm:w-auto sm:min-w-0 shrink-0 sm:shrink">
+                    <BlogCardSkeleton />
+                  </div>
+                ))
+              : preview.map((blog) => (
+                  <div key={blog.id} className="w-[165px] min-w-[165px] sm:w-auto sm:min-w-0 shrink-0 sm:shrink snap-start">
+                    <BlogCard blog={blog} />
+                  </div>
+                ))}
+          </div>
         </div>
 
       </div>

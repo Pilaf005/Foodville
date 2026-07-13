@@ -21,7 +21,7 @@ function VerifiedBadge() {
 export default function ProfileHeader({ profile }) {
   return (
     <div
-      className="relative rounded-3xl overflow-hidden border border-cardline"
+      className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-0 sm:border border-cardline shadow-none"
       style={{
         background: "linear-gradient(135deg, #f0f4eb 0%, #faf7f2 60%, #fef3ec 100%)",
       }}

@@ -6,7 +6,7 @@ import Link from "next/link";
  */
 export function SectionHeader({ title, viewAllHref }) {
   return (
-    <div className="flex items-center justify-between px-4 pt-4 pb-3">
+    <div className="flex items-center justify-between px-0 sm:px-4 pt-1 sm:pt-4 pb-2 sm:pb-3">
       <h2 className="text-base font-black text-ink tracking-tight">{title}</h2>
       {viewAllHref && (
         <Link

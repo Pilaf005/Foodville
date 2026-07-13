@@ -7,7 +7,7 @@ export function HeroCarousel() {
   const { currentSlide, setCurrentSlide } = useHeroCarousel(true);
 
   return (
-    <section className="relative overflow-hidden rounded-2xl sm:rounded-3xl h-[200px] sm:h-[280px] md:h-[340px] lg:h-[380px]">
+  <section className="relative overflow-hidden rounded-2xl sm:rounded-3xl aspect-[16/9] md:aspect-auto md:h-[340px] lg:h-[380px]">
       {/* Images container */}
       <div className="absolute inset-0 bg-cream">
         {HERO_IMAGES.map((img, i) => (
@@ -26,7 +26,7 @@ export function HeroCarousel() {
         ))}
       </div>
 
-      {/* Dark gradient overlay for text readability */}
+      {/* Gradient overlay */}
       <div
         className="absolute inset-0 rounded-3xl"
         style={{
@@ -36,26 +36,25 @@ export function HeroCarousel() {
         }}
       />
 
-      {/* Hero Text — left-aligned on top */}
-      <div className="absolute inset-0 flex flex-col justify-center px-5 sm:px-8 md:px-12 pointer-events-none z-10">
-        <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-white leading-tight drop-shadow-md max-w-xs sm:max-w-md">
+      {/* Hero Text */}
+      <div className="absolute inset-0 flex flex-col justify-center px-5 pb-0 sm:px-8 md:px-12 pointer-events-none z-10">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight drop-shadow-md max-w-xs sm:max-w-md">
           Pure, Natural &amp; Fresh —<br />Straight to Your Kitchen
         </h1>
-        <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base text-white/80 max-w-[200px] sm:max-w-sm drop-shadow hidden xs:block sm:block">
+        <p className="mt-2 text-xs sm:text-sm md:text-base text-white/80 max-w-[240px] sm:max-w-sm drop-shadow">
           Spice powders, seeds, dry fruits and herbal wellness products — sourced and packed with care.
         </p>
       </div>
 
-      {/* Carousel Slide Indicators / Dots */}
-      <div className="absolute bottom-3 sm:bottom-4 right-4 sm:right-6 flex gap-1.5 z-10">
+      {/* Carousel Dots */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 md:bottom-4 flex gap-2 z-10">
         {HERO_IMAGES.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrentSlide(i)}
-            className={`h-2 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${
               currentSlide === i ? "w-6 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
             }`}
-            style={{ minWidth: "8px", minHeight: "8px", padding: "6px", margin: "-6px" }}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}

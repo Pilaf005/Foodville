@@ -7,9 +7,9 @@ import NewReads from "@/features/home/components/NewReads";
 // sections instead of blanking itself when a ?search= query was present.
 export default function HomePage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <HeroCarousel />
-      <CategoryFilter active="all" />
+      <CategoryFilter />
       <ShopBy />
       <NewReads />
     </div>

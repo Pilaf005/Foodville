@@ -27,7 +27,7 @@ const EMPTY = {
 };
 
 const inputCls =
-  "w-full rounded-2xl border border-cardline bg-white px-4 py-3 text-sm text-ink placeholder:text-muted outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20";
+  "w-full rounded-2xl border border-cardline bg-white px-4 py-3 text-base md:text-sm text-ink placeholder:text-muted outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20";
 
 function Field({ label, hint, children, required }) {
   return (
@@ -186,7 +186,8 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
       subtitle="Delivery within India"
       maxWidth="max-w-lg"
     >
-      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      <form onSubmit={handleSubmit} className="flex flex-col max-h-[48vh] md:max-h-[60vh]" noValidate>
+        <div className="flex-1 overflow-y-auto pr-2.5 space-y-4 pb-2 no-scrollbar">
           {/* Geolocation prefill — replaces the old map, no pin-dropping */}
           <button
             type="button"
@@ -291,7 +292,6 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
             </Field>
           </div>
 
-          {/* Saved address at — kept as requested */}
           <Field label="Save address as">
             <div className="flex flex-wrap gap-2">
               {LABELS.map((l) => (
@@ -320,14 +320,17 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
             />
             Make this my default address
           </label>
+        </div>
 
+        <div className="border-t border-cardline pt-3 bg-white">
           <button
             type="submit"
             disabled={busy}
-            className="mt-2 w-full rounded-2xl bg-olive px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-md shadow-olive/20 transition hover:bg-olive-dark active:scale-[0.98] disabled:opacity-60"
+            className="w-full rounded-2xl bg-olive px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-md shadow-olive/20 transition hover:bg-olive-dark active:scale-[0.98] disabled:opacity-60"
           >
             {busy ? "Saving…" : isEdit ? "Save changes" : "Save address"}
           </button>
+        </div>
       </form>
     </Modal>
   );

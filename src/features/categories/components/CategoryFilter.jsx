@@ -11,25 +11,25 @@ export default function CategoryFilter({ active }) {
   if (isPending) return <CategoryFilterSkeleton />;
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-2 sm:px-0 py-6 sm:py-8">
-      {/* 4 columns on mobile (2 rows of 4), 8 columns on desktop (1 row of 8) */}
-      <div className="grid grid-cols-4 sm:grid-cols-8 gap-x-2.5 gap-y-6 sm:gap-x-4 justify-items-center w-full">
+    <div className="w-full max-w-6xl mx-auto px-0 sm:px-0 py-0 sm:py-2 -mt-3 sm:mt-0">
+      {/* Horizontal scroll on mobile (full screen width), grid on desktop */}
+      <div className="flex sm:grid gap-x-2.5 gap-y-6 sm:grid-cols-8 overflow-x-auto sm:overflow-x-visible no-scrollbar mobile-bleed-scroll py-2 sm:py-0 snap-x snap-mandatory">
         {categories.map((item) => {
           const isActive = active === item.id;
           return (
             <button
               key={item.id}
               onClick={() => router.push(`/category/${item.id}`)}
-              className="flex flex-col items-center gap-2 group focus:outline-none select-none transition cursor-pointer w-full animate-fadeIn"
+              className="flex flex-col items-center gap-1.5 group focus:outline-none select-none transition cursor-pointer w-[62px] sm:w-auto shrink-0 sm:shrink snap-start animate-fadeIn"
             >
-              {/* Circle with visible active border */}
-              <div className={`p-[3px] rounded-full transition-all duration-300 ${
+              {/* Rounded Square with visible active border */}
+              <div className={`p-[3px] rounded-[20px] transition-all duration-300 ${
                 isActive
                   ? "bg-olive shadow-lg shadow-olive/20 scale-105"
                   : "bg-transparent"
               }`}>
                 <div
-                  className={`w-14 h-14 sm:w-20 sm:h-20 md:w-22 md:h-22 lg:w-24 lg:h-24 rounded-full overflow-hidden flex items-center justify-center transition-all duration-300 bg-white border-2 ${
+                  className={`w-14 h-14 sm:w-20 sm:h-20 md:w-22 md:h-22 lg:w-24 lg:h-24 rounded-[16px] overflow-hidden flex items-center justify-center transition-all duration-300 bg-white border-2 ${
                     isActive
                       ? "border-white scale-100 shadow-md"
                       : "border-cardline group-hover:scale-105 group-hover:shadow-md group-hover:border-olive/40"

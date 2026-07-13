@@ -3,7 +3,7 @@ import { CONTACT_INFO } from "../constants";
 
 export const FooterContact = () => {
   return (
-    <div className="col-span-1 md:col-span-3 space-y-4">
+    <div className="col-span-2 md:col-span-3 space-y-4">
       <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9A86C]">Contact Support</h4>
       <div className="space-y-3">
         {/* WhatsApp Redirect Link */}

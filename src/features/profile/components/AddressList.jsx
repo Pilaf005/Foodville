@@ -105,9 +105,9 @@ export default function AddressList({ prefill }) {
   }
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-cardline bg-white shadow-sm">
+    <div className="rounded-2xl sm:rounded-3xl border-0 sm:border border-cardline bg-transparent sm:bg-white shadow-none sm:shadow-sm">
       {/* Header — the ONLY add button (the empty state has its own, shown only when the list is empty) */}
-      <div className="flex items-center justify-between border-b border-cardline px-6 py-4">
+      <div className="flex items-center justify-between border-b border-cardline px-0 sm:px-6 py-3 sm:py-4">
         <div>
           <h2 className="text-base font-black uppercase tracking-tight text-ink">Saved Addresses</h2>
           <p className="mt-0.5 text-xs text-muted">
@@ -127,7 +127,7 @@ export default function AddressList({ prefill }) {
         )}
       </div>
 
-      <div className="p-6">
+      <div className="px-0 sm:p-6 py-5 sm:py-6">
         {isPending ? (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Skeleton className="h-40 rounded-2xl" />

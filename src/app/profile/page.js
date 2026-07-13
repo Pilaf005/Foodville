@@ -8,7 +8,7 @@ import ProfileMobileTabs from "@/features/profile/components/ProfileMobileTabs";
 import PersonalInfoForm from "@/features/profile/components/PersonalInfoForm";
 import AddressList from "@/features/profile/components/AddressList";
 import OrderCard from "@/features/profile/components/OrderCard";
-import WishlistCard from "@/features/profile/components/WishlistCard";
+import ProductCard from "@/features/products/components/ProductCard";
 
 import { useProfile, useUpdateProfile } from "@/features/profile/hooks/useProfile";
 import { useOrders } from "@/features/orders/hooks/useOrders";
@@ -112,8 +112,8 @@ function ProfileContent({ activeSection, profile, onProfileSave, isSaving, order
 
     case "orders":
       return (
-        <div className="rounded-3xl border border-cardline bg-white shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-cardline flex items-center justify-between">
+        <div className="rounded-2xl sm:rounded-3xl border-0 sm:border border-cardline bg-transparent sm:bg-white shadow-none sm:shadow-sm">
+          <div className="px-0 sm:px-6 py-3 sm:py-4 border-b border-cardline flex items-center justify-between">
             <div>
               <h2 className="text-base font-black text-ink uppercase tracking-tight">My Orders</h2>
               <p className="text-xs text-muted mt-0.5">
@@ -124,7 +124,7 @@ function ProfileContent({ activeSection, profile, onProfileSave, isSaving, order
               Track orders →
             </Link>
           </div>
-          <div className="p-5 space-y-4">
+          <div className="px-0 sm:p-5 py-5 sm:py-5 space-y-4">
             {ordersLoading ? (
               <ContentSkeleton />
             ) : orders.length === 0 ? (
@@ -151,12 +151,12 @@ function ProfileContent({ activeSection, profile, onProfileSave, isSaving, order
 
     case "wishlist":
       return (
-        <div className="rounded-3xl border border-cardline bg-white shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-cardline">
+        <div className="rounded-2xl sm:rounded-3xl border-0 sm:border border-cardline bg-transparent sm:bg-white shadow-none sm:shadow-sm">
+          <div className="px-0 sm:px-6 py-3 sm:py-4 border-b border-cardline">
             <h2 className="text-base font-black text-ink uppercase tracking-tight">Wishlist</h2>
             <p className="text-xs text-muted mt-0.5">{wishlist.length} saved items</p>
           </div>
-          <div className="p-5">
+          <div className="px-0 sm:p-5 py-5 sm:py-5">
             {wishlist.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-16 text-center space-y-3">
                 <div className="w-14 h-14 rounded-full bg-terracotta/10 grid place-items-center text-terracotta">
@@ -168,9 +168,9 @@ function ProfileContent({ activeSection, profile, onProfileSave, isSaving, order
                 <p className="text-xs text-muted">Save your favourite items here.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-                {wishlist.map((item) => (
-                  <WishlistCard key={item.id} item={item} onRemove={onWishlistRemove} />
+              <div className="grid grid-cols-2 gap-3.5 sm:gap-4 sm:grid-cols-3">
+                {wishlist.map((product) => (
+                  <ProductCard key={product.id} product={product} />
                 ))}
               </div>
             )}
@@ -196,7 +196,7 @@ export default function ProfilePage() {
 
   if (isPending || !profile) {
     return (
-      <div className="pb-12 space-y-6">
+      <div className="pb-[20px] space-y-6">
         <div className="border-b border-cardline pb-4">
           <h1 className="text-xl font-black text-ink uppercase tracking-tight">My Profile</h1>
         </div>
@@ -206,7 +206,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="pb-12 space-y-6 animate-fade-in">
+    <div className="pb-[20px] space-y-6 animate-fade-in">
       {/* Page title */}
       <div className="border-b border-cardline pb-4 flex items-center justify-between">
         <div>
@@ -272,7 +272,7 @@ export default function ProfilePage() {
             isSaving={updateProfile.isPending}
             orders={orders.map(toOrderCard)}
             ordersLoading={ordersLoading}
-            wishlist={wishlist.map(toWishlistCard)}
+            wishlist={wishlist}
             onWishlistRemove={removeFromWishlist}
           />
         </div>

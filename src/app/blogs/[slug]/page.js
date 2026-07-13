@@ -11,7 +11,7 @@ export default function BlogDetailPage({ params: paramsPromise }) {
 
   if (isPending) {
     return (
-      <div className="pb-16 max-w-5xl mx-auto">
+      <div className="pb-[20px] max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start mt-6">
           <div className="md:col-span-7 space-y-5 order-1 md:order-2">
             <Skeleton className="h-4 w-32" />
@@ -42,7 +42,7 @@ export default function BlogDetailPage({ params: paramsPromise }) {
   }
 
   return (
-    <div className="pb-16 max-w-5xl mx-auto">
+    <div className="pb-[20px] max-w-5xl mx-auto">
       {/* 2-Column Balanced Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start mt-6">
         

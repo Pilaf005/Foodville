@@ -29,6 +29,26 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+/* Custom bleed scroll to allow screen-edge scrolling on mobile but alignment with content */
+.mobile-bleed-scroll {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  scroll-padding-left: 1rem; /* Respects left margin during snap */
+  scroll-padding-right: 1rem; /* Respects right margin during snap */
+  overscroll-behavior-x: none; /* Disables boundary bounce/shifting when over-scrolling */
+}
+@media (min-width: 640px) {
+  .mobile-bleed-scroll {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
 /* Reusable Tailwind / CSS Helper Classes */
 .section {
   padding-top: var(--space-48);
@@ -123,15 +143,33 @@ body {
 .input {
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: var(--radius-8);
-  padding: var(--space-8) var(--space-12);
-  font-size: var(--font-size-body);
+  border-radius: 1rem; /* 16px (rounded-2xl) */
+  padding: 0.75rem 1rem; /* py-3 px-4 */
+  font-size: 1rem; /* text-base (16px) on mobile */
   color: var(--text-primary);
   background-color: var(--surface);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+@media (min-width: 768px) {
+  .input {
+    font-size: 0.875rem; /* text-sm (14px) on desktop */
+  }
 }
 .input:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 2px rgba(107, 127, 89, 0.2);
+}
+
+/* Hide all scrollbars / scrolling indicators globally on mobile viewports */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  * {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
 }

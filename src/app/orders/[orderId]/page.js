@@ -95,7 +95,7 @@ export default function OrderTrackingPage({ params: paramsPromise }) {
 
   if (isPending) {
     return (
-      <div className="space-y-6 pb-12">
+      <div className="space-y-6 pb-[20px]">
         <Skeleton className="h-8 w-56" />
         <Skeleton className="h-48 w-full rounded-3xl" />
         <div className="grid gap-6 lg:grid-cols-12">
@@ -131,7 +131,7 @@ export default function OrderTrackingPage({ params: paramsPromise }) {
     .join(", ");
 
   return (
-    <div className="space-y-6 pb-12">
+    <div className="space-y-6 pb-[20px]">
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-cardline pb-3">
         <div className="flex items-center gap-3">

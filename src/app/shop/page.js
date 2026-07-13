@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import ProductGrid from "@/features/products/components/ProductGrid";
 import { useProducts } from "@/features/products/hooks/useProducts";
 import { ProductGridSkeleton } from "@/components/feedback/Skeleton";
@@ -37,63 +38,6 @@ const SHOP_TABS = [
 const VALID_TAB_KEYS = SHOP_TABS.map((t) => t.key);
 const DEFAULT_TAB    = "bestsellers";
 
-// ─── ShopSidebar ─────────────────────────────────────────────────────────
-function ShopSidebar({ activeTab, onTabChange }) {
-  return (
-    <aside className="hidden sm:block w-[180px] shrink-0 border-r border-cardline bg-cream/40">
-      {SHOP_TABS.map((tab) => {
-        const isActive = activeTab === tab.key;
-        return (
-          <button
-            key={tab.key}
-            onClick={() => onTabChange(tab.key)}
-            className={`relative w-full flex items-center gap-3 px-3 py-3.5 text-left transition-colors duration-150 border-b border-cardline/50 last:border-b-0 ${
-              isActive ? "bg-white" : "hover:bg-white/70"
-            }`}
-          >
-            {isActive && (
-              <span className="absolute left-0 top-0 h-full w-[3px] rounded-r-full bg-olive" />
-            )}
-            <span className="shrink-0 h-10 w-10 rounded-full overflow-hidden border-2 border-cardline bg-cream">
-              <img src={tab.thumb} alt={tab.label} className="h-full w-full object-cover" />
-            </span>
-            <span className={`text-xs font-bold leading-tight ${isActive ? "text-olive" : "text-ink"}`}>
-              {tab.label}
-            </span>
-          </button>
-        );
-      })}
-    </aside>
-  );
-}
-
-// ─── MobileShopTabs ───────────────────────────────────────────────────────
-function MobileShopTabs({ activeTab, onTabChange }) {
-  return (
-    <div className="sm:hidden flex gap-2 overflow-x-auto no-scrollbar px-4 py-3 border-b border-cardline bg-cream/40">
-      {SHOP_TABS.map((tab) => {
-        const isActive = activeTab === tab.key;
-        return (
-          <button
-            key={tab.key}
-            onClick={() => onTabChange(tab.key)}
-            className={`shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full border text-xs font-bold whitespace-nowrap transition-all duration-150 ${
-              isActive
-                ? "bg-olive text-white border-olive shadow-sm"
-                : "bg-white text-ink border-cardline"
-            }`}
-          >
-            <span className="h-5 w-5 rounded-full overflow-hidden border border-white/30 shrink-0">
-              <img src={tab.thumb} alt="" className="h-full w-full object-cover" />
-            </span>
-            {tab.label}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
 // ─── ShopContent ─────────────────────────────────────────────────────────
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -114,42 +58,41 @@ function ShopContent() {
   const count = meta?.total ?? products.length;
 
   return (
-    <div className="pb-12">
-      {/* Page heading */}
-      <div className="mb-5">
-        <h1 className="text-xl font-black text-ink uppercase tracking-tight">Shop</h1>
-        <p className="text-xs text-muted mt-0.5">{activeMeta?.description}</p>
-      </div>
-
-      {/* Two-column layout */}
-      <div className="rounded-2xl border border-cardline bg-white overflow-hidden flex flex-col sm:flex-row min-h-[500px]">
-        <MobileShopTabs activeTab={activeTab} onTabChange={setActiveTab} />
-        <ShopSidebar activeTab={activeTab} onTabChange={setActiveTab} />
-
-        {/* RIGHT: product grid */}
-        <div className="flex-1 p-3 sm:p-4 overflow-auto">
-          {/* Sub-header */}
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-black text-ink uppercase tracking-tight">
-              {activeMeta?.label}
-            </h2>
-            <span className="text-xs font-bold text-muted uppercase tracking-wider">
-              {isPending ? "…" : `${count} ${count === 1 ? "Product" : "Products"}`}
-            </span>
-          </div>
-
-          {isPending ? (
-            <ProductGridSkeleton count={10} />
-          ) : products.length === 0 ? (
-            <div className="text-center py-20 space-y-3">
-              <span className="text-4xl">🛒</span>
-              <p className="text-sm text-muted">No products found.</p>
-            </div>
-          ) : (
-            <ProductGrid products={products} />
-          )}
+    <div className="-mt-3.5 sm:mt-0 space-y-3.5 sm:space-y-6 pb-[20px] sm:pb-8">
+      {/* Grid Header & Breadcrumbs */}
+      <div className="sticky top-[57px] sm:relative z-20 bg-cream/95 backdrop-blur px-4 sm:px-0 -mx-4 sm:mx-0 py-3 sm:pt-2 sm:pb-3 flex items-center justify-between border-b border-cardline">
+        {/* Breadcrumb path back to home */}
+        <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-semibold text-muted uppercase tracking-wider select-none">
+          <Link href="/" className="hover:text-olive flex items-center gap-1 transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            Home
+          </Link>
+          <span className="text-muted/40 font-bold">/</span>
+          <span className="text-ink font-black truncate max-w-[200px]">{activeMeta?.label}</span>
         </div>
+
+        <span className="text-xs font-bold text-muted uppercase tracking-wider">
+          {isPending ? "…" : `${count} ${count === 1 ? "Product" : "Products"} found`}
+        </span>
       </div>
+
+
+
+      {/* Products Grid */}
+      {isPending ? (
+        <ProductGridSkeleton count={10} />
+      ) : products.length === 0 ? (
+        <div className="text-center py-20 bg-white/50 border border-cardline rounded-3xl space-y-3">
+          <span className="text-4xl">🛒</span>
+          <h3 className="font-bold text-ink">No Products Available</h3>
+          <p className="text-xs text-muted">More fresh stock coming soon!</p>
+        </div>
+      ) : (
+        <ProductGrid products={products} />
+      )}
     </div>
   );
 }

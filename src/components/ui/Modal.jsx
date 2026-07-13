@@ -39,11 +39,11 @@ export default function Modal({ isOpen, onClose, title, subtitle, children, maxW
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       <div
-        className="flex min-h-full items-end justify-center sm:items-center sm:p-4"
+        className="flex min-h-full items-end justify-center md:items-center md:p-4"
         onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
       >
         <div
-          className={`animate-slide-up sm:animate-scale-in relative w-full ${maxWidth} rounded-t-3xl border border-cardline bg-white shadow-2xl sm:rounded-3xl`}
+          className={`relative w-full ${maxWidth} rounded-t-3xl border border-cardline bg-white shadow-2xl md:rounded-3xl max-md:animate-slide-up md:animate-scale-in`}
         >
           {/* Sticky header — title + close always visible */}
           <div className="sticky top-0 z-10 flex items-center justify-between gap-3 rounded-t-3xl border-b border-cardline bg-white px-5 py-4">

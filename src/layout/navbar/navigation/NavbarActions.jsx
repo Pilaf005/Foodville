@@ -5,10 +5,10 @@ import { CartButton, WishlistButton, ProfileButton } from "../actions";
 
 export const NavbarActions = () => {
   return (
-    <div className="flex items-center gap-3 ml-auto shrink-0">
+    <div className="flex items-center gap-1.5 ml-auto shrink-0">
       <WishlistButton />
-      <CartButton />
       <ProfileButton />
+      <CartButton />
     </div>
   );
 };

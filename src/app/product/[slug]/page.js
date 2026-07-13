@@ -76,7 +76,7 @@ export default function ProductDetailPage({ params: paramsPromise }) {
   const productImages = resolveProductImages(product);
 
   return (
-    <div className="space-y-12 pb-16">
+    <div className="space-y-12 pb-[20px]">
       <ProductBreadcrumb product={product} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">

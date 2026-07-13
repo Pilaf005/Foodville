@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useWishlist } from "@/context/WishlistContext";
-import WishlistCard from "@/features/wishlist/components/WishlistCard";
+import ProductCard from "@/features/products/components/ProductCard";
 
 function WishlistHeader({ count }) {
   return (
@@ -47,15 +47,15 @@ export default function WishlistPage() {
   const { wishlist } = useWishlist();
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+    <div className="mx-auto max-w-6xl px-4 pt-4 pb-[20px] sm:px-6 sm:py-6">
       <WishlistHeader count={wishlist.length} />
 
       {wishlist.length === 0 ? (
         <WishlistEmptyState />
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-3.5 sm:gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {wishlist.map((product) => (
-            <WishlistCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}

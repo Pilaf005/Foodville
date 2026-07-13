@@ -58,7 +58,7 @@ function OrderConfirmedContent() {
 
   if (isPending) {
     return (
-      <div className="mx-auto max-w-3xl space-y-6 pb-16">
+      <div className="mx-auto max-w-3xl space-y-6 pb-[20px]">
         <Skeleton className="h-56 w-full rounded-3xl" />
         <Skeleton className="h-40 w-full rounded-3xl" />
         <Skeleton className="h-64 w-full rounded-3xl" />
@@ -90,7 +90,7 @@ function OrderConfirmedContent() {
     .join(", ");
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6 pb-16">
+    <div className="mx-auto max-w-3xl space-y-6 pb-[20px]">
       <SuccessBanner order={order} />
 
       <OrderTracker order={order} />
@@ -157,7 +157,7 @@ function OrderConfirmedContent() {
 
 export default function OrderConfirmedPage() {
   return (
-    <Suspense fallback={<div className="mx-auto max-w-3xl pb-16"><Skeleton className="h-56 w-full rounded-3xl" /></div>}>
+    <Suspense fallback={<div className="mx-auto max-w-3xl pb-[20px]"><Skeleton className="h-56 w-full rounded-3xl" /></div>}>
       <OrderConfirmedContent />
     </Suspense>
   );

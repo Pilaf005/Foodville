@@ -110,9 +110,9 @@ export default function PersonalInfoForm({ profile, onSave, isSaving = false }) 
     "w-full rounded-2xl border border-cardline bg-white/50 px-4 py-3 text-sm text-ink cursor-not-allowed";
 
   return (
-    <div className="rounded-3xl border border-cardline bg-white shadow-sm overflow-hidden">
+    <div className="rounded-2xl sm:rounded-3xl border-0 sm:border border-cardline bg-transparent sm:bg-white shadow-none sm:shadow-sm">
       {/* Card Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-cardline">
+      <div className="flex items-center justify-between px-0 sm:px-6 py-3 sm:py-4 border-b border-cardline">
         <div>
           <h2 className="text-base font-black text-ink uppercase tracking-tight">Personal Information</h2>
           <p className="text-xs text-muted mt-0.5">Manage your personal details</p>
@@ -130,7 +130,7 @@ export default function PersonalInfoForm({ profile, onSave, isSaving = false }) 
         )}
       </div>
 
-      <div className="p-6 space-y-6">
+      <div className="px-0 sm:p-6 py-5 sm:py-6 space-y-6">
         <AvatarUpload profile={profile} onUploaded={(url) => onSave({ avatarUrl: url })} />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

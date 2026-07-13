@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         
         {/* Footer Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pb-10 border-b border-[#4E5E43]/50">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-12 pb-10 border-b border-[#4E5E43]/50">
           <FooterLogo />
           
           <FooterLinks

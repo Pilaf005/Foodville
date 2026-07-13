@@ -11,7 +11,7 @@ export default function OrdersPage() {
   const { orders, isPending } = useOrders();
 
   return (
-    <div className="space-y-6 pb-12">
+    <div className="space-y-6 pb-[20px]">
       <div className="flex items-center justify-between border-b border-cardline pb-3">
         <div>
           <h1 className="text-xl font-black uppercase tracking-tight text-ink sm:text-2xl">My Orders</h1>

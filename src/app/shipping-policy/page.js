@@ -1,6 +1,6 @@
 export default function ShippingPolicyPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 space-y-8">
+    <div className="mx-auto max-w-3xl px-4 pt-4 pb-[20px] sm:px-6 sm:py-6 space-y-8">
       <div className="border-b border-cardline pb-6">
         <h1 className="text-2xl sm:text-3xl font-black text-ink uppercase tracking-tight">Shipping Policy</h1>
         <p className="text-xs text-muted mt-2">Last updated: July 2025 &nbsp;|&nbsp; Foodville Consumer Products Pvt. Ltd.</p>

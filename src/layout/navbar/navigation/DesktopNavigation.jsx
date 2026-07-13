@@ -8,8 +8,9 @@ import NavbarActions from "./NavbarActions";
 
 export const DesktopNavigation = ({ onLocationClick, activeAddress }) => {
   return (
-    <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:px-6">
+    <div className="mx-auto flex max-w-[96%] items-center gap-3.5 px-4 py-3 sm:px-6 lg:px-8">
       <Logo />
+      <div className="h-6 w-px bg-gray-200/80 mx-2 hidden md:block" />
 
       <LocationSelector
         onClick={onLocationClick}

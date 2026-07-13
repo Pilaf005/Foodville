@@ -29,18 +29,23 @@ export const SearchBar = ({ isMobile = false }) => {
 
   if (isMobile) {
     return (
-      <form onSubmit={handleSearch} className="relative flex items-center">
+      <form onSubmit={handleSearch} className="relative flex items-center w-full">
         <SearchInput
           query={query}
           onChange={(e) => setQuery(e.target.value)}
           isMobile
-          placeholder="Search products..."
+          placeholder="Search Foodville"
         />
         <button
           type="submit"
-          className="absolute right-1.5 rounded-xl bg-olive px-4 py-2 text-xs font-semibold text-white min-h-[36px]"
+          suppressHydrationWarning
+          className="absolute inset-y-0 right-0 w-11 rounded-r-[7px] bg-olive hover:bg-olive-dark text-white flex items-center justify-center transition active:scale-95"
+          aria-label="Search"
         >
-          Search
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
         </button>
       </form>
     );
@@ -57,6 +62,7 @@ export const SearchBar = ({ isMobile = false }) => {
         />
         <button
           type="submit"
+          suppressHydrationWarning
           className="absolute right-1 rounded-full bg-olive px-5 py-1.5 text-xs font-semibold text-white hover:bg-olive-dark transition focus:outline-none"
         >
           Search

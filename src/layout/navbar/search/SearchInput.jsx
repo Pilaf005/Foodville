@@ -25,9 +25,10 @@ export const SearchInput = ({
         onChange={onChange}
         onFocus={onFocus}
         placeholder={isMobile ? placeholder : "Search products..."}
+        suppressHydrationWarning
         className={
           isMobile
-            ? "w-full rounded-full border border-cardline bg-white px-4 py-2 pl-9 pr-14 text-xs text-ink placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-olive"
+            ? "w-full rounded-lg border border-olive bg-white px-4 py-2 pl-4 pr-14 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-olive"
             : "w-full rounded-full border border-cardline bg-white px-4 py-2.5 pl-10 pr-24 text-sm text-ink placeholder:text-transparent focus:outline-none focus:ring-1 focus:ring-olive"
         }
       />
@@ -39,9 +40,11 @@ export const SearchInput = ({
           </span>
         </div>
       )}
-      <div className={isMobile ? "absolute left-3 text-muted pointer-events-none" : "absolute left-3.5 text-muted pointer-events-none"}>
-        <SearchIcon />
-      </div>
+      {!isMobile && (
+        <div className="absolute left-3.5 text-muted pointer-events-none">
+          <SearchIcon />
+        </div>
+      )}
     </>
   );
 };

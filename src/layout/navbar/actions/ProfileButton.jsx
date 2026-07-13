@@ -33,10 +33,6 @@ export const ProfileButton = () => {
       }`}
     >
       <UserIcon />
-      {/* Small dot marks a signed-in session */}
-      {isAuthenticated && (
-        <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border border-white bg-olive" />
-      )}
     </Link>
   );
 };

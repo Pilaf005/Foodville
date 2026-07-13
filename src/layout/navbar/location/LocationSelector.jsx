@@ -11,7 +11,7 @@ function MapPinIcon() {
 
 function ChevronDownIcon() {
   return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" className="shrink-0">
       <path d="m6 9 6 6 6-6" />
     </svg>
   );
@@ -19,29 +19,31 @@ function ChevronDownIcon() {
 
 export const LocationSelector = ({ onClick, activeAddress }) => {
   const locationLabel = activeAddress
-    ? activeAddress.label || activeAddress.city || "My Location"
-    : "Select Location";
+    ? `Deliver to ${activeAddress.label || "Home"}`
+    : "Deliver to Home";
   const locationSub = activeAddress
-    ? (activeAddress.city || activeAddress.area || "").slice(0, 22)
-    : null;
+    ? [
+        activeAddress.houseFlat || activeAddress.completeAddress,
+        activeAddress.apartment || activeAddress.area || activeAddress.landmark,
+        activeAddress.city
+      ].filter(Boolean).join(", ")
+    : "Select location";
 
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-2 shrink-0 rounded-xl border border-cardline bg-white/70 px-3 py-2 min-h-[44px] text-left transition hover:bg-white hover:border-olive group focus:outline-none cursor-pointer"
+      suppressHydrationWarning
+      className="flex items-center gap-2 shrink-0 md:border-none md:bg-transparent md:px-0 md:py-0 rounded-xl border border-cardline bg-white/70 px-3 py-2 min-h-[44px] text-left transition md:hover:bg-transparent hover:bg-white hover:border-olive group focus:outline-none cursor-pointer"
     >
-      <span className="text-olive transition-transform duration-200 group-hover:scale-110">
+      <span className="text-olive transition-transform duration-200 group-hover:scale-110 md:hidden">
         <MapPinIcon />
       </span>
-      <div className="hidden md:block leading-tight max-w-[160px]">
-        <div className="text-[10px] text-muted font-medium">Deliver to</div>
-        <div className="flex items-center gap-0.5 text-xs font-bold text-ink">
-          <span className="truncate">{locationLabel}</span>
+      <div className="hidden md:block leading-tight max-w-[200px]">
+        <div className="text-sm font-black text-ink">{locationLabel}</div>
+        <div className="flex items-center gap-0.5 text-[11px] font-bold text-muted mt-0.5 max-w-[180px]">
+          <span className="truncate">{locationSub}</span>
           <ChevronDownIcon />
         </div>
-        {locationSub && (
-          <div className="text-[10px] text-muted truncate">{locationSub}</div>
-        )}
       </div>
       <div className="md:hidden flex items-center gap-0.5 text-xs font-bold text-ink">
         <span className="max-w-[80px] truncate">{locationLabel}</span>

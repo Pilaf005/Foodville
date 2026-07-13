@@ -11,48 +11,6 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-/**
- * Preferences & notifications are EMBEDDED subdocuments, not a separate
- * collection. This is the correct MongoDB relationship for strict 1:1 data
- * that is always read with the user: one query, no join, no orphan risk.
- * They get their own API endpoints (PUT /api/profile/preferences and
- * /api/profile/notifications) so the client updates them independently.
- */
-const PreferencesSchema = new Schema(
-  {
-    interestedCategories: { type: [String], default: [] },
-    dietaryPreference: {
-      type: String,
-      enum: ["vegetarian", "non_vegetarian", "vegan", "eggetarian"],
-      default: "vegetarian",
-    },
-    spiceIntensity: { type: String, enum: ["mild", "medium", "spicy", "extra_spicy"], default: "medium" },
-  },
-  { _id: false }
-);
-
-// Kept deliberately simple for a web store: three email toggles, no OS-style
-// push/SMS options.
-const NotificationsSchema = new Schema(
-  {
-    orderUpdates: { type: Boolean, default: true },
-    offers: { type: Boolean, default: true },
-    newsletter: { type: Boolean, default: false },
-  },
-  { _id: false }
-);
-
-const RewardsSchema = new Schema(
-  {
-    points: { type: Number, default: 0 },
-    walletBalance: { type: Number, default: 0 },
-    referralEarnings: { type: Number, default: 0 },
-    referralCode: { type: String, default: "" },
-    tier: { type: String, enum: ["bronze", "silver", "gold", "platinum"], default: "bronze" },
-  },
-  { _id: false }
-);
-
 const UserSchema = new Schema(
   {
     email: { type: String, required: true, unique: true, lowercase: true, trim: true, index: true },
@@ -67,9 +25,6 @@ const UserSchema = new Schema(
     avatarUrl: { type: String, default: "" },
     isVerified: { type: Boolean, default: false },
 
-    preferences: { type: PreferencesSchema, default: () => ({}) },
-    notifications: { type: NotificationsSchema, default: () => ({}) },
-    rewards: { type: RewardsSchema, default: () => ({}) },
 
     otpRequestedAt: { type: Date }, // when they last asked for a code (lead capture)
     // Durable OTP request quota (survives serverless restarts, unlike memory).

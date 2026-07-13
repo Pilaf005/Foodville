@@ -1,6 +1,6 @@
 /**
  * StarRating — renders a row of 5 star SVGs filled/outlined by rating value.
- * Used in ProductInfo, ProductReviews, and review list items.
+ * Used in ProductInfo and the product cards to render the catalog rating.
  */
 export function StarRating({ rating, size = 16, strokeWidth = 1.5 }) {
   return (

@@ -33,9 +33,6 @@ export function serializeUser(u) {
     // never see an empty avatar container.
     avatarUrl: u.avatarUrl || "/images/default-avatar.svg",
     isVerified: !!u.isVerified,
-    preferences: u.preferences,
-    notifications: u.notifications,
-    rewards: u.rewards,
     memberSince: u.createdAt
       ? new Date(u.createdAt).toLocaleDateString("en-IN", { month: "long", year: "numeric" })
       : "",

@@ -8,7 +8,6 @@ import ProductInfo from "@/features/products/components/ProductInfo";
 import ProductDescription from "@/features/products/components/ProductDescription";
 import ProductHighlights from "@/features/products/components/ProductHighlights";
 import WhyShopWithUs from "@/features/products/components/WhyShopWithUs";
-import ProductReviews from "@/features/products/components/ProductReviews";
 import SimilarProducts from "@/features/products/components/SimilarProducts";
 import TopSellers from "@/features/products/components/TopSellers";
 import { Skeleton } from "@/components/feedback/Skeleton";
@@ -88,7 +87,6 @@ export default function ProductDetailPage({ params: paramsPromise }) {
       <ProductDescription details={product.details} />
       <ProductHighlights product={product} />
       <WhyShopWithUs />
-      <ProductReviews slug={product.slug} rating={product.rating} reviews={product.reviews} />
       <SimilarProducts category={product.category} currentProductId={product.id} />
       <TopSellers />
     </div>

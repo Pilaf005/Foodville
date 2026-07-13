@@ -76,7 +76,6 @@ export default function ProductInfo({ product }) {
       <div className="flex items-center gap-2">
         <StarRating rating={product.rating} size={16} strokeWidth={1.5} />
         <span className="text-sm font-bold text-gold">{product.rating}</span>
-        <span className="text-xs text-muted">({(product.reviews || []).length} reviews)</span>
       </div>
 
       <hr className="border-cardline" />

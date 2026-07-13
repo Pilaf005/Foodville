@@ -43,16 +43,3 @@ export const updateProfileSchema = z.object({
   language: z.string().trim().optional(),
   avatarUrl: z.string().trim().url().or(z.string().trim().startsWith("/")).or(z.literal("")).optional(),
 });
-
-// Simple, e-commerce-appropriate settings (no OS-style push/SMS toggles).
-export const notificationsSchema = z.object({
-  orderUpdates: z.boolean().default(true),
-  offers: z.boolean().default(true),
-  newsletter: z.boolean().default(false),
-});
-
-export const preferencesSchema = z.object({
-  interestedCategories: z.array(z.string().trim()).max(20).default([]),
-  dietaryPreference: z.enum(["vegetarian", "non_vegetarian", "vegan", "eggetarian"]).default("vegetarian"),
-  spiceIntensity: z.enum(["mild", "medium", "spicy", "extra_spicy"]).default("medium"),
-});

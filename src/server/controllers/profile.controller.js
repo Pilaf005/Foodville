@@ -22,23 +22,3 @@ export async function updateProfile(userId, data) {
   if (!user) throw notFound("User not found.");
   return serializeUser(user);
 }
-
-export async function updatePreferences(userId, preferences) {
-  const user = await User.findByIdAndUpdate(
-    userId,
-    { $set: { preferences } },
-    { new: true }
-  ).lean();
-  if (!user) throw notFound("User not found.");
-  return serializeUser(user);
-}
-
-export async function updateNotifications(userId, notifications) {
-  const user = await User.findByIdAndUpdate(
-    userId,
-    { $set: { notifications } },
-    { new: true }
-  ).lean();
-  if (!user) throw notFound("User not found.");
-  return serializeUser(user);
-}

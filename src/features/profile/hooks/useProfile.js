@@ -28,30 +28,6 @@ export function useUpdateProfile({ silent = false } = {}) {
   });
 }
 
-export function useUpdatePreferences() {
-  const qc = useQueryClient();
-  return useMutation({
-    mutationFn: (preferences) => profileService.updatePreferences(preferences),
-    onSuccess: (user) => {
-      qc.setQueryData(queryKeys.auth.me, user);
-      toast.success("Preferences saved");
-    },
-    onError: (err) => toast.error(err?.message || "Could not save your preferences."),
-  });
-}
-
-export function useUpdateNotifications() {
-  const qc = useQueryClient();
-  return useMutation({
-    mutationFn: (notifications) => profileService.updateNotifications(notifications),
-    onSuccess: (user) => {
-      qc.setQueryData(queryKeys.auth.me, user);
-      toast.success("Notification settings saved");
-    },
-    onError: (err) => toast.error(err?.message || "Could not save your settings."),
-  });
-}
-
 export function useAddresses() {
   const query = useQuery({
     queryKey: queryKeys.addresses.all,

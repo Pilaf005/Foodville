@@ -4,7 +4,6 @@ export { default as ProductGallery } from "./ProductGallery";
 export { default as ProductInfo } from "./ProductInfo";
 export { default as ProductDescription } from "./ProductDescription";
 export { default as ProductHighlights } from "./ProductHighlights";
-export { default as ProductReviews } from "./ProductReviews";
 export { default as ProductRibbon } from "./ProductRibbon";
 export { default as SimilarProducts } from "./SimilarProducts";
 export { default as TopSellers } from "./TopSellers";

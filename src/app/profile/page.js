@@ -9,8 +9,6 @@ import PersonalInfoForm from "@/features/profile/components/PersonalInfoForm";
 import AddressList from "@/features/profile/components/AddressList";
 import OrderCard from "@/features/profile/components/OrderCard";
 import WishlistCard from "@/features/profile/components/WishlistCard";
-import PreferencesSection from "@/features/profile/components/PreferencesSection";
-import NotificationSettings from "@/features/profile/components/NotificationSettings";
 
 import { useProfile, useUpdateProfile } from "@/features/profile/hooks/useProfile";
 import { useOrders } from "@/features/orders/hooks/useOrders";
@@ -179,12 +177,6 @@ function ProfileContent({ activeSection, profile, onProfileSave, isSaving, order
           </div>
         </div>
       );
-
-    case "preferences":
-      return <PreferencesSection preferences={profile?.preferences ?? {}} />;
-
-    case "notifications":
-      return <NotificationSettings settings={profile?.notifications ?? {}} />;
 
     default:
       return <ContentSkeleton />;

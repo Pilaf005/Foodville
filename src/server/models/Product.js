@@ -38,20 +38,9 @@ const UnitSchema = new Schema(
   { _id: false }
 );
 
-const ReviewSchema = new Schema(
-  {
-    name: { type: String, required: true },
-    rating: { type: Number, required: true, min: 0, max: 5 }, // can be a float (4.5)
-    comment: { type: String, default: "" },
-    date: { type: String, default: "" }, // kept as string to match UI display (ISO in seed data)
-    // Internal — ties a review to its author so each user has ONE review per
-    // product (resubmitting replaces it). Stripped by the serializer.
-    userId: { type: String },
-    // True when the reviewer actually bought this product here.
-    verified: { type: Boolean, default: false },
-  },
-  { _id: false }
-);
+// NOTE: this store has no customer reviews. `rating` below is a static catalog
+// value used for display and for sorting (top sellers / "rating" sort) — it is
+// not computed from user feedback.
 
 const ComboIncludeSchema = new Schema(
   {
@@ -85,7 +74,6 @@ const ProductSchema = new Schema(
     rating: { type: Number, default: 0, index: true },
     tags: { type: [String], default: [], index: true },
 
-    reviews: { type: [ReviewSchema], default: [] },
     highlights: { type: Schema.Types.Mixed, default: {} }, // varying key set per product type
     units: { type: [UnitSchema], default: [] },
 

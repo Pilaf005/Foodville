@@ -46,6 +46,7 @@ export async function priceItems(rawItems) {
       productId: product.numericId,
       slug: product.slug,
       name: product.name,
+      brand: product.brand || "Foodville",
       image: product.image,
       unit: variant.unit,
       price: variant.price,

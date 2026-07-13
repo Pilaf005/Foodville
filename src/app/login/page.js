@@ -24,7 +24,8 @@ function LoginCard() {
   const { user, isAuthenticated, isLoading } = useAuth();
   const requestOtp = useRequestOtp();
   const verifyOtp = useVerifyOtp();
-  const updateProfile = useUpdateProfile();
+  // silent: the onboarding step shows its own "Welcome!" — avoid a double toast.
+  const updateProfile = useUpdateProfile({ silent: true });
 
   const [step, setStep] = useState("email"); // "email" | "code" | "details"
   const [email, setEmail] = useState("");

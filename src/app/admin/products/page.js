@@ -7,6 +7,7 @@ import { useCategories } from "@/features/categories/hooks/useCategories";
 import { useDebounce } from "@/hooks/useDebounce";
 import { Skeleton } from "@/components/feedback/Skeleton";
 import { Pagination } from "@/app/admin/orders/page";
+import Modal from "@/components/ui/Modal";
 import { toast } from "sonner";
 
 const inr = (n) => `₹${Number(n || 0).toLocaleString("en-IN")}`;
@@ -178,16 +179,14 @@ function ProductModal({ product, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4">
-      <div className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-cardline bg-white p-5 shadow-xl sm:rounded-3xl sm:p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-base font-black uppercase tracking-tight text-ink">
-            {isNew ? "Add product" : "Edit product"}
-          </h2>
-          <button onClick={onClose} className="text-xl leading-none text-muted hover:text-ink">×</button>
-        </div>
-
-        <form onSubmit={handleSave} className="space-y-3">
+    <Modal
+      isOpen
+      onClose={onClose}
+      title={isNew ? "Add product" : "Edit product"}
+      subtitle={isNew ? "New item in the catalog" : `Editing “${product.name}”`}
+      maxWidth="max-w-lg"
+    >
+      <form onSubmit={handleSave} className="space-y-3">
           <Field label="Name">
             <input
               value={form.name}
@@ -274,9 +273,8 @@ function ProductModal({ product, onClose }) {
               {busy ? "Saving…" : isNew ? "Create" : "Save changes"}
             </button>
           </div>
-        </form>
-      </div>
-    </div>
+      </form>
+    </Modal>
   );
 }
 

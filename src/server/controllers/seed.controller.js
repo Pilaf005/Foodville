@@ -12,7 +12,10 @@ import Category from "@/server/models/Category";
 import Blog from "@/server/models/Blog";
 import { cacheClear } from "@/server/utils/cache";
 
-const toProductDoc = ({ id, ...rest }) => ({ numericId: id, ...rest });
+// Reviews are NEVER seeded — they must come from real signed-in customers via
+// POST /api/products/:key/reviews. The catalog `rating` is kept as a display
+// baseline and is replaced by the true review average once reviews exist.
+const toProductDoc = ({ id, reviews, ...rest }) => ({ numericId: id, reviews: [], ...rest });
 const toBlogDoc = ({ id, ...rest }) => ({ numericId: id, ...rest });
 const toCategoryDoc = (c, index) => {
   const home = HOME_CATEGORIES.find((h) => h.id === c.id);

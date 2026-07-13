@@ -16,6 +16,10 @@ export const cartService = {
   async clear() {
     return unwrap(await api.delete("/cart"));
   },
+  /** Replace the whole server cart with the given items (pre-checkout sync). */
+  async replace(items = []) {
+    return unwrap(await api.put("/cart", { items }));
+  },
   /** Fold a guest cart (and wishlist) into the account after sign-in. */
   async merge({ items = [], wishlist = [] }) {
     return unwrap(await api.post("/cart/merge", { items, wishlist }));

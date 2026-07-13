@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import orderService from "@/features/orders/services/order.service";
 import paymentService from "@/features/checkout/services/payment.service";
+import cartService from "@/features/cart/services/cart.service";
 import { useCart } from "@/context/CartContext";
 import { queryKeys } from "@/lib/queryKeys";
 
@@ -47,7 +48,7 @@ function loadRazorpay() {
 export function useCheckout() {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { refreshCart } = useCart();
+  const { cart, refreshCart } = useCart();
   const [isPlacing, setIsPlacing] = useState(false);
   const [isPaying, setIsPaying] = useState(false);
 
@@ -121,6 +122,19 @@ export function useCheckout() {
     async ({ addressId, address, paymentMethod, user }) => {
       setIsPlacing(true);
       try {
+        if (!cart.length) {
+          toast.error("Your cart is empty.", { id: "checkout" });
+          throw new Error("empty cart");
+        }
+
+        // 0. Sync the ON-SCREEN cart to the server first. This closes the gap
+        //    where an earlier add-to-cart call failed silently and the server
+        //    cart was empty — which used to abort checkout with a confusing
+        //    "cart is empty" error before Razorpay could even open.
+        await cartService.replace(
+          cart.map((i) => ({ productId: i.id, qty: i.qty, unit: i.unit || "" }))
+        );
+
         // 1. Create the order. The server prices it from OUR catalog.
         const order = await orderService.create({ addressId, address, paymentMethod });
 
@@ -143,15 +157,15 @@ export function useCheckout() {
 
         return order;
       } catch (err) {
-        if (err?.message !== "dismissed" && err?.message !== "payment failed") {
-          toast.error(err?.message || "Could not place your order.");
+        if (!["dismissed", "payment failed", "empty cart"].includes(err?.message)) {
+          toast.error(err?.message || "Could not place your order.", { id: "checkout" });
         }
         throw err;
       } finally {
         setIsPlacing(false);
       }
     },
-    [finish, runRazorpayFlow]
+    [cart, finish, runRazorpayFlow]
   );
 
   /** Resume payment on an existing pending online order (no new order). */

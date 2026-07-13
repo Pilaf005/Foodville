@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { useAdminCategories, useAdminMutations } from "@/features/admin/hooks/useAdmin";
 import { useImageUpload } from "@/features/profile/hooks/useProfile";
 import { Skeleton } from "@/components/feedback/Skeleton";
+import Modal from "@/components/ui/Modal";
 
 const slugify = (s) =>
   String(s).toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -117,16 +118,14 @@ function CategoryModal({ category, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center sm:p-4">
-      <div className="animate-slide-up w-full max-w-md rounded-t-3xl border border-cardline bg-white p-5 shadow-xl sm:animate-scale-in sm:rounded-3xl sm:p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-base font-black uppercase tracking-tight text-ink">
-            {isNew ? "Add category" : "Edit category"}
-          </h2>
-          <button onClick={onClose} className="text-xl leading-none text-muted transition hover:text-ink">×</button>
-        </div>
-
-        <form onSubmit={handleSave} className="space-y-3">
+    <Modal
+      isOpen
+      onClose={onClose}
+      title={isNew ? "Add category" : "Edit category"}
+      subtitle={isNew ? "New shelf in the store" : `Editing “${category.name}”`}
+      maxWidth="max-w-md"
+    >
+      <form onSubmit={handleSave} className="space-y-3">
           <Field label="Name">
             <input value={form.name} onChange={(e) => set("name", e.target.value)} className={inputCls} required />
           </Field>
@@ -179,9 +178,8 @@ function CategoryModal({ category, onClose }) {
               {busy ? "Saving…" : isNew ? "Create" : "Save changes"}
             </button>
           </div>
-        </form>
-      </div>
-    </div>
+      </form>
+    </Modal>
   );
 }
 

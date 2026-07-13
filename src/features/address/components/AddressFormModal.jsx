@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { INDIAN_STATES } from "@/features/address/constants/indianStates";
 import { useAddressMutations } from "@/features/profile/hooks/useProfile";
+import Modal from "@/components/ui/Modal";
 
 /**
  * Add / edit a delivery address — Amazon-style form, India only.
@@ -50,10 +51,12 @@ function Field({ label, hint, children, required }) {
  *   onSaved?: (address) => void,    // called with the saved address
  * }} props
  */
-export default function AddressFormModal({ isOpen, onClose, editAddress = null, prefill, onSaved }) {
+export default function AddressFormModal({ isOpen, onClose, editAddress = null, prefill, onSaved, autoDetect = false }) {
   const isEdit = !!editAddress?.id;
   const { create, update } = useAddressMutations();
   const [form, setForm] = useState(EMPTY);
+  const [detecting, setDetecting] = useState(false);
+  const autoDetectedRef = useRef(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -67,15 +70,78 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
     });
   }, [isOpen, editAddress, prefill, isEdit]);
 
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
   const busy = create.isPending || update.isPending;
+
+  /**
+   * "Use current location" — browser geolocation + OpenStreetMap reverse
+   * geocoding to PRE-FILL area/city/state/PIN. The customer verifies and
+   * completes the rest (no map — they stay in the form).
+   *
+   * Browser rule worth knowing: once someone clicks "Block" on the location
+   * prompt, the browser remembers it permanently and sites cannot re-prompt;
+   * only the user can re-allow it from the padlock icon. We surface that
+   * exact instruction instead of a dead-end error.
+   */
+  function detectLocation() {
+    if (!navigator.geolocation) {
+      toast.error("Location isn't supported by this browser.", { id: "geo" });
+      return;
+    }
+    setDetecting(true);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const { latitude, longitude } = pos.coords;
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}&addressdetails=1&accept-language=en`,
+            { headers: { Accept: "application/json" } }
+          );
+          const data = await res.json();
+          const a = data?.address || {};
+          const detectedState = INDIAN_STATES.find(
+            (s) => s.toLowerCase() === String(a.state || "").toLowerCase()
+          );
+          setForm((f) => ({
+            ...f,
+            area: [a.road, a.suburb || a.neighbourhood || a.village].filter(Boolean).join(", ") || f.area,
+            city: a.city || a.town || a.village || a.state_district || f.city,
+            state: detectedState || f.state,
+            pincode: String(a.postcode || "").replace(/\D/g, "").slice(0, 6) || f.pincode,
+          }));
+          toast.success("Location detected — please verify the details below.", { id: "geo" });
+        } catch {
+          toast.error("Couldn't look up that location. Please type the address.", { id: "geo" });
+        } finally {
+          setDetecting(false);
+        }
+      },
+      (err) => {
+        setDetecting(false);
+        if (err.code === 1) {
+          toast.error(
+            "Location is blocked for this site. Click the padlock icon in the address bar → Site settings → allow Location, then try again.",
+            { id: "geo", duration: 7000 }
+          );
+        } else {
+          toast.error("Couldn't get your location. Please type the address.", { id: "geo" });
+        }
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    );
+  }
+
+  // Opened via the navbar's "Use current location" → start detecting at once.
+  useEffect(() => {
+    if (isOpen && autoDetect && !isEdit && !autoDetectedRef.current) {
+      autoDetectedRef.current = true;
+      detectLocation();
+    }
+    if (!isOpen) autoDetectedRef.current = false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, autoDetect, isEdit]);
+
+  if (!isOpen) return null;
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -113,24 +179,37 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
   }
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 sm:items-center sm:p-4"
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    <Modal
+      isOpen
+      onClose={onClose}
+      title={isEdit ? "Edit address" : "Add a new address"}
+      subtitle="Delivery within India"
+      maxWidth="max-w-lg"
     >
-      <div className="animate-slide-up max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-cardline bg-white p-5 shadow-2xl sm:animate-scale-in sm:rounded-3xl sm:p-6">
-        {/* Header */}
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-base font-black uppercase tracking-tight text-ink">
-            {isEdit ? "Edit address" : "Add a new address"}
-          </h2>
-          <button onClick={onClose} aria-label="Close" className="rounded-full p-1.5 text-muted transition hover:bg-cream hover:text-ink">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
+      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+          {/* Geolocation prefill — replaces the old map, no pin-dropping */}
+          <button
+            type="button"
+            onClick={detectLocation}
+            disabled={detecting}
+            className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-olive/50 bg-olive/5 px-4 py-3 text-xs font-bold text-olive transition hover:border-olive hover:bg-olive/10 active:scale-[0.99] disabled:opacity-60"
+          >
+            {detecting ? (
+              <>
+                <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-olive/40 border-t-olive" />
+                Detecting your location…
+              </>
+            ) : (
+              <>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                Use my current location
+              </>
+            )}
           </button>
-        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           <Field label="Full name (First and Last name)" required>
             <input
               value={form.receiverName}
@@ -249,8 +328,7 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
           >
             {busy ? "Saving…" : isEdit ? "Save changes" : "Save address"}
           </button>
-        </form>
-      </div>
-    </div>
+      </form>
+    </Modal>
   );
 }

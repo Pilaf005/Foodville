@@ -74,3 +74,11 @@ function timingSafeEqual(a, b) {
 export async function fetchPayment(paymentId) {
   return razorpay().payments.fetch(paymentId);
 }
+
+/** Refund a captured payment (full amount in rupees). */
+export async function refundPayment(paymentId, amountRupees) {
+  return razorpay().payments.refund(paymentId, {
+    amount: toPaise(amountRupees),
+    speed: "normal",
+  });
+}

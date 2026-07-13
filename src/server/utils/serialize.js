@@ -12,6 +12,10 @@ export function serializeProduct(doc) {
   const out = { id: numericId, ...rest };
   // comboIncludes is only meaningful for combos; drop when empty/undefined.
   if (!out.comboIncludes || out.comboIncludes.length === 0) delete out.comboIncludes;
+  // Reviews are public — never expose the reviewer's internal user id.
+  if (Array.isArray(out.reviews)) {
+    out.reviews = out.reviews.map(({ userId, ...review }) => review);
+  }
   return out;
 }
 

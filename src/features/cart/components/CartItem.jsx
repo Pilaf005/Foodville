@@ -1,16 +1,13 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
-import { products } from "@/data/products";
 import { PRODUCT_FALLBACK_IMAGE } from "@/features/products/constants";
 
 export default function CartItem({ item }) {
   const { updateQty, removeFromCart } = useCart();
 
-  // Find original product to retrieve the brand
-  const baseProductId = String(item.id).split("-")[0];
-  const origProduct = products.find((p) => String(p.id) === String(baseProductId));
-  const brandName = origProduct?.brand || "Foodville";
+  // Brand travels with the cart line (from the API) — no mock lookup.
+  const brandName = item.brand || "Foodville";
 
   const mrp = item.mrp || item.price;
   const saving = Math.max(0, mrp - item.price);

@@ -3,6 +3,17 @@
 @import "../styles/theme.css";
 @import "../styles/animations.css";
 
+/* Slightly larger base font: every Tailwind size is rem-based, so bumping the
+   root scales the whole UI proportionally (~6%) without touching components. */
+html {
+  font-size: 17px;
+}
+@media (max-width: 640px) {
+  html {
+    font-size: 16px; /* keep mobile density as designed */
+  }
+}
+
 body {
   background-color: var(--background);
   color: var(--text-primary);

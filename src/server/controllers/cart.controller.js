@@ -72,6 +72,26 @@ export async function clearCart(userId) {
 }
 
 /**
+ * Replace the whole server cart with the client's current view. Called right
+ * before checkout so the order always matches EXACTLY what the customer sees
+ * on screen — even if an earlier add-to-cart request silently failed. Prices
+ * are still recomputed server-side; only ids/quantities come from the client.
+ */
+export async function replaceCart(userId, rawItems = []) {
+  const items = (Array.isArray(rawItems) ? rawItems : [])
+    .map((i) => ({
+      productId: Number(i.productId ?? i.id),
+      qty: Math.max(1, Math.min(99, Number(i.qty) || 1)),
+      unit: String(i.unit || ""),
+    }))
+    .filter((i) => Number.isFinite(i.productId) && i.productId > 0)
+    .slice(0, 100);
+
+  await Cart.updateOne({ user: userId }, { $set: { items } }, { upsert: true });
+  return getCart(userId);
+}
+
+/**
  * Merge a guest's localStorage cart into their account at login.
  * Quantities add up; the same product+unit isn't duplicated.
  */

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Modal from "@/components/ui/Modal";
 
 /**
  * Payment method picker — exactly two choices.
@@ -47,11 +48,6 @@ export default function PaymentModal({ isOpen, onClose, selectedMethod, onSelect
   const [localSelected, setLocalSelected] = useState(selectedMethod);
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [isOpen]);
-
-  useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     if (isOpen) setLocalSelected(selectedMethod);
   }, [isOpen, selectedMethod]);
@@ -68,60 +64,41 @@ export default function PaymentModal({ isOpen, onClose, selectedMethod, onSelect
   }
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(3px)" }}
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    <Modal
+      isOpen
+      onClose={onClose}
+      title="Select Payment Method"
+      subtitle={totalPayable != null ? `Total payable: ₹${totalPayable}` : undefined}
+      maxWidth="max-w-md"
     >
-      <div
-        className="animate-scale-in w-full max-w-[440px] overflow-hidden rounded-3xl bg-white shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-gray-100 px-5 py-4">
-          <div>
-            <h2 className="text-base font-bold text-gray-900">Select Payment Method</h2>
-            {totalPayable != null && (
-              <p className="mt-0.5 text-xs text-gray-500">Total payable: <span className="font-bold text-gray-800">₹{totalPayable}</span></p>
-            )}
-          </div>
-          <button onClick={onClose} aria-label="Close" className="rounded-full p-2 text-gray-500 transition hover:bg-gray-100">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Options */}
-        <div className="space-y-3 p-4">
-          {METHODS.map(({ id, name, hint, Icon }) => {
-            const selected = localSelected === id;
-            return (
-              <button
-                key={id}
-                type="button"
-                onClick={() => handleSelect(id)}
-                className={`flex w-full items-center justify-between rounded-2xl border-2 px-4 py-4 text-left transition-all duration-200 active:scale-[0.99] ${
-                  selected ? "border-[#6B7F59] bg-[#6B7F59]/5" : "border-gray-200 bg-white hover:border-[#6B7F59]/50"
-                }`}
-              >
-                <div className="flex items-center gap-3.5">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-gray-100 bg-gray-50">
-                    <Icon />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-gray-900">{name}</p>
-                    <p className="mt-0.5 text-[11px] text-gray-500">{hint}</p>
-                  </div>
+      <div className="space-y-3">
+        {METHODS.map(({ id, name, hint, Icon }) => {
+          const selected = localSelected === id;
+          return (
+            <button
+              key={id}
+              type="button"
+              onClick={() => handleSelect(id)}
+              className={`flex w-full items-center justify-between rounded-2xl border-2 px-4 py-4 text-left transition-all duration-200 active:scale-[0.99] ${
+                selected ? "border-olive bg-olive/5" : "border-cardline bg-white hover:border-olive/50"
+              }`}
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-cardline/60 bg-cream/60">
+                  <Icon />
                 </div>
-                <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 transition-all duration-200 ${selected ? "border-[#6B7F59]" : "border-gray-300"}`}>
-                  {selected && <span className="h-2.5 w-2.5 animate-scale-in rounded-full bg-[#6B7F59]" />}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+                <div>
+                  <p className="text-sm font-bold text-ink">{name}</p>
+                  <p className="mt-0.5 text-[11px] text-muted">{hint}</p>
+                </div>
+              </div>
+              <span className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 transition-all duration-200 ${selected ? "border-olive" : "border-cardline"}`}>
+                {selected && <span className="h-2.5 w-2.5 animate-scale-in rounded-full bg-olive" />}
+              </span>
+            </button>
+          );
+        })}
       </div>
-    </div>
+    </Modal>
   );
 }

@@ -14,15 +14,17 @@ export function useProfile() {
   return { ...query, profile: query.data ?? null };
 }
 
-export function useUpdateProfile() {
+export function useUpdateProfile({ silent = false } = {}) {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: (data) => profileService.update(data),
     onSuccess: (user) => {
       qc.setQueryData(queryKeys.auth.me, user);
-      toast.success("Profile updated");
+      // `silent` lets flows with their own success message (e.g. the login
+      // onboarding step's "Welcome!") avoid stacking a second toast.
+      if (!silent) toast.success("Profile updated", { id: "profile" });
     },
-    onError: (err) => toast.error(err?.message || "Could not save your profile."),
+    onError: (err) => toast.error(err?.message || "Could not save your profile.", { id: "profile" }),
   });
 }
 

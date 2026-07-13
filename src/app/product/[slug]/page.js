@@ -88,7 +88,7 @@ export default function ProductDetailPage({ params: paramsPromise }) {
       <ProductDescription details={product.details} />
       <ProductHighlights product={product} />
       <WhyShopWithUs />
-      <ProductReviews rating={product.rating} reviews={product.reviews} />
+      <ProductReviews slug={product.slug} rating={product.rating} reviews={product.reviews} />
       <SimilarProducts category={product.category} currentProductId={product.id} />
       <TopSellers />
     </div>

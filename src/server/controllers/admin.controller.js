@@ -9,7 +9,7 @@ import Category from "@/server/models/Category";
 import Blog from "@/server/models/Blog";
 import { badRequest, notFound } from "@/server/utils/apiError";
 import { serializeProduct, serializeProducts, serializeBlog } from "@/server/utils/serialize";
-import { serializeOrder } from "@/server/controllers/order.controller";
+import { serializeOrder, cancelOrder } from "@/server/controllers/order.controller";
 import { cacheClear } from "@/server/utils/cache";
 import { deleteByUrl } from "@/server/services/storage.service";
 
@@ -155,6 +155,25 @@ export async function adminUpdateOrderStatus(orderId, status, note = "") {
 
   const order = await Order.findOne({ orderId });
   if (!order) throw notFound("Order not found.");
+
+  // Terminal states never move again.
+  if (order.status === "cancelled") throw badRequest("This order is cancelled — its status can't change.");
+  if (order.status === "delivered" && status !== "delivered") {
+    throw badRequest("This order is delivered — its status can't change.");
+  }
+
+  // Cancelling goes through the shared path (stock restore + auto-refund).
+  if (status === "cancelled") {
+    return cancelOrder(order, { by: "admin", note });
+  }
+
+  // An online order that was never paid (pending/failed payment) must not be
+  // packed or shipped — the only valid transition is cancellation.
+  if (order.paymentMethod === "razorpay" && order.paymentStatus !== "paid") {
+    throw badRequest(
+      `Payment is ${order.paymentStatus} — an unpaid order can only be cancelled, not moved to "${status.replace(/_/g, " ")}".`
+    );
+  }
 
   order.status = status;
   order.timeline.push({ status, at: new Date(), note: note || `Marked ${status.replace(/_/g, " ")}` });

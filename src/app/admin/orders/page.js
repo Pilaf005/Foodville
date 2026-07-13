@@ -24,6 +24,69 @@ const STATUS_STYLE = {
 
 const inr = (n) => `₹${Number(n || 0).toLocaleString("en-IN")}`;
 
+/**
+ * Status editor for one order row:
+ *  - pick a status → a Save button appears (nothing changes until saved),
+ *  - terminal orders (cancelled/delivered) are locked,
+ *  - unpaid online orders can't be progressed — only cancelled.
+ */
+function StatusEditor({ order, updateOrderStatus }) {
+  const [pending, setPending] = useState(null); // null = no unsaved change
+  const isTerminal = order.status === "cancelled" || order.status === "delivered";
+  const isUnpaidOnline = order.paymentMethod === "razorpay" && order.paymentStatus !== "paid";
+  const dirty = pending !== null && pending !== order.status;
+
+  if (isTerminal) {
+    return <span className="text-[11px] font-semibold text-muted">Locked</span>;
+  }
+
+  if (isUnpaidOnline) {
+    return (
+      <button
+        onClick={() => {
+          if (confirm(`Cancel unpaid order ${order.orderId}? It can't be packed or shipped without payment.`)) {
+            updateOrderStatus.mutate({ orderId: order.orderId, status: "cancelled" });
+          }
+        }}
+        disabled={updateOrderStatus.isPending}
+        className="rounded-xl border border-red-200 px-3 py-1.5 text-[11px] font-bold text-red-500 transition hover:bg-red-50 disabled:opacity-50"
+      >
+        Cancel order
+      </button>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-1.5">
+      <select
+        value={pending ?? order.status}
+        disabled={updateOrderStatus.isPending}
+        onChange={(e) => setPending(e.target.value)}
+        className="rounded-xl border border-cardline bg-white px-2 py-1.5 text-[11px] outline-none
+                   transition focus:border-olive disabled:opacity-50"
+      >
+        {STATUSES.map((s) => (
+          <option key={s} value={s}>{s.replace(/_/g, " ")}</option>
+        ))}
+      </select>
+      {dirty && (
+        <button
+          onClick={() =>
+            updateOrderStatus.mutate(
+              { orderId: order.orderId, status: pending },
+              { onSuccess: () => setPending(null) }
+            )
+          }
+          disabled={updateOrderStatus.isPending}
+          className="animate-scale-in rounded-xl bg-olive px-3 py-1.5 text-[11px] font-bold text-white transition hover:bg-olive-dark active:scale-95 disabled:opacity-50"
+        >
+          {updateOrderStatus.isPending ? "…" : "Save"}
+        </button>
+      )}
+    </div>
+  );
+}
+
 export default function AdminOrdersPage() {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");
@@ -110,19 +173,7 @@ export default function AdminOrdersPage() {
                       </span>
                     </td>
                     <td className="px-4 py-3">
-                      <select
-                        value={o.status}
-                        disabled={updateOrderStatus.isPending}
-                        onChange={(e) =>
-                          updateOrderStatus.mutate({ orderId: o.orderId, status: e.target.value })
-                        }
-                        className="rounded-xl border border-cardline bg-white px-2 py-1.5 text-[11px] outline-none
-                                   transition focus:border-olive disabled:opacity-50"
-                      >
-                        {STATUSES.map((s) => (
-                          <option key={s} value={s}>{s.replace(/_/g, " ")}</option>
-                        ))}
-                      </select>
+                      <StatusEditor order={o} updateOrderStatus={updateOrderStatus} />
                     </td>
                   </tr>
                 ))}

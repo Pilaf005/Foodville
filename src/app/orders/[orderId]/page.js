@@ -1,14 +1,65 @@
 "use client";
 
-import { use } from "react";
+import { use, useState } from "react";
 import Link from "next/link";
-import { useOrder } from "@/features/orders/hooks/useOrders";
+import { useOrder, useCancelOrder } from "@/features/orders/hooks/useOrders";
 import OrderTracker, { STATUS_BADGE } from "@/features/orders/components/OrderTracker";
 import { Skeleton } from "@/components/feedback/Skeleton";
 import { useCheckout } from "@/features/checkout/hooks/useCheckout";
 import { useAuth } from "@/features/auth/hooks/useAuth";
+import Modal from "@/components/ui/Modal";
 
 const inr = (n) => `₹${Number(n || 0).toLocaleString("en-IN")}`;
+
+// Amazon-style rule: cancellable any time before it ships.
+const CANCELLABLE = ["pending", "confirmed", "packed"];
+
+function CancelOrderButton({ order }) {
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const cancel = useCancelOrder();
+
+  if (!CANCELLABLE.includes(order.status)) return null;
+
+  return (
+    <>
+      <button
+        onClick={() => setConfirmOpen(true)}
+        className="rounded-2xl border border-red-200 px-5 py-2.5 text-xs font-bold text-red-500 transition hover:bg-red-50 active:scale-[0.98]"
+      >
+        Cancel order
+      </button>
+
+      <Modal
+        isOpen={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        title="Cancel this order?"
+        subtitle={`Order ${order.orderId} · ${inr(order.amounts?.total)}`}
+        maxWidth="max-w-sm"
+      >
+        <p className="text-xs leading-relaxed text-muted">
+          {order.paymentStatus === "paid"
+            ? "Your payment will be refunded to the original payment method (usually within 5–7 working days)."
+            : "This order hasn't been paid, so there's nothing to refund."}
+        </p>
+        <div className="mt-5 flex gap-2">
+          <button
+            onClick={() => setConfirmOpen(false)}
+            className="flex-1 rounded-2xl border border-cardline py-2.5 text-xs font-bold uppercase text-ink transition hover:border-olive"
+          >
+            Keep order
+          </button>
+          <button
+            onClick={() => cancel.mutate(order.orderId, { onSettled: () => setConfirmOpen(false) })}
+            disabled={cancel.isPending}
+            className="flex-1 rounded-2xl bg-red-500 py-2.5 text-xs font-bold uppercase text-white transition hover:bg-red-600 active:scale-[0.98] disabled:opacity-60"
+          >
+            {cancel.isPending ? "Cancelling…" : "Yes, cancel"}
+          </button>
+        </div>
+      </Modal>
+    </>
+  );
+}
 
 /**
  * Shown when an online payment was started but never finished (customer closed
@@ -102,7 +153,10 @@ export default function OrderTrackingPage({ params: paramsPromise }) {
             </p>
           </div>
         </div>
-        <span className={`rounded-full px-3 py-1 text-[11px] font-bold ${badge.cls}`}>{badge.label}</span>
+        <div className="flex items-center gap-2">
+          <CancelOrderButton order={order} />
+          <span className={`rounded-full px-3 py-1 text-[11px] font-bold ${badge.cls}`}>{badge.label}</span>
+        </div>
       </div>
 
       {/* Abandoned-payment recovery */}

@@ -40,8 +40,8 @@ function AvatarUpload({ profile, onUploaded }) {
       replaceUrl: profile.avatarUrl?.startsWith("http") ? profile.avatarUrl : undefined,
     });
     if (result?.url) {
+      // No toast here — the profile save it triggers already shows one.
       onUploaded(result.url);
-      toast.success("Profile photo updated");
     }
   }
 

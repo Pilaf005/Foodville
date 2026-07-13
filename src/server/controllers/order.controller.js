@@ -9,8 +9,10 @@ import Order from "@/server/models/Order";
 import Cart from "@/server/models/Cart";
 import Address from "@/server/models/Address";
 import Product from "@/server/models/Product";
+import Payment from "@/server/models/Payment";
 import { nextSequence } from "@/server/models/Counter";
 import { priceItems } from "@/server/services/pricing.service";
+import { refundPayment } from "@/server/services/razorpay.service";
 import { badRequest, notFound } from "@/server/utils/apiError";
 
 export function serializeOrder(o) {
@@ -108,6 +110,85 @@ export async function finaliseOrder(order) {
       Product.updateOne({ numericId: item.productId }, { $inc: { stock: -item.qty } })
     )
   );
+}
+
+/**
+ * Cancel an order — the flow Amazon/Flipkart use:
+ *  - customers may cancel any time BEFORE it ships,
+ *  - admins may also cancel shipped/out-for-delivery orders,
+ *  - delivered and already-cancelled orders are terminal,
+ *  - reserved stock is put back (only if it was actually decremented),
+ *  - paid online orders get an automatic Razorpay refund; if the refund call
+ *    fails the order still cancels and the timeline says it'll be manual.
+ */
+export async function cancelOrder(order, { by = "customer", note = "" } = {}) {
+  if (order.status === "cancelled") return serializeOrder(order.toObject()); // idempotent
+  if (order.status === "delivered") {
+    throw badRequest("Delivered orders can't be cancelled. Please use a return/refund request.");
+  }
+  if (by === "customer" && ["shipped", "out_for_delivery"].includes(order.status)) {
+    throw badRequest("This order has already shipped and can no longer be cancelled.");
+  }
+
+  // Stock was only decremented once the order was finalised (COD at placement,
+  // online on payment capture) — restore exactly in that case.
+  const stockWasReserved = order.paymentMethod === "cod" || order.paymentStatus === "paid";
+  if (stockWasReserved) {
+    await Promise.all(
+      order.items.map((item) =>
+        Product.updateOne({ numericId: item.productId }, { $inc: { stock: item.qty } })
+      )
+    );
+  }
+
+  // Automatic refund for captured online payments.
+  if (order.paymentStatus === "paid" && order.razorpay?.paymentId) {
+    try {
+      const refund = await refundPayment(order.razorpay.paymentId, order.amounts.total);
+      order.paymentStatus = "refunded";
+      await Payment.create({
+        order: order._id,
+        orderId: order.orderId,
+        user: order.user,
+        razorpayOrderId: order.razorpay.orderId,
+        razorpayPaymentId: order.razorpay.paymentId,
+        amount: order.amounts.total,
+        status: "refunded",
+        source: "checkout",
+        raw: refund,
+      });
+      order.timeline.push({
+        status: "cancelled",
+        at: new Date(),
+        note: `Refund of ₹${order.amounts.total} initiated to the original payment method`,
+      });
+    } catch (err) {
+      order.timeline.push({
+        status: "cancelled",
+        at: new Date(),
+        note: "Refund could not be auto-initiated — it will be processed manually",
+      });
+      // eslint-disable-next-line no-console
+      console.error("[refund]", order.orderId, err?.message);
+    }
+  }
+
+  order.status = "cancelled";
+  order.timeline.push({
+    status: "cancelled",
+    at: new Date(),
+    note: note || (by === "admin" ? "Cancelled by Foodville" : "Cancelled by you"),
+  });
+  await order.save();
+
+  return serializeOrder(order.toObject());
+}
+
+/** Customer-initiated cancellation (owner-scoped). */
+export async function cancelOwnOrder(userId, orderId) {
+  const order = await Order.findOne({ orderId, user: userId });
+  if (!order) throw notFound("Order not found.");
+  return cancelOrder(order, { by: "customer" });
 }
 
 export async function listOrders(userId) {

@@ -7,6 +7,7 @@ import { useImageUpload } from "@/features/profile/hooks/useProfile";
 import { useDebounce } from "@/hooks/useDebounce";
 import { Skeleton } from "@/components/feedback/Skeleton";
 import { Pagination } from "@/app/admin/orders/page";
+import Modal from "@/components/ui/Modal";
 
 const slugify = (s) =>
   String(s).toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -174,16 +175,14 @@ function BlogModal({ blog, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center sm:p-4">
-      <div className="animate-slide-up max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl border border-cardline bg-white p-5 shadow-xl sm:animate-scale-in sm:rounded-3xl sm:p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-base font-black uppercase tracking-tight text-ink">
-            {isNew ? "New article" : "Edit article"}
-          </h2>
-          <button onClick={onClose} className="text-xl leading-none text-muted transition hover:text-ink">×</button>
-        </div>
-
-        <form onSubmit={handleSave} className="space-y-3">
+    <Modal
+      isOpen
+      onClose={onClose}
+      title={isNew ? "New article" : "Edit article"}
+      subtitle={isNew ? "Publish a new read for your customers" : `Editing “${blog.title}”`}
+      maxWidth="max-w-2xl"
+    >
+      <form onSubmit={handleSave} className="space-y-3">
           <Field label="Title">
             <input value={form.title} onChange={(e) => set("title", e.target.value)} className={inputCls} required />
           </Field>
@@ -255,9 +254,8 @@ function BlogModal({ blog, onClose }) {
               {busy ? "Saving…" : isNew ? "Publish" : "Save changes"}
             </button>
           </div>
-        </form>
-      </div>
-    </div>
+      </form>
+    </Modal>
   );
 }
 

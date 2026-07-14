@@ -46,12 +46,15 @@ export async function updateCartItem(userId, productId, { qty, unit = "" }) {
   const n = Number(qty);
 
   if (n <= 0) {
-    cart.items = cart.items.filter((i) => i.productId !== Number(productId));
+    cart.items = cart.items.filter(
+      (i) => !(i.productId === Number(productId) && (i.unit || "") === (unit || ""))
+    );
   } else {
-    const item = cart.items.find((i) => i.productId === Number(productId));
+    const item = cart.items.find(
+      (i) => i.productId === Number(productId) && (i.unit || "") === (unit || "")
+    );
     if (item) {
       item.qty = n;
-      if (unit) item.unit = unit;
     }
   }
 

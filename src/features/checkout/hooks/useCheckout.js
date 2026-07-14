@@ -132,7 +132,12 @@ export function useCheckout() {
         //    cart was empty — which used to abort checkout with a confusing
         //    "cart is empty" error before Razorpay could even open.
         await cartService.replace(
-          cart.map((i) => ({ productId: i.id, qty: i.qty, unit: i.unit || "" }))
+          cart.map((i) => {
+            const numericProductId = typeof i.id === "string" && i.id.includes("-")
+              ? Number(i.id.split("-")[0])
+              : Number(i.id);
+            return { productId: numericProductId, qty: i.qty, unit: i.unit || "" };
+          })
         );
 
         // 1. Create the order. The server prices it from OUR catalog.

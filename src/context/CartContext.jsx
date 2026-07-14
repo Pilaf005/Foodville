@@ -40,7 +40,7 @@ const writeGuestCart = (items) => {
 /** Server line items → the shape the UI already renders. */
 const fromServer = (data) =>
   (data?.items || []).map((i) => ({
-    id: i.productId,
+    id: i.unit ? `${i.productId}-${i.unit}` : i.productId,
     slug: i.slug,
     name: i.name,
     brand: i.brand,
@@ -50,6 +50,13 @@ const fromServer = (data) =>
     unit: i.unit,
     qty: i.qty,
   }));
+
+const getNumericId = (id) => {
+  if (typeof id === "string" && id.includes("-")) {
+    return Number(id.split("-")[0]);
+  }
+  return Number(id);
+};
 
 export function CartProvider({ children }) {
   const { isAuthenticated, isLoading } = useAuth();
@@ -81,7 +88,7 @@ export function CartProvider({ children }) {
       setIsSyncing(true);
       try {
         const guestItems = readGuestCart().map((i) => ({
-          productId: i.id,
+          productId: getNumericId(i.id),
           qty: i.qty,
           unit: i.unit || "",
         }));
@@ -136,7 +143,7 @@ export function CartProvider({ children }) {
     if (isAuthenticated) {
       try {
         const data = await cartService.add({
-          productId: product.id,
+          productId: getNumericId(product.id),
           qty,
           unit: product.unit || "",
         });
@@ -151,7 +158,9 @@ export function CartProvider({ children }) {
     setCart((prev) => prev.filter((item) => item.id !== id));
     if (isAuthenticated) {
       try {
-        setCart(fromServer(await cartService.remove(id)));
+        const numericProductId = getNumericId(id);
+        const item = cart.find((i) => i.id === id);
+        setCart(fromServer(await cartService.update(numericProductId, { qty: 0, unit: item?.unit || "" })));
       } catch { /* ignore */ }
     }
   }
@@ -162,7 +171,9 @@ export function CartProvider({ children }) {
     setCart((prev) => prev.map((item) => (item.id === id ? { ...item, qty } : item)));
     if (isAuthenticated) {
       try {
-        setCart(fromServer(await cartService.update(id, { qty })));
+        const numericProductId = getNumericId(id);
+        const item = cart.find((i) => i.id === id);
+        setCart(fromServer(await cartService.update(numericProductId, { qty, unit: item?.unit || "" })));
       } catch { /* ignore */ }
     }
   }

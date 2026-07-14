@@ -1,7 +1,6 @@
 "use client";
 
 import UnitSelector from "./UnitSelector";
-import StarRating from "./StarRating";
 import ComboIncludesList from "./ComboIncludesList";
 import { PRODUCT_TRUST_BADGES } from "../constants";
 
@@ -72,11 +71,7 @@ export default function ProductInfo({ product }) {
         </div>
       )}
 
-      {/* Star Rating Summary */}
-      <div className="flex items-center gap-2">
-        <StarRating rating={product.rating} size={16} strokeWidth={1.5} />
-        <span className="text-sm font-bold text-gold">{product.rating}</span>
-      </div>
+
 
       <hr className="border-cardline" />
 

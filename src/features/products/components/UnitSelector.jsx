@@ -4,24 +4,38 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
-import QtyStepper from "./QtyStepper";
 import ComboIncludesList from "./ComboIncludesList";
 import { DEFAULT_MAX_QTY } from "../constants";
 
 // ─── Shared action buttons (Add to Cart / View Cart + Wishlist) ────────────
-function ActionButtons({ product, isInCart, isOutOfStock, inWishlist, onAddToCart, onToggleWishlist }) {
-  const router = useRouter();
+function ActionButtons({ product, isInCart, isOutOfStock, inWishlist, onAddToCart, onToggleWishlist, stepperProps }) {
   return (
     <div className="flex gap-3">
       {isInCart ? (
-        <button
-          onClick={() => router.push("/cart")}
-          className="flex-1 rounded-2xl border-2 border-olive text-olive hover:bg-olive/10 bg-transparent py-4 text-sm font-bold active:scale-[0.98] transition shadow-md"
-        >
-          View Cart
-        </button>
+        <div className="flex-1 flex items-center justify-between rounded-2xl border-2 border-olive bg-white h-14 px-4 shadow-sm select-none">
+          <button
+            type="button"
+            onClick={stepperProps.onDecrease}
+            className="w-10 h-10 flex items-center justify-center font-bold text-olive hover:bg-olive/5 rounded-xl transition text-2xl active:scale-95"
+            aria-label="Decrease quantity"
+          >
+            −
+          </button>
+          <span className="text-base font-black text-ink">
+            {stepperProps.qty}
+          </span>
+          <button
+            type="button"
+            onClick={stepperProps.onIncrease}
+            className="w-10 h-10 flex items-center justify-center font-bold text-olive hover:bg-olive/5 rounded-xl transition text-2xl active:scale-95"
+            aria-label="Increase quantity"
+          >
+            +
+          </button>
+        </div>
       ) : (
         <button
+          type="button"
           onClick={onAddToCart}
           disabled={isOutOfStock}
           className="flex-1 rounded-2xl bg-olive py-4 text-sm font-bold text-white hover:bg-olive-dark active:scale-[0.98] transition disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-olive/20"
@@ -30,6 +44,7 @@ function ActionButtons({ product, isInCart, isOutOfStock, inWishlist, onAddToCar
         </button>
       )}
       <button
+        type="button"
         onClick={onToggleWishlist}
         className={`h-14 w-14 shrink-0 rounded-2xl border-2 flex items-center justify-center transition active:scale-95 ${
           inWishlist
@@ -126,7 +141,7 @@ function PackUnitSelector({ product, units, selectedUnit, qty, setSelectedUnit, 
         </div>
       </div>
 
-      {/* Summary + qty stepper */}
+      {/* Summary */}
       <div className="rounded-2xl bg-cream/30 p-4 border border-cardline/60 flex items-center justify-between gap-4">
         <div>
           <PriceSummary
@@ -143,11 +158,6 @@ function PackUnitSelector({ product, units, selectedUnit, qty, setSelectedUnit, 
             </span>
           )}
         </div>
-        <QtyStepper
-          qty={qty}
-          onDecrease={() => setQty(q => Math.max(1, q - 1))}
-          onIncrease={() => setQty(q => Math.min(product.stock || DEFAULT_MAX_QTY, q + 1))}
-        />
       </div>
 
       <ActionButtons {...actionButtonsProps} />
@@ -202,11 +212,6 @@ function WeightUnitSelector({ product, units, selectedUnit, qty, setSelectedUnit
             Inclusive of all taxes · Qty: {qty}
           </span>
         </div>
-        <QtyStepper
-          qty={qty}
-          onDecrease={() => setQty(q => Math.max(1, q - 1))}
-          onIncrease={() => setQty(q => Math.min(product.stock || DEFAULT_MAX_QTY, q + 1))}
-        />
       </div>
 
       <ActionButtons {...actionButtonsProps} />
@@ -221,15 +226,36 @@ export default function UnitSelector({ product }) {
   const [selectedUnit, setSelectedUnit] = useState(units[0]);
   const [qty, setQty] = useState(1);
 
-  const { cart, addToCart } = useCart();
+  const { cart, addToCart, updateQty } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
 
   const inWishlist   = isInWishlist(product.id);
   const isOutOfStock = product.stock === 0;
   const isPackBased  = product.category === "bulk" || product.category === "combos";
-  const isInCart     = cart.some(
-    (item) => String(item.id) === String(product.id) || String(item.id).startsWith(String(product.id) + "-")
-  );
+
+  // Find the exact item variant currently in the cart to read/write quantity directly
+  const targetCartId = selectedUnit.unit ? `${product.id}-${selectedUnit.unit}` : product.id;
+  const cartItem     = cart.find((item) => String(item.id) === String(targetCartId));
+  const isInCart     = !!cartItem;
+  const displayQty   = isInCart ? cartItem.qty : qty;
+
+  const stepperProps = {
+    qty: displayQty,
+    onDecrease: () => {
+      if (isInCart) {
+        updateQty(cartItem.id, cartItem.qty - 1);
+      } else {
+        setQty((q) => Math.max(1, q - 1));
+      }
+    },
+    onIncrease: () => {
+      if (isInCart) {
+        updateQty(cartItem.id, cartItem.qty + 1);
+      } else {
+        setQty((q) => Math.min(product.stock || DEFAULT_MAX_QTY, q + 1));
+      }
+    },
+  };
 
   function handleAddToCart() {
     addToCart(
@@ -245,11 +271,22 @@ export default function UnitSelector({ product }) {
     inWishlist,
     onAddToCart: handleAddToCart,
     onToggleWishlist: () => toggleWishlist(product),
+    stepperProps,
   };
 
-  const selectorProps = { product, units, selectedUnit, qty, setSelectedUnit, setQty, actionButtonsProps };
+  const selectorProps = {
+    product,
+    units,
+    selectedUnit,
+    qty: displayQty,
+    setSelectedUnit,
+    setQty,
+    actionButtonsProps,
+  };
 
-  return isPackBased
-    ? <PackUnitSelector {...selectorProps} />
-    : <WeightUnitSelector {...selectorProps} />;
+  return isPackBased ? (
+    <PackUnitSelector {...selectorProps} />
+  ) : (
+    <WeightUnitSelector {...selectorProps} />
+  );
 }

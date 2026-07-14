@@ -88,6 +88,21 @@ const OrderSchema = new Schema(
     status: { type: String, enum: ORDER_STATUSES, default: "pending", index: true },
     timeline: { type: [TimelineEntrySchema], default: [] },
 
+    shipping: {
+      shiprocketOrderId: { type: String },
+      shiprocketShipmentId: { type: String },
+      awbCode: { type: String, index: true },
+      courierName: { type: String },
+      labelUrl: { type: String },
+      manifestUrl: { type: String },
+      weight: { type: Number },
+      dimensions: {
+        length: { type: Number },
+        width: { type: Number },
+        height: { type: Number }
+      }
+    },
+
     placedAt: { type: Date, default: Date.now, index: true },
   },
   { timestamps: true }

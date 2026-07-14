@@ -11,7 +11,7 @@ export function useCategories() {
   const query = useQuery({
     queryKey: queryKeys.categories.all,
     queryFn: categoryService.list,
-    staleTime: 30 * 60 * 1000, // categories barely change
+    staleTime: 60 * 1000, // refresh categories at least every minute
   });
 
   const categories = query.data || [];

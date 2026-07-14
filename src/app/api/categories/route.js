@@ -5,8 +5,11 @@ import { cached, publicCacheHeaders } from "@/server/utils/cache";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// GET /api/categories — all active categories (rarely changes; cached hard).
 export const GET = withRoute(async () => {
-  const data = await cached("categories:all", 10 * 60_000, listCategories);
-  return ok(data, { headers: publicCacheHeaders(600, 3600) });
+  const data = await listCategories();
+  return ok(data, {
+    headers: {
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+    },
+  });
 });

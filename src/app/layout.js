@@ -6,6 +6,7 @@ import CompleteProfileBanner from "@/components/common/CompleteProfileBanner";
 import { CartProvider } from "@/context/CartContext";
 import { WishlistProvider } from "@/context/WishlistContext";
 import AppProviders from "@/providers";
+import ErrorBoundary from "@/components/common/ErrorBoundary";
 
 export const metadata = {
   title: "Foodville — Powders, Seeds & Dry Fruits",
@@ -21,13 +22,21 @@ export default function RootLayout({ children }) {
           <CartProvider>
             <WishlistProvider>
               <div className="flex-1">
-                <Navbar />
-                <CompleteProfileBanner />
+                <ErrorBoundary>
+                  <Navbar />
+                </ErrorBoundary>
+                <ErrorBoundary>
+                  <CompleteProfileBanner />
+                </ErrorBoundary>
                 <main className="mx-auto max-w-6xl px-4 pt-4 pb-3 sm:py-6 sm:px-6">
-                  {children}
+                  <ErrorBoundary>
+                    {children}
+                  </ErrorBoundary>
                 </main>
               </div>
-              <Footer />
+              <ErrorBoundary>
+                <Footer />
+              </ErrorBoundary>
               <ScrollToTop />
             </WishlistProvider>
           </CartProvider>

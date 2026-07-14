@@ -24,7 +24,7 @@ const SECRET = new TextEncoder().encode(process.env.JWT_SECRET || "");
 // redirected to /login?redirect=… and land back here after signing in.
 // (/cart and /wishlist stay public on purpose: guests must be able to shop.
 //  The login wall is enforced at checkout, where an account is actually needed.)
-const PROTECTED_PAGES = ["/profile", "/admin", "/orders", "/order-confirmed"];
+const PROTECTED_PAGES = ["/profile", "/orders", "/order-confirmed"];
 const PROTECTED_API = [
   "/api/cart",
   "/api/wishlist",
@@ -33,10 +33,9 @@ const PROTECTED_API = [
   "/api/profile",
   "/api/payments",
   "/api/uploads",
-  "/api/admin",
 ];
-const ADMIN_PAGES = ["/admin"];
-const ADMIN_API = ["/api/admin"];
+const ADMIN_PAGES = [];
+const ADMIN_API = [];
 
 const startsWithAny = (pathname, list) =>
   list.some((p) => pathname === p || pathname.startsWith(`${p}/`));
@@ -93,7 +92,6 @@ export async function proxy(req) {
 export const config = {
   matcher: [
     "/profile/:path*",
-    "/admin/:path*",
     "/orders/:path*",
     "/order-confirmed/:path*",
     "/api/cart/:path*",
@@ -103,6 +101,5 @@ export const config = {
     "/api/profile/:path*",
     "/api/payments/:path*",
     "/api/uploads/:path*",
-    "/api/admin/:path*",
   ],
 };

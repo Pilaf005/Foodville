@@ -22,12 +22,12 @@ export default function CategoryPage({ params: paramsPromise }) {
   const count = meta?.total ?? products.length;
 
   return (
-    <div className="space-y-3.5 sm:space-y-6 pb-[20px] sm:pb-8">
+    <div className="pb-[20px] sm:pb-8">
       {/* Categories horizontal list */}
       <CategoryFilter active={id} />
 
       {/* Grid Header & Breadcrumbs */}
-      <div className="sticky top-[57px] sm:relative z-20 bg-cream/95 backdrop-blur px-4 sm:px-0 -mx-4 sm:mx-0 py-3 sm:pt-2 sm:pb-3 flex items-center justify-between border-b border-cardline">
+      <div className="sticky top-[57px] sm:relative z-20 bg-cream/95 backdrop-blur px-4 sm:px-0 -mx-4 sm:mx-0 -mt-1.5 sm:-mt-3.5 py-3 sm:pt-2 sm:pb-3 flex items-center justify-between border-b border-cardline shadow-sm sm:shadow-none">
         {/* Breadcrumb path back to home */}
         <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-semibold text-muted uppercase tracking-wider select-none">
           <Link href="/" className="hover:text-olive flex items-center gap-1 transition-colors">
@@ -47,17 +47,19 @@ export default function CategoryPage({ params: paramsPromise }) {
       </div>
 
       {/* Products Grid */}
-      {isPending ? (
-        <ProductGridSkeleton count={10} />
-      ) : products.length === 0 ? (
-        <div className="text-center py-20 bg-white/50 border border-cardline rounded-3xl space-y-3">
-          <span className="text-4xl">🛒</span>
-          <h3 className="font-bold text-ink">No Products Available</h3>
-          <p className="text-xs text-muted">More fresh stock coming soon!</p>
-        </div>
-      ) : (
-        <ProductGrid products={products} />
-      )}
+      <div className="mt-4 sm:mt-6 pt-3 sm:pt-10">
+        {isPending ? (
+          <ProductGridSkeleton count={10} />
+        ) : products.length === 0 ? (
+          <div className="text-center py-20 bg-white/50 border border-cardline rounded-3xl space-y-3">
+            <span className="text-4xl">🛒</span>
+            <h3 className="font-bold text-ink">No Products Available</h3>
+            <p className="text-xs text-muted">More fresh stock coming soon!</p>
+          </div>
+        ) : (
+          <ProductGrid products={products} />
+        )}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import ProfileHeader from "@/features/profile/components/ProfileHeader";
 import ProfileSidebar from "@/features/profile/components/ProfileSidebar";
 import ProfileMobileTabs from "@/features/profile/components/ProfileMobileTabs";
@@ -9,6 +8,7 @@ import PersonalInfoForm from "@/features/profile/components/PersonalInfoForm";
 import AddressList from "@/features/profile/components/AddressList";
 import OrderCard from "@/features/profile/components/OrderCard";
 import ProductCard from "@/features/products/components/ProductCard";
+import ErrorBoundary from "@/components/common/ErrorBoundary";
 
 import { useProfile, useUpdateProfile } from "@/features/profile/hooks/useProfile";
 import { useOrders } from "@/features/orders/hooks/useOrders";
@@ -216,65 +216,48 @@ export default function ProfilePage() {
       </div>
 
       {/* Header */}
-      <ProfileHeader profile={profile} />
-
-      {/* Admins are ordinary users with extra powers — they keep every customer
-          route, and additionally get this door into the dashboard. */}
-      {profile.role === "admin" && (
-        <Link
-          href="/admin"
-          className="card-hover animate-fade-in flex items-center justify-between gap-4 rounded-3xl border border-olive/30 bg-olive/5 p-5 transition"
-        >
-          <div className="flex items-center gap-3">
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-olive text-white">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <rect x="3" y="3" width="7" height="9" rx="1" />
-                <rect x="14" y="3" width="7" height="5" rx="1" />
-                <rect x="14" y="12" width="7" height="9" rx="1" />
-                <rect x="3" y="16" width="7" height="5" rx="1" />
-              </svg>
-            </span>
-            <div>
-              <p className="text-sm font-black uppercase tracking-tight text-ink">Admin Dashboard</p>
-              <p className="mt-0.5 text-xs text-muted">Manage products, orders and customers.</p>
-            </div>
-          </div>
-          <span className="shrink-0 text-xs font-bold text-olive">Open →</span>
-        </Link>
-      )}
+      <ErrorBoundary>
+        <ProfileHeader profile={profile} />
+      </ErrorBoundary>
 
       {/* Mobile tab bar */}
       <div className="lg:hidden">
-        <ProfileMobileTabs
-          activeSection={activeSection}
-          onSectionChange={setActiveSection}
-          onLogout={() => setLogoutOpen(true)}
-        />
+        <ErrorBoundary>
+          <ProfileMobileTabs
+            activeSection={activeSection}
+            onSectionChange={setActiveSection}
+            onLogout={() => setLogoutOpen(true)}
+          />
+        </ErrorBoundary>
       </div>
 
       {/* Two-column layout on desktop */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left sidebar — desktop only */}
         <div className="hidden lg:block lg:col-span-3 lg:sticky lg:top-24">
-          <ProfileSidebar
-            activeSection={activeSection}
-            onSectionChange={setActiveSection}
-            onLogout={() => setLogoutOpen(true)}
-          />
+          <ErrorBoundary>
+            <ProfileSidebar
+              activeSection={activeSection}
+              onSectionChange={setActiveSection}
+              onLogout={() => setLogoutOpen(true)}
+            />
+          </ErrorBoundary>
         </div>
 
         {/* Right content */}
         <div className="lg:col-span-9">
-          <ProfileContent
-            activeSection={activeSection}
-            profile={profile}
-            onProfileSave={(data) => updateProfile.mutate(data)}
-            isSaving={updateProfile.isPending}
-            orders={orders.map(toOrderCard)}
-            ordersLoading={ordersLoading}
-            wishlist={wishlist}
-            onWishlistRemove={removeFromWishlist}
-          />
+          <ErrorBoundary>
+            <ProfileContent
+              activeSection={activeSection}
+              profile={profile}
+              onProfileSave={(data) => updateProfile.mutate(data)}
+              isSaving={updateProfile.isPending}
+              orders={orders.map(toOrderCard)}
+              ordersLoading={ordersLoading}
+              wishlist={wishlist}
+              onWishlistRemove={removeFromWishlist}
+            />
+          </ErrorBoundary>
         </div>
       </div>
 

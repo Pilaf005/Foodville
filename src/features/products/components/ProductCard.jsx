@@ -22,7 +22,7 @@ export default function ProductCard({ product }) {
   const currentQty = getCartQty(cart, product.id);
 
   return (
-    <div className="group relative flex flex-col rounded-2xl border border-cardline/60 bg-white p-2 sm:p-3.5 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.025)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.065)] hover:border-olive/20 active:scale-[0.99] sm:active:scale-100">
+    <div className="group relative flex flex-col rounded-2xl border border-cardline/60 bg-white p-2 sm:p-3.5 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.025)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.065)] hover:border-olive/20 active:scale-[0.99] sm:active:scale-100 hover:z-30 hover:relative">
       {/* Wishlist heart */}
       <button
         onClick={() => toggleWishlist(product)}

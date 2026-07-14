@@ -51,6 +51,7 @@ export function HeroCarousel() {
         {HERO_IMAGES.map((_, i) => (
           <button
             key={i}
+            suppressHydrationWarning
             onClick={() => setCurrentSlide(i)}
             className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${
               currentSlide === i ? "w-6 bg-white" : "w-2 bg-white/40 hover:bg-white/60"

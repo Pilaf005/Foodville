@@ -11,6 +11,7 @@ const { Schema } = mongoose;
 
 export const ORDER_STATUSES = [
   "pending",
+  "placed",
   "confirmed",
   "packed",
   "shipped",
@@ -70,6 +71,9 @@ const OrderSchema = new Schema(
     amounts: {
       subtotal: { type: Number, required: true },
       savings: { type: Number, default: 0 },
+      baseDeliveryCharge: { type: Number, default: 0 },
+      codCharge: { type: Number, default: 0 },
+      gst: { type: Number, default: 0 },
       deliveryCharge: { type: Number, default: 0 },
       total: { type: Number, required: true },
     },

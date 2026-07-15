@@ -78,6 +78,13 @@ export const env = {
     publicBaseUrl: (process.env.R2_PUBLIC_BASE_URL || "").replace(/\/+$/, ""),
   },
 
+  // Shiprocket
+  shiprocket: {
+    email: process.env.SHIPROCKET_EMAIL || "",
+    password: process.env.SHIPROCKET_PASSWORD || "",
+    pickupLocationPincode: int(process.env.SHIPROCKET_PICKUP_POSTCODE, 122098),
+  },
+
   // Commerce
   freeDeliveryThreshold: int(process.env.FREE_DELIVERY_THRESHOLD, 500),
   deliveryCharge: int(process.env.DELIVERY_CHARGE, 40),

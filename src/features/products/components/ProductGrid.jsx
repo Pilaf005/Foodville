@@ -35,7 +35,7 @@ export default function ProductGrid({ products }) {
 
   if (comboProducts.length === 0 || regularProducts.length === 0) {
     return (
-      <div className="grid grid-cols-2 gap-3.5 sm:gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3.5 sm:gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 pt-4 sm:pt-12 pb-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
@@ -45,7 +45,7 @@ export default function ProductGrid({ products }) {
 
   if (!mounted) {
     return (
-      <div className="grid grid-cols-2 gap-3.5 sm:gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3.5 sm:gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 pt-4 sm:pt-12 pb-4">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
@@ -95,7 +95,7 @@ export default function ProductGrid({ products }) {
   }
 
   return (
-    <div className="space-y-6 sm:space-y-8">
+    <div className="space-y-6 sm:space-y-8 pt-4 sm:pt-12 pb-4">
       {rows.map((rowProducts, idx) => (
         <div
           key={idx}

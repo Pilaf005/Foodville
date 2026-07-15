@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import ProfileHeader from "@/features/profile/components/ProfileHeader";
 import ProfileSidebar from "@/features/profile/components/ProfileSidebar";
 import ProfileMobileTabs from "@/features/profile/components/ProfileMobileTabs";

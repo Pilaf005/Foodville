@@ -98,13 +98,13 @@ async function markPaid(order, { razorpayPaymentId, signature, method, source })
   if (order.paymentStatus === "paid") return order;
 
   order.paymentStatus = "paid";
-  order.status = "confirmed";
+  order.status = "placed";
   order.razorpay = {
     ...(order.razorpay || {}),
     paymentId: razorpayPaymentId,
     ...(signature ? { signature } : {}),
   };
-  order.timeline.push({ status: "confirmed", at: new Date(), note: "Payment received" });
+  order.timeline.push({ status: "placed", at: new Date(), note: "Payment received (Order Placed)" });
   await order.save();
 
   await Payment.create({

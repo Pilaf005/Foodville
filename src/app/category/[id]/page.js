@@ -46,8 +46,7 @@ export default function CategoryPage({ params: paramsPromise }) {
         </span>
       </div>
 
-      {/* Products Grid */}
-      <div className="mt-4 sm:mt-6 pt-3 sm:pt-10">
+      <div className="mt-4 sm:mt-6">
         {isPending ? (
           <ProductGridSkeleton count={10} />
         ) : products.length === 0 ? (

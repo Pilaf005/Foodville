@@ -17,24 +17,13 @@ function CartIcon() {
 }
 
 export const CartButton = () => {
-  const { cartCount, cartTotal } = useCart();
+  const { cartCount } = useCart();
 
   return (
     <Link href="/cart" className="relative transition flex items-center justify-center">
-      {/* Mobile View */}
-      <div className="md:hidden p-2.5 rounded-full text-ink hover:text-olive hover:bg-white/70 transition min-h-[44px] min-w-[44px] flex items-center justify-center relative">
+      <div className="p-2.5 rounded-full text-ink hover:text-olive hover:bg-white/70 transition min-h-[44px] min-w-[44px] flex items-center justify-center relative">
         <CartIcon />
         <ActionBadge count={cartCount} className="bg-olive" />
-      </div>
-
-      {/* Desktop View */}
-      <div className={`hidden md:flex items-center gap-2 px-4 py-2.5 rounded-xl transition font-bold text-sm border ${
-        cartCount > 0
-          ? "bg-[#6B7F59] hover:bg-[#5a6b4a] text-white border-[#6B7F59] shadow-sm"
-          : "bg-gray-100 hover:bg-gray-200 text-ink/85 border-gray-200"
-      }`}>
-        <CartIcon />
-        <span className="whitespace-nowrap">{cartCount > 0 ? `${cartCount} Items • ₹${cartTotal}` : "My Cart"}</span>
       </div>
     </Link>
   );

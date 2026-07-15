@@ -13,6 +13,7 @@ import Payment from "@/server/models/Payment";
 import { nextSequence } from "@/server/models/Counter";
 import { priceItems } from "@/server/services/pricing.service";
 import { refundPayment } from "@/server/services/razorpay.service";
+import { cancelShiprocketOrder } from "@/server/services/shiprocket.service";
 import { badRequest, notFound } from "@/server/utils/apiError";
 
 export function serializeOrder(o) {
@@ -58,7 +59,10 @@ export async function createOrder(userId, { addressId, address, paymentMethod })
   }
 
   // Prices come from the catalog — never from the client.
-  const { items, amounts } = await priceItems(cart.items);
+  const { items, amounts } = await priceItems(cart.items, {
+    pincode: snapshot.pincode,
+    paymentMethod,
+  });
 
   const orderId = await generateOrderId();
   const isCod = paymentMethod === "cod";
@@ -81,9 +85,9 @@ export async function createOrder(userId, { addressId, address, paymentMethod })
     },
     paymentMethod,
     paymentStatus: "pending",
-    status: isCod ? "confirmed" : "pending",
+    status: isCod ? "placed" : "pending",
     timeline: isCod
-      ? [{ status: "confirmed", at: new Date(), note: "Order placed (Cash on Delivery)" }]
+      ? [{ status: "placed", at: new Date(), note: "Order placed (Cash on Delivery)" }]
       : [{ status: "pending", at: new Date(), note: "Awaiting payment" }],
   });
 
@@ -128,6 +132,20 @@ export async function cancelOrder(order, { by = "customer", note = "" } = {}) {
   }
   if (by === "customer" && ["shipped", "out_for_delivery"].includes(order.status)) {
     throw badRequest("This order has already shipped and can no longer be cancelled.");
+  }
+
+  // If order was pushed to Shiprocket, cancel it there
+  if (order.shipping?.shiprocketOrderId) {
+    try {
+      await cancelShiprocketOrder(order.shipping.shiprocketOrderId);
+      order.timeline.push({
+        status: "cancelled",
+        at: new Date(),
+        note: `Shipment cancelled in Shiprocket (Order ID: ${order.shipping.shiprocketOrderId})`,
+      });
+    } catch (err) {
+      console.error(`[Shiprocket Cancel Error] Storefront Cancel Order ${order.orderId}:`, err?.message || err);
+    }
   }
 
   // Stock was only decremented once the order was finalised (COD at placement,

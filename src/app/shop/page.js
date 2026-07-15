@@ -58,7 +58,7 @@ function ShopContent() {
   const count = meta?.total ?? products.length;
 
   return (
-    <div className="-mt-3.5 sm:mt-0 space-y-3.5 sm:space-y-6 pb-[20px] sm:pb-8">
+    <div className="-mt-3.5 sm:-mt-8 space-y-3.5 sm:space-y-6 pb-[20px] sm:pb-8">
       {/* Grid Header & Breadcrumbs */}
       <div className="sticky top-[57px] sm:relative z-20 bg-cream/95 backdrop-blur px-4 sm:px-0 -mx-4 sm:mx-0 py-3 sm:pt-2 sm:pb-3 flex items-center justify-between border-b border-cardline">
         {/* Breadcrumb path back to home */}

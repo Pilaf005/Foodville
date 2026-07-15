@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { toast } from "sonner";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/features/auth/hooks/useAuth";
@@ -39,6 +39,11 @@ function formatAddressText(address) {
 
 function formatAddressLabel(address) {
   return address ? `Delivering to ${address.label || "Home"}` : "Delivery Address";
+}
+
+function formatMoney(val) {
+  const num = Number(val) || 0;
+  return num % 1 === 0 ? String(num) : num.toFixed(2);
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────
@@ -97,7 +102,11 @@ function CartBillPanel({
   billing, activeAddress, selectedMethod, isPlacing,
   onOpenLocation, onOpenPayment, onPlaceOrder,
 }) {
-  const { totalSellingPrice, totalMrp, totalSavings, deliveryCharge, totalPayable } = billing;
+  const { 
+    totalSellingPrice, totalMrp, totalSavings, 
+    baseDeliveryCharge, codCharge, gst, 
+    deliveryCharge, totalPayable 
+  } = billing;
   const addressText  = formatAddressText(activeAddress);
   const addressLabel = formatAddressLabel(activeAddress);
   const paymentLabel = PAYMENT_METHOD_LABELS[selectedMethod] ?? selectedMethod;
@@ -111,8 +120,8 @@ function CartBillPanel({
         <div className="flex items-center justify-between text-gray-500">
           <span>Items total</span>
           <div className="flex items-baseline gap-2">
-            {totalSavings > 0 && <span className="line-through text-gray-300 text-[10px] sm:text-xs">₹{totalMrp}</span>}
-            <span className="font-bold text-gray-800">₹{totalSellingPrice}</span>
+            {totalSavings > 0 && <span className="line-through text-gray-300 text-[10px] sm:text-xs">₹{formatMoney(totalMrp)}</span>}
+            <span className="font-bold text-gray-800">₹{formatMoney(totalSellingPrice)}</span>
           </div>
         </div>
 
@@ -121,14 +130,28 @@ function CartBillPanel({
           {deliveryCharge === 0 ? (
             <span className="text-green-600 font-bold">Free Delivery</span>
           ) : (
-            <span className="font-bold text-gray-800">₹{deliveryCharge}</span>
+            <span className="font-bold text-gray-800">₹{formatMoney(baseDeliveryCharge)}</span>
           )}
         </div>
+
+        {codCharge > 0 && (
+          <div className="flex items-center justify-between text-gray-500">
+            <span>COD Handling Fee</span>
+            <span className="font-bold text-gray-800">₹{formatMoney(codCharge)}</span>
+          </div>
+        )}
+
+        {gst > 0 && (
+          <div className="flex items-center justify-between text-gray-500">
+            <span>Shipping GST (18%)</span>
+            <span className="font-bold text-gray-800">₹{formatMoney(gst)}</span>
+          </div>
+        )}
 
         {totalSavings > 0 && (
           <div className="flex items-center justify-between text-green-600 font-bold">
             <span>Total Savings</span>
-            <span>- ₹{totalSavings}</span>
+            <span>- ₹{formatMoney(totalSavings)}</span>
           </div>
         )}
 
@@ -142,7 +165,7 @@ function CartBillPanel({
       {/* Total payable */}
       <div className="border-t border-gray-100 pt-3.5 sm:pt-4 flex items-center justify-between">
         <span className="text-sm sm:text-base font-bold text-gray-900">Total Payable</span>
-        <span className="text-lg sm:text-xl font-black text-gray-900">₹{totalPayable}</span>
+        <span className="text-lg sm:text-xl font-black text-gray-900">₹{formatMoney(totalPayable)}</span>
       </div>
 
       {/* Delivery address */}
@@ -187,35 +210,35 @@ function CartBillPanel({
       <div className="pt-2 hidden lg:block">
         {selectedMethod ? (
           <button
-            onClick={onPlaceOrder}
-            disabled={isPlacing}
-            className="w-full bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block disabled:opacity-60"
-          >
-            {isPlacing ? "PLACING ORDER…" : `PLACE ORDER — ₹${totalPayable}`}
-          </button>
-        ) : (
-          <button
-            onClick={onOpenPayment}
-            className="w-full bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block"
-          >
-            CHOOSE PAYMENT
-          </button>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ─── Mobile sticky checkout bar ───────────────────────────────────────────
-function MobileStickyCheckout({ billing, selectedMethod, isPlacing, onOpenPayment, onPlaceOrder }) {
-  const { totalPayable } = billing;
-  return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-4 pt-3 pb-5 shadow-2xl">
-      <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
-        <div>
-          <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Total Payable</p>
-          <p className="text-lg font-black text-gray-900">₹{totalPayable}</p>
+              onClick={onPlaceOrder}
+              disabled={isPlacing}
+              className="w-full bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block disabled:opacity-60"
+            >
+              {isPlacing ? "PLACING ORDER…" : `PLACE ORDER — ₹${formatMoney(totalPayable)}`}
+            </button>
+          ) : (
+            <button
+              onClick={onOpenPayment}
+              className="w-full bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block"
+            >
+              CHOOSE PAYMENT
+            </button>
+          )}
         </div>
+      </div>
+    );
+  }
+
+  // ─── Mobile sticky checkout bar ───────────────────────────────────────────
+  function MobileStickyCheckout({ billing, selectedMethod, isPlacing, onOpenPayment, onPlaceOrder }) {
+    const { totalPayable } = billing;
+    return (
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200 px-4 pt-3 pb-5 shadow-2xl">
+        <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
+          <div>
+            <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Total Payable</p>
+            <p className="text-lg font-black text-gray-900">₹{formatMoney(totalPayable)}</p>
+          </div>
         {selectedMethod ? (
           <button
             onClick={onPlaceOrder}
@@ -249,6 +272,7 @@ export default function CartPage() {
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [isLocationOpen, setIsLocationOpen] = useState(false);
   const [isPaymentOpen,  setIsPaymentOpen]  = useState(false);
+  const [shippingDetails, setShippingDetails] = useState(null);
 
   // Auto-select the default saved address (or the first one) once loaded.
   useEffect(() => {
@@ -257,12 +281,58 @@ export default function CartPage() {
     setActiveAddress(addresses.find((a) => a.isDefault) || addresses[0]);
   }, [addresses, activeAddress]);
 
+  // Fetch dynamic Shiprocket shipping rates based on active address pincode and payment method
+  useEffect(() => {
+    if (!activeAddress?.pincode) {
+      setShippingDetails(null);
+      return;
+    }
+    const pincode = activeAddress.pincode;
+    const method = selectedMethod || "razorpay";
+    
+    fetch(`/api/shipping/rate?pincode=${pincode}&paymentMethod=${method}`)
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && res.data) {
+          setShippingDetails(res.data);
+        }
+      })
+      .catch((err) => console.error("Error fetching shipping rate:", err));
+  }, [activeAddress, selectedMethod]);
+
   // Recommendations come from the catalog API.
   const { products: recommendationPool } = useProducts({ limit: 12, sort: "rating" });
 
+  // Calculate order billing breakdown (memoized to follow Rules of Hooks)
+  const billing = useMemo(() => {
+    const baseBilling = calcBilling(cart || []);
+    if (shippingDetails !== null) {
+      const isFree = baseBilling.totalSellingPrice >= DELIVERY_THRESHOLD;
+      const baseDeliveryCharge = isFree ? 0 : (shippingDetails.baseDeliveryCharge || 0);
+      const codCharge = isFree ? 0 : (shippingDetails.codCharge || 0);
+      const gst = isFree ? 0 : (shippingDetails.gst || 0);
+      const deliveryCharge = baseDeliveryCharge + codCharge + gst;
+      const totalPayable = baseBilling.totalSellingPrice + deliveryCharge;
+      
+      return { 
+        ...baseBilling, 
+        baseDeliveryCharge, 
+        codCharge, 
+        gst, 
+        deliveryCharge, 
+        totalPayable 
+      };
+    }
+    return {
+      ...baseBilling,
+      baseDeliveryCharge: baseBilling.deliveryCharge,
+      codCharge: 0,
+      gst: 0
+    };
+  }, [cart, shippingDetails]);
+
   if (!cart || cart.length === 0) return <CartEmptyState />;
 
-  const billing  = calcBilling(cart);
   const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
 
   const cartIds = new Set(cart.map((i) => i.id));

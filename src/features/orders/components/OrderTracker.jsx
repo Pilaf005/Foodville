@@ -126,6 +126,60 @@ export default function OrderTracker({ order }) {
         })}
       </ol>
 
+      {/* Courier details & Transit scans (if shipped) */}
+      {order.shipping?.awbCode && (
+        <div className="mt-6 border-t border-cardline/60 pt-5 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-cream/30 p-3.5 rounded-2xl border border-cardline/40">
+            <div>
+              <p className="text-[10px] font-bold text-muted uppercase tracking-wider">Delivery Partner</p>
+              <p className="text-xs font-black text-ink mt-0.5">{order.shipping.courierName || "Shiprocket Partner"}</p>
+            </div>
+            <div className="sm:text-right">
+              <p className="text-[10px] font-bold text-muted uppercase tracking-wider">AWB Tracking Number</p>
+              <p className="text-xs font-black text-ink mt-0.5">{order.shipping.awbCode}</p>
+            </div>
+          </div>
+
+          {/* Webhook Scan timelines */}
+          {(() => {
+            // Find all timeline logs that came from Shiprocket webhook updates
+            const webhookLogs = (order.timeline || [])
+              .filter((t) => t.note && t.note.includes("[Shiprocket"))
+              .map((t) => {
+                // Strip the internal technical prefixes (Webhook, Auto-Sync, Scan Sync)
+                const cleanNote = t.note.replace(/^\[Shiprocket (Webhook|Auto-Sync|Scan Sync)\]\s*/i, "");
+                return { ...t, cleanNote };
+              });
+
+            if (webhookLogs.length === 0) return null;
+
+            return (
+              <div className="space-y-3.5">
+                <h4 className="text-[10px] font-extrabold text-muted uppercase tracking-wider">Live Delivery Status Checkpoints</h4>
+                <div className="relative pl-5 border-l border-cardline/60 ml-2 space-y-4.5">
+                  {webhookLogs.map((log, idx) => (
+                    <div key={idx} className="relative">
+                      {/* Stepper Bullet */}
+                      <span className={`absolute -left-[26px] top-1 w-2.5 h-2.5 rounded-full border-2 bg-white ${
+                        idx === webhookLogs.length - 1 ? "border-olive ring-4 ring-olive/15" : "border-cardline"
+                      }`} />
+                      <div>
+                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1">
+                          <p className="text-xs font-bold text-ink leading-snug">{log.cleanNote}</p>
+                          <span className="text-[10px] text-muted whitespace-nowrap shrink-0 sm:pt-0.5">
+                            {formatWhen(log.at)}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      )}
+
       {order.status === "pending" && (
         <p className="mt-5 rounded-xl bg-amber-50 px-3 py-2 text-[11px] font-semibold text-amber-700">
           We&apos;re waiting for your payment to be confirmed. This usually takes a moment.

@@ -19,7 +19,7 @@ function ProductRowSection({ tab }) {
     <div className="border-0 sm:border border-cardline bg-transparent sm:bg-white rounded-none sm:rounded-2xl overflow-visible sm:overflow-hidden">
       <SectionHeader title={tab.label} viewAllHref={`/shop?tab=${tab.key}`} />
 
-      <div className="px-0 sm:px-4 pb-4">
+      <div className="px-0 sm:px-4 pt-6 sm:pt-8 pb-4">
         {isPending ? (
           <div className="flex md:grid gap-3.5 md:gap-3 md:grid-cols-4 lg:grid-cols-5 overflow-x-auto md:overflow-x-visible no-scrollbar mobile-bleed-scroll">
             {Array.from({ length: SHOP_BY_PREVIEW_COUNT }).map((_, i) => (

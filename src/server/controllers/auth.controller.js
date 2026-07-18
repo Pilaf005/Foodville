@@ -41,6 +41,17 @@ export function serializeUser(u) {
 
 export async function requestOtp(email) {
   const cleanEmail = String(email).trim().toLowerCase();
+  
+  // ── TEST ACCOUNT BYPASS FOR VERIFICATION TEAMS (RAZORPAY/APP STORES) ──────
+  if (cleanEmail === "test@foodvilleindia.com") {
+    return {
+      email,
+      isNewUser: false,
+      expiresInMinutes: env.otpExpMinutes,
+      resendInSeconds: env.otpResendCooldownSeconds,
+    };
+  }
+
   if (env.adminEmails.includes(cleanEmail)) {
     throw badRequest("Admin accounts cannot log in to the customer storefront. Please use the Admin Panel.");
   }
@@ -111,6 +122,26 @@ export async function requestOtp(email) {
 
 export async function verifyOtp(email, code) {
   const cleanEmail = String(email).trim().toLowerCase();
+  
+  // ── TEST ACCOUNT BYPASS FOR VERIFICATION TEAMS (RAZORPAY/APP STORES) ──────
+  if (cleanEmail === "test@foodvilleindia.com" && String(code).trim() === "123456") {
+    const user = await User.findOneAndUpdate(
+      { email: cleanEmail },
+      {
+        $set: {
+          status: "active",
+          isVerified: true,
+          lastLoginAt: new Date(),
+          role: "user",
+        },
+        $setOnInsert: { email: cleanEmail },
+      },
+      { new: true, upsert: true, setDefaultsOnInsert: true }
+    );
+    const token = await signAuthToken({ userId: user._id, email: user.email, role: user.role });
+    return { user: serializeUser(user), token };
+  }
+
   if (env.adminEmails.includes(cleanEmail)) {
     throw badRequest("Admin accounts cannot log in to the customer storefront. Please use the Admin Panel.");
   }

@@ -45,7 +45,9 @@ async function generateOrderId() {
  */
 export async function createOrder(userId, { addressId, address, paymentMethod }) {
   const cart = await Cart.findOne({ user: userId });
-  if (!cart || !cart.items.length) throw badRequest("Your cart is empty.");
+  if (!cart || !cart.items.length) {
+    throw badRequest("Your cart is empty.");
+  }
 
   // Resolve the delivery address (saved one, or an inline one from checkout).
   let snapshot = address;
@@ -86,6 +88,7 @@ export async function createOrder(userId, { addressId, address, paymentMethod })
     paymentMethod,
     paymentStatus: "pending",
     status: isCod ? "placed" : "pending",
+    isDraft: !isCod,
     timeline: isCod
       ? [{ status: "placed", at: new Date(), note: "Order placed (Cash on Delivery)" }]
       : [{ status: "pending", at: new Date(), note: "Awaiting payment" }],
@@ -210,12 +213,25 @@ export async function cancelOwnOrder(userId, orderId) {
 }
 
 export async function listOrders(userId) {
-  const docs = await Order.find({ user: userId }).sort({ placedAt: -1 }).lean();
+  const docs = await Order.find({
+    user: userId,
+    $or: [
+      { isDraft: { $ne: true } },
+      { isDraft: true, paymentMethod: "razorpay", paymentStatus: "pending" }
+    ]
+  }).sort({ placedAt: -1 }).lean();
   return docs.map(serializeOrder);
 }
 
 export async function getOrder(userId, orderId) {
-  const doc = await Order.findOne({ orderId, user: userId }).lean();
+  const doc = await Order.findOne({
+    orderId,
+    user: userId,
+    $or: [
+      { isDraft: { $ne: true } },
+      { isDraft: true, paymentMethod: "razorpay", paymentStatus: "pending" }
+    ]
+  }).lean();
   if (!doc) throw notFound("Order not found.");
   return serializeOrder(doc);
 }

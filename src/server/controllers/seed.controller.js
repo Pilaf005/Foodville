@@ -14,7 +14,7 @@ import { cacheClear } from "@/server/utils/cache";
 
 // The mock catalog carries a `reviews` array; this store has no reviews, so it
 // is dropped on the way in. `rating` is kept as a static catalog value.
-const toProductDoc = ({ id, reviews, ...rest }) => ({ numericId: id, ...rest });
+const toProductDoc = ({ id, reviews, ...rest }) => ({ numericId: id, isActive: true, ...rest });
 const toBlogDoc = ({ id, ...rest }) => ({ numericId: id, ...rest });
 const toCategoryDoc = (c, index) => {
   const home = HOME_CATEGORIES.find((h) => h.id === c.id);
@@ -24,6 +24,7 @@ const toCategoryDoc = (c, index) => {
     image: home?.image || "",
     bgColor: home?.bgColor || "bg-white",
     order: index,
+    isActive: true,
   };
 };
 

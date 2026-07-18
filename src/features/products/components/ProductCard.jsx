@@ -60,31 +60,6 @@ export default function ProductCard({ product }) {
 
         <h3 className="line-clamp-2 text-sm sm:text-base font-semibold text-ink leading-tight tracking-tight">{product.name}</h3>
         <p className="mt-0.5 mb-1.5 text-[11px] sm:text-xs font-normal text-muted leading-none">{product.unit}</p>
-
-        {product.comboIncludes && (
-          <div className="mb-2 mt-1 rounded-lg bg-cream/60 p-2 border border-cardline/60">
-            {product.comboType === "buy2get1" && (
-              <span className="inline-block mb-1 rounded-full bg-green-500 px-2 py-0.5 text-[8px] sm:text-[9px] font-black text-white leading-none">
-                🎁 Get 1 FREE
-              </span>
-            )}
-            <span className="text-[8px] sm:text-[9px] font-bold text-muted uppercase tracking-wider block">Combo Includes:</span>
-            <ul className="text-[8px] sm:text-[9px] text-ink font-semibold list-none space-y-0.5 mt-1">
-              {product.comboIncludes.map((item, idx) => {
-                const isObj  = typeof item === "object";
-                const label  = isObj ? `${item.name} ${item.qty}` : item;
-                const isFree = isObj && item.isFree;
-                return (
-                  <li key={idx} className="flex items-center gap-1 line-clamp-1">
-                    <span className="text-olive">•</span>
-                    <span className={isFree ? "text-green-600 font-black" : "text-ink"}>{label}</span>
-                    {isFree && <span className="rounded-full bg-green-100 text-green-700 px-1 text-[8px] font-black leading-none">FREE</span>}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
       </Link>
 
       {/* Price and action row */}

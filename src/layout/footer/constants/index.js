@@ -7,6 +7,7 @@ export const COMPANY_INFO = {
 export const INFORMATION_LINKS = [
   { label: "Home", href: "/" },
   { label: "Blogs", href: "/blogs" },
+  { label: "Franchise Opportunity", href: "/franchise" },
   { label: "My Wishlist", href: "/wishlist" },
   { label: "Why Choose Us", href: "/why-choose-us" },
 ];

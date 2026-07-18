@@ -25,7 +25,7 @@ export const env = {
 
   // Auth / JWT
   jwtSecret: process.env.JWT_SECRET || "",
-  jwtExpiresIn: process.env.JWT_EXPIRES_IN || "7d",
+  jwtExpiresIn: process.env.JWT_EXPIRES_IN || "2d",
   authCookieName: process.env.AUTH_COOKIE_NAME || "fv_token",
 
   // OTP
@@ -82,7 +82,8 @@ export const env = {
   shiprocket: {
     email: process.env.SHIPROCKET_EMAIL || "",
     password: process.env.SHIPROCKET_PASSWORD || "",
-    pickupLocationPincode: int(process.env.SHIPROCKET_PICKUP_POSTCODE, 122098),
+    pickupLocation: process.env.SHIPROCKET_PICKUP_LOCATION || "",
+    pickupPostcode: process.env.SHIPROCKET_PICKUP_POSTCODE || "122098",
   },
 
   // Commerce

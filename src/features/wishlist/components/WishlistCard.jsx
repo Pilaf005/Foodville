@@ -72,17 +72,6 @@ export default function WishlistCard({ product }) {
         {/* Name & unit */}
         <h3 className="line-clamp-1 text-sm font-bold text-ink">{product.name}</h3>
         <p className="mb-2 text-xs text-muted">{product.unit}</p>
-
-        {product.comboIncludes && (
-          <div className="mb-3 mt-1 rounded-xl bg-cream/60 p-2.5 border border-cardline/60">
-            <span className="text-[10px] font-bold text-muted uppercase tracking-wider block">Combo Includes:</span>
-            <ul className="text-[10px] text-ink font-medium list-disc list-inside space-y-0.5 mt-1">
-              {product.comboIncludes.map((item, idx) => (
-                <li key={idx} className="line-clamp-1 text-ink">{item}</li>
-              ))}
-            </ul>
-          </div>
-        )}
       </Link>
 
       {/* Price */}

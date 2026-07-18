@@ -64,20 +64,20 @@ export function CartProvider({ children }) {
 
   const [cart, setCart] = useState([]);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
   const mergedRef = useRef(false);
-  const hydratedRef = useRef(false);
 
   // 1. Hydrate the guest cart from localStorage on first mount.
   useEffect(() => {
     setCart(readGuestCart());
-    hydratedRef.current = true;
+    setIsHydrated(true);
   }, []);
 
   // 2. Persist guest changes (only while signed out).
   useEffect(() => {
-    if (!hydratedRef.current || isAuthenticated) return;
+    if (!isHydrated || isAuthenticated) return;
     writeGuestCart(cart);
-  }, [cart, isAuthenticated]);
+  }, [cart, isAuthenticated, isHydrated]);
 
   // 3. On login: merge the guest cart, then adopt the server cart.
   useEffect(() => {

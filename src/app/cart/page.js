@@ -27,7 +27,7 @@ function calcBilling(cart) {
   const totalSellingPrice = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
   const totalMrp          = cart.reduce((sum, item) => sum + item.qty * (item.mrp || item.price), 0);
   const totalSavings      = totalMrp - totalSellingPrice;
-  const deliveryCharge    = totalSellingPrice >= DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
+  const deliveryCharge    = cart.length > 0 ? DELIVERY_CHARGE : 0;
   const totalPayable      = totalSellingPrice + deliveryCharge;
   return { totalSellingPrice, totalMrp, totalSavings, deliveryCharge, totalPayable };
 }
@@ -127,11 +127,7 @@ function CartBillPanel({
 
         <div className="flex items-center justify-between text-gray-500">
           <span>Delivery charges</span>
-          {deliveryCharge === 0 ? (
-            <span className="text-green-600 font-bold">Free Delivery</span>
-          ) : (
-            <span className="font-bold text-gray-800">₹{formatMoney(baseDeliveryCharge)}</span>
-          )}
+          <span className="font-bold text-gray-800">₹{formatMoney(baseDeliveryCharge)}</span>
         </div>
 
         {codCharge > 0 && (
@@ -153,12 +149,6 @@ function CartBillPanel({
             <span>Total Savings</span>
             <span>- ₹{formatMoney(totalSavings)}</span>
           </div>
-        )}
-
-        {deliveryCharge > 0 && (
-          <p className="text-[10px] sm:text-[11px] text-amber-600 font-semibold bg-amber-50 rounded-xl px-3 py-2">
-            Add products worth ₹{DELIVERY_THRESHOLD - totalSellingPrice} more for Free Delivery!
-          </p>
         )}
       </div>
 
@@ -281,6 +271,8 @@ export default function CartPage() {
     setActiveAddress(addresses.find((a) => a.isDefault) || addresses[0]);
   }, [addresses, activeAddress]);
 
+  const cartDep = JSON.stringify(cart?.map((i) => ({ id: i.id, qty: i.qty })) || []);
+ 
   // Fetch dynamic Shiprocket shipping rates based on active address pincode and payment method
   useEffect(() => {
     if (!activeAddress?.pincode) {
@@ -298,7 +290,7 @@ export default function CartPage() {
         }
       })
       .catch((err) => console.error("Error fetching shipping rate:", err));
-  }, [activeAddress, selectedMethod]);
+  }, [activeAddress, selectedMethod, cartDep]);
 
   // Recommendations come from the catalog API.
   const { products: recommendationPool } = useProducts({ limit: 12, sort: "rating" });
@@ -306,7 +298,9 @@ export default function CartPage() {
   // Calculate order billing breakdown (memoized to follow Rules of Hooks)
   const billing = useMemo(() => {
     const baseBilling = calcBilling(cart || []);
-    if (shippingDetails !== null) {
+    const hasAddress = !!activeAddress?.pincode;
+ 
+    if (shippingDetails !== null && hasAddress) {
       const isFree = baseBilling.totalSellingPrice >= DELIVERY_THRESHOLD;
       const baseDeliveryCharge = isFree ? 0 : (shippingDetails.baseDeliveryCharge || 0);
       const codCharge = isFree ? 0 : (shippingDetails.codCharge || 0);
@@ -325,11 +319,13 @@ export default function CartPage() {
     }
     return {
       ...baseBilling,
-      baseDeliveryCharge: baseBilling.deliveryCharge,
+      deliveryCharge: 0,
+      baseDeliveryCharge: 0,
       codCharge: 0,
-      gst: 0
+      gst: 0,
+      totalPayable: baseBilling.totalSellingPrice
     };
-  }, [cart, shippingDetails]);
+  }, [cart, shippingDetails, activeAddress]);
 
   if (!cart || cart.length === 0) return <CartEmptyState />;
 

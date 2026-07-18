@@ -26,7 +26,7 @@ export const listProductsQuery = z
     minPrice: z.coerce.number().min(0).optional(),
     maxPrice: z.coerce.number().min(0).optional(),
     page: z.coerce.number().int().min(1).default(1),
-    limit: z.coerce.number().int().min(1).max(60).default(24),
+    limit: z.coerce.number().int().min(1).max(200).default(24),
   })
   .transform((q) => ({
     ...q,

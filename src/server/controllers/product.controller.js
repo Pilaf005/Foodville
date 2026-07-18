@@ -18,7 +18,12 @@ export async function listProducts(query) {
   const { category, shopBy, search, sort, topSellers, minPrice, maxPrice, page, limit } = query;
 
   const filter = { isActive: true };
-  if (category) filter.category = category;
+  if (category) {
+    filter.$or = [
+      { category },
+      { extraCategories: category }
+    ];
+  }
   if (shopBy) filter.shopBy = shopBy;
   if (topSellers) filter.rating = { $gte: 4.5 };
   if (minPrice != null || maxPrice != null) {

@@ -37,12 +37,12 @@ export async function verifyAuthToken(token) {
   return { userId: payload.sub, email: payload.email, role: payload.role };
 }
 
-/** Cookie options — httpOnly + Secure in production + SameSite=Lax. */
+/** Cookie options — httpOnly + Secure in production + SameSite=Strict (CSRF protection). */
 export function authCookieOptions() {
   return {
     httpOnly: true,
     secure: env.isProd,
-    sameSite: "lax",
+    sameSite: "strict",
     path: "/",
     maxAge: expiresInSeconds(),
   };

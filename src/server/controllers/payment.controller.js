@@ -99,6 +99,8 @@ async function markPaid(order, { razorpayPaymentId, signature, method, source })
 
   order.paymentStatus = "paid";
   order.status = "placed";
+  order.isDraft = false;
+  order.placedAt = new Date();
   order.razorpay = {
     ...(order.razorpay || {}),
     paymentId: razorpayPaymentId,

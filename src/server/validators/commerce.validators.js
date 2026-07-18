@@ -3,14 +3,14 @@ import { z } from "zod";
 // Amazon-style address, India only (no country field, no map coordinates).
 export const addressSchema = z.object({
   label: z.enum(["Home", "Work", "Hotel", "Other"]).default("Home"),
-  receiverName: z.string().trim().min(2, "Enter the full name (first and last)."),
-  phone: z.string().trim().regex(/^\d{10}$/, "Enter a valid 10-digit mobile number."),
+  receiverName: z.string().trim().min(2, "Enter the full name (first and last).").max(100, "Name is too long."),
+  phone: z.string().trim().regex(/^[6-9]\d{9}$/, "Enter a valid 10-digit Indian mobile number."),
   pincode: z.string().trim().regex(/^\d{6}$/, "Enter a valid 6-digit PIN code."),
-  houseFlat: z.string().trim().min(1, "Flat / house no. / building is required."),
-  area: z.string().trim().min(1, "Area / street / sector / village is required."),
-  landmark: z.string().trim().default(""),
-  city: z.string().trim().min(1, "Town/City is required."),
-  state: z.string().trim().min(1, "Choose a state."),
+  houseFlat: z.string().trim().min(1, "Flat / house no. / building is required.").max(200, "Too long."),
+  area: z.string().trim().min(1, "Area / street / sector / village is required.").max(200, "Too long."),
+  landmark: z.string().trim().max(200, "Too long.").default(""),
+  city: z.string().trim().min(1, "Town/City is required.").max(100, "Too long."),
+  state: z.string().trim().min(1, "Choose a state.").max(100, "Too long."),
   isDefault: z.boolean().optional(),
 });
 
@@ -36,10 +36,23 @@ export const verifyPaymentSchema = z.object({
 });
 
 export const updateProfileSchema = z.object({
-  fullName: z.string().trim().max(80).optional(),
-  phone: z.string().trim().regex(/^\d{10}$/, "Enter a valid 10-digit mobile number.").or(z.literal("")).optional(),
+  fullName: z.string().trim().max(100, "Name is too long.").optional(),
+  phone: z
+    .string()
+    .trim()
+    .regex(/^[6-9]\d{9}$/, "Enter a valid 10-digit Indian mobile number.")
+    .or(z.literal(""))
+    .optional(),
   gender: z.enum(["male", "female", "other", "prefer_not_to_say"]).optional(),
-  dateOfBirth: z.string().trim().optional(),
-  language: z.string().trim().optional(),
-  avatarUrl: z.string().trim().url().or(z.string().trim().startsWith("/")).or(z.literal("")).optional(),
+  dateOfBirth: z.string().trim().max(20).optional(),
+  language: z.string().trim().max(10).optional(),
+  avatarUrl: z
+    .string()
+    .trim()
+    .max(500, "URL is too long.")
+    .url()
+    .or(z.string().trim().startsWith("/"))
+    .or(z.literal(""))
+    .optional(),
 });
+

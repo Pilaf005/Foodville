@@ -3,6 +3,7 @@
  * recomputed from the catalog so the bill can't be tampered with client-side.
  */
 import Cart from "@/server/models/Cart";
+import Product from "@/server/models/Product";
 import { priceItems } from "@/server/services/pricing.service";
 import { env } from "@/server/config/env";
 
@@ -16,6 +17,48 @@ async function getOrCreate(userId) {
 /** Cart with fresh prices + the bill. Empty carts return a zeroed bill. */
 export async function getCart(userId) {
   const cart = await getOrCreate(userId);
+  if (!cart.items.length) {
+    return {
+      items: [],
+      amounts: { subtotal: 0, savings: 0, deliveryCharge: 0, total: 0 },
+      freeDeliveryThreshold: env.freeDeliveryThreshold,
+    };
+  }
+
+  // Pre-validate items to prevent priceItems from throwing due to deleted/inactive/out-of-stock items
+  const ids = [...new Set(cart.items.map((i) => Number(i.productId)))];
+  const products = await Product.find({ numericId: { $in: ids }, isActive: true }).lean();
+  const activeIds = new Set(products.map((p) => p.numericId));
+  const productStockMap = new Map(products.map((p) => [p.numericId, p.stock]));
+  
+  let cartChanged = false;
+  const validItems = [];
+ 
+  for (const item of cart.items) {
+    const pid = Number(item.productId);
+    if (!activeIds.has(pid)) {
+      cartChanged = true;
+      continue;
+    }
+    const stock = productStockMap.get(pid);
+    if (stock != null) {
+      if (stock <= 0) {
+        cartChanged = true;
+        continue;
+      }
+      if (item.qty > stock) {
+        item.qty = stock;
+        cartChanged = true;
+      }
+    }
+    validItems.push(item);
+  }
+ 
+  if (cartChanged) {
+    cart.items = validItems;
+    await cart.save();
+  }
+ 
   if (!cart.items.length) {
     return {
       items: [],

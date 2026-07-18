@@ -96,7 +96,7 @@ export async function cancelShiprocketOrder(shiprocketOrderId) {
  * Calculates shipping rate for a package between pickup postcode and delivery postcode.
  */
 export async function getShippingRate({ deliveryPincode, weight, isCod }) {
-  const pickupPincode = env.shiprocket?.pickupLocationPincode || 122098;
+  const pickupPincode = env.shiprocket?.pickupPostcode || 122098;
   const codVal = isCod ? 1 : 0;
   
   console.log(`[Shiprocket Rate] Calculating rate from ${pickupPincode} to ${deliveryPincode} (weight: ${weight}kg, cod: ${codVal})`);
@@ -123,15 +123,16 @@ export async function getShippingRate({ deliveryPincode, weight, isCod }) {
     
     if (!cheapestCourier) return null;
 
-    const freightCharge = Number(cheapestCourier.freight_charge || cheapestCourier.rate || 0);
+    const totalRate = Number(cheapestCourier.rate || cheapestCourier.total_charges || cheapestCourier.freight_charge || 0);
     const codCharges = isCod ? Number(cheapestCourier.cod_charges || 0) : 0;
-    const baseTotal = freightCharge + codCharges;
-    
-    const gst = Math.round(baseTotal * 0.18 * 100) / 100;
-    const deliveryCharge = Math.round(baseTotal * 1.18 * 100) / 100;
-
+ 
+    // Shiprocket total rate is already tax-inclusive. Let's reverse-calculate base rate and GST.
+    const deliveryCharge = Math.round(totalRate * 100) / 100;
+    const baseDeliveryCharge = Math.round((deliveryCharge / 1.18) * 100) / 100;
+    const gst = Math.round((deliveryCharge - baseDeliveryCharge) * 100) / 100;
+ 
     return {
-      baseDeliveryCharge: Math.round(freightCharge * 100) / 100,
+      baseDeliveryCharge,
       codCharge: Math.round(codCharges * 100) / 100,
       gst,
       deliveryCharge

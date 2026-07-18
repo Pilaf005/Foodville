@@ -1,5 +1,5 @@
 import { ok, withRoute } from "@/server/utils/apiResponse";
-import { forbidden } from "@/server/utils/apiError";
+import { notFound } from "@/server/utils/apiError";
 import { env } from "@/server/config/env";
 import { seedCatalog } from "@/server/controllers/seed.controller";
 
@@ -8,15 +8,14 @@ export const dynamic = "force-dynamic";
 
 /**
  * POST /api/dev/seed — (re)seed the catalog from src/data/*.
- * Open in development; in production it requires the x-seed-secret header
- * to match SEED_SECRET (and is a no-op otherwise). Wipes + re-inserts.
+ * ONLY available in local development. In production this route does not exist
+ * (returns 404) regardless of any secret header — eliminating the risk of an
+ * accidental catalog wipe on the live database.
  */
 export const POST = withRoute(async (req) => {
+  // Hard-block in production — the route behaves as if it doesn't exist.
   if (env.isProd) {
-    const secret = process.env.SEED_SECRET;
-    if (!secret || req.headers.get("x-seed-secret") !== secret) {
-      throw forbidden("Seeding is disabled in production unless x-seed-secret matches SEED_SECRET.");
-    }
+    throw notFound("Not found.");
   }
   const result = await seedCatalog();
   return ok({ seeded: true, ...result });

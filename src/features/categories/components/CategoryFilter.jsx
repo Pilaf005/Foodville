@@ -10,11 +10,16 @@ export default function CategoryFilter({ active }) {
 
   if (isPending) return <CategoryFilterSkeleton />;
 
+  const categoriesList = [
+    { id: "all", name: "All Products", image: "/images/category_all.png" },
+    ...categories
+  ];
+
   return (
     <div className="w-full max-w-6xl mx-auto px-0 sm:px-0 py-0 sm:py-2 -mt-3 sm:mt-0">
       {/* Horizontal scroll on mobile (full screen width), grid on desktop */}
       <div className="flex sm:grid gap-x-2.5 gap-y-6 sm:grid-cols-8 overflow-x-auto sm:overflow-x-visible no-scrollbar mobile-bleed-scroll py-2 sm:py-0 snap-x snap-mandatory">
-        {categories.map((item) => {
+        {categoriesList.map((item) => {
           const isActive = active === item.id;
           return (
             <button

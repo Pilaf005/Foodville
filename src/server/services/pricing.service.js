@@ -80,13 +80,13 @@ export async function priceItems(rawItems, { pincode = null, paymentMethod = "ra
   const mrpTotal = items.reduce((sum, i) => sum + (i.mrp ?? i.price) * i.qty, 0);
   const savings = Math.max(0, mrpTotal - subtotal);
 
-  let baseDeliveryCharge = subtotal >= env.freeDeliveryThreshold ? 0 : env.deliveryCharge;
+  let baseDeliveryCharge = env.deliveryCharge;
   let codCharge = 0;
   let gst = 0;
   let deliveryCharge = baseDeliveryCharge;
 
   // If pincode is provided, calculate dynamic Shiprocket rate as delivery charge
-  if (pincode && subtotal < env.freeDeliveryThreshold) {
+  if (pincode) {
     const weight = estimateCartWeight(items);
     const isCod = paymentMethod === "cod";
     const srRate = await getShippingRate({

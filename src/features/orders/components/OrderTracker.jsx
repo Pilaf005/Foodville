@@ -126,8 +126,29 @@ export default function OrderTracker({ order }) {
         })}
       </ol>
 
-      {/* Courier details & Transit scans (if shipped) */}
-      {order.shipping?.awbCode && (
+      {/* Local delivery details */}
+      {order.shipping?.deliveryMethod === "local" && (
+        <div className="mt-6 border-t border-cardline/60 pt-5 space-y-4 animate-fade-in">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-[#6B7F59]/5 p-3.5 rounded-2xl border border-[#6B7F59]/10">
+            <div>
+              <p className="text-[10px] font-bold text-[#6B7F59] uppercase tracking-wider">Delivery Method</p>
+              <p className="text-xs font-black text-ink mt-0.5">Local Hand Delivery</p>
+            </div>
+            {order.shipping?.localDelivery?.deliveryBoyName && (
+              <div className="sm:text-right">
+                <p className="text-[10px] font-bold text-muted uppercase tracking-wider">Delivery Executive</p>
+                <p className="text-xs font-black text-ink mt-0.5">
+                  {order.shipping.localDelivery.deliveryBoyName}
+                  {order.shipping.localDelivery.deliveryBoyPhone ? ` (${order.shipping.localDelivery.deliveryBoyPhone})` : ""}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+ 
+      {/* Courier details & Transit scans (if shipped via Shiprocket) */}
+      {order.shipping?.deliveryMethod !== "local" && order.shipping?.awbCode && (
         <div className="mt-6 border-t border-cardline/60 pt-5 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-cream/30 p-3.5 rounded-2xl border border-cardline/40">
             <div>

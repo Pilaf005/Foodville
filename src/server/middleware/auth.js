@@ -8,12 +8,13 @@
 import { verifyAuthToken, AUTH_COOKIE } from "@/server/services/token.service";
 import { unauthorized, forbidden } from "@/server/utils/apiError";
 
-/** Returns { userId, email, role } or null. Never throws. */
 export async function getAuth(req) {
   const token = req.cookies?.get?.(AUTH_COOKIE)?.value;
   if (!token) return null;
   try {
-    return await verifyAuthToken(token);
+    const auth = await verifyAuthToken(token);
+    if (auth?.role === "admin") return null; // block admins on storefront
+    return auth;
   } catch {
     return null;
   }

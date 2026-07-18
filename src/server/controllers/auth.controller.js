@@ -40,14 +40,19 @@ export function serializeUser(u) {
 }
 
 export async function requestOtp(email) {
+  const cleanEmail = String(email).trim().toLowerCase();
+  if (env.adminEmails.includes(cleanEmail)) {
+    throw badRequest("Admin accounts cannot log in to the customer storefront. Please use the Admin Panel.");
+  }
+
   const now = new Date();
 
   // ── LEAD CAPTURE ──────────────────────────────────────────────────────────
   // Create/record the user the instant they submit their email, before any
   // verification. If they close the tab now, we still have them as "pending".
   const user = await User.findOneAndUpdate(
-    { email },
-    { $setOnInsert: { email, status: "pending" }, $set: { otpRequestedAt: now } },
+    { email: cleanEmail },
+    { $setOnInsert: { email: cleanEmail, status: "pending" }, $set: { otpRequestedAt: now } },
     { upsert: true, new: true, setDefaultsOnInsert: true }
   );
 
@@ -98,15 +103,21 @@ export async function requestOtp(email) {
     isNewUser: user.status === "pending",
     expiresInMinutes: env.otpExpMinutes,
     resendInSeconds: env.otpResendCooldownSeconds,
-    // Never leak the code in production — dev/console mode only.
-    ...(delivery?.dev && !env.isProd ? { devCode: code } : {}),
+    // Never leak the code in production — only in local dev with explicit opt-in.
+    // Set ENABLE_DEV_OTP=true in .env.local only. Never set this on any server.
+    ...(delivery?.dev && !env.isProd && process.env.ENABLE_DEV_OTP === "true" ? { devCode: code } : {}),
   };
 }
 
 export async function verifyOtp(email, code) {
+  const cleanEmail = String(email).trim().toLowerCase();
+  if (env.adminEmails.includes(cleanEmail)) {
+    throw badRequest("Admin accounts cannot log in to the customer storefront. Please use the Admin Panel.");
+  }
+
   const now = new Date();
 
-  const otp = await Otp.findOne({ email, consumed: false, expiresAt: { $gt: now } }).sort({ createdAt: -1 });
+  const otp = await Otp.findOne({ email: cleanEmail, consumed: false, expiresAt: { $gt: now } }).sort({ createdAt: -1 });
   if (!otp) throw badRequest("Your code has expired. Please request a new one.");
 
   if (otp.attempts >= env.otpMaxAttempts) {
@@ -150,6 +161,8 @@ export async function verifyOtp(email, code) {
 
 export async function getMe(userId) {
   const user = await User.findById(userId).lean();
-  if (!user) throw unauthorized("Your session has expired. Please sign in again.");
+  if (!user || user.role === "admin") {
+    throw unauthorized("Your session has expired. Please sign in again.");
+  }
   return serializeUser(user);
 }

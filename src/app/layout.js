@@ -12,6 +12,13 @@ export const metadata = {
   title: "Foodville — Powders, Seeds & Dry Fruits",
   description:
     "Shop premium spice powders, seeds, dry fruits and herbal wellness products.",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {

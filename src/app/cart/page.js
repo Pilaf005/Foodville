@@ -115,6 +115,37 @@ function CartBillPanel({
     <div className="bg-white rounded-2xl sm:rounded-3xl border border-cardline/60 p-4 sm:p-6 shadow-[0_8px_30px_rgb(0,0,0,0.02)] space-y-4 sm:space-y-5">
       <h3 className="text-sm sm:text-base font-bold text-gray-900 border-b border-gray-100 pb-2.5 sm:pb-3">Bill details</h3>
 
+      {/* Free delivery progress banner */}
+      {(() => {
+        const amountLeft = DELIVERY_THRESHOLD - totalSellingPrice;
+        const isEligible = totalSellingPrice > DELIVERY_THRESHOLD;
+        const progressPct = Math.min(100, (totalSellingPrice / DELIVERY_THRESHOLD) * 100);
+        if (isEligible) {
+          return (
+            <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2.5 text-xs font-semibold text-emerald-700">
+              <span className="text-base">🎉</span>
+              <span>You've unlocked <strong>FREE delivery</strong> on this order!</span>
+            </div>
+          );
+        }
+        return (
+          <div className="bg-amber-50 border border-amber-200 rounded-xl px-3 py-2.5 space-y-1.5">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-amber-800">
+              <span className="text-sm">🚚</span>
+              <span>
+                Add <strong className="text-amber-900">₹{formatMoney(amountLeft)}</strong> more for <strong className="text-emerald-700">FREE delivery!</strong>
+              </span>
+            </div>
+            <div className="w-full h-1.5 bg-amber-200 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-amber-400 to-emerald-500 rounded-full transition-all duration-500"
+                style={{ width: `${progressPct}%` }}
+              />
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Price breakdown */}
       <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm">
         <div className="flex items-center justify-between text-gray-500">
@@ -127,7 +158,9 @@ function CartBillPanel({
 
         <div className="flex items-center justify-between text-gray-500">
           <span>Delivery charges</span>
-          <span className="font-bold text-gray-800">₹{formatMoney(baseDeliveryCharge)}</span>
+          <span className="font-bold text-gray-800">
+            {baseDeliveryCharge > 0 ? `₹${formatMoney(baseDeliveryCharge)}` : <span className="text-emerald-600 font-extrabold uppercase">FREE</span>}
+          </span>
         </div>
 
         {codCharge > 0 && (
@@ -301,7 +334,8 @@ export default function CartPage() {
     const hasAddress = !!activeAddress?.pincode;
  
     if (shippingDetails !== null && hasAddress) {
-      const isFree = baseBilling.totalSellingPrice >= DELIVERY_THRESHOLD;
+      // Free delivery if subtotal is strictly MORE than ₹499
+      const isFree = baseBilling.totalSellingPrice > DELIVERY_THRESHOLD;
       const baseDeliveryCharge = isFree ? 0 : (shippingDetails.baseDeliveryCharge || 0);
       const codCharge = isFree ? 0 : (shippingDetails.codCharge || 0);
       const gst = isFree ? 0 : (shippingDetails.gst || 0);
@@ -317,13 +351,17 @@ export default function CartPage() {
         totalPayable 
       };
     }
+    // No address selected yet (guest or logged-in without address):
+    // Still apply free delivery threshold so the correct preview is shown.
+    const isFreeGuest = baseBilling.totalSellingPrice > DELIVERY_THRESHOLD;
+    const guestDelivery = isFreeGuest ? 0 : DELIVERY_CHARGE;
     return {
       ...baseBilling,
-      deliveryCharge: 0,
-      baseDeliveryCharge: 0,
+      deliveryCharge: guestDelivery,
+      baseDeliveryCharge: guestDelivery,
       codCharge: 0,
       gst: 0,
-      totalPayable: baseBilling.totalSellingPrice
+      totalPayable: baseBilling.totalSellingPrice + guestDelivery
     };
   }, [cart, shippingDetails, activeAddress]);
 

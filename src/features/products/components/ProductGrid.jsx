@@ -1,9 +1,9 @@
 "use client";
  
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import ProductCard from "./ProductCard";
  
-// Fisher-Yates Shuffle Algorithm to randomly order products
+// Fisher-Yates Shuffle — runs during render, not after paint (no flash)
 function shuffleArray(array) {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
@@ -14,15 +14,12 @@ function shuffleArray(array) {
 }
  
 export default function ProductGrid({ products }) {
-  const [displayProducts, setDisplayProducts] = useState(products || []);
- 
-  useEffect(() => {
-    if (products && products.length > 0) {
-      setDisplayProducts(shuffleArray(products));
-    } else {
-      setDisplayProducts([]);
-    }
-  }, [products]);
+  // useMemo: shuffle is computed synchronously during render.
+  // No second render cycle → no visible flash when switching categories.
+  const displayProducts = useMemo(
+    () => (products && products.length > 0 ? shuffleArray(products) : []),
+    [products]
+  );
  
   if (!products || products.length === 0) {
     return (

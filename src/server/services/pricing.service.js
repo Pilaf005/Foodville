@@ -102,6 +102,14 @@ export async function priceItems(rawItems, { pincode = null, paymentMethod = "ra
     }
   }
 
+  // Free delivery threshold: if order subtotal is > 499, delivery is 100% FREE!
+  if (subtotal > 499) {
+    baseDeliveryCharge = 0;
+    codCharge = 0;
+    gst = 0;
+    deliveryCharge = 0;
+  }
+
   const total = subtotal + deliveryCharge;
 
   return {

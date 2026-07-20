@@ -1,30 +1,78 @@
 "use client";
 
+import { useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useCategories } from "@/features/categories/hooks/useCategories";
 import { CategoryFilterSkeleton } from "@/components/feedback/Skeleton";
+
+const SCROLL_KEY = "categoryFilter_scrollLeft";
 
 export default function CategoryFilter({ active }) {
   const router = useRouter();
   const { categories, isPending } = useCategories();
 
+  const scrollRef = useRef(null);       // ref on the scroll container
+  const activeRef = useRef(null);        // ref on the active button
+  const didRestoreRef = useRef(false);   // guard: only restore once per mount
+
+  // ── On mount: restore saved scroll position OR scroll active item into view ──
+  // useLayoutEffect fires BEFORE the browser paints → no visible flash at position 0
+  useLayoutEffect(() => {
+    if (didRestoreRef.current) return;
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const saved = sessionStorage.getItem(SCROLL_KEY);
+
+    if (saved !== null) {
+      // Restore the exact scroll position the user was at before navigation
+      container.scrollLeft = Number(saved);
+      sessionStorage.removeItem(SCROLL_KEY); // clear after restoring
+      didRestoreRef.current = true;
+    } else if (activeRef.current) {
+      // No saved position — scroll the active category button into center view
+      activeRef.current.scrollIntoView({
+        behavior: "instant",
+        block: "nearest",
+        inline: "center",
+      });
+      didRestoreRef.current = true;
+    }
+  }, [categories]); // re-run once categories are loaded
+
+  // ── Navigate: save scroll position then push to new category page ──
+  const handleCategoryClick = useCallback(
+    (categoryId) => {
+      const container = scrollRef.current;
+      if (container) {
+        sessionStorage.setItem(SCROLL_KEY, String(container.scrollLeft));
+      }
+      router.push(`/category/${categoryId}`);
+    },
+    [router]
+  );
+
   if (isPending) return <CategoryFilterSkeleton />;
 
   const categoriesList = [
     { id: "all", name: "All Products", image: "/images/category_all.png" },
-    ...categories
+    ...categories,
   ];
 
   return (
     <div className="w-full max-w-6xl mx-auto px-0 sm:px-0 py-0 sm:py-2 -mt-3 sm:mt-0">
       {/* Horizontal scroll on mobile (full screen width), grid on desktop */}
-      <div className="flex sm:grid gap-x-2.5 gap-y-6 sm:grid-cols-8 overflow-x-auto sm:overflow-x-visible no-scrollbar mobile-bleed-scroll py-2 sm:py-0 snap-x snap-mandatory">
+      <div
+        ref={scrollRef}
+        className="flex sm:grid gap-x-2.5 gap-y-6 sm:grid-cols-8 overflow-x-auto sm:overflow-x-visible no-scrollbar mobile-bleed-scroll py-2 sm:py-0 snap-x snap-mandatory"
+      >
         {categoriesList.map((item) => {
           const isActive = active === item.id;
           return (
             <button
               key={item.id}
-              onClick={() => router.push(`/category/${item.id}`)}
+              ref={isActive ? activeRef : null}
+              onClick={() => handleCategoryClick(item.id)}
               className="flex flex-col items-center gap-1.5 group focus:outline-none select-none transition cursor-pointer w-[62px] sm:w-auto shrink-0 sm:shrink snap-start animate-fadeIn"
             >
               {/* Rounded Square with visible active border */}

@@ -66,6 +66,12 @@ function resolveProductImages(product) {
   return product.images?.length > 0 ? product.images : [product.image];
 }
 
+function resolveProductVideos(product) {
+  if (product.videos?.length > 0) return product.videos;
+  if (product.video) return [product.video];
+  return [];
+}
+
 export default function ProductDetailPage({ params: paramsPromise }) {
   const { slug } = use(paramsPromise);
   const { product, isPending, isError } = useProduct(slug);
@@ -74,13 +80,14 @@ export default function ProductDetailPage({ params: paramsPromise }) {
   if (isError || !product) return <ProductNotFoundState />;
 
   const productImages = resolveProductImages(product);
+  const productVideos = resolveProductVideos(product);
 
   return (
     <div className="space-y-12 pb-[20px]">
       <ProductBreadcrumb product={product} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
-        <div className="min-w-0 w-full"><ProductGallery images={productImages} name={product.name} /></div>
+        <div className="min-w-0 w-full"><ProductGallery images={productImages} videos={productVideos} name={product.name} /></div>
         <div className="min-w-0 w-full"><ProductInfo product={product} /></div>
       </div>
 

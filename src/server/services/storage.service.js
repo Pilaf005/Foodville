@@ -30,12 +30,20 @@ import { AppError, badRequest } from "@/server/utils/apiError";
 
 export const MEDIA_ROOT = "media";
 export const MAX_IMAGE_BYTES = 4 * 1024 * 1024; // 4MB
+export const MAX_VIDEO_BYTES = 100 * 1024 * 1024; // 100MB
 
 export const ALLOWED_IMAGE_TYPES = {
   "image/jpeg": "jpg",
   "image/png": "png",
   "image/webp": "webp",
   "image/avif": "avif",
+};
+
+export const ALLOWED_VIDEO_TYPES = {
+  "video/mp4": "mp4",
+  "video/webm": "webm",
+  "video/quicktime": "mov",
+  "video/x-matroska": "mkv",
 };
 
 /** Upload targets a client may request. Anything else is rejected. */
@@ -112,6 +120,35 @@ export function validateImage(buffer, declaredType) {
   return { buffer, contentType: sniffed, ext: ALLOWED_IMAGE_TYPES[sniffed] };
 }
 
+/** Sniff the real video container type from the file's leading bytes. */
+function sniffVideoType(buf) {
+  if (buf.length < 12) return null;
+  if (buf[0] === 0x1a && buf[1] === 0x45 && buf[2] === 0xdf && buf[3] === 0xa3) return "video/webm";
+  const ftyp = buf.toString("ascii", 4, 8);
+  if (ftyp === "ftyp") {
+    const brand = buf.toString("ascii", 8, 12);
+    if (brand.startsWith("qt")) return "video/quicktime";
+    return "video/mp4";
+  }
+  return null;
+}
+
+/**
+ * Validate an uploaded video. Throws if missing, oversized, or unsupported format.
+ */
+export function validateVideo(buffer, declaredType) {
+  if (!buffer?.length) throw badRequest("The uploaded file is empty.");
+  if (buffer.length > MAX_VIDEO_BYTES) {
+    throw badRequest(`Video is too large. Maximum size is ${MAX_VIDEO_BYTES / (1024 * 1024)}MB.`);
+  }
+
+  const sniffed = sniffVideoType(buffer);
+  const type = sniffed || (declaredType && ALLOWED_VIDEO_TYPES[declaredType] ? declaredType : "video/mp4");
+  const ext = ALLOWED_VIDEO_TYPES[type] || "mp4";
+
+  return { buffer, contentType: type, ext };
+}
+
 /**
  * Build a readable, collision-free object key.
  * `users` uses a FIXED name so a new avatar overwrites the same location.
@@ -183,6 +220,23 @@ export async function uploadImage({ buffer, declaredType, folder, ownerId, repla
   }
 
   return result;
+}
+
+/**
+ * Validate + store media (images or videos up to 100MB).
+ */
+export async function uploadMedia({ buffer, declaredType, folder, ownerId, replaceUrl }) {
+  if (declaredType && (declaredType.startsWith("video/") || ALLOWED_VIDEO_TYPES[declaredType])) {
+    const { buffer: safe, contentType, ext } = validateVideo(buffer, declaredType);
+    const key = buildKey({ folder, ownerId, ext });
+    const result = await putObject({ key, buffer: safe, contentType });
+    if (replaceUrl) {
+      const oldKey = keyFromUrl(replaceUrl);
+      if (oldKey && oldKey !== key) await deleteObject(oldKey).catch(() => {});
+    }
+    return result;
+  }
+  return uploadImage({ buffer, declaredType, folder, ownerId, replaceUrl });
 }
 
 export async function deleteObject(key) {

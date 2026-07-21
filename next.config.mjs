@@ -16,7 +16,9 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://*.r2.dev https://pub-*.r2.dev https://images.unsplash.com https://plus.unsplash.com",
-      "connect-src 'self' https://nominatim.openstreetmap.org",
+      "connect-src 'self' https://nominatim.openstreetmap.org https://*.r2.dev https://pub-*.r2.dev",
+      // media-src allows <video> and <audio> to load from R2 CDN (required for product video playback)
+      "media-src 'self' https://*.r2.dev https://pub-*.r2.dev",
       "frame-src https://api.razorpay.com https://checkout.razorpay.com",
       "object-src 'none'",
       "base-uri 'self'",

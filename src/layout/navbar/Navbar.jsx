@@ -59,7 +59,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-30 border-b border-cardline bg-cream/95 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-cardline bg-cream/95 backdrop-blur">
         <div className="hidden md:block">
           <DesktopNavigation onLocationClick={handleLocationClick} activeAddress={activeAddress} />
         </div>

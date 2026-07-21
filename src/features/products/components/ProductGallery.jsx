@@ -73,9 +73,9 @@ export default function ProductGallery({ images = [], videos = [], name = "" }) 
         onDoubleClick={handleDoubleTap}
         className={`relative w-full h-[350px] sm:h-[450px] md:h-[500px] lg:h-[550px] rounded-3xl border border-cardline ${
           isVideo ? "bg-black" : "bg-cream cursor-zoom-in"
-        } shadow-sm overflow-hidden`}
+        } shadow-sm`}
       >
-        <div className="absolute inset-0 rounded-3xl overflow-hidden flex items-center justify-center">
+        <div className="absolute inset-0 rounded-3xl overflow-hidden flex items-center justify-center pointer-events-none">
           {isVideo ? (
             /* Product Video Player — H.264 MP4 guaranteed via admin-side FFmpeg transcoding */
             <div className="relative z-20 h-full w-full flex items-center justify-center bg-black">
@@ -118,23 +118,22 @@ export default function ProductGallery({ images = [], videos = [], name = "" }) 
           {/* Tracking lens overlay for image zoom */}
           {!isVideo && isHovered && (
             <div
-              className="absolute border-2 border-olive/35 bg-olive/10 pointer-events-none hidden md:block rounded-2xl shadow-sm"
+              className="absolute border-2 border-olive/35 bg-olive/10 pointer-events-none hidden md:block rounded-2xl shadow-sm z-20"
               style={{ width: "40%", height: "40%", left: `${zoomPos.boundedX - 20}%`, top: `${zoomPos.boundedY - 20}%` }}
             />
           )}
 
           {/* Image Zoom Instructions */}
           {!isVideo && !isHovered && !mobileZoom && (
-            <div className="absolute bottom-3 left-3 bg-black/60 text-[10px] font-bold text-white px-2 py-1 rounded-lg pointer-events-none backdrop-blur-sm sm:block hidden z-20">
+            <div className="absolute bottom-3 left-3 bg-black/60 text-[10px] font-bold text-white px-2.5 py-1 rounded-lg pointer-events-none backdrop-blur-sm sm:block hidden z-20">
               🔍 Hover to zoom
             </div>
           )}
           {!isVideo && !isHovered && (
-            <div className="absolute bottom-3 left-3 bg-black/60 text-[10px] font-bold text-white px-2 py-1 rounded-lg pointer-events-none backdrop-blur-sm sm:hidden block z-20">
+            <div className="absolute bottom-3 left-3 bg-black/60 text-[10px] font-bold text-white px-2.5 py-1 rounded-lg pointer-events-none backdrop-blur-sm sm:hidden block z-20">
               📱 Double-tap to zoom
             </div>
           )}
-
 
           {/* Prev / Next Arrows */}
           {!mobileZoom && mediaList.length > 1 && (
@@ -144,7 +143,7 @@ export default function ProductGallery({ images = [], videos = [], name = "" }) 
                 onClick={prev}
                 onMouseMove={(e) => e.stopPropagation()}
                 onMouseEnter={() => setIsHovered(false)}
-                className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-white/90 shadow flex items-center justify-center text-ink hover:bg-white transition z-30 cursor-pointer"
+                className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-white/90 shadow flex items-center justify-center text-ink hover:bg-white transition z-30 cursor-pointer pointer-events-auto"
                 aria-label="Previous item"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m15 18-6-6 6-6"/></svg>
@@ -154,7 +153,7 @@ export default function ProductGallery({ images = [], videos = [], name = "" }) 
                 onClick={next}
                 onMouseMove={(e) => e.stopPropagation()}
                 onMouseEnter={() => setIsHovered(false)}
-                className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-white/90 shadow flex items-center justify-center text-ink hover:bg-white transition z-30 cursor-pointer"
+                className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-white/90 shadow flex items-center justify-center text-ink hover:bg-white transition z-30 cursor-pointer pointer-events-auto"
                 aria-label="Next item"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m9 18 6-6-6-6"/></svg>

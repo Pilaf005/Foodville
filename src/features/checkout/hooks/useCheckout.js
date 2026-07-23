@@ -119,7 +119,7 @@ export function useCheckout() {
   );
 
   const placeOrder = useCallback(
-    async ({ addressId, address, paymentMethod, user }) => {
+    async ({ addressId, address, paymentMethod, couponCode, user }) => {
       setIsPlacing(true);
       try {
         if (!cart.length) {
@@ -127,10 +127,7 @@ export function useCheckout() {
           throw new Error("empty cart");
         }
 
-        // 0. Sync the ON-SCREEN cart to the server first. This closes the gap
-        //    where an earlier add-to-cart call failed silently and the server
-        //    cart was empty — which used to abort checkout with a confusing
-        //    "cart is empty" error before Razorpay could even open.
+        // 0. Sync the ON-SCREEN cart to the server first.
         await cartService.replace(
           cart.map((i) => {
             const numericProductId = typeof i.id === "string" && i.id.includes("-")
@@ -141,7 +138,7 @@ export function useCheckout() {
         );
 
         // 1. Create the order. The server prices it from OUR catalog.
-        const order = await orderService.create({ addressId, address, paymentMethod });
+        const order = await orderService.create({ addressId, address, paymentMethod, couponCode });
 
         // 2a. Cash on delivery — already confirmed.
         if (paymentMethod === "cod") {

@@ -15,12 +15,12 @@ async function getOrCreate(userId) {
 }
 
 /** Cart with fresh prices + the bill. Empty carts return a zeroed bill. */
-export async function getCart(userId) {
+export async function getCart(userId, couponCode = null) {
   const cart = await getOrCreate(userId);
   if (!cart.items.length) {
     return {
       items: [],
-      amounts: { subtotal: 0, savings: 0, deliveryCharge: 0, total: 0 },
+      amounts: { subtotal: 0, savings: 0, discount: 0, couponCode: "", discountLabel: "", deliveryCharge: 0, total: 0 },
       freeDeliveryThreshold: env.freeDeliveryThreshold,
     };
   }
@@ -62,12 +62,12 @@ export async function getCart(userId) {
   if (!cart.items.length) {
     return {
       items: [],
-      amounts: { subtotal: 0, savings: 0, deliveryCharge: 0, total: 0 },
+      amounts: { subtotal: 0, savings: 0, discount: 0, couponCode: "", discountLabel: "", deliveryCharge: 0, total: 0 },
       freeDeliveryThreshold: env.freeDeliveryThreshold,
     };
   }
 
-  const priced = await priceItems(cart.items);
+  const priced = await priceItems(cart.items, { userId, couponCode });
   return { ...priced, freeDeliveryThreshold: env.freeDeliveryThreshold };
 }
 

@@ -1,14 +1,18 @@
 import { ok, withRoute } from "@/server/utils/apiResponse";
-import { requireAuth } from "@/server/middleware/auth";
+import { getAuth, requireAuth } from "@/server/middleware/auth";
 import { getCart, addToCart, clearCart, replaceCart } from "@/server/controllers/cart.controller";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// GET /api/cart
+// GET /api/cart?couponCode=...
 export const GET = withRoute(async (req) => {
-  const { userId } = await requireAuth(req);
-  return ok(await getCart(userId));
+  const user = await getAuth(req);
+  if (!user) {
+    return ok({ items: [], amounts: { subtotal: 0, savings: 0, discount: 0, deliveryCharge: 0, total: 0 } });
+  }
+  const couponCode = req.nextUrl?.searchParams?.get("couponCode") || null;
+  return ok(await getCart(user.userId, couponCode));
 });
 
 // PUT /api/cart  { items: [{productId, qty, unit}] } — replace the whole cart

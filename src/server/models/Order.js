@@ -71,6 +71,9 @@ const OrderSchema = new Schema(
     amounts: {
       subtotal: { type: Number, required: true },
       savings: { type: Number, default: 0 },
+      discount: { type: Number, default: 0 },
+      couponCode: { type: String, default: "" },
+      discountLabel: { type: String, default: "" },
       baseDeliveryCharge: { type: Number, default: 0 },
       codCharge: { type: Number, default: 0 },
       gst: { type: Number, default: 0 },

@@ -41,9 +41,9 @@ async function generateOrderId() {
 /**
  * Create an order from the signed-in user's cart.
  * @param {string} userId
- * @param {{ addressId?: string, address?: object, paymentMethod: "cod"|"razorpay" }} input
+ * @param {{ addressId?: string, address?: object, paymentMethod: "cod"|"razorpay", couponCode?: string }} input
  */
-export async function createOrder(userId, { addressId, address, paymentMethod }) {
+export async function createOrder(userId, { addressId, address, paymentMethod, couponCode = null }) {
   const cart = await Cart.findOne({ user: userId });
   if (!cart || !cart.items.length) {
     throw badRequest("Your cart is empty.");
@@ -64,6 +64,8 @@ export async function createOrder(userId, { addressId, address, paymentMethod })
   const { items, amounts } = await priceItems(cart.items, {
     pincode: snapshot.pincode,
     paymentMethod,
+    userId,
+    couponCode,
   });
 
   const orderId = await generateOrderId();
@@ -120,13 +122,7 @@ export async function finaliseOrder(order) {
 }
 
 /**
- * Cancel an order — the flow Amazon/Flipkart use:
- *  - customers may cancel any time BEFORE it ships,
- *  - admins may also cancel shipped/out-for-delivery orders,
- *  - delivered and already-cancelled orders are terminal,
- *  - reserved stock is put back (only if it was actually decremented),
- *  - paid online orders get an automatic Razorpay refund; if the refund call
- *    fails the order still cancels and the timeline says it'll be manual.
+ * Cancel an order
  */
 export async function cancelOrder(order, { by = "customer", note = "" } = {}) {
   if (order.status === "cancelled") return serializeOrder(order.toObject()); // idempotent
@@ -151,8 +147,6 @@ export async function cancelOrder(order, { by = "customer", note = "" } = {}) {
     }
   }
 
-  // Stock was only decremented once the order was finalised (COD at placement,
-  // online on payment capture) — restore exactly in that case.
   const stockWasReserved = order.paymentMethod === "cod" || order.paymentStatus === "paid";
   if (stockWasReserved) {
     await Promise.all(
@@ -162,7 +156,6 @@ export async function cancelOrder(order, { by = "customer", note = "" } = {}) {
     );
   }
 
-  // Automatic refund for captured online payments.
   if (order.paymentStatus === "paid" && order.razorpay?.paymentId) {
     try {
       const refund = await refundPayment(order.razorpay.paymentId, order.amounts.total);
@@ -189,7 +182,6 @@ export async function cancelOrder(order, { by = "customer", note = "" } = {}) {
         at: new Date(),
         note: "Refund could not be auto-initiated — it will be processed manually",
       });
-      // eslint-disable-next-line no-console
       console.error("[refund]", order.orderId, err?.message);
     }
   }
@@ -205,7 +197,6 @@ export async function cancelOrder(order, { by = "customer", note = "" } = {}) {
   return serializeOrder(order.toObject());
 }
 
-/** Customer-initiated cancellation (owner-scoped). */
 export async function cancelOwnOrder(userId, orderId) {
   const order = await Order.findOne({ orderId, user: userId });
   if (!order) throw notFound("Order not found.");

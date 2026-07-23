@@ -35,7 +35,7 @@ export function serializeOrder(o) {
 
 async function generateOrderId() {
   const seq = await nextSequence("order");
-  return `FV${String(100000 + seq)}`;
+  return `FV-${String(100000 + seq)}`;
 }
 
 /**

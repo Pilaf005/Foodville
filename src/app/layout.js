@@ -8,6 +8,8 @@ import { WishlistProvider } from "@/context/WishlistContext";
 import AppProviders from "@/providers";
 import ErrorBoundary from "@/components/common/ErrorBoundary";
 
+import FoodvilleChatWidget from "@/components/common/FoodvilleChatWidget";
+
 export const metadata = {
   title: "Foodville — Powders, Seeds & Dry Fruits",
   description:
@@ -45,6 +47,9 @@ export default function RootLayout({ children }) {
                 <Footer />
               </ErrorBoundary>
               <ScrollToTop />
+              <ErrorBoundary>
+                <FoodvilleChatWidget />
+              </ErrorBoundary>
             </WishlistProvider>
           </CartProvider>
         </AppProviders>

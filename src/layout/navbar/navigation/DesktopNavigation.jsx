@@ -8,18 +8,22 @@ import NavbarActions from "./NavbarActions";
 
 export const DesktopNavigation = ({ onLocationClick, activeAddress }) => {
   return (
-    <div className="mx-auto flex max-w-[96%] items-center gap-3.5 px-4 py-3 sm:px-6 lg:px-8">
+    <div className="mx-auto flex h-[72px] max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
       <Logo />
-      <div className="h-6 w-px bg-gray-200/80 mx-2 hidden md:block" />
+      <div className="h-6 w-px bg-gray-200/80 mx-2 hidden md:block shrink-0" />
 
       <LocationSelector
         onClick={onLocationClick}
         activeAddress={activeAddress}
       />
 
-      <SearchBar isMobile={false} />
+      <div className="flex-1 hidden sm:block">
+        <SearchBar isMobile={false} />
+      </div>
 
-      <NavbarActions />
+      <div className="shrink-0">
+        <NavbarActions />
+      </div>
     </div>
   );
 };

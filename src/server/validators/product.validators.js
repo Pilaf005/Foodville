@@ -7,6 +7,7 @@ import { PRODUCT_CATEGORIES, SHOP_BY_VALUES } from "@/server/models/Product";
 
 // Home "shop by" tabs use kebab keys; Product.shopBy uses camel values.
 export const TAB_TO_SHOPBY = {
+  all: undefined,
   bestsellers: "bestseller",
   "newly-in": "newlyIn",
   "value-buys": "valueBuys",

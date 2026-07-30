@@ -13,8 +13,10 @@ export const SearchInput = ({
   query,
   onChange,
   onFocus,
+  onKeyDown,
   displayText,
   placeholder,
+  isFocused = false,
   isMobile = false,
 }) => {
   return (
@@ -24,15 +26,16 @@ export const SearchInput = ({
         value={query}
         onChange={onChange}
         onFocus={onFocus}
+        onKeyDown={onKeyDown}
         placeholder={isMobile ? placeholder : "Search products..."}
         suppressHydrationWarning
         className={
           isMobile
             ? "w-full rounded-lg border border-olive bg-white px-4 py-2 pl-4 pr-14 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-olive"
-            : "w-full rounded-full border border-cardline bg-white px-4 py-2.5 pl-10 pr-24 text-sm text-ink placeholder:text-transparent focus:outline-none focus:ring-1 focus:ring-olive"
+            : `w-full rounded-full border border-cardline bg-white px-4 py-2.5 pl-10 pr-24 text-sm text-ink ${isFocused ? "placeholder:text-muted/60" : "placeholder:text-transparent"} focus:outline-none focus:border-olive`
         }
       />
-      {!isMobile && !query && (
+      {!isMobile && !query && !isFocused && (
         <div className="absolute left-10 pointer-events-none text-sm text-muted/60 flex items-center gap-1 select-none">
           <span>Search for</span>
           <span className="text-olive font-medium border-r-2 border-olive/70 pr-0.5 animate-pulse">

@@ -39,22 +39,11 @@ export const DEFAULT_COUPONS = [
   {
     code: "FOODVILLE20",
     title: "20% OFF on ₹1,999+",
-    description: "Get 20% discount on orders between ₹1,999 and ₹2,499",
+    description: "Get 20% OFF up to Flat ₹500 OFF on orders of ₹1,999 or more",
     discountType: "percentage",
     discountValue: 20,
-    maxDiscount: 499,
-    minSubtotal: 1999,
-    firstOrderOnly: false,
-    isActive: true,
-  },
-  {
-    code: "MAX500",
-    title: "Flat ₹500 OFF on ₹2,500+",
-    description: "Get Flat ₹500 OFF on orders of ₹2,500 or more",
-    discountType: "flat",
-    discountValue: 500,
     maxDiscount: 500,
-    minSubtotal: 2500,
+    minSubtotal: 1999,
     firstOrderOnly: false,
     isActive: true,
   },
@@ -185,12 +174,14 @@ export async function evaluateCoupon(couponObj, subtotal, userId) {
   finalAmount = Math.min(finalAmount, subtotal); // Cannot discount more than subtotal
 
   let discountLabel = "";
-  if (isCapped) {
-    discountLabel = `₹${couponObj.maxDiscount} off (${couponObj.code})`;
+  if (couponObj.code === "FOODVILLE20" && (isCapped || finalAmount >= 500)) {
+    discountLabel = `Flat ₹500 OFF (${couponObj.code})`;
+  } else if (couponObj.discountType === "flat" || isCapped) {
+    discountLabel = `Flat ₹${finalAmount} OFF (${couponObj.code})`;
   } else if (couponObj.discountType === "percentage") {
-    discountLabel = `${couponObj.discountValue}% off (${couponObj.code})`;
+    discountLabel = `${couponObj.discountValue}% OFF (${couponObj.code})`;
   } else {
-    discountLabel = `₹${couponObj.discountValue} off (${couponObj.code})`;
+    discountLabel = `₹${couponObj.discountValue} OFF (${couponObj.code})`;
   }
 
   return {
@@ -226,7 +217,7 @@ export function getNextDiscountTier(subtotal) {
     return {
       threshold: 2500,
       percentLabel: "Flat ₹500",
-      nextCode: "MAX500",
+      nextCode: "FOODVILLE20",
       amountLeft,
       progressPct,
     };
@@ -319,12 +310,12 @@ export async function priceItems(
     }
   }
 
-  // Free delivery threshold: if order subtotal is > 499, delivery is 100% FREE!
-  if (subtotal > 499) {
+  // Free delivery threshold: if order subtotal is >= 299, base delivery charge is FREE!
+  // Cash on Delivery (COD) handling fee is calculated separately and applies if COD method is selected.
+  if (subtotal >= env.freeDeliveryThreshold) {
     baseDeliveryCharge = 0;
-    codCharge = 0;
     gst = 0;
-    deliveryCharge = 0;
+    deliveryCharge = codCharge;
   }
 
   // Coupon evaluation

@@ -28,21 +28,11 @@ export const DEFAULT_COUPONS = [
   {
     code: "FOODVILLE20",
     title: "20% OFF on ₹1,999+",
-    description: "Get 20% discount on orders between ₹1,999 and ₹2,499",
+    description: "Get 20% OFF up to Flat ₹500 OFF on orders of ₹1,999 or more",
     discountType: "percentage",
     discountValue: 20,
-    maxDiscount: 499,
-    minSubtotal: 1999,
-    firstOrderOnly: false,
-  },
-  {
-    code: "MAX500",
-    title: "Flat ₹500 OFF on ₹2,500+",
-    description: "Get Flat ₹500 OFF on orders of ₹2,500 or more",
-    discountType: "flat",
-    discountValue: 500,
     maxDiscount: 500,
-    minSubtotal: 2500,
+    minSubtotal: 1999,
     firstOrderOnly: false,
   },
 ];
@@ -91,12 +81,14 @@ export function evaluateCouponClient(coupon, subtotal, isFirstTime = true) {
   finalAmount = Math.min(finalAmount, subtotal);
 
   let discountLabel = "";
-  if (coupon.discountType === "flat" || isCapped) {
-    discountLabel = `Flat ₹${finalAmount} off (${coupon.code})`;
+  if (coupon.code === "FOODVILLE20" && (isCapped || finalAmount >= 500)) {
+    discountLabel = `Flat ₹500 OFF (${coupon.code})`;
+  } else if (coupon.discountType === "flat" || isCapped) {
+    discountLabel = `Flat ₹${finalAmount} OFF (${coupon.code})`;
   } else if (coupon.discountType === "percentage") {
-    discountLabel = `${coupon.discountValue}% off (${coupon.code})`;
+    discountLabel = `${coupon.discountValue}% OFF (${coupon.code})`;
   } else {
-    discountLabel = `₹${coupon.discountValue} off (${coupon.code})`;
+    discountLabel = `₹${coupon.discountValue} OFF (${coupon.code})`;
   }
 
   return {
@@ -126,7 +118,7 @@ export function getNextDiscountTierClient(subtotal) {
     return {
       threshold: 2500,
       percentLabel: "Flat ₹500",
-      nextCode: "MAX500",
+      nextCode: "FOODVILLE20",
       amountLeft,
       progressPct,
     };

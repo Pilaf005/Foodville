@@ -15,6 +15,7 @@ import { priceItems } from "@/server/services/pricing.service";
 import { refundPayment } from "@/server/services/razorpay.service";
 import { cancelShiprocketOrder } from "@/server/services/shiprocket.service";
 import { badRequest, notFound } from "@/server/utils/apiError";
+import BlockedPincode from "@/server/models/BlockedPincode";
 
 export function serializeOrder(o) {
   if (!o) return null;
@@ -48,7 +49,6 @@ export async function createOrder(userId, { addressId, address, paymentMethod, c
   if (!cart || !cart.items.length) {
     throw badRequest("Your cart is empty.");
   }
-
   // Resolve the delivery address (saved one, or an inline one from checkout).
   let snapshot = address;
   if (addressId) {
@@ -58,6 +58,34 @@ export async function createOrder(userId, { addressId, address, paymentMethod, c
   }
   if (!snapshot || !snapshot.city || !snapshot.receiverName || !snapshot.phone || !snapshot.pincode) {
     throw badRequest("A complete delivery address (name, phone, PIN code, city) is required.");
+  }
+
+  // Check if delivery PIN code / sub-area is blocked by admin
+  const cleanPin = String(snapshot.pincode).trim().replace(/\D/g, "");
+  const userArea = (snapshot.area || snapshot.houseFlat || "").toLowerCase().trim();
+  const blockedRecord = await BlockedPincode.findOne({ pincode: cleanPin, isActive: true }).lean();
+
+  if (blockedRecord) {
+    const isBlockedType = blockedRecord.blockType === "ALL" || (blockedRecord.blockType === "COD" && paymentMethod === "cod");
+    if (isBlockedType) {
+      let isBlocked = false;
+      if (blockedRecord.isEntirePincodeBlocked !== false) {
+        isBlocked = true;
+      } else if (blockedRecord.blockedAreas && blockedRecord.blockedAreas.length > 0) {
+        if (!userArea) {
+          isBlocked = true;
+        } else {
+          isBlocked = blockedRecord.blockedAreas.some((bArea) => {
+            const bClean = bArea.toLowerCase().trim();
+            return userArea.includes(bClean) || bClean.includes(userArea);
+          });
+        }
+      }
+
+      if (isBlocked) {
+        throw badRequest(blockedRecord.reason ? `Delivery unavailable: ${blockedRecord.reason}` : `Delivery is currently unavailable for PIN code ${cleanPin}. Please choose another address.`);
+      }
+    }
   }
 
   // Prices come from the catalog — never from the client.

@@ -43,10 +43,10 @@ export default function Modal({ isOpen, onClose, title, subtitle, children, maxW
         onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
       >
         <div
-          className={`relative w-full ${maxWidth} rounded-t-3xl border border-cardline bg-white shadow-2xl md:rounded-3xl max-md:animate-slide-up md:animate-scale-in`}
+          className={`relative w-full ${maxWidth} max-h-[85vh] flex flex-col rounded-t-3xl border border-cardline bg-white shadow-2xl md:rounded-3xl max-md:animate-slide-up md:animate-scale-in`}
         >
           {/* Sticky header — title + close always visible */}
-          <div className="sticky top-0 z-10 flex items-center justify-between gap-3 rounded-t-3xl border-b border-cardline bg-white px-5 py-4">
+          <div className="shrink-0 flex items-center justify-between gap-3 rounded-t-3xl border-b border-cardline bg-white px-5 py-4">
             <div className="min-w-0">
               <h2 className="truncate text-base font-black uppercase tracking-tight text-ink">{title}</h2>
               {subtitle && <p className="mt-0.5 text-xs text-muted">{subtitle}</p>}
@@ -62,7 +62,7 @@ export default function Modal({ isOpen, onClose, title, subtitle, children, maxW
             </button>
           </div>
 
-          <div className="p-5 sm:p-6">{children}</div>
+          <div className="p-5 sm:p-6 overflow-y-auto flex-1">{children}</div>
         </div>
       </div>
     </div>

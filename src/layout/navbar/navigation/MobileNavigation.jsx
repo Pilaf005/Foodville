@@ -85,7 +85,7 @@ export const MobileNavigation = ({ onLocationClick, activeAddress, onMenuClick, 
         style={{
           maxHeight: isScrolled ? "0px" : "44px",
           opacity: isScrolled ? 0 : 1,
-          overflow: "hidden",
+          overflow: isScrolled ? "hidden" : "visible",
           transition: COLLAPSE_TRANSITION,
         }}
       >

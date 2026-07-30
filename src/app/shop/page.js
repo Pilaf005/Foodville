@@ -10,6 +10,12 @@ import { ProductGridSkeleton } from "@/components/feedback/Skeleton";
 // ─── Constants ────────────────────────────────────────────────────────────
 const SHOP_TABS = [
   {
+    key: "all",
+    label: "All Products",
+    thumb: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=80&q=60",
+    description: "Browse our entire catalog of natural spices, seeds, dry fruits & wellness products.",
+  },
+  {
     key: "bestsellers",
     label: "Bestsellers",
     thumb: "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=80&q=60",
@@ -36,7 +42,7 @@ const SHOP_TABS = [
 ];
 
 const VALID_TAB_KEYS = SHOP_TABS.map((t) => t.key);
-const DEFAULT_TAB    = "bestsellers";
+const DEFAULT_TAB    = "all";
 
 // ─── ShopContent ─────────────────────────────────────────────────────────
 function ShopContent() {

@@ -22,25 +22,25 @@ export default function ProductCard({ product }) {
   const currentQty = getCartQty(cart, product.id);
 
   return (
-    <div className="group relative flex flex-col rounded-2xl border border-cardline/60 bg-white p-2 sm:p-3.5 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.025)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.065)] hover:border-olive/20 active:scale-[0.99] sm:active:scale-100 hover:z-10 hover:relative">
+    <div className="group relative flex flex-col rounded-2xl border border-cardline/60 bg-white overflow-hidden transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.025)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.065)] hover:border-olive/20 active:scale-[0.99] sm:active:scale-100 hover:z-10 hover:relative">
       {/* Wishlist heart */}
       <button
         onClick={() => toggleWishlist(product)}
         aria-label="Toggle wishlist"
-        className="absolute right-3 top-3 z-10 grid h-7 w-7 sm:h-8 sm:w-8 place-items-center rounded-full bg-white/95 text-terracotta shadow-sm transition hover:scale-105 active:scale-90"
+        className="absolute right-2.5 top-2.5 z-10 p-1 text-terracotta transition-transform hover:scale-110 active:scale-90 drop-shadow-md"
       >
-        <svg width="13" height="13" viewBox="0 0 24 24" fill={inWishlist ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill={inWishlist ? "currentColor" : "rgba(255,255,255,0.4)"} stroke="currentColor" strokeWidth="2">
           <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
         </svg>
       </button>
 
-      {/* Image + link to detail page */}
+      {/* Edge-to-edge Image + link to detail page */}
       <Link href={`/product/${product.slug}`} className="block">
-        <div className="mb-2 aspect-square overflow-hidden rounded-xl bg-cream relative">
+        <div className="aspect-square overflow-hidden bg-cream relative w-full">
           <ProductRibbon shopBy={product.shopBy} />
           {discount > 0 && (
             <div
-              className="absolute left-0 top-0 z-10 bg-[#E05C3A] text-white font-black text-[9px] sm:text-[10px] leading-none px-2 pt-1.5 pb-2.5 flex flex-col items-center justify-center text-center select-none"
+              className="absolute left-2.5 sm:left-3 top-0 z-10 bg-[#E05C3A] text-white font-black text-[9px] sm:text-[10px] leading-none px-2 pt-1.5 pb-2.5 flex flex-col items-center justify-center text-center select-none"
               style={{
                 clipPath: "polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%)",
                 minWidth: "34px"
@@ -57,48 +57,53 @@ export default function ProductCard({ product }) {
             onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = PRODUCT_FALLBACK_IMAGE; }}
           />
         </div>
-
-        <h3 className="line-clamp-2 text-sm sm:text-base font-semibold text-ink leading-tight tracking-tight">{product.name}</h3>
-        <p className="mt-0.5 mb-1.5 text-[11px] sm:text-xs font-normal text-muted leading-none">{product.unit}</p>
       </Link>
 
-      {/* Price and action row */}
-      <div className="mt-auto flex items-center justify-between gap-1.5 pt-2 border-t border-cardline/20">
-        <div className="flex flex-col">
-          <span className="text-sm sm:text-base font-bold text-ink leading-none">₹{product.price}</span>
-          {product.mrp > product.price && (
-            <span className="text-[9px] sm:text-[11px] font-normal text-muted line-through mt-0.5">₹{product.mrp}</span>
+      {/* Card Content body: Title, Unit, Price, ADD button */}
+      <div className="flex flex-col flex-1 p-2.5 sm:p-3.5">
+        <Link href={`/product/${product.slug}`} className="block">
+          <h3 className="line-clamp-2 text-sm sm:text-base font-semibold text-ink leading-tight tracking-tight">{product.name}</h3>
+          <p className="mt-0.5 mb-1.5 text-[11px] sm:text-xs font-normal text-muted leading-none">{product.unit}</p>
+        </Link>
+
+        {/* Price and action row */}
+        <div className="mt-auto flex items-center justify-between gap-1.5 pt-2 border-t border-cardline/20">
+          <div className="flex flex-col">
+            <span className="text-sm sm:text-base font-bold text-ink leading-none">₹{product.price}</span>
+            {product.mrp > product.price && (
+              <span className="text-[9px] sm:text-[11px] font-normal text-muted line-through mt-0.5">₹{product.mrp}</span>
+            )}
+          </div>
+
+          {currentQty === 0 ? (
+            <button
+              onClick={() => addToCart(product, 1)}
+              disabled={product.stock === 0}
+              className="border-2 border-olive text-olive bg-olive/5 hover:bg-olive/10 transition font-bold uppercase text-sm sm:text-base rounded-xl h-10 sm:h-11 px-4 sm:px-6 flex items-center justify-center tracking-widest active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {product.stock === 0 ? "OUT" : "ADD"}
+            </button>
+          ) : (
+            <div className="flex items-center justify-between border-2 border-olive bg-white rounded-xl h-10 sm:h-11 px-1.5 w-[100px] sm:w-[112px] shadow-sm">
+              <button
+                onClick={() => updateQty(cartItem.id, currentQty - 1)}
+                className="h-7 w-7 sm:h-8 sm:w-8 rounded-xl text-olive text-lg font-extrabold hover:bg-olive/10 flex items-center justify-center transition active:scale-90"
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
+              <span className="text-sm sm:text-base font-bold text-ink">{currentQty}</span>
+              <button
+                onClick={() => updateQty(cartItem.id, currentQty + 1)}
+                disabled={product.stock > 0 && currentQty >= product.stock}
+                className="h-7 w-7 sm:h-8 sm:w-8 rounded-xl text-olive text-lg font-extrabold hover:bg-olive/10 flex items-center justify-center transition active:scale-90 disabled:opacity-40"
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
           )}
         </div>
-
-        {currentQty === 0 ? (
-          <button
-            onClick={() => addToCart(product, 1)}
-            disabled={product.stock === 0}
-            className="border-2 border-olive text-olive bg-olive/5 hover:bg-olive/10 transition font-bold uppercase text-sm sm:text-base rounded-xl h-10 sm:h-11 px-5 sm:px-7 flex items-center justify-center tracking-widest active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {product.stock === 0 ? "OUT" : "ADD"}
-          </button>
-        ) : (
-          <div className="flex items-center justify-between border-2 border-olive bg-white rounded-xl h-10 sm:h-11 px-1.5 w-[100px] sm:w-[112px] shadow-sm">
-            <button
-              onClick={() => updateQty(cartItem.id, currentQty - 1)}
-              className="h-7 w-7 sm:h-8 sm:w-8 rounded-xl text-olive text-lg font-extrabold hover:bg-olive/10 flex items-center justify-center transition active:scale-90"
-              aria-label="Decrease quantity"
-            >
-              −
-            </button>
-            <span className="text-sm sm:text-base font-bold text-ink">{currentQty}</span>
-            <button
-              onClick={() => updateQty(cartItem.id, currentQty + 1)}
-              disabled={product.stock > 0 && currentQty >= product.stock}
-              className="h-7 w-7 sm:h-8 sm:w-8 rounded-xl text-olive text-lg font-extrabold hover:bg-olive/10 flex items-center justify-center transition active:scale-90 disabled:opacity-40"
-              aria-label="Increase quantity"
-            >
-              +
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

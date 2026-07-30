@@ -5,6 +5,7 @@
 import Product from "@/server/models/Product";
 import { notFound } from "@/server/utils/apiError";
 import { serializeProduct, serializeProducts } from "@/server/utils/serialize";
+import { findBestMatch, fuzzySearchProducts } from "@/server/utils/fuzzyMatch";
 
 const SORT_MAP = {
   price_asc: { price: 1 },
@@ -40,14 +41,37 @@ export async function listProducts(query) {
   const sortSpec = SORT_MAP[sort] || SORT_MAP.relevance;
   const skip = (page - 1) * limit;
 
-  const [items, total] = await Promise.all([
+  let [items, total] = await Promise.all([
     Product.find(filter).sort(sortSpec).skip(skip).limit(limit).lean(),
     Product.countDocuments(filter),
   ]);
 
+  let didYouMean = null;
+  if (search && total === 0) {
+    const activeProducts = await Product.find({ isActive: true }).select("name tags slug").lean();
+    const candidates = Array.from(
+      new Set(activeProducts.flatMap(p => [p.name, ...(p.tags || [])]))
+    ).filter(Boolean);
+    
+    didYouMean = findBestMatch(search, candidates);
+    
+    if (didYouMean) {
+      const rx = new RegExp(escapeRegex(didYouMean), "i");
+      filter.$or = [{ name: rx }, { description: rx }, { tags: rx }];
+      
+      [items, total] = await Promise.all([
+        Product.find(filter).sort(sortSpec).skip(skip).limit(limit).lean(),
+        Product.countDocuments(filter),
+      ]);
+    }
+  }
+
+  const meta = { page, limit, total, totalPages: Math.max(1, Math.ceil(total / limit)) };
+  if (didYouMean) meta.didYouMean = didYouMean;
+
   return {
     items: serializeProducts(items),
-    meta: { page, limit, total, totalPages: Math.max(1, Math.ceil(total / limit)) },
+    meta,
   };
 }
 
@@ -76,4 +100,43 @@ export async function getSimilarProducts(key, limit = 8) {
 
 function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+export async function searchSuggestions(query) {
+  if (!query) return { products: [], categories: [], didYouMean: null };
+
+  const q = String(query).toLowerCase();
+  const rx = new RegExp(escapeRegex(q), "i");
+  let didYouMean = null;
+
+  let products = await Product.find({
+    isActive: true,
+    $or: [{ name: rx }, { tags: rx }]
+  })
+    .limit(5)
+    .lean();
+
+  if (products.length === 0) {
+    const allProducts = await Product.find({ isActive: true }).select("name tags slug price image category rating").lean();
+    const candidates = Array.from(
+      new Set(allProducts.flatMap(p => [p.name, ...(p.tags || [])]))
+    ).filter(Boolean);
+    
+    didYouMean = findBestMatch(q, candidates);
+    const searchTarget = didYouMean || q;
+    
+    products = fuzzySearchProducts(searchTarget, allProducts, 5);
+  }
+
+  const ALL_CATEGORIES = ["powders", "seasoning", "seeds", "dryfruits", "wellness", "combos", "bulk"];
+  const categories = ALL_CATEGORIES.filter(c => 
+    c.toLowerCase().includes(q) || 
+    (didYouMean && c.toLowerCase().includes(didYouMean.toLowerCase()))
+  );
+
+  return {
+    products: serializeProducts(products),
+    categories,
+    didYouMean
+  };
 }

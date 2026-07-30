@@ -87,7 +87,7 @@ export const env = {
   },
 
   // Commerce
-  freeDeliveryThreshold: int(process.env.FREE_DELIVERY_THRESHOLD, 499),
+  freeDeliveryThreshold: int(process.env.FREE_DELIVERY_THRESHOLD, 299),
   deliveryCharge: int(process.env.DELIVERY_CHARGE, 40),
   currency: process.env.CURRENCY || "INR",
 };

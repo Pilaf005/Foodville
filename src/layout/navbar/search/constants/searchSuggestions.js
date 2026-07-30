@@ -8,4 +8,13 @@ export const SEARCH_SUGGESTIONS = [
   "dehydrated garlic powder",
 ];
 
+export const TRENDING_SEARCHES = [
+  "almond",
+  "turmeric powder",
+  "combo pack",
+  "chia seeds",
+  "onion powder",
+  "ashwagandha",
+];
+
 export default SEARCH_SUGGESTIONS;

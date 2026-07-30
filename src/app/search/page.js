@@ -31,29 +31,46 @@ function SearchContent() {
         </div>
       ) : isPending ? (
         <ProductGridSkeleton count={10} />
-      ) : products.length === 0 ? (
-        <div className="space-y-3 rounded-3xl border border-cardline bg-white/50 py-20 text-center">
-          <span className="text-4xl">🫙</span>
-          <h3 className="font-bold text-ink">No results for &ldquo;{debouncedQuery}&rdquo;</h3>
-          <p className="text-xs text-muted">Check the spelling or try a broader term.</p>
-          <Link
-            href="/shop"
-            className="mt-2 inline-flex rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark"
-          >
-            Browse all products
-          </Link>
-        </div>
       ) : (
         <>
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-black uppercase tracking-tight text-ink">
-              Results for &ldquo;{debouncedQuery}&rdquo;
-            </h2>
-            <span className="text-xs font-bold uppercase tracking-wider text-muted">
-              {count} {count === 1 ? "Product" : "Products"}
-            </span>
-          </div>
-          <ProductGrid products={products} />
+          {meta?.didYouMean && (
+            <div className="bg-amber-50 rounded-2xl border border-amber-200 p-4 flex items-center gap-2">
+              <span className="text-sm text-ink">Did you mean:</span>
+              <Link
+                href={`/search?q=${encodeURIComponent(meta.didYouMean)}`}
+                className="text-sm font-bold text-ink italic hover:underline"
+              >
+                {meta.didYouMean}
+              </Link>
+              <span className="text-sm text-ink">?</span>
+            </div>
+          )}
+
+          {products.length === 0 ? (
+            <div className="space-y-3 rounded-3xl border border-cardline bg-white/50 py-20 text-center mt-4">
+              <span className="text-4xl">🫙</span>
+              <h3 className="font-bold text-ink">No results for &ldquo;{debouncedQuery}&rdquo;</h3>
+              <p className="text-xs text-muted">Check the spelling or try a broader term.</p>
+              <Link
+                href="/shop?tab=all"
+                className="mt-2 inline-flex rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark"
+              >
+                Browse all products
+              </Link>
+            </div>
+          ) : (
+            <>
+              <div className="flex items-center justify-between">
+                <h2 className="text-sm font-black uppercase tracking-tight text-ink">
+                  Results for &ldquo;{debouncedQuery}&rdquo;
+                </h2>
+                <span className="text-xs font-bold uppercase tracking-wider text-muted">
+                  {count} {count === 1 ? "Product" : "Products"}
+                </span>
+              </div>
+              <ProductGrid products={products} />
+            </>
+          )}
         </>
       )}
     </div>

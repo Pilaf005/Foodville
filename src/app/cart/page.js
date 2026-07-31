@@ -250,11 +250,17 @@ function CartBillPanel({
           </div>
 
           {billing.shippingDetails?.blocked && (
-            <div className="rounded-xl bg-red-50 border border-red-200 p-2.5 text-xs text-red-700 font-semibold flex items-start gap-2">
-              <span className="text-base shrink-0">⚠️</span>
+            <div className="rounded-2xl bg-rose-50 border border-rose-200 p-3.5 text-xs text-rose-900 font-medium flex items-start gap-3 shadow-sm">
+              <span className="text-xl shrink-0 mt-0.5">⚠️</span>
               <div>
-                <p className="font-bold">Non-Serviceable Location</p>
-                <p className="text-[11px] opacity-90 mt-0.5">{billing.shippingDetails.reason || `Delivery is unavailable for PIN code ${activeAddress?.pincode}.`}</p>
+                <p className="font-extrabold text-rose-900 text-sm">
+                  {billing.shippingDetails.blockedAreaName ? "Delivery Unavailable in your Area" : "Delivery Unavailable"}
+                </p>
+                <p className="text-xs text-rose-800 leading-snug mt-1">
+                  {billing.shippingDetails.blockedAreaName
+                    ? `Courier delivery is currently unavailable for ${billing.shippingDetails.blockedAreaName} (PIN ${activeAddress?.pincode || ""}). Please try selecting a different address.`
+                    : `We currently do not deliver to PIN code ${activeAddress?.pincode || ""}. Please try selecting a different delivery address.`}
+                </p>
               </div>
             </div>
           )}

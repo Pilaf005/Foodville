@@ -68,11 +68,13 @@ export const GET = withRoute(async (req) => {
         }
 
         if (isBlocked) {
-          console.log(`[Rate API] Pincode ${cleanPin} / Area '${areaParam}' is BLOCKED (${blockedRecord.blockType})`);
+          const isEntire = blockedRecord.isEntirePincodeBlocked !== false;
           return ok({
             isServiceable: false,
             blocked: true,
             blockType: blockedRecord.blockType,
+            isEntirePincodeBlocked: isEntire,
+            blockedAreaName: !isEntire && areaParam ? (areaParam.charAt(0).toUpperCase() + areaParam.slice(1)) : "",
             reason: blockedRecord.reason || "Delivery is currently unavailable for this area.",
             deliveryCharge: 0
           });

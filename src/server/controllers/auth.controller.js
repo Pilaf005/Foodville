@@ -58,14 +58,8 @@ export async function requestOtp(email) {
 
   const now = new Date();
 
-  // ── LEAD CAPTURE ──────────────────────────────────────────────────────────
-  // Create/record the user the instant they submit their email, before any
-  // verification. If they close the tab now, we still have them as "pending".
-  const user = await User.findOneAndUpdate(
-    { email: cleanEmail },
-    { $setOnInsert: { email: cleanEmail, status: "pending" }, $set: { otpRequestedAt: now } },
-    { upsert: true, new: true, setDefaultsOnInsert: true }
-  );
+  // Find existing user or check OTP cooldown without auto-creating pending bot leads
+  const user = await User.findOne({ email: cleanEmail });
 
   // Returning visitor who asked for a code but never verified → cooldown.
   const existing = await Otp.findOne({ email, consumed: false, expiresAt: { $gt: now } }).sort({ createdAt: -1 });
@@ -81,10 +75,10 @@ export async function requestOtp(email) {
   // Max N codes per email per rolling window. Stored on the user (not memory),
   // so it can't be bypassed by hitting a different serverless instance.
   const windowMs = env.otpWindowMinutes * 60 * 1000;
-  const windowStart = user.otpWindowStartedAt ? new Date(user.otpWindowStartedAt).getTime() : 0;
+  const windowStart = user?.otpWindowStartedAt ? new Date(user.otpWindowStartedAt).getTime() : 0;
   const windowExpired = now.getTime() - windowStart > windowMs;
 
-  const usedThisWindow = windowExpired ? 0 : user.otpRequestCount || 0;
+  const usedThisWindow = windowExpired ? 0 : user?.otpRequestCount || 0;
   if (usedThisWindow >= env.otpMaxPerWindow) {
     const retryAfter = Math.ceil((windowStart + windowMs - now.getTime()) / 1000);
     throw tooManyRequests(
@@ -93,12 +87,14 @@ export async function requestOtp(email) {
     );
   }
 
-  await User.updateOne(
-    { _id: user._id },
-    windowExpired
-      ? { $set: { otpRequestCount: 1, otpWindowStartedAt: now } }
-      : { $inc: { otpRequestCount: 1 }, $setOnInsert: {} }
-  );
+  if (user) {
+    await User.updateOne(
+      { _id: user._id },
+      windowExpired
+        ? { $set: { otpRequestCount: 1, otpWindowStartedAt: now } }
+        : { $inc: { otpRequestCount: 1 } }
+    );
+  }
 
   const code = generateOtp();
   const expiresAt = new Date(now.getTime() + env.otpExpMinutes * 60 * 1000);
@@ -111,7 +107,7 @@ export async function requestOtp(email) {
 
   return {
     email,
-    isNewUser: user.status === "pending",
+    isNewUser: !user || user.status === "pending",
     expiresInMinutes: env.otpExpMinutes,
     resendInSeconds: env.otpResendCooldownSeconds,
     // Never leak the code in production — only in local dev with explicit opt-in.

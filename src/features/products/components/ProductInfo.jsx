@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import UnitSelector from "./UnitSelector";
 import ComboIncludesList from "./ComboIncludesList";
 import { PRODUCT_TRUST_BADGES } from "../constants";
@@ -73,10 +74,26 @@ export default function ProductInfo({ product }) {
 
 
 
-      <hr className="border-cardline" />
-
       {/* Dynamic Unit Selector & Quantity controls */}
       <UnitSelector product={product} />
+
+      <hr className="border-cardline" />
+
+      {/* B2B Wholesale Bulk Query Banner */}
+      <div className="rounded-2xl border border-stone-200 bg-stone-50 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div>
+          <h4 className="text-xs font-bold text-stone-900 flex items-center gap-1.5">
+            <span>📦</span> Need Wholesale Bulk Quantity (10kg+)?
+          </h4>
+          <p className="text-[11px] text-stone-500 mt-0.5">Get direct factory prices and GST tax invoice.</p>
+        </div>
+        <Link
+          href={`/bulk-order?productName=${encodeURIComponent(product.name)}`}
+          className="inline-flex items-center gap-1 bg-[#3D4A32] hover:bg-[#2d3725] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow-sm shrink-0"
+        >
+          <span>Get Quote →</span>
+        </Link>
+      </div>
 
       <hr className="border-cardline" />
 

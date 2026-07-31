@@ -278,6 +278,12 @@ export default function FranchisePage() {
                   />
                 </div>
 
+                {/* Hidden Honeypot Anti-Bot Trap */}
+                <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                  <input type="text" name="website" tabIndex={-1} autoComplete="off" value={formData.website || ""} onChange={(e) => setFormData({ ...formData, website: e.target.value })} />
+                  <input type="text" name="b_confirm" tabIndex={-1} autoComplete="off" value={formData.b_confirm || ""} onChange={(e) => setFormData({ ...formData, b_confirm: e.target.value })} />
+                </div>
+
                 <button
                   type="submit"
                   disabled={loading}

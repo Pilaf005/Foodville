@@ -22,7 +22,7 @@ export default function ProductCard({ product }) {
   const currentQty = getCartQty(cart, product.id);
 
   return (
-    <div className="group relative flex flex-col rounded-2xl border border-cardline/60 bg-white overflow-hidden transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.025)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.065)] hover:border-olive/20 active:scale-[0.99] sm:active:scale-100 hover:z-10 hover:relative">
+    <div className="group relative flex flex-col h-full rounded-2xl border border-cardline/60 bg-white overflow-hidden transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.025)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.065)] hover:border-olive/20 active:scale-[0.99] sm:active:scale-100 hover:z-10 hover:relative">
       {/* Wishlist heart */}
       <button
         onClick={() => toggleWishlist(product)}
@@ -60,11 +60,25 @@ export default function ProductCard({ product }) {
       </Link>
 
       {/* Card Content body: Title, Unit, Price, ADD button */}
-      <div className="flex flex-col flex-1 p-2.5 sm:p-3.5">
-        <Link href={`/product/${product.slug}`} className="block">
-          <h3 className="line-clamp-2 text-sm sm:text-base font-semibold text-ink leading-tight tracking-tight">{product.name}</h3>
-          <p className="mt-0.5 mb-1.5 text-[11px] sm:text-xs font-normal text-muted leading-none">{product.unit}</p>
-        </Link>
+      <div className="flex flex-col flex-1 p-2.5 sm:p-3.5 justify-between">
+        <div>
+          <Link href={`/product/${product.slug}`} className="block">
+            <div className="h-10 sm:h-12 flex items-start overflow-hidden">
+              <h3 className="line-clamp-2 text-xs sm:text-sm font-semibold text-ink leading-tight sm:leading-snug tracking-tight">{product.name}</h3>
+            </div>
+          </Link>
+
+          <div className="flex items-center justify-between mt-1">
+            <p className="text-[11px] sm:text-xs font-normal text-muted leading-none">{product.unit}</p>
+            <Link
+              href={`/bulk-order?productName=${encodeURIComponent(product.name)}`}
+              className="text-[10px] sm:text-[11px] font-bold text-[#E05C3A] hover:text-terracotta hover:underline transition shrink-0"
+              title="Buy in Wholesale / Bulk (10kg+)"
+            >
+              📦 Buy Bulk?
+            </Link>
+          </div>
+        </div>
 
         {/* Price and action row */}
         <div className="mt-auto flex items-center justify-between gap-1.5 pt-2 border-t border-cardline/20">

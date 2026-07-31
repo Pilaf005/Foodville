@@ -299,7 +299,20 @@ function CartBillPanel({
               </button>
             )}
           </div>
-        </div>
+
+        {/* Terms & Refund Policy Link (Desktop Only) */}
+        <p className="mt-3 text-center text-[11px] text-gray-500 leading-relaxed hidden lg:block">
+          By proceeding, you agree to Foodville’s{" "}
+          <Link href="/terms-and-conditions" target="_blank" className="font-semibold text-gray-700 underline hover:text-[#6B7F59]">
+            Terms
+          </Link>{" "}
+          &{" "}
+          <Link href="/refund-policy" target="_blank" className="font-semibold text-gray-700 underline hover:text-[#6B7F59]">
+            Refund & Return Policy
+          </Link>
+          .
+        </p>
+      </div>
     </div>
   );
 }
@@ -330,6 +343,12 @@ function MobileStickyCheckout({ billing, selectedMethod, isPlacing, onOpenPaymen
           </button>
         )}
       </div>
+      <p className="text-[10px] text-gray-500 text-center mt-2 font-medium">
+        🛡️ 100% Quality Guarantee • Read {" "}
+        <Link href="/refund-policy" target="_blank" className="font-bold text-gray-800 underline hover:text-[#6B7F59]">
+          Refund & Return Policy
+        </Link>
+      </p>
     </div>
   );
 }

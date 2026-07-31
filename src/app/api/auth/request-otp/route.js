@@ -12,7 +12,15 @@ export const POST = withRoute(async (req) => {
   rateLimit(req, { key: "otp-request", limit: 6, windowMs: 10 * 60_000 });
 
   const body = await req.json().catch(() => ({}));
-  const { email } = requestOtpSchema.parse(body);
+  const { email, website, b_confirm } = body;
 
-  return ok(await requestOtp(email));
+  // 1. Anti-Bot Honeypot Trap
+  if (website || b_confirm) {
+    console.warn("[Anti-Bot Shield] OTP request bot submission rejected via Honeypot trap.");
+    return ok({ email, isNewUser: false, dev: true });
+  }
+
+  const parsed = requestOtpSchema.parse({ email });
+
+  return ok(await requestOtp(parsed.email));
 });

@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "node src/scripts/seed.js"
+    "seed": "node src/scripts/seed.js",
+    "seo": "node src/scripts/seo-cli.js audit",
+    "seo:ping": "node src/scripts/seo-cli.js ping"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1085.0",

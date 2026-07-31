@@ -23,7 +23,7 @@ function BulkOrderForm() {
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    const prefilledProduct = searchParams.get("product") || "";
+    const prefilledProduct = searchParams.get("productName") || searchParams.get("product") || "";
     if (prefilledProduct) {
       setFormData((prev) => ({ ...prev, productName: prefilledProduct }));
     }

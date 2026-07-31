@@ -33,7 +33,7 @@ function ProductRowSection({ tab }) {
         ) : (
           <div className="flex md:grid gap-3.5 md:gap-3 md:grid-cols-4 lg:grid-cols-5 overflow-x-auto md:overflow-x-visible no-scrollbar mobile-bleed-scroll snap-x snap-mandatory">
             {products.map((product) => (
-              <div key={product.id} className="w-[165px] min-w-[165px] md:w-auto md:min-w-0 shrink-0 md:shrink snap-start">
+              <div key={product.id} className="w-[165px] min-w-[165px] md:w-auto md:min-w-0 shrink-0 md:shrink snap-start h-full">
                 <ProductCard product={product} />
               </div>
             ))}

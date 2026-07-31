@@ -10,10 +10,57 @@ import ErrorBoundary from "@/components/common/ErrorBoundary";
 
 import FoodvilleChatWidget from "@/components/common/FoodvilleChatWidget";
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://foodvilleindia.com";
+
 export const metadata = {
-  title: "Foodville — Powders, Seeds & Dry Fruits",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Foodville — Pure Spice Powders, Seeds & Dry Fruits",
+    template: "%s | Foodville Consumer Products Private Limited",
+  },
   description:
-    "Shop premium spice powders, seeds, dry fruits and herbal wellness products.",
+    "Foodville Consumer Products Private Limited offers 100% natural, premium dehydrated spice powders, seeds, dry fruits, and herbal wellness products. Order online with nationwide delivery.",
+  keywords: [
+    "Foodville",
+    "foodvilleindia",
+    "Foodville Consumer Products Private Limited",
+    "Foodville India",
+    "Foodville Spices",
+    "Spice Powders",
+    "Dehydrated Red Onion Powder",
+    "Pure Moringa Powder",
+    "Dry Fruits Online",
+    "Herbal Seeds",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Foodville — Pure Spice Powders, Seeds & Dry Fruits",
+    description: "Foodville Consumer Products Private Limited offers 100% natural, premium dehydrated spice powders, seeds, dry fruits, and herbal wellness products.",
+    url: BASE_URL,
+    siteName: "Foodville Consumer Products Private Limited",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/icon.png`,
+        width: 512,
+        height: 512,
+        alt: "Foodville Consumer Products Private Limited Logo",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       { url: "/icon.png", type: "image/png" },
@@ -23,9 +70,43 @@ export const metadata = {
   },
 };
 
+const jsonLdOrg = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Foodville Consumer Products Private Limited",
+  legalName: "Foodville Consumer Products Private Limited",
+  alternateName: ["Foodville", "foodvilleindia", "Foodville India", "Foodville Spices"],
+  url: BASE_URL,
+  logo: `${BASE_URL}/icon.png`,
+  sameAs: [],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    email: "support@foodvilleindia.com",
+  },
+};
+
+const jsonLdWebSite = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Foodville Consumer Products Private Limited",
+  alternateName: ["Foodville", "foodvilleindia", "Foodville India"],
+  url: BASE_URL,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
+        />
+      </head>
       <body className="min-h-screen bg-cream text-ink antialiased flex flex-col justify-between">
         <AppProviders>
           <CartProvider>

@@ -9,7 +9,7 @@ import Product from "@/server/models/Product";
 import BlogPost from "@/server/models/Blog";
 import Category from "@/server/models/Category";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://foodvilleindia.com";
+const BASE_URL = "https://foodvilleindia.com";
 
 export default async function sitemap() {
   // ── Static pages ────────────────────────────────────────────────────────

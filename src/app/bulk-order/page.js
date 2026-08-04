@@ -68,7 +68,7 @@ function BulkOrderForm() {
             Our Wholesale Pricing Director will contact you within 2-4 hours with a customized commercial catalog & pricing.
           </p>
           <div className="pt-4">
-            <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#3D4A32] text-white font-semibold hover:bg-[#2C3624] transition">
+            <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-olive-dark text-white font-semibold hover:bg-olive-dark/90 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]">
               Return to Homepage
             </Link>
           </div>
@@ -95,7 +95,7 @@ function BulkOrderForm() {
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 placeholder="Rahul Sharma"
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3D4A32]"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
             </div>
             <div>
@@ -106,7 +106,7 @@ function BulkOrderForm() {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 placeholder="+91 9876543210"
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3D4A32]"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
             </div>
           </div>
@@ -120,7 +120,7 @@ function BulkOrderForm() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="rahul@company.com"
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3D4A32]"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
             </div>
             <div>
@@ -131,7 +131,7 @@ function BulkOrderForm() {
                 value={formData.deliveryPincode}
                 onChange={(e) => setFormData({ ...formData, deliveryPincode: e.target.value })}
                 placeholder="110001"
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3D4A32]"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
             </div>
           </div>
@@ -144,7 +144,7 @@ function BulkOrderForm() {
                 value={formData.companyName}
                 onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                 placeholder="Sharma Foods & Spices"
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3D4A32]"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
             </div>
             <div>
@@ -154,7 +154,7 @@ function BulkOrderForm() {
                 value={formData.gstin}
                 onChange={(e) => setFormData({ ...formData, gstin: e.target.value })}
                 placeholder="07AAAAA1111A1Z1"
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3D4A32]"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
             </div>
           </div>
@@ -168,7 +168,7 @@ function BulkOrderForm() {
                 value={formData.productName}
                 onChange={(e) => setFormData({ ...formData, productName: e.target.value })}
                 placeholder="e.g. Turmeric Powder - Bulk Pack"
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3D4A32]"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
             </div>
             <div>
@@ -180,7 +180,7 @@ function BulkOrderForm() {
                 value={formData.quantityKg}
                 onChange={(e) => setFormData({ ...formData, quantityKg: e.target.value })}
                 placeholder="Minimum 10 kg"
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3D4A32]"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
             </div>
           </div>
@@ -192,14 +192,14 @@ function BulkOrderForm() {
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="e.g. Need vacuum packaging / Lab test reports / Special logistics delivery instructions..."
-              className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#3D4A32]"
+              className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#2C3624] via-[#3D4A32] to-[#6B7F59] text-white font-bold text-sm shadow-md hover:opacity-95 transition flex items-center justify-center gap-2"
+            className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-olive-dark via-olive-dark to-olive text-white font-bold text-sm shadow-md hover:opacity-95 transition flex items-center justify-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
           >
             {loading ? "Requesting Quotation..." : "Submit B2B Quotation Request"}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -214,11 +214,11 @@ function BulkOrderForm() {
 
 export default function BulkOrderPage() {
   return (
-    <div className="min-h-screen bg-[#FAF8F5] py-8 sm:py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-cream py-8 sm:py-12 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto space-y-12">
         {/* Header Hero */}
         <div
-          className="relative rounded-3xl text-white p-8 sm:p-12 overflow-hidden shadow-xl border border-[#6B7F59]/30 bg-cover bg-center"
+          className="relative rounded-3xl text-white p-8 sm:p-12 overflow-hidden shadow-xl border border-olive/30 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/bulk_wholesale_banner.png')" }}
         >
           {/* Overlay to ensure text readability */}
@@ -248,7 +248,7 @@ export default function BulkOrderPage() {
 
           {/* Sidebar */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#2C3624] text-white rounded-3xl p-6 sm:p-8 space-y-4 shadow-lg border border-[#6B7F59]/30">
+            <div className="bg-olive-dark text-white rounded-3xl p-6 sm:p-8 space-y-4 shadow-lg border border-olive/30">
               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-amber-400">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -258,10 +258,36 @@ export default function BulkOrderPage() {
               <p className="text-stone-300 text-xs sm:text-sm leading-relaxed">
                 Connect directly with our Business Development Director for custom contract manufacturing, export proposals, or instant cargo booking.
               </p>
-              <div className="pt-2 text-xs text-amber-300 space-y-1 font-mono">
-                <p>📞 Call/WhatsApp: +91 9911575605</p>
-                <p>📧 Email: wholesale@foodvilleindia.com</p>
-                <p>📍 Location: Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001</p>
+              <div className="pt-4 border-t border-white/15 space-y-3.5 text-xs">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-gold">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </div>
+                  <div>
+                    <span className="text-white/60 text-[10px] uppercase font-bold tracking-wider block">Call / WhatsApp</span>
+                    <a href="tel:+919911575605" className="text-white font-bold hover:text-gold transition text-sm">+91 9911575605</a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-gold">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  </div>
+                  <div>
+                    <span className="text-white/60 text-[10px] uppercase font-bold tracking-wider block">Wholesale Email</span>
+                    <a href="mailto:wholesale@foodvilleindia.com" className="text-white font-bold hover:text-gold transition text-sm">wholesale@foodvilleindia.com</a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-gold mt-0.5">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div>
+                    <span className="text-white/60 text-[10px] uppercase font-bold tracking-wider block">Location</span>
+                    <span className="text-white/90 font-medium leading-relaxed block text-xs">Foodville Consumer Products Pvt. Ltd.<br />H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

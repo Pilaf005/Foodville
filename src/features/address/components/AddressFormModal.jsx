@@ -27,7 +27,7 @@ const EMPTY = {
 };
 
 const inputCls =
-  "w-full rounded-2xl border border-cardline bg-white px-4 py-3 text-base md:text-sm text-ink placeholder:text-muted outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20";
+  "w-full min-h-[44px] rounded-2xl border border-cardline bg-white px-4 py-3 text-base md:text-sm text-ink placeholder:text-muted outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised";
 
 function Field({ label, hint, children, required }) {
   return (
@@ -193,7 +193,7 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
             type="button"
             onClick={detectLocation}
             disabled={detecting}
-            className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-olive/50 bg-olive/5 px-4 py-3 text-xs font-bold text-olive transition hover:border-olive hover:bg-olive/10 active:scale-[0.99] disabled:opacity-60"
+            className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-olive/50 bg-olive/5 px-4 py-3 text-xs font-bold text-olive transition hover:border-olive hover:bg-olive/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised active:scale-[0.99] disabled:opacity-60"
           >
             {detecting ? (
               <>
@@ -299,7 +299,7 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
                   key={l}
                   type="button"
                   onClick={() => set("label", l)}
-                  className={`rounded-full border px-4 py-2 text-xs font-bold transition-all duration-150 active:scale-95 ${
+                  className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-full border px-4 py-2 text-xs font-bold transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised active:scale-95 ${
                     form.label === l
                       ? "border-olive bg-olive text-white shadow-sm"
                       : "border-cardline bg-white text-ink hover:border-olive/50 hover:text-olive"
@@ -316,7 +316,7 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
               type="checkbox"
               checked={!!form.isDefault}
               onChange={(e) => set("isDefault", e.target.checked)}
-              className="h-4 w-4 accent-[#6B7F59]"
+              className="h-4 w-4 accent-olive focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
             />
             Make this my default address
           </label>
@@ -326,7 +326,7 @@ export default function AddressFormModal({ isOpen, onClose, editAddress = null, 
           <button
             type="submit"
             disabled={busy}
-            className="w-full rounded-2xl bg-olive px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-md shadow-olive/20 transition hover:bg-olive-dark active:scale-[0.98] disabled:opacity-60"
+            className="w-full min-h-[44px] rounded-2xl bg-olive px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-md shadow-olive/20 transition hover:bg-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised active:scale-[0.98] disabled:opacity-60"
           >
             {busy ? "Saving…" : isEdit ? "Save changes" : "Save address"}
           </button>

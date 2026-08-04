@@ -35,7 +35,7 @@ export const MobileNavigation = ({ onLocationClick, activeAddress, onMenuClick, 
         <button
           onClick={onMenuClick}
           aria-label="Open navigation menu"
-          className="-ml-2 p-2 rounded-full hover:bg-black/5 transition text-ink min-h-[44px] min-w-[44px] flex items-center justify-center shrink-0"
+          className="-ml-2 p-2 rounded-full hover:bg-black/5 transition text-ink min-h-[44px] min-w-[44px] flex items-center justify-center shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
         >
           <HamburgerIcon />
         </button>
@@ -107,7 +107,7 @@ export const MobileNavigation = ({ onLocationClick, activeAddress, onMenuClick, 
           <button
             onClick={onLocationClick}
             suppressHydrationWarning
-            className="w-full bg-gray-50/70 hover:bg-gray-100/70 border-y border-cardline/60 py-1.5 px-4 flex items-center gap-1.5 focus:outline-none transition text-left"
+            className="w-full bg-gray-50/70 hover:bg-gray-100/70 border-y border-cardline/60 py-1.5 px-4 flex items-center gap-1.5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] transition text-left"
             aria-label="Change delivery location"
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" className="text-ink/80 shrink-0">

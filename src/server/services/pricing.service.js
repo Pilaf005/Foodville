@@ -311,7 +311,7 @@ export async function priceItems(
   }
 
   // Free delivery threshold: if order subtotal is >= 299, base delivery charge is FREE!
-  // Cash on Delivery (COD) handling fee is calculated separately and applies if COD method is selected.
+  // Orders below 299 use the dynamic Shiprocket rate (or fallback default).
   if (subtotal >= env.freeDeliveryThreshold) {
     baseDeliveryCharge = 0;
     gst = 0;

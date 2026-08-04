@@ -42,7 +42,7 @@ export const GET = withRoute(async (req) => {
 
     if (!pincode) {
       console.log(`[Rate API] No pincode provided, returning default fallback`);
-      return ok({ deliveryCharge: 40 }); // default fallback
+      return ok({ deliveryCharge: 49 }); // default fallback
     }
 
     const areaParam = (searchParams.get("area") || "").toLowerCase().trim();
@@ -86,7 +86,7 @@ export const GET = withRoute(async (req) => {
     const cartData = await getCart(userId);
     if (!cartData.items || cartData.items.length === 0) {
       console.log(`[Rate API] Empty cart, returning default fallback`);
-      return ok({ deliveryCharge: 40 });
+      return ok({ deliveryCharge: 49 });
     }
 
     // 2. Estimate total weight in kgs
@@ -110,10 +110,10 @@ export const GET = withRoute(async (req) => {
       });
     } else {
       return ok({
-        baseDeliveryCharge: 40,
+        baseDeliveryCharge: 49,
         codCharge: 0,
         gst: 0,
-        deliveryCharge: 40,
+        deliveryCharge: 49,
         estimatedWeight: weight,
         isCustomRate: false
       });
@@ -121,10 +121,10 @@ export const GET = withRoute(async (req) => {
   } catch (err) {
     console.error("[Rate API Error]", err);
     return ok({
-      baseDeliveryCharge: 40,
+      baseDeliveryCharge: 49,
       codCharge: 0,
       gst: 0,
-      deliveryCharge: 40,
+      deliveryCharge: 49,
       error: err.message
     });
   }

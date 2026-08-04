@@ -69,8 +69,8 @@ export default function TermsAndConditionsPage() {
         <h3 className="text-xs font-black text-olive uppercase tracking-wide">Questions?</h3>
         <p className="text-xs text-muted leading-relaxed">For any questions about these terms, contact our team directly.</p>
         <div className="flex flex-wrap gap-4 pt-1 text-xs font-semibold">
-          <a href="https://wa.me/919911575605" target="_blank" rel="noopener noreferrer" className="text-olive hover:underline">📱 +91 9911575605</a>
-          <a href="mailto:support@foodvilleindia.com" className="text-olive hover:underline">✉️ support@foodvilleindia.com</a>
+          <a href="https://wa.me/919911575605" target="_blank" rel="noopener noreferrer" className="text-olive hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded">📱 +91 9911575605</a>
+          <a href="mailto:support@foodvilleindia.com" className="text-olive hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded">✉️ support@foodvilleindia.com</a>
         </div>
       </section>
     </div>

@@ -58,11 +58,12 @@ export default function ShippingPolicyPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-sm font-extrabold text-ink uppercase tracking-wide border-l-4 border-olive pl-3">Shipping Charges</h2>
+        <h2 className="text-sm font-extrabold text-ink uppercase tracking-wide border-l-4 border-olive pl-3">Shipping & COD Charges</h2>
         <ul className="list-disc list-inside space-y-2 text-sm text-muted pl-2">
-          <li><strong className="text-ink">Free Shipping</strong> on all orders above ₹499.</li>
-          <li>A flat shipping charge of <strong className="text-ink">₹49</strong> is applied on orders below ₹499.</li>
-          <li>Shipping charges, if applicable, are displayed at checkout before payment.</li>
+          <li><strong className="text-ink">Free Base Shipping</strong> on all orders of ₹299 or more across all serviceable PIN codes in India.</li>
+          <li><strong className="text-ink">Orders Below ₹299</strong>: Base shipping charges are calculated dynamically at checkout based on your delivery PIN code, location, and package weight via our shipping partner (Shiprocket).</li>
+          <li><strong className="text-ink">Cash on Delivery (COD) Fee</strong>: Calculated dynamically based on your delivery PIN code/location as quoted by courier partners for cash collection & handling when COD is selected. Online prepaid payments (UPI, Credit/Debit Cards, Netbanking) incur <strong className="text-ink">₹0 COD fee</strong>.</li>
+          <li>All applicable delivery and COD charges for your specific PIN code are displayed transparently in your order summary before payment.</li>
         </ul>
       </section>
 
@@ -94,8 +95,8 @@ export default function ShippingPolicyPage() {
         <h3 className="text-xs font-black text-olive uppercase tracking-wide">Shipping Queries?</h3>
         <p className="text-xs text-muted leading-relaxed">For real-time order status or delivery concerns, reach out to us directly.</p>
         <div className="flex flex-wrap gap-4 pt-1 text-xs font-semibold">
-          <a href="https://wa.me/919911575605" target="_blank" rel="noopener noreferrer" className="text-olive hover:underline">📱 WhatsApp: +91 9911575605</a>
-          <a href="mailto:support@foodvilleindia.com" className="text-olive hover:underline">✉️ support@foodvilleindia.com</a>
+          <a href="https://wa.me/919911575605" target="_blank" rel="noopener noreferrer" className="text-olive hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded">📱 WhatsApp: +91 9911575605</a>
+          <a href="mailto:support@foodvilleindia.com" className="text-olive hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded">✉️ support@foodvilleindia.com</a>
         </div>
       </section>
     </div>

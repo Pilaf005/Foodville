@@ -73,7 +73,7 @@ export default function CategoryFilter({ active }) {
               key={item.id}
               ref={isActive ? activeRef : null}
               onClick={() => handleCategoryClick(item.id)}
-              className="flex flex-col items-center gap-1.5 group focus:outline-none select-none transition cursor-pointer w-[62px] sm:w-auto shrink-0 sm:shrink snap-start animate-fadeIn"
+              className="flex flex-col items-center gap-1.5 group min-h-[44px] min-w-[44px] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised select-none transition cursor-pointer w-[62px] sm:w-auto shrink-0 sm:shrink snap-start animate-fadeIn"
             >
               {/* Rounded Square with visible active border */}
               <div className={`p-[3px] rounded-[20px] transition-all duration-300 ${

@@ -143,7 +143,7 @@ export default function ProductGallery({ images = [], videos = [], name = "" }) 
                 onClick={prev}
                 onMouseMove={(e) => e.stopPropagation()}
                 onMouseEnter={() => setIsHovered(false)}
-                className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-white/90 shadow flex items-center justify-center text-ink hover:bg-white transition z-30 cursor-pointer pointer-events-auto"
+                className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 h-11 w-11 min-h-[44px] min-w-[44px] rounded-full bg-white/90 shadow flex items-center justify-center text-ink hover:bg-white transition z-30 cursor-pointer pointer-events-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
                 aria-label="Previous item"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m15 18-6-6 6-6"/></svg>
@@ -153,7 +153,7 @@ export default function ProductGallery({ images = [], videos = [], name = "" }) 
                 onClick={next}
                 onMouseMove={(e) => e.stopPropagation()}
                 onMouseEnter={() => setIsHovered(false)}
-                className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-white/90 shadow flex items-center justify-center text-ink hover:bg-white transition z-30 cursor-pointer pointer-events-auto"
+                className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 h-11 w-11 min-h-[44px] min-w-[44px] rounded-full bg-white/90 shadow flex items-center justify-center text-ink hover:bg-white transition z-30 cursor-pointer pointer-events-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
                 aria-label="Next item"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m9 18 6-6-6-6"/></svg>
@@ -190,7 +190,7 @@ export default function ProductGallery({ images = [], videos = [], name = "" }) 
             <button
               key={i}
               onClick={() => { setActive(i); setMobileZoom(false); }}
-              className={`relative shrink-0 h-16 w-16 sm:h-20 sm:w-20 rounded-xl overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
+              className={`relative shrink-0 h-16 w-16 sm:h-20 sm:w-20 min-h-[44px] min-w-[44px] rounded-xl overflow-hidden border-2 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised ${
                 i === active ? "border-olive shadow-md scale-105" : "border-cardline hover:border-olive/50 opacity-70 hover:opacity-100"
               }`}
               aria-label={`View item ${i + 1}`}

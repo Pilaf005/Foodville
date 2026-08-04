@@ -12,22 +12,22 @@ function ActionButtons({ product, isInCart, isOutOfStock, inWishlist, onAddToCar
   return (
     <div className="flex gap-3">
       {isInCart ? (
-        <div className="flex-1 flex items-center justify-between rounded-2xl border-2 border-olive bg-white h-14 px-4 shadow-sm select-none">
+        <div className="flex-1 flex items-center justify-between rounded-full border-2 border-olive bg-olive text-white h-14 min-h-[44px] px-3 shadow-sm select-none overflow-hidden">
           <button
             type="button"
             onClick={stepperProps.onDecrease}
-            className="w-10 h-10 flex items-center justify-center font-bold text-olive hover:bg-olive/5 rounded-xl transition text-2xl active:scale-95"
+            className="w-10 h-full flex items-center justify-center font-black text-white text-xl hover:opacity-75 active:scale-95 transition focus:outline-none cursor-pointer"
             aria-label="Decrease quantity"
           >
             −
           </button>
-          <span className="text-base font-black text-ink">
+          <span className="text-base font-black text-white px-2 select-none">
             {stepperProps.qty}
           </span>
           <button
             type="button"
             onClick={stepperProps.onIncrease}
-            className="w-10 h-10 flex items-center justify-center font-bold text-olive hover:bg-olive/5 rounded-xl transition text-2xl active:scale-95"
+            className="w-10 h-full flex items-center justify-center font-black text-white text-xl hover:opacity-75 active:scale-95 transition focus:outline-none cursor-pointer"
             aria-label="Increase quantity"
           >
             +
@@ -38,7 +38,7 @@ function ActionButtons({ product, isInCart, isOutOfStock, inWishlist, onAddToCar
           type="button"
           onClick={onAddToCart}
           disabled={isOutOfStock}
-          className="flex-1 rounded-2xl bg-olive py-4 text-sm font-bold text-white hover:bg-olive-dark active:scale-[0.98] transition disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-olive/20"
+          className="flex-1 min-h-[44px] min-w-[44px] rounded-2xl bg-olive py-4 text-sm font-bold text-white hover:bg-olive-dark active:scale-[0.98] transition disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-olive/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
         >
           {isOutOfStock ? "Out of Stock" : "Add to Cart"}
         </button>
@@ -46,7 +46,7 @@ function ActionButtons({ product, isInCart, isOutOfStock, inWishlist, onAddToCar
       <button
         type="button"
         onClick={onToggleWishlist}
-        className={`h-14 w-14 shrink-0 rounded-2xl border-2 flex items-center justify-center transition active:scale-95 ${
+        className={`h-14 w-14 min-h-[44px] min-w-[44px] shrink-0 rounded-2xl border-2 flex items-center justify-center transition active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised ${
           inWishlist
             ? "border-terracotta bg-terracotta/10 text-terracotta"
             : "border-cardline bg-white text-muted hover:border-terracotta hover:text-terracotta"
@@ -115,7 +115,7 @@ function PackUnitSelector({ product, units, selectedUnit, qty, setSelectedUnit, 
                 key={i}
                 type="button"
                 onClick={() => { setSelectedUnit(u); setQty(1); }}
-                className={`flex flex-col items-start p-3 rounded-2xl border-2 text-left transition-all duration-200 focus:outline-none ${
+                className={`flex flex-col items-start p-3 rounded-2xl border-2 text-left transition-all duration-200 min-h-[44px] min-w-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised ${
                   isSelected ? "border-olive bg-olive/5 shadow-sm" : "border-cardline bg-white hover:border-olive/40"
                 }`}
               >
@@ -180,7 +180,7 @@ function WeightUnitSelector({ product, units, selectedUnit, qty, setSelectedUnit
                 key={i}
                 type="button"
                 onClick={() => { setSelectedUnit(u); setQty(1); }}
-                className={`flex flex-col items-start p-3.5 rounded-2xl border-2 text-left transition-all duration-200 cursor-pointer focus:outline-none ${
+                className={`flex flex-col items-start p-3.5 rounded-2xl border-2 text-left transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised ${
                   isSelected ? "border-olive bg-olive/5 shadow-sm" : "border-cardline bg-white hover:border-olive/30 hover:bg-cream/20"
                 }`}
               >

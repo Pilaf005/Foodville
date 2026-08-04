@@ -54,7 +54,7 @@ export default function Modal({ isOpen, onClose, title, subtitle, children, maxW
             <button
               onClick={onClose}
               aria-label="Close"
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-muted transition hover:bg-cream hover:text-ink active:scale-95"
+              className="grid h-9 w-9 min-h-[44px] min-w-[44px] shrink-0 place-items-center rounded-full text-muted transition hover:bg-cream hover:text-ink active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
                 <path d="M18 6 6 18M6 6l12 12" />

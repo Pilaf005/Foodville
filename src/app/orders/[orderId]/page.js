@@ -24,7 +24,7 @@ function CancelOrderButton({ order }) {
     <>
       <button
         onClick={() => setConfirmOpen(true)}
-        className="rounded-2xl border border-red-200 px-5 py-2.5 text-xs font-bold text-red-500 transition hover:bg-red-50 active:scale-[0.98]"
+        className="rounded-2xl border border-red-200 px-5 py-2.5 text-xs font-bold text-red-500 transition hover:bg-red-50 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
       >
         Cancel order
       </button>
@@ -44,14 +44,14 @@ function CancelOrderButton({ order }) {
         <div className="mt-5 flex gap-2">
           <button
             onClick={() => setConfirmOpen(false)}
-            className="flex-1 rounded-2xl border border-cardline py-2.5 text-xs font-bold uppercase text-ink transition hover:border-olive"
+            className="flex-1 rounded-2xl border border-cardline py-2.5 text-xs font-bold uppercase text-ink transition hover:border-olive focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
           >
             Keep order
           </button>
           <button
             onClick={() => cancel.mutate(order.orderId, { onSettled: () => setConfirmOpen(false) })}
             disabled={cancel.isPending}
-            className="flex-1 rounded-2xl bg-red-500 py-2.5 text-xs font-bold uppercase text-white transition hover:bg-red-600 active:scale-[0.98] disabled:opacity-60"
+            className="flex-1 rounded-2xl bg-red-500 py-2.5 text-xs font-bold uppercase text-white transition hover:bg-red-600 active:scale-[0.98] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
           >
             {cancel.isPending ? "Cancelling…" : "Yes, cancel"}
           </button>
@@ -81,7 +81,7 @@ function CompletePaymentCard({ order }) {
       <button
         onClick={() => payPendingOrder(order, user).catch(() => {})}
         disabled={isPaying}
-        className="shrink-0 rounded-2xl bg-olive px-6 py-3 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-olive/20 transition hover:bg-olive-dark active:scale-[0.98] disabled:opacity-60"
+        className="shrink-0 rounded-2xl bg-olive px-6 py-3 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-olive/20 transition hover:bg-olive-dark active:scale-[0.98] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
       >
         {isPaying ? "Opening…" : "Complete payment"}
       </button>
@@ -116,7 +116,7 @@ export default function OrderTrackingPage({ params: paramsPromise }) {
         </p>
         <Link
           href="/orders"
-          className="rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark"
+          className="rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center"
         >
           Back to my orders
         </Link>
@@ -138,7 +138,7 @@ export default function OrderTrackingPage({ params: paramsPromise }) {
           <Link
             href="/orders"
             aria-label="Back to orders"
-            className="rounded-full p-2 text-muted transition hover:bg-cream hover:text-ink"
+            className="rounded-full p-2 text-muted transition hover:bg-cream hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
               <path d="m15 18-6-6 6-6" />

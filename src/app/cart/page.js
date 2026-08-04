@@ -32,7 +32,8 @@ function calcBilling(cart) {
   const totalSellingPrice = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
   const totalMrp          = cart.reduce((sum, item) => sum + item.qty * (item.mrp || item.price), 0);
   const totalSavings      = totalMrp - totalSellingPrice;
-  const deliveryCharge    = cart.length > 0 ? DELIVERY_CHARGE : 0;
+  const isFreeDelivery    = totalSellingPrice >= DELIVERY_THRESHOLD;
+  const deliveryCharge    = (cart.length > 0 && !isFreeDelivery) ? DELIVERY_CHARGE : 0;
   const totalPayable      = totalSellingPrice + deliveryCharge;
   return { totalSellingPrice, totalMrp, totalSavings, deliveryCharge, totalPayable };
 }
@@ -63,7 +64,7 @@ function CartEmptyState() {
       </div>
       <h2 className="text-xl font-bold text-gray-800">Your cart is empty</h2>
       <p className="text-sm text-gray-500 mt-1">Add some items from our product collection to proceed with checkout.</p>
-      <Link href="/" className="mt-6 bg-[#6B7F59] hover:bg-[#5a6b4a] text-white text-sm font-bold px-8 py-3 rounded-2xl shadow-md transition">
+      <Link href="/" className="mt-6 bg-olive hover:bg-olive-dark text-white text-sm font-bold px-8 py-3 rounded-2xl shadow-md transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center">
         Shop Products
       </Link>
     </main>
@@ -73,7 +74,7 @@ function CartEmptyState() {
 function CartHeader({ totalQty }) {
   return (
     <div className="flex items-center gap-2 mb-4 sm:mb-8 pt-1">
-      <Link href="/" className="p-2 -ml-2 rounded-full hover:bg-black/5 transition text-ink flex items-center justify-center shrink-0" aria-label="Back to shop">
+      <Link href="/" className="p-2 -ml-2 rounded-full hover:bg-black/5 transition text-ink flex items-center justify-center shrink-0 min-h-[44px] min-w-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised" aria-label="Back to shop">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
           <path d="m15 18-6-6 6-6" />
         </svg>
@@ -147,7 +148,7 @@ function CartBillPanel({
         {(() => {
           if (!nextTier) {
             return (
-              <div className="flex items-center gap-2 bg-[#6B7F59]/10 border border-[#6B7F59]/30 rounded-xl px-3 py-2.5 text-xs font-semibold text-[#5a6b4a]">
+              <div className="flex items-center gap-2 bg-olive/10 border border-olive/30 rounded-xl px-3 py-2.5 text-xs font-semibold text-olive-dark">
                 <span className="text-base">🎉</span>
                 <span>Maximum discount unlocked! Saving <strong>Flat ₹500 OFF</strong> with code <strong>FOODVILLE20</strong>.</span>
               </div>
@@ -244,7 +245,7 @@ function CartBillPanel({
                 <p className="text-[10px] sm:text-[11px] text-gray-500 leading-snug mt-0.5 truncate max-w-[150px] xs:max-w-[200px] sm:max-w-[250px] md:max-w-none">{addressText}</p>
               </div>
             </div>
-            <button onClick={onOpenLocation} className="text-xs font-bold text-rose-600 hover:text-rose-700 transition shrink-0 px-2 py-1.5 rounded-lg hover:bg-rose-50 cursor-pointer">
+            <button onClick={onOpenLocation} className="text-xs font-bold text-rose-600 hover:text-rose-700 transition shrink-0 px-2 py-1.5 rounded-lg hover:bg-rose-50 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center">
               Change
             </button>
           </div>
@@ -270,7 +271,7 @@ function CartBillPanel({
         {selectedMethod && (
           <div className="border-t border-gray-100 pt-3.5 sm:pt-4 flex items-start justify-between gap-3">
             <div className="flex gap-2.5 sm:gap-3 min-w-0">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-green-50 grid place-items-center text-[#6B7F59] shrink-0 mt-0.5">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-green-50 grid place-items-center text-olive shrink-0 mt-0.5">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" className="sm:w-4 sm:h-4">
                   <rect width="20" height="14" x="2" y="5" rx="2" /><line x1="2" y1="10" x2="22" y2="10" />
                 </svg>
@@ -280,7 +281,7 @@ function CartBillPanel({
                 <p className="text-[10px] sm:text-[11px] text-gray-500 leading-snug mt-0.5 capitalize">{paymentLabel}</p>
               </div>
             </div>
-            <button onClick={onOpenPayment} className="text-xs font-bold text-[#6B7F59] transition shrink-0 px-2 py-1.5 rounded-lg hover:bg-[#6B7F59]/5 cursor-pointer">
+            <button onClick={onOpenPayment} className="text-xs font-bold text-olive transition shrink-0 px-2 py-1.5 rounded-lg hover:bg-olive/5 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center">
               Change
             </button>
           </div>
@@ -292,14 +293,14 @@ function CartBillPanel({
             <button
                 onClick={onPlaceOrder}
                 disabled={isPlacing}
-                className="w-full bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block disabled:opacity-60 cursor-pointer"
+                className="w-full bg-olive hover:bg-olive-dark active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block disabled:opacity-60 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               >
                 {isPlacing ? "PLACING ORDER…" : `PLACE ORDER — ₹${formatMoney(totalPayable)}`}
               </button>
             ) : (
               <button
                 onClick={onOpenPayment}
-                className="w-full bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block cursor-pointer"
+                className="w-full bg-olive hover:bg-olive-dark active:scale-[0.98] text-white text-sm font-bold py-4 px-6 rounded-2xl transition shadow-md shadow-olive/20 text-center block cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               >
                 CHOOSE PAYMENT
               </button>
@@ -309,11 +310,11 @@ function CartBillPanel({
         {/* Terms & Refund Policy Link (Desktop Only) */}
         <p className="mt-3 text-center text-[11px] text-gray-500 leading-relaxed hidden lg:block">
           By proceeding, you agree to Foodville’s{" "}
-          <Link href="/terms-and-conditions" target="_blank" className="font-semibold text-gray-700 underline hover:text-[#6B7F59]">
+          <Link href="/terms-and-conditions" target="_blank" className="font-semibold text-gray-700 underline hover:text-olive">
             Terms
           </Link>{" "}
           &{" "}
-          <Link href="/refund-policy" target="_blank" className="font-semibold text-gray-700 underline hover:text-[#6B7F59]">
+          <Link href="/refund-policy" target="_blank" className="font-semibold text-gray-700 underline hover:text-olive">
             Refund & Return Policy
           </Link>
           .
@@ -336,14 +337,14 @@ function MobileStickyCheckout({ billing, selectedMethod, isPlacing, onOpenPaymen
           <button
             onClick={onPlaceOrder}
             disabled={isPlacing}
-            className="flex-1 bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md disabled:opacity-60 text-center cursor-pointer"
+            className="flex-1 bg-olive hover:bg-olive-dark active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md disabled:opacity-60 text-center cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
           >
             {isPlacing ? "PLACING…" : "PLACE ORDER"}
           </button>
         ) : (
           <button
             onClick={onOpenPayment}
-            className="flex-1 bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md text-center cursor-pointer"
+            className="flex-1 bg-olive hover:bg-olive-dark active:scale-[0.98] text-white text-sm font-bold py-3.5 px-6 rounded-2xl transition shadow-md text-center cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
           >
             CHOOSE PAYMENT
           </button>
@@ -351,7 +352,7 @@ function MobileStickyCheckout({ billing, selectedMethod, isPlacing, onOpenPaymen
       </div>
       <p className="text-[10px] text-gray-500 text-center mt-2 font-medium">
         🛡️ 100% Quality Guarantee • Read {" "}
-        <Link href="/refund-policy" target="_blank" className="font-bold text-gray-800 underline hover:text-[#6B7F59]">
+        <Link href="/refund-policy" target="_blank" className="font-bold text-gray-800 underline hover:text-olive">
           Refund & Return Policy
         </Link>
       </p>
@@ -510,7 +511,7 @@ export default function CartPage() {
 
     if (shippingDetails !== null && hasAddress) {
       const isFree = subtotal >= DELIVERY_THRESHOLD;
-      const baseDeliveryCharge = isFree ? 0 : (shippingDetails.baseDeliveryCharge || 0);
+      const baseDeliveryCharge = isFree ? 0 : (shippingDetails.baseDeliveryCharge ?? DELIVERY_CHARGE);
       const codCharge = (selectedMethod === "cod") ? (shippingDetails.codCharge || 30) : 0;
       const gst = isFree ? 0 : (shippingDetails.gst || 0);
       const deliveryCharge = baseDeliveryCharge + codCharge + gst;

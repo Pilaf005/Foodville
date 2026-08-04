@@ -85,7 +85,7 @@ export default function AddressPickerModal({ isOpen, onClose, selectedId, onSele
                       <button
                         type="button"
                         onClick={(e) => { e.stopPropagation(); openForm({ edit: a }); }}
-                        className="mt-2 text-[11px] font-bold text-olive transition hover:underline"
+                        className="mt-2 inline-flex min-h-[44px] min-w-[44px] items-center text-[11px] font-bold text-olive transition hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
                       >
                         Edit
                       </button>
@@ -100,7 +100,7 @@ export default function AddressPickerModal({ isOpen, onClose, selectedId, onSele
                 <button
                   type="button"
                   onClick={() => openForm({ detect: true })}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-olive/40 bg-olive/5 px-4 py-3 text-xs font-bold text-olive transition hover:border-olive hover:bg-olive/10 active:scale-[0.99]"
+                  className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-2xl border-2 border-olive/40 bg-olive/5 px-4 py-3 text-xs font-bold text-olive transition hover:border-olive hover:bg-olive/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised active:scale-[0.99]"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -113,7 +113,7 @@ export default function AddressPickerModal({ isOpen, onClose, selectedId, onSele
                 <button
                   type="button"
                   onClick={() => openForm()}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-cardline bg-cream/30 px-4 py-3 text-xs font-bold text-ink transition hover:border-olive/60 hover:text-olive active:scale-[0.99]"
+                  className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-cardline bg-cream/30 px-4 py-3 text-xs font-bold text-ink transition hover:border-olive/60 hover:text-olive focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised active:scale-[0.99]"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                     <path d="M12 5v14M5 12h14" />

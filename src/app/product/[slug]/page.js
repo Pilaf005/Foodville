@@ -15,7 +15,7 @@ import { Skeleton } from "@/components/feedback/Skeleton";
 function ProductBreadcrumb({ product }) {
   return (
     <nav className="flex items-center gap-2 text-xs font-semibold text-muted tracking-wide uppercase px-0.5">
-      <Link href="/" className="hover:text-olive transition">Home</Link>
+      <Link href="/" className="hover:text-olive transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded">Home</Link>
       <span>/</span>
       <span className="hover:text-olive transition">{product.category}</span>
       <span>/</span>
@@ -53,7 +53,7 @@ function ProductNotFoundState() {
       </p>
       <Link
         href="/"
-        className="rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white hover:bg-olive-dark transition shadow"
+        className="rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white hover:bg-olive-dark transition shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center"
       >
         Go Back Home
       </Link>

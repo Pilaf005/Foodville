@@ -27,7 +27,7 @@ const METHODS = [
 
 function OnlineIcon() {
   return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6B7F59" strokeWidth="2" strokeLinecap="round">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-olive" strokeWidth="2" strokeLinecap="round">
       <rect width="20" height="14" x="2" y="5" rx="2" />
       <line x1="2" y1="10" x2="22" y2="10" />
       <line x1="6" y1="15" x2="10" y2="15" />
@@ -37,7 +37,7 @@ function OnlineIcon() {
 
 function CodIcon() {
   return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6B7F59" strokeWidth="2" strokeLinecap="round">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-olive" strokeWidth="2" strokeLinecap="round">
       <rect width="20" height="12" x="2" y="6" rx="2" />
       <circle cx="12" cy="12" r="3" />
     </svg>
@@ -79,7 +79,7 @@ export default function PaymentModal({ isOpen, onClose, selectedMethod, onSelect
               key={id}
               type="button"
               onClick={() => handleSelect(id)}
-              className={`flex w-full items-center justify-between rounded-2xl border-2 px-4 py-4 text-left transition-all duration-200 active:scale-[0.99] ${
+              className={`flex w-full items-center justify-between min-h-[44px] rounded-2xl border-2 px-4 py-4 text-left transition-all duration-200 active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised ${
                 selected ? "border-olive bg-olive/5" : "border-cardline bg-white hover:border-olive/50"
               }`}
             >

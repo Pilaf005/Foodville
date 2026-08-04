@@ -33,7 +33,7 @@ export default function OrdersPage() {
           <p className="text-xs text-muted">Your orders will appear here once you place one.</p>
           <Link
             href="/shop"
-            className="mt-2 inline-flex rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark active:scale-[0.98]"
+            className="mt-2 inline-flex rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] items-center justify-center"
           >
             Start shopping
           </Link>
@@ -48,7 +48,7 @@ export default function OrdersPage() {
               <Link
                 key={order.orderId}
                 href={`/orders/${order.orderId}`}
-                className="card-hover animate-fade-in block rounded-3xl border border-cardline bg-white p-4 shadow-sm transition sm:p-5"
+                className="card-hover animate-fade-in block rounded-3xl border border-cardline bg-white p-4 shadow-sm transition sm:p-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               >
                 <div className="flex items-start gap-4">
                   <span className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-cardline bg-cream">

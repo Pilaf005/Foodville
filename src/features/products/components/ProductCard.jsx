@@ -22,12 +22,12 @@ export default function ProductCard({ product }) {
   const currentQty = getCartQty(cart, product.id);
 
   return (
-    <div className="group relative flex flex-col h-full rounded-2xl border border-cardline/60 bg-white overflow-hidden transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.025)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.065)] hover:border-olive/20 active:scale-[0.99] sm:active:scale-100 hover:z-10 hover:relative">
+    <div className="group relative flex flex-col h-full rounded-2xl border border-cardline/60 bg-surface overflow-hidden transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.025)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.065)] hover:border-olive/20 active:scale-[0.99] sm:active:scale-100 hover:z-10 hover:relative">
       {/* Wishlist heart */}
       <button
         onClick={() => toggleWishlist(product)}
         aria-label="Toggle wishlist"
-        className="absolute right-2.5 top-2.5 z-10 p-1 text-terracotta transition-transform hover:scale-110 active:scale-90 drop-shadow-md"
+        className="absolute right-2.5 top-2.5 z-10 p-1 min-h-[44px] min-w-[44px] flex items-center justify-center text-terracotta transition-transform hover:scale-110 active:scale-90 drop-shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded-full"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill={inWishlist ? "currentColor" : "rgba(255,255,255,0.4)"} stroke="currentColor" strokeWidth="2">
           <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
@@ -40,7 +40,7 @@ export default function ProductCard({ product }) {
           <ProductRibbon shopBy={product.shopBy} />
           {discount > 0 && (
             <div
-              className="absolute left-2.5 sm:left-3 top-0 z-10 bg-[#E05C3A] text-white font-black text-[9px] sm:text-[10px] leading-none px-2 pt-1.5 pb-2.5 flex flex-col items-center justify-center text-center select-none"
+              className="absolute left-2.5 sm:left-3 top-0 z-10 bg-terracotta text-white font-black text-[9px] sm:text-[10px] leading-none px-2 pt-1.5 pb-2.5 flex flex-col items-center justify-center text-center select-none"
               style={{
                 clipPath: "polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%)",
                 minWidth: "34px"
@@ -72,7 +72,7 @@ export default function ProductCard({ product }) {
             <p className="text-[11px] sm:text-xs font-normal text-muted leading-none">{product.unit}</p>
             <Link
               href={`/bulk-order?productName=${encodeURIComponent(product.name)}`}
-              className="text-[10px] sm:text-[11px] font-bold text-[#E05C3A] hover:text-terracotta hover:underline transition shrink-0"
+              className="text-[10px] sm:text-[11px] font-bold text-terracotta hover:underline transition shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded"
               title="Buy in Wholesale / Bulk (10kg+)"
             >
               📦 Buy Bulk?
@@ -93,24 +93,26 @@ export default function ProductCard({ product }) {
             <button
               onClick={() => addToCart(product, 1)}
               disabled={product.stock === 0}
-              className="border-2 border-olive text-olive bg-olive/5 hover:bg-olive/10 transition font-bold uppercase text-sm sm:text-base rounded-xl h-10 sm:h-11 px-4 sm:px-6 flex items-center justify-center tracking-widest active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50"
+              className="border-2 border-olive text-olive bg-olive/5 hover:bg-olive/10 transition font-bold uppercase text-xs sm:text-sm rounded-xl h-10 sm:h-11 min-h-[44px] px-4 sm:px-5 flex items-center justify-center tracking-wider active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none"
             >
               {product.stock === 0 ? "OUT" : "ADD"}
             </button>
           ) : (
-            <div className="flex items-center justify-between border-2 border-olive bg-white rounded-xl h-10 sm:h-11 px-1.5 w-[100px] sm:w-[112px] shadow-sm">
+            <div className="flex items-center justify-between border-2 border-olive bg-olive text-white rounded-full min-h-[44px] h-11 px-1.5 w-[96px] sm:w-[108px] shadow-sm select-none overflow-hidden">
               <button
+                type="button"
                 onClick={() => updateQty(cartItem.id, currentQty - 1)}
-                className="h-7 w-7 sm:h-8 sm:w-8 rounded-xl text-olive text-lg font-extrabold hover:bg-olive/10 flex items-center justify-center transition active:scale-90"
+                className="w-8 h-full flex items-center justify-center text-white text-lg font-extrabold hover:opacity-75 active:scale-90 transition focus:outline-none cursor-pointer"
                 aria-label="Decrease quantity"
               >
                 −
               </button>
-              <span className="text-sm sm:text-base font-bold text-ink">{currentQty}</span>
+              <span className="text-sm font-bold text-white text-center px-1 select-none">{currentQty}</span>
               <button
+                type="button"
                 onClick={() => updateQty(cartItem.id, currentQty + 1)}
                 disabled={product.stock > 0 && currentQty >= product.stock}
-                className="h-7 w-7 sm:h-8 sm:w-8 rounded-xl text-olive text-lg font-extrabold hover:bg-olive/10 flex items-center justify-center transition active:scale-90 disabled:opacity-40"
+                className="w-8 h-full flex items-center justify-center text-white text-lg font-extrabold hover:opacity-75 active:scale-90 transition disabled:opacity-40 focus:outline-none cursor-pointer"
                 aria-label="Increase quantity"
               >
                 +

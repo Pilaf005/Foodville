@@ -45,20 +45,22 @@ export default function CartItem({ item }) {
 
       {/* Right side: Solid green pill controller */}
       <div className="shrink-0 flex items-center">
-        <div className="flex items-center justify-between w-[90px] sm:w-[100px] h-[34px] sm:h-[38px] bg-[#2E7D32] text-white rounded-lg px-2 select-none shadow-sm">
+        <div className="flex items-center justify-between w-[96px] sm:w-[108px] min-h-[44px] bg-olive text-white rounded-full px-2 select-none shadow-sm overflow-hidden">
           <button
+            type="button"
             onClick={() => item.qty === 1 ? removeFromCart(item.id) : updateQty(item.id, item.qty - 1)}
-            className="w-6 h-6 flex items-center justify-center font-bold text-white/90 hover:text-white transition text-lg active:scale-95"
+            className="w-8 h-full flex items-center justify-center font-extrabold text-white text-lg hover:opacity-75 active:scale-90 transition focus:outline-none cursor-pointer"
             aria-label="Decrease quantity"
           >
             −
           </button>
-          <span className="text-sm font-bold text-white min-w-[16px] text-center">
+          <span className="text-sm font-bold text-white min-w-[16px] text-center select-none">
             {item.qty}
           </span>
           <button
+            type="button"
             onClick={() => updateQty(item.id, item.qty + 1)}
-            className="w-6 h-6 flex items-center justify-center font-bold text-white/90 hover:text-white transition text-lg active:scale-95"
+            className="w-8 h-full flex items-center justify-center font-extrabold text-white text-lg hover:opacity-75 active:scale-90 transition focus:outline-none cursor-pointer"
             aria-label="Increase quantity"
           >
             +

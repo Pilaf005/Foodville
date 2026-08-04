@@ -27,7 +27,7 @@ function FormField({ label, required, children }) {
   );
 }
 
-function AvatarUpload({ profile, onUploaded }) {
+function AvatarUpload({ profile, onUploaded, onRemove, isEditing }) {
   const upload = useImageUpload();
 
   async function handleFile(e) {
@@ -44,6 +44,8 @@ function AvatarUpload({ profile, onUploaded }) {
       onUploaded(result.url);
     }
   }
+
+  const hasCustomPhoto = Boolean(profile.avatarUrl && profile.avatarUrl !== DEFAULT_AVATAR);
 
   return (
     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 pb-6 border-b border-cardline">
@@ -62,18 +64,38 @@ function AvatarUpload({ profile, onUploaded }) {
         </div>
       </div>
       <div>
-        <p className="text-sm font-bold text-ink mb-1">Profile Picture</p>
-        <p className="text-xs text-muted mb-3">JPG, PNG, WebP or AVIF. Max 4MB.</p>
-        <label className="inline-block cursor-pointer text-xs font-bold text-olive border border-olive/50 rounded-xl px-4 py-2 hover:bg-olive/5 transition active:scale-95">
-          {upload.isPending ? "Uploading…" : "Upload Photo"}
-          <input
-            type="file"
-            accept="image/jpeg,image/png,image/webp,image/avif"
-            className="hidden"
-            disabled={upload.isPending}
-            onChange={handleFile}
-          />
-        </label>
+        <p className="text-sm font-bold text-ink mb-0.5">Profile Picture</p>
+        {isEditing ? (
+          <>
+            <p className="text-xs text-muted mb-3">JPG, PNG, WebP or AVIF. Max 4MB.</p>
+            <div className="flex flex-wrap items-center gap-2.5">
+              <label className="inline-block cursor-pointer text-xs font-bold text-olive border border-olive/50 rounded-xl px-4 py-2 hover:bg-olive/5 transition active:scale-95">
+                {upload.isPending ? "Uploading…" : "Upload Photo"}
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/avif"
+                  className="hidden"
+                  disabled={upload.isPending}
+                  onChange={handleFile}
+                />
+              </label>
+              {hasCustomPhoto && (
+                <button
+                  type="button"
+                  onClick={onRemove}
+                  className="text-xs font-bold text-terracotta border border-terracotta/40 rounded-xl px-4 py-2 hover:bg-terracotta/10 transition active:scale-95 flex items-center gap-1.5"
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                  </svg>
+                  Remove Photo
+                </button>
+              )}
+            </div>
+          </>
+        ) : (
+          <p className="text-xs text-muted">Click Edit to change or remove profile picture</p>
+        )}
       </div>
     </div>
   );
@@ -131,7 +153,12 @@ export default function PersonalInfoForm({ profile, onSave, isSaving = false }) 
       </div>
 
       <div className="px-0 sm:p-6 py-5 sm:py-6 space-y-6">
-        <AvatarUpload profile={profile} onUploaded={(url) => onSave({ avatarUrl: url })} />
+        <AvatarUpload
+          profile={profile}
+          isEditing={isEditing}
+          onUploaded={(url) => onSave({ avatarUrl: url })}
+          onRemove={() => onSave({ avatarUrl: "" })}
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <FormField label="Full Name" required>

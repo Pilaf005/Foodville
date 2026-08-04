@@ -1,67 +1,161 @@
 "use client";
 
-import { HERO_IMAGES, HERO_HEIGHT } from "../constants/heroImages";
-import { useHeroCarousel } from "../hooks/useHeroCarousel";
+import { motion } from "framer-motion";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import React from "react";
+import { Autoplay, EffectCreative, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-creative";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
-export function HeroCarousel() {
-  const { currentSlide, setCurrentSlide } = useHeroCarousel(true);
+import { cn } from "@/lib/utils";
+import { HERO_IMAGES } from "../constants/heroImages";
+
+const Carousel_005 = ({
+  images,
+  className,
+  showPagination = true,
+  showNavigation = false,
+  loop = true,
+  autoplay = true,
+  spaceBetween = 0,
+}) => {
+  const css = `
+  .Carousal_005 {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    padding-bottom: 35px !important;
+  }
+  
+  @media (min-width: 640px) {
+    .Carousal_005 {
+      aspect-ratio: auto;
+      height: 380px;
+      padding-bottom: 40px !important;
+    }
+  }
+  
+  .Carousal_005 .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  @media (min-width: 640px) {
+    .Carousal_005 .swiper-slide {
+      border-radius: 25px;
+    }
+  }
+
+  .Carousal_005 .swiper-pagination-bullet {
+    background-color: #6B7F59 !important;
+  }
+  .Carousal_005 .swiper-pagination-bullet-active {
+    width: 24px !important;
+    border-radius: 6px !important;
+  }
+  `;
 
   return (
-  <section className="relative overflow-hidden rounded-2xl sm:rounded-3xl aspect-[16/9] md:aspect-auto md:h-[340px] lg:h-[380px]">
-      {/* Images container */}
-      <div className="absolute inset-0 bg-cream">
-        {HERO_IMAGES.map((img, i) => (
-          <div
-            key={i}
-            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-            style={{ opacity: currentSlide === i ? 1 : 0 }}
-          >
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="w-full h-full object-cover"
-              draggable={false}
-            />
-          </div>
-        ))}
-      </div>
+    <motion.div
+      initial={{ opacity: 0, translateY: 20 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{
+        duration: 0.3,
+        delay: 0.2,
+      }}
+      className={cn("relative w-full max-w-6xl mx-auto px-2 sm:px-4", className)}
+    >
+      <style>{css}</style>
 
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0 rounded-3xl"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(46,42,38,0.85) 0%, rgba(46,42,38,0.4) 60%, rgba(46,42,38,0.1) 100%)",
-          pointerEvents: "none",
-        }}
-      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="w-full"
+      >
+        <Swiper
+          spaceBetween={spaceBetween}
+          autoplay={
+            autoplay
+              ? {
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }
+              : false
+          }
+          effect="creative"
+          grabCursor={true}
+          slidesPerView="auto"
+          centeredSlides={true}
+          loop={loop}
+          pagination={
+            showPagination
+              ? {
+                  clickable: true,
+                }
+              : false
+          }
+          navigation={
+            showNavigation
+              ? {
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                }
+              : false
+          }
+          className="Carousal_005"
+          creativeEffect={{
+            prev: {
+              shadow: true,
+              translate: [0, 0, -400],
+            },
+            next: {
+              translate: ["100%", 0, 0],
+            },
+          }}
+          modules={[EffectCreative, Pagination, Autoplay]}
+        >
+          {images.map((image, index) => (
+            <SwiperSlide key={index} className="">
+              <img
+                className="h-full w-full rounded-lg sm:rounded-3xl object-cover"
+                src={image.src}
+                alt={image.alt || `Hero slide ${index + 1}`}
+              />
+            </SwiperSlide>
+          ))}
+          {showNavigation && (
+            <div>
+              <div className="swiper-button-next after:hidden">
+                <ChevronRightIcon className="h-6 w-6 text-white" />
+              </div>
+              <div className="swiper-button-prev after:hidden">
+                <ChevronLeftIcon className="h-6 w-6 text-white" />
+              </div>
+            </div>
+          )}
+        </Swiper>
+      </motion.div>
+    </motion.div>
+  );
+};
 
-      {/* Hero Text */}
-      <div className="absolute inset-0 flex flex-col justify-center px-5 pb-0 sm:px-8 md:px-12 pointer-events-none z-10">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight drop-shadow-md max-w-xs sm:max-w-md">
-          Pure, Natural &amp; Fresh —<br />Straight to Your Kitchen
-        </h1>
-        <p className="mt-2 text-xs sm:text-sm md:text-base text-white/80 max-w-[240px] sm:max-w-sm drop-shadow">
-          Spice powders, seeds, dry fruits and herbal wellness products — sourced and packed with care.
-        </p>
-      </div>
+export function HeroCarousel() {
+  const images = HERO_IMAGES && HERO_IMAGES.length > 0 ? HERO_IMAGES : [
+    { src: "/images/x.com/13.jpeg", alt: "Illustrations" }
+  ];
 
-      {/* Carousel Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 md:bottom-4 flex gap-2 z-10">
-        {HERO_IMAGES.map((_, i) => (
-          <button
-            key={i}
-            suppressHydrationWarning
-            onClick={() => setCurrentSlide(i)}
-            className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${
-              currentSlide === i ? "w-6 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
-            }`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div>
-    </section>
+  return (
+    <div className="flex h-full w-full items-center justify-center overflow-hidden py-2">
+      <Carousel_005 className="" images={images} autoplay showPagination loop />
+    </div>
   );
 }
 
+export { Carousel_005 };
 export default HeroCarousel;

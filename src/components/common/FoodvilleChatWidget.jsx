@@ -261,16 +261,16 @@ export default function FoodvilleChatWidget() {
       {/* Floating Chat Drawer Window */}
       {isOpen && (
         <div
-          className={`absolute ${drawerPositionClass} w-[92vw] sm:w-[380px] h-[540px] max-h-[75vh] flex flex-col rounded-3xl overflow-hidden shadow-2xl border border-gray-200 bg-[#FBF9F5] animate-in fade-in zoom-in-95 duration-200 z-50`}
+          className={`absolute ${drawerPositionClass} w-[92vw] sm:w-[380px] h-[540px] max-h-[75vh] flex flex-col rounded-3xl overflow-hidden shadow-2xl border border-gray-200 bg-cream animate-in fade-in zoom-in-95 duration-200 z-50`}
         >
           {/* Header */}
-          <div className="bg-[#6B7F59] px-4 py-3.5 flex items-center justify-between text-white flex-shrink-0">
+          <div className="bg-olive px-4 py-3.5 flex items-center justify-between text-white flex-shrink-0">
             <div className="flex items-center gap-2.5">
               <div className="relative">
                 <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center p-1.5 border border-white/30">
                   <img src="/chatbot-icon.png" alt="Foodville" className="w-full h-full object-contain" />
                 </div>
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-[#6B7F59]"></span>
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-olive"></span>
               </div>
               <div>
                 <h3 className="font-bold text-sm leading-tight text-white">Foodville Assistant</h3>
@@ -284,7 +284,7 @@ export default function FoodvilleChatWidget() {
                 target="_blank"
                 rel="noreferrer"
                 title="Chat on WhatsApp"
-                className="p-1.5 hover:bg-white/10 rounded-full transition-colors text-emerald-100 hover:text-white"
+                className="p-1.5 hover:bg-white/10 rounded-full transition-colors text-emerald-100 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -294,7 +294,7 @@ export default function FoodvilleChatWidget() {
 
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 hover:bg-white/10 rounded-full transition-colors text-white/80 hover:text-white cursor-pointer"
+                className="p-1.5 hover:bg-white/10 rounded-full transition-colors text-white/80 hover:text-white cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
@@ -313,7 +313,7 @@ export default function FoodvilleChatWidget() {
                 <div
                   className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl shadow-sm leading-relaxed ${
                     msg.sender === "user"
-                      ? "bg-[#6B7F59] text-white rounded-br-none"
+                      ? "bg-olive text-white rounded-br-none"
                       : "bg-white text-gray-800 rounded-bl-none border border-gray-150"
                   }`}
                 >
@@ -322,7 +322,7 @@ export default function FoodvilleChatWidget() {
                     dangerouslySetInnerHTML={{
                       __html: msg.text
                         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-                        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="underline font-bold text-[#6B7F59] hover:text-[#5A6C4A]">$1</a>'),
+                        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="underline font-bold text-olive hover:text-olive-dark">$1</a>'),
                     }}
                   />
                   <span className={`block text-[9px] mt-1 text-right ${msg.sender === "user" ? "text-emerald-100" : "text-gray-400"}`}>
@@ -336,9 +336,9 @@ export default function FoodvilleChatWidget() {
             {isTyping && (
               <div className="flex justify-start">
                 <div className="bg-white rounded-2xl rounded-bl-none px-4 py-3 border border-gray-150 shadow-sm flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 bg-[#6B7F59] rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
-                  <span className="w-1.5 h-1.5 bg-[#6B7F59] rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
-                  <span className="w-1.5 h-1.5 bg-[#6B7F59] rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></span>
+                  <span className="w-1.5 h-1.5 bg-olive rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
+                  <span className="w-1.5 h-1.5 bg-olive rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
+                  <span className="w-1.5 h-1.5 bg-olive rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></span>
                 </div>
               </div>
             )}
@@ -357,10 +357,10 @@ export default function FoodvilleChatWidget() {
                   <button
                     key={i}
                     onClick={() => processUserMessage(chip.action)}
-                    className={`flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-left text-[11px] font-semibold transition-all cursor-pointer border ${
+                    className={`flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-left text-[11px] font-semibold transition-all cursor-pointer border min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised ${
                       chip.highlight
                         ? "bg-[#25D366] text-white border-[#1db954] hover:bg-[#1db954] col-span-2 justify-center shadow-sm"
-                        : "bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-[#6B7F59] hover:text-[#5A6C4A]"
+                        : "bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-olive hover:text-olive-dark"
                     }`}
                   >
                     <span className="text-sm">{chip.icon}</span>
@@ -381,7 +381,7 @@ export default function FoodvilleChatWidget() {
                 href="https://wa.me/919911575605?text=Hi%20Foodville!%20I%20need%20assistance%20with%20my%20order."
                 target="_blank"
                 rel="noreferrer"
-                className="bg-[#25D366] hover:bg-[#1db954] text-white font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm transition-colors"
+                className="bg-[#25D366] hover:bg-[#1db954] text-white font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm transition-colors min-h-[44px] min-w-[44px] justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
               >
                 Chat on WhatsApp
               </a>
@@ -400,7 +400,7 @@ export default function FoodvilleChatWidget() {
               type="button"
               onClick={() => setChatMode("faq")}
               title="Show quick options"
-              className="p-1.5 text-gray-400 hover:text-[#6B7F59] transition-colors cursor-pointer"
+              className="p-1.5 text-gray-400 hover:text-olive transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -413,13 +413,13 @@ export default function FoodvilleChatWidget() {
               value={inputMsg}
               onChange={(e) => setInputMsg(e.target.value)}
               placeholder="Type order ID (e.g. FV-100006)..."
-              className="flex-1 bg-gray-100 rounded-full px-3.5 py-2 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#6B7F59] font-medium"
+              className="flex-1 bg-gray-100 rounded-full px-3.5 py-2 text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-olive focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised font-medium min-h-[44px]"
             />
 
             <button
               type="submit"
               disabled={!inputMsg.trim()}
-              className="w-8 h-8 rounded-full bg-[#6B7F59] hover:bg-[#5A6C4A] text-white flex items-center justify-center flex-shrink-0 transition-colors disabled:opacity-40 cursor-pointer shadow-sm"
+              className="w-8 h-8 min-h-[44px] min-w-[44px] rounded-full bg-olive hover:bg-olive-dark text-white flex items-center justify-center flex-shrink-0 transition-colors disabled:opacity-40 cursor-pointer shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
             >
               <svg className="w-4 h-4 transform translate-x-0.5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
@@ -435,10 +435,10 @@ export default function FoodvilleChatWidget() {
         onTouchStart={(e) => handleDragStart(e.touches[0].clientX, e.touches[0].clientY)}
         onClick={handleIconClick}
         style={{ cursor: isDragging ? "grabbing" : "grab" }}
-        className="relative group flex items-center justify-center bg-[#6B7F59] hover:bg-[#5A6C4A] text-white w-14 h-14 rounded-full shadow-2xl transition-transform active:scale-95 border-2 border-white select-none"
+        className="relative group flex items-center justify-center bg-olive hover:bg-olive-dark text-white w-14 h-14 min-h-[44px] min-w-[44px] rounded-full shadow-2xl transition-transform active:scale-95 border-2 border-white select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
         title="Drag anywhere or click to chat"
       >
-        <span className="absolute inset-0 rounded-full bg-[#6B7F59]/40 animate-ping pointer-events-none"></span>
+        <span className="absolute inset-0 rounded-full bg-olive/40 animate-ping pointer-events-none"></span>
 
         {!isOpen && (
           <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#25D366] text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white z-10 shadow-sm pointer-events-none">

@@ -9,11 +9,11 @@ import { INFORMATION_LINKS, HELP_LINKS } from "./constants";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#3A4930] text-white border-t border-[#4E5E43] mt-12">
+    <footer className="bg-olive text-white border-t border-white/10 mt-12 transition-colors duration-300">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         
         {/* Footer Top Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-12 pb-10 border-b border-[#4E5E43]/50">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-12 pb-10 border-b border-border-muted/50">
           <FooterLogo />
           
           <FooterLinks

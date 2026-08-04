@@ -34,7 +34,7 @@ export default function BlogDetailPage({ params: paramsPromise }) {
       <div className="text-center py-24 space-y-3">
         <span className="text-4xl">📄</span>
         <h2 className="font-bold text-ink">Article not found</h2>
-        <Link href="/blogs" className="text-sm text-olive hover:underline">
+        <Link href="/blogs" className="text-sm text-olive hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded">
           ← Back to Blog
         </Link>
       </div>
@@ -100,7 +100,7 @@ export default function BlogDetailPage({ params: paramsPromise }) {
           <div className="pt-6 border-t border-cardline flex justify-start">
             <Link
               href="/blogs"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-olive px-5 py-3 text-xs font-bold text-olive hover:bg-olive hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-olive px-5 py-3 text-xs font-bold text-olive hover:bg-olive hover:text-white transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />

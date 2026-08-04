@@ -15,7 +15,7 @@ function WishlistHeader({ count }) {
       </div>
       <Link
         href="/"
-        className="text-xs sm:text-sm font-bold text-olive hover:underline flex items-center gap-1"
+        className="text-xs sm:text-sm font-bold text-olive hover:underline flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center"
       >
         ← Continue Shopping
       </Link>
@@ -35,7 +35,7 @@ function WishlistEmptyState() {
       </p>
       <Link
         href="/"
-        className="rounded-xl bg-olive px-6 py-3 text-sm font-bold text-white hover:bg-olive-dark transition shadow"
+        className="rounded-xl bg-olive px-6 py-3 text-sm font-bold text-white hover:bg-olive-dark transition shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center"
       >
         Explore Products
       </Link>

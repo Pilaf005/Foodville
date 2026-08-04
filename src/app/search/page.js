@@ -38,7 +38,7 @@ function SearchContent() {
               <span className="text-sm text-ink">Did you mean:</span>
               <Link
                 href={`/search?q=${encodeURIComponent(meta.didYouMean)}`}
-                className="text-sm font-bold text-ink italic hover:underline"
+                className="text-sm font-bold text-ink italic hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center"
               >
                 {meta.didYouMean}
               </Link>
@@ -53,7 +53,7 @@ function SearchContent() {
               <p className="text-xs text-muted">Check the spelling or try a broader term.</p>
               <Link
                 href="/shop?tab=all"
-                className="mt-2 inline-flex rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark"
+                className="mt-2 inline-flex rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] items-center justify-center"
               >
                 Browse all products
               </Link>

@@ -58,7 +58,7 @@ export const MobileSearchOverlay = ({ isOpen, onClose, onSearch }) => {
   const overlayContent = (
     <div className="fixed inset-0 bg-white z-[999] flex flex-col animate-slide-up">
       <div className="flex items-center gap-3 p-4 border-b border-cardline bg-white shadow-sm shrink-0">
-        <button onClick={onClose} className="p-1 -ml-1 text-ink shrink-0 active:bg-cream rounded-full transition" aria-label="Close search">
+        <button onClick={onClose} className="p-1 -ml-1 text-ink shrink-0 active:bg-cream rounded-full transition min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised" aria-label="Close search">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
           </svg>

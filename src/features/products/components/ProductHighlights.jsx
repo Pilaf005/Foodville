@@ -79,7 +79,7 @@ export default function ProductHighlights({ product }) {
 
       {/* B2B Quote Prompt */}
       {product.category === "bulk" && (
-        <div className="mt-4 p-5 rounded-2xl bg-gradient-to-r from-[#2C3624] to-[#3D4A32] text-white space-y-3 shadow-md border border-[#6B7F59]/30">
+        <div className="mt-4 p-5 rounded-2xl bg-gradient-to-r from-[#2C3624] to-[#3D4A32] text-white space-y-3 shadow-md border border-olive/30">
           <div className="space-y-1">
             <h4 className="font-extrabold text-sm sm:text-base">Need Commercial Scale Quantities?</h4>
             <p className="text-[11px] text-stone-200 leading-relaxed">
@@ -88,7 +88,7 @@ export default function ProductHighlights({ product }) {
           </div>
           <Link
             href={`/bulk-order?product=${encodeURIComponent(product.name)}`}
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-[#2C3624] font-black text-xs rounded-xl shadow hover:bg-stone-100 transition"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-[#2C3624] font-black text-xs min-h-[44px] min-w-[44px] justify-center rounded-xl shadow hover:bg-stone-100 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
           >
             Request B2B Quote
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

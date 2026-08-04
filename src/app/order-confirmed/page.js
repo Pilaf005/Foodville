@@ -33,13 +33,13 @@ function SuccessBanner({ order }) {
       <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
         <Link
           href={`/orders/${order.orderId}`}
-          className="rounded-2xl bg-olive px-6 py-3 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-olive/20 transition hover:bg-olive-dark active:scale-[0.98]"
+          className="rounded-2xl bg-olive px-6 py-3 text-xs font-bold uppercase tracking-wide text-white shadow-md shadow-olive/20 transition hover:bg-olive-dark active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center"
         >
           Track order
         </Link>
         <Link
           href="/shop"
-          className="rounded-2xl border-2 border-olive px-6 py-3 text-xs font-bold uppercase tracking-wide text-olive transition hover:bg-olive hover:text-white active:scale-[0.98]"
+          className="rounded-2xl border-2 border-olive px-6 py-3 text-xs font-bold uppercase tracking-wide text-olive transition hover:bg-olive hover:text-white active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center"
         >
           Continue shopping
         </Link>
@@ -76,7 +76,7 @@ function OrderConfirmedContent() {
         </p>
         <Link
           href="/orders"
-          className="rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark"
+          className="rounded-xl bg-olive px-6 py-2.5 text-xs font-bold text-white shadow transition hover:bg-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center"
         >
           View my orders
         </Link>

@@ -8,7 +8,7 @@ export const FooterLogo = () => {
     <div className="col-span-2 md:col-span-4 space-y-4">
       <Link
         href="/"
-        className="flex items-center group hover:opacity-90 transition max-w-max"
+        className="flex items-center group hover:opacity-90 transition max-w-max focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded"
       >
         <div
           className="relative inline-flex transition-transform duration-300 group-hover:scale-105"
@@ -26,14 +26,14 @@ export const FooterLogo = () => {
           <span
             className="absolute text-[13px] font-black leading-none select-none pointer-events-none"
             aria-label="Registered trademark"
-            style={{ top: "1px", right: "-5px", lineHeight: -1 , color: "rgba(255,255,255,0.75)" }}
+            style={{ top: "1px", right: "-5px", lineHeight: -1 , color: "#FFFFFF" }}
           >
             ®
           </span>
         </div>
       </Link>
 
-      <div className="space-y-2 text-xs text-white/80 leading-relaxed">
+      <div className="space-y-2 text-xs text-white font-medium leading-relaxed">
         <p className="font-bold text-white text-sm">{COMPANY_INFO.name}</p>
         <p>
           H-112, 1st Floor, Patel Nagar-III,

@@ -20,7 +20,7 @@ function TrashButton({ onRemove }) {
       onClick={onRemove}
       aria-label="Remove from wishlist"
       title="Remove from wishlist"
-      className="h-11 w-11 shrink-0 rounded-full border border-red-200 bg-red-50 flex items-center justify-center text-red-500 hover:bg-red-100 hover:text-red-700 hover:scale-105 active:scale-95 transition"
+      className="h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 rounded-full border border-red-200 bg-red-50 flex items-center justify-center text-red-500 hover:bg-red-100 hover:text-red-700 hover:scale-105 active:scale-95 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
     >
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="3 6 5 6 21 6" />
@@ -47,7 +47,7 @@ export default function WishlistCard({ product }) {
     <div className="relative flex flex-col rounded-2xl border border-cardline bg-white p-3 transition hover:shadow-md group">
 
       {/* Image — no heart button here */}
-      <Link href={`/product/${product.slug}`} className="block">
+      <Link href={`/product/${product.slug}`} className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded-xl">
         <div className="mb-3 aspect-square overflow-hidden rounded-xl bg-cream">
           <img
             src={product.image}
@@ -88,14 +88,14 @@ export default function WishlistCard({ product }) {
           <button
             onClick={() => addToCart(product, 1)}
             disabled={isOutOfStock}
-            className="flex-1 rounded-full bg-olive py-3 text-xs font-semibold text-white transition hover:bg-olive-dark active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-muted min-h-[44px]"
+            className="flex-1 rounded-full bg-olive py-3 text-xs font-semibold text-white transition hover:bg-olive-dark active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-muted min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
           >
             {isOutOfStock ? "Out of Stock" : "Add to Cart"}
           </button>
         ) : (
           <button
             onClick={() => router.push("/cart")}
-            className="flex-1 rounded-full border-2 border-olive bg-transparent hover:bg-olive/10 text-olive py-3 text-xs font-bold text-center transition active:scale-[0.98] min-h-[44px]"
+            className="flex-1 rounded-full border-2 border-olive bg-transparent hover:bg-olive/10 text-olive py-3 text-xs font-bold text-center transition active:scale-[0.98] min-h-[44px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
           >
             View Cart
           </button>

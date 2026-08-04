@@ -204,7 +204,7 @@ function LoginCard() {
                 placeholder="First and last name"
                 value={details.fullName}
                 onChange={(e) => setDetails((d) => ({ ...d, fullName: e.target.value }))}
-                className="w-full rounded-2xl border border-cardline bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+                className="w-full rounded-2xl border border-cardline bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
             </div>
 
@@ -219,7 +219,7 @@ function LoginCard() {
                 placeholder="10-digit mobile number"
                 value={details.phone}
                 onChange={(e) => setDetails((d) => ({ ...d, phone: e.target.value.replace(/\D/g, "").slice(0, 10) }))}
-                className="w-full rounded-2xl border border-cardline bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+                className="w-full rounded-2xl border border-cardline bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
               />
               <p className="mt-1 text-[11px] text-muted">Used for delivery updates and auto-filled at checkout.</p>
             </div>
@@ -230,7 +230,7 @@ function LoginCard() {
                 <select
                   value={details.gender}
                   onChange={(e) => setDetails((d) => ({ ...d, gender: e.target.value }))}
-                  className="w-full rounded-2xl border border-cardline bg-white px-3 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+                  className="w-full rounded-2xl border border-cardline bg-white px-3 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
                 >
                   {GENDER_OPTIONS.map((o) => (
                     <option key={o.value} value={o.value}>{o.label}</option>
@@ -244,7 +244,7 @@ function LoginCard() {
                   value={details.dateOfBirth}
                   max={new Date().toISOString().slice(0, 10)}
                   onChange={(e) => setDetails((d) => ({ ...d, dateOfBirth: e.target.value }))}
-                  className="w-full rounded-2xl border border-cardline bg-white px-3 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+                  className="w-full rounded-2xl border border-cardline bg-white px-3 py-3 text-sm text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
                 />
               </div>
             </div>
@@ -254,7 +254,7 @@ function LoginCard() {
               disabled={updateProfile.isPending}
               className="mt-1 flex w-full items-center justify-center rounded-2xl bg-olive px-4 py-3 text-sm font-bold
                          uppercase tracking-wide text-white transition hover:bg-olive-dark active:scale-[0.98]
-                         disabled:cursor-not-allowed disabled:opacity-60"
+                         disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
             >
               {updateProfile.isPending ? <Spinner label="Saving…" /> : "Save & continue"}
             </button>
@@ -262,7 +262,7 @@ function LoginCard() {
             <button
               type="button"
               onClick={() => router.replace(redirectTo)}
-              className="w-full text-center text-xs font-semibold text-muted transition hover:text-ink"
+              className="w-full text-center text-xs font-semibold text-muted transition hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center justify-center"
             >
               Skip for now
             </button>
@@ -284,7 +284,7 @@ function LoginCard() {
                 if (emailError) setEmailError("");
               }}
               className={`w-full rounded-2xl border bg-white px-4 py-3 text-sm text-ink outline-none transition
-                focus:border-olive focus:ring-2 focus:ring-olive/20
+                focus:border-olive focus:ring-2 focus:ring-olive/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]
                 ${emailError ? "border-red-400" : "border-cardline"}`}
             />
             {emailError && <p className="mt-2 text-xs text-red-500">{emailError}</p>}
@@ -294,7 +294,7 @@ function LoginCard() {
               disabled={requestOtp.isPending}
               className="mt-5 flex w-full items-center justify-center rounded-2xl bg-olive px-4 py-3 text-sm font-bold
                          uppercase tracking-wide text-white transition hover:bg-olive-dark active:scale-[0.98]
-                         disabled:cursor-not-allowed disabled:opacity-60"
+                         disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
             >
               {requestOtp.isPending ? <Spinner label="Sending…" /> : "Send code"}
             </button>
@@ -315,8 +315,8 @@ function LoginCard() {
                   onKeyDown={(e) => handleKeyDown(i, e)}
                   aria-label={`Digit ${i + 1}`}
                   className="h-12 w-10 rounded-xl border border-cardline bg-white text-center text-lg font-bold
-                             text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20
-                             sm:h-14 sm:w-12 sm:text-xl"
+                             text-ink outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised
+                             sm:h-14 sm:w-12 sm:text-xl min-h-[44px] min-w-[40px]"
                 />
               ))}
             </div>
@@ -326,7 +326,7 @@ function LoginCard() {
               disabled={code.length !== OTP_LENGTH || verifyOtp.isPending}
               className="mt-6 flex w-full items-center justify-center rounded-2xl bg-olive px-4 py-3 text-sm font-bold
                          uppercase tracking-wide text-white transition hover:bg-olive-dark active:scale-[0.98]
-                         disabled:cursor-not-allowed disabled:opacity-60"
+                         disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
             >
               {verifyOtp.isPending ? <Spinner label="Verifying…" /> : "Verify & continue"}
             </button>
@@ -338,7 +338,7 @@ function LoginCard() {
                   setStep("email");
                   setDigits(Array(OTP_LENGTH).fill(""));
                 }}
-                className="font-semibold text-muted transition hover:text-ink"
+                className="font-semibold text-muted transition hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center"
               >
                 ← Change email
               </button>
@@ -347,7 +347,7 @@ function LoginCard() {
                 type="button"
                 onClick={handleSendCode}
                 disabled={cooldown > 0 || requestOtp.isPending}
-                className="font-semibold text-olive transition hover:text-olive-dark disabled:cursor-not-allowed disabled:text-muted"
+                className="font-semibold text-olive transition hover:text-olive-dark disabled:cursor-not-allowed disabled:text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center"
               >
                 {cooldown > 0 ? `Resend in ${cooldown}s` : "Resend code"}
               </button>
@@ -357,11 +357,11 @@ function LoginCard() {
 
         <p className="mt-6 border-t border-cardline pt-4 text-center text-[11px] leading-relaxed text-muted">
           By continuing you agree to our{" "}
-          <Link href="/terms-and-conditions" className="font-semibold text-olive hover:underline">
+          <Link href="/terms-and-conditions" className="font-semibold text-olive hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised">
             Terms
           </Link>{" "}
           and{" "}
-          <Link href="/privacy-policy" className="font-semibold text-olive hover:underline">
+          <Link href="/privacy-policy" className="font-semibold text-olive hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised">
             Privacy Policy
           </Link>
           .

@@ -1,35 +1,113 @@
 :root {
-  /* Colors */
-  --background: #FAF7F2;          /* cream background */
-  --surface: #FFFFFF;             /* card background/surface */
-  --surface-secondary: #FAF7F2;   /* secondary surface (cream) */
-  --primary: #6B7F59;             /* olive primary */
-  --primary-hover: #56684A;       /* olive-dark hover */
-  --secondary: #B5651D;           /* terracotta accent */
-  --success: #10B981;             /* success green */
-  --warning: #F59E0B;             /* warning amber */
-  --danger: #EF4444;              /* danger red */
-  --text-primary: #2E2A26;        /* ink primary text */
-  --text-secondary: #8A8275;      /* muted secondary text */
-  --text-muted: #A39E93;          /* light muted text */
-  --border: #EDE6D9;              /* cardline border */
-  --gold: #C9A86C;                /* price highlight gold */
+  /* ──────────────────────────────────────────────
+     COLOR TOKENS — Original Foodville Design System
+     ────────────────────────────────────────────── */
 
-  /* Spacing */
-  --space-4: 0.25rem;  /* 4px */
-  --space-8: 0.5rem;   /* 8px */
-  --space-12: 0.75rem; /* 12px */
-  --space-16: 1rem;    /* 16px */
-  --space-20: 1.25rem; /* 20px */
-  --space-24: 1.5rem;  /* 24px */
-  --space-32: 2rem;    /* 32px */
-  --space-40: 2.5rem;  /* 40px */
-  --space-48: 3rem;    /* 48px */
-  --space-64: 4rem;    /* 64px */
-  --space-80: 5rem;    /* 80px */
-  --space-96: 6rem;    /* 96px */
+  /* Text */
+  --text-primary: #292d32;
+  --text-secondary: #8a8275;
+  --text-muted: #a39e93;
+  --text-tertiary: #f3f3f3;
+  --text-inverse: #fbd535;
 
-  /* Border Radius */
+  /* Surfaces */
+  --surface-base: #000000;
+  --surface-muted: #ffffff;
+  --surface-raised: #faf7f2;
+  --surface-secondary: #faf7f2;
+
+  /* Borders */
+  --border-muted: #3b412c;
+  --border-light: #ede6d9;
+
+  /* Semantic Color System */
+  --background: #faf7f2;
+  --surface: #faf7f2;
+  --primary: #6b7f59;
+  --primary-hover: #56684a;
+  --secondary: #b5651d;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --text-primary-legacy: #2e2a26;
+  --border: #ede6d9;
+  --gold: #c9a86c;
+
+  /* ──────────────────────────────────────────────
+     TYPOGRAPHY TOKENS
+     ────────────────────────────────────────────── */
+  --font-family-primary: "Nunito Sans", sans-serif;
+  --font-family-display:
+    "Nunito Sans", "Outfit", "Inter", system-ui, sans-serif;
+  --font-family-body: "Nunito Sans", "Inter", system-ui, sans-serif;
+
+  /* Legacy aliases for existing @theme references */
+  --font-display-family: var(--font-family-display);
+  --font-body-family: var(--font-family-body);
+
+  /* Type Scale */
+  --font-size-xs: 0.6875rem; /* 11px */
+  --font-size-sm: 0.75rem; /* 12px */
+  --font-size-md: 0.875rem; /* 14px */
+  --font-size-lg: 0.9375rem; /* 15px */
+  --font-size-xl: 1rem; /* 16px */
+  --font-size-2xl: 1.125rem; /* 18px */
+  --font-size-3xl: 1.5625rem; /* 25px */
+  --font-size-4xl: 2rem; /* 32px */
+
+  /* Semantic Type Scale (legacy compat) */
+  --font-size-display: 3rem; /* 48px */
+  --font-size-h1: 2rem; /* 32px — maps to font.size.4xl */
+  --font-size-h2: 1.5625rem; /* 25px — maps to font.size.3xl */
+  --font-size-h3: 1.125rem; /* 18px — maps to font.size.2xl */
+  --font-size-body-lg: 1rem; /* 16px — maps to font.size.xl */
+  --font-size-body: 0.875rem; /* 14px — maps to font.size.md */
+  --font-size-small: 0.75rem; /* 12px — maps to font.size.sm */
+  --font-size-caption: 0.6875rem; /* 11px — maps to font.size.xs */
+
+  /* Font Weight */
+  --font-weight-regular: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-base: 700;
+
+  /* Line Height */
+  --line-height-base: 1.2; /* 19.2px at 16px base */
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.5;
+
+  /* ──────────────────────────────────────────────
+     SPACING TOKENS
+     ────────────────────────────────────────────── */
+  --space-1: 6px;
+  --space-2: 7.5px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 18px;
+  --space-8: 20px;
+
+  /* Extended scale (legacy compat — rem-based) */
+  --space-24: 1.5rem; /* 24px */
+  --space-32: 2rem; /* 32px */
+  --space-40: 2.5rem; /* 40px */
+  --space-48: 3rem; /* 48px */
+  --space-64: 4rem; /* 64px */
+  --space-80: 5rem; /* 80px */
+  --space-96: 6rem; /* 96px */
+
+  /* ──────────────────────────────────────────────
+     BORDER RADIUS TOKENS
+     ────────────────────────────────────────────── */
+  --radius-xs: 10px;
+  --radius-sm: 12px;
+  --radius-md: 13px;
+  --radius-lg: 16px;
+
+  /* Extended scale (legacy compat) */
   --radius-6: 6px;
   --radius-8: 8px;
   --radius-12: 12px;
@@ -38,35 +116,49 @@
   --radius-24: 24px;
   --radius-32: 32px;
 
-  /* Shadows */
+  /* ──────────────────────────────────────────────
+     SHADOW TOKENS
+     ────────────────────────────────────────────── */
+  --shadow-1: rgb(59, 65, 44) 2px 2px 0px 0px;
+  --shadow-1-hover: rgb(59, 65, 44) 4px 4px 0px 0px;
+
+  /* Legacy shadow scale */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
-  /* Transitions */
+  /* ──────────────────────────────────────────────
+     MOTION / TRANSITION TOKENS
+     ────────────────────────────────────────────── */
+  --motion-instant: 100ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Z-Index */
+  /* ──────────────────────────────────────────────
+     Z-INDEX TOKENS
+     ────────────────────────────────────────────── */
   --z-dropdown: 1000;
   --z-sticky: 1020;
   --z-modal: 1050;
   --z-toast: 1090;
   --z-tooltip: 1100;
 
-  /* Typography */
-  --font-display-family: 'Outfit', 'Inter', system-ui, sans-serif;
-  --font-body-family: 'Inter', system-ui, sans-serif;
+  /* ──────────────────────────────────────────────
+     FOCUS RING TOKENS — WCAG 2.2 AA
+     ────────────────────────────────────────────── */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--primary);
+  --focus-ring-color-inverse: var(--text-inverse);
 
-  --font-size-display: 3rem;       /* 48px */
-  --font-size-h1: 2.25rem;         /* 36px */
-  --font-size-h2: 1.875rem;        /* 30px */
-  --font-size-h3: 1.5rem;          /* 24px */
-  --font-size-body-lg: 1.125rem;   /* 18px */
-  --font-size-body: 1rem;          /* 16px */
-  --font-size-small: 0.875rem;     /* 14px */
-  --font-size-caption: 0.75rem;    /* 12px */
+  /* ──────────────────────────────────────────────
+     MIN TOUCH TARGET (WCAG)
+     ────────────────────────────────────────────── */
+  --min-touch-target: 44px;
 }

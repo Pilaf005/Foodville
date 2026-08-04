@@ -63,7 +63,7 @@ export const SearchBar = ({ isMobile = false }) => {
           <button
             type="submit"
             suppressHydrationWarning
-            className="absolute inset-y-0 right-0 w-11 rounded-r-[7px] bg-olive hover:bg-olive-dark text-white flex items-center justify-center transition active:scale-95"
+            className="absolute inset-y-0 right-0 w-11 min-h-[44px] min-w-[44px] rounded-r-lg bg-olive hover:bg-olive-dark text-white flex items-center justify-center transition active:scale-95 focus:outline-none focus-visible:outline-none"
             aria-label="Search"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8">
@@ -104,7 +104,7 @@ export const SearchBar = ({ isMobile = false }) => {
         <button
           type="submit"
           suppressHydrationWarning
-          className="absolute right-1 rounded-full bg-olive px-5 py-1.5 text-xs font-semibold text-white hover:bg-olive-dark transition focus:outline-none"
+          className="absolute inset-y-0 right-0 min-h-[44px] rounded-r-full bg-olive px-6 text-xs font-semibold text-white hover:bg-olive-dark transition flex items-center justify-center focus:outline-none focus-visible:outline-none"
         >
           Search
         </button>

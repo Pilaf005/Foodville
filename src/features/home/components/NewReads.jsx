@@ -28,7 +28,7 @@ export default function NewReads() {
                   </div>
                 ))
               : preview.map((blog) => (
-                  <div key={blog.id} className="w-[165px] min-w-[165px] sm:w-auto sm:min-w-0 shrink-0 sm:shrink snap-start">
+                  <div key={blog.id} className="w-[165px] min-w-[165px] sm:w-auto sm:min-w-0 shrink-0 sm:shrink snap-start h-full flex flex-col">
                     <BlogCard blog={blog} />
                   </div>
                 ))}

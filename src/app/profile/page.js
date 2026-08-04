@@ -85,14 +85,14 @@ function LogoutDialog({ open, onCancel, onConfirm, isPending }) {
         <div className="mt-5 flex gap-2">
           <button
             onClick={onCancel}
-            className="flex-1 rounded-2xl border border-cardline py-2.5 text-xs font-bold uppercase text-ink transition hover:border-olive"
+            className="flex-1 rounded-2xl border border-cardline py-2.5 text-xs font-bold uppercase text-ink transition hover:border-olive focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
           >
             Cancel
           </button>
           <button
             onClick={onConfirm}
             disabled={isPending}
-            className="flex-1 rounded-2xl bg-red-500 py-2.5 text-xs font-bold uppercase text-white transition hover:bg-red-600 active:scale-[0.98] disabled:opacity-60"
+            className="flex-1 rounded-2xl bg-red-500 py-2.5 text-xs font-bold uppercase text-white transition hover:bg-red-600 active:scale-[0.98] disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]"
           >
             {isPending ? "Logging out…" : "Log out"}
           </button>
@@ -121,7 +121,7 @@ function ProfileContent({ activeSection, profile, onProfileSave, isSaving, order
                 {ordersLoading ? "Loading…" : `${orders.length} order${orders.length === 1 ? "" : "s"} placed`}
               </p>
             </div>
-            <Link href="/orders" className="text-xs font-bold text-olive transition hover:underline">
+            <Link href="/orders" className="text-xs font-bold text-olive transition hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] inline-flex items-center">
               Track orders →
             </Link>
           </div>
@@ -141,7 +141,7 @@ function ProfileContent({ activeSection, profile, onProfileSave, isSaving, order
               </div>
             ) : (
               orders.map((order) => (
-                <Link key={order.id} href={`/orders/${order.id}`} className="card-hover block rounded-2xl transition">
+                <Link key={order.id} href={`/orders/${order.id}`} className="card-hover block rounded-2xl transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]">
                   <OrderCard order={order} />
                 </Link>
               ))

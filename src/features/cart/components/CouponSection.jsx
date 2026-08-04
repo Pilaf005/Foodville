@@ -33,7 +33,7 @@ export default function CouponSection({
           <button
             type="button"
             onClick={() => setShowCouponsList((prev) => !prev)}
-            className="text-[11px] font-bold text-[#6B7F59] hover:underline transition cursor-pointer"
+            className="text-[11px] font-bold text-olive hover:underline transition cursor-pointer min-h-[44px] px-1 inline-flex items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded"
           >
             {showCouponsList ? "Hide Offers" : `View Offers (${availableCoupons.length})`}
           </button>
@@ -59,7 +59,7 @@ export default function CouponSection({
           <button
             type="button"
             onClick={onRemoveCoupon}
-            className="text-[11px] font-bold text-rose-600 hover:text-rose-700 hover:bg-rose-50 px-2 py-1 rounded-lg transition shrink-0 ml-2"
+            className="text-[11px] font-bold text-rose-600 hover:text-rose-700 hover:bg-rose-50 px-2 py-1 rounded-lg transition shrink-0 ml-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
           >
             Remove
           </button>
@@ -72,11 +72,11 @@ export default function CouponSection({
             value={inputCode}
             onChange={(e) => setInputCode(e.target.value.toUpperCase())}
             placeholder="ENTER PROMO CODE (e.g. WELCOME10)"
-            className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#6B7F59] focus:bg-white transition"
+            className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 min-h-[44px] text-xs font-semibold uppercase tracking-wider text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-olive focus:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised transition"
           />
           <button
             type="submit"
-            className="bg-[#6B7F59] hover:bg-[#5a6b4a] active:scale-95 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-sm cursor-pointer shrink-0"
+            className="bg-olive hover:bg-olive-dark active:scale-95 text-white text-xs font-bold px-4 py-2 min-h-[44px] rounded-xl transition shadow-sm cursor-pointer shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
           >
             Apply
           </button>
@@ -95,7 +95,7 @@ export default function CouponSection({
                   isApplied
                     ? "border-emerald-500 bg-emerald-50/50"
                     : c.isEligible
-                    ? "border-gray-200 hover:border-[#6B7F59]/50 bg-gray-50/50"
+                    ? "border-gray-200 hover:border-olive/50 bg-gray-50/50"
                     : "border-gray-100 bg-gray-50/30 opacity-75"
                 }`}
               >
@@ -118,7 +118,7 @@ export default function CouponSection({
                     <button
                       type="button"
                       onClick={() => onApplyCoupon(c.code)}
-                      className="text-xs font-bold text-[#6B7F59] hover:text-white hover:bg-[#6B7F59] border border-[#6B7F59] px-3 py-1 rounded-lg transition"
+                      className="text-xs font-bold text-olive hover:text-white hover:bg-olive border border-olive px-3 py-1 min-h-[44px] rounded-lg transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised inline-flex items-center justify-center"
                     >
                       Apply Code
                     </button>

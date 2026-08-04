@@ -13,7 +13,7 @@ export const QualityBadge = () => {
           />
         </div>
         <div className="leading-tight">
-          <div className="text-[9px] font-bold tracking-wider text-[#C9A86C] uppercase">Quality Certified</div>
+          <div className="text-[9px] font-bold tracking-wider text-gold uppercase">Quality Certified</div>
           <div className="text-[10px] font-extrabold text-white">ISO 9001:2015 COMPANY</div>
         </div>
       </div>

@@ -89,7 +89,7 @@ export default function ProductInfo({ product }) {
         </div>
         <Link
           href={`/bulk-order?productName=${encodeURIComponent(product.name)}`}
-          className="inline-flex items-center gap-1 bg-[#3D4A32] hover:bg-[#2d3725] text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow-sm shrink-0"
+          className="inline-flex items-center gap-1 bg-[#3D4A32] hover:bg-[#2d3725] text-white text-xs font-bold px-3.5 py-2 min-h-[44px] min-w-[44px] justify-center rounded-xl transition shadow-sm shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
         >
           <span>Get Quote →</span>
         </Link>
@@ -104,7 +104,7 @@ export default function ProductInfo({ product }) {
             key={tag}
             className="flex items-center gap-1.5 rounded-full bg-cream border border-cardline px-3 py-1 text-xs font-medium text-muted"
           >
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6B7F59" strokeWidth="3">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-olive">
               <path d="m5 12 5 5L20 7"/>
             </svg>
             {tag}

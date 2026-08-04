@@ -129,9 +129,9 @@ export default function OrderTracker({ order }) {
       {/* Local delivery details */}
       {order.shipping?.deliveryMethod === "local" && (
         <div className="mt-6 border-t border-cardline/60 pt-5 space-y-4 animate-fade-in">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-[#6B7F59]/5 p-3.5 rounded-2xl border border-[#6B7F59]/10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-olive/5 p-3.5 rounded-2xl border border-olive/10">
             <div>
-              <p className="text-[10px] font-bold text-[#6B7F59] uppercase tracking-wider">Delivery Method</p>
+              <p className="text-[10px] font-bold text-olive uppercase tracking-wider">Delivery Method</p>
               <p className="text-xs font-black text-ink mt-0.5">Local Hand Delivery</p>
             </div>
             {order.shipping?.localDelivery?.deliveryBoyName && (

@@ -1,4 +1,9 @@
 @theme {
+  /* ──────────────────────────────────────────────
+     COLOR — Tata Nutrikorner Design System
+     ────────────────────────────────────────────── */
+
+  /* Legacy semantic aliases (keep for existing Tailwind classes) */
   --color-cream: var(--background);
   --color-ink: var(--text-primary);
   --color-olive: var(--primary);
@@ -8,24 +13,45 @@
   --color-cardline: var(--border);
   --color-muted: var(--text-secondary);
 
+  /* Core surface tokens */
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-secondary: var(--surface-secondary);
+  --color-surface-base: var(--surface-base);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-raised: var(--surface-raised);
+
+  /* Semantic color tokens */
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-danger: var(--danger);
+
+  /* Text color tokens */
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-inverse: var(--text-inverse);
+
+  /* Border tokens */
   --color-border-custom: var(--border);
+  --color-border-muted: var(--border-muted);
+  --color-border-light: var(--border-light);
+
+  /* ──────────────────────────────────────────────
+     SPACING
+     ────────────────────────────────────────────── */
+  --spacing-space-1: var(--space-1);
+  --spacing-space-2: var(--space-2);
+  --spacing-space-3: var(--space-3);
   --spacing-space-4: var(--space-4);
+  --spacing-space-5: var(--space-5);
+  --spacing-space-6: var(--space-6);
+  --spacing-space-7: var(--space-7);
   --spacing-space-8: var(--space-8);
-  --spacing-space-12: var(--space-12);
-  --spacing-space-16: var(--space-16);
-  --spacing-space-20: var(--space-20);
   --spacing-space-24: var(--space-24);
   --spacing-space-32: var(--space-32);
   --spacing-space-40: var(--space-40);
@@ -34,6 +60,13 @@
   --spacing-space-80: var(--space-80);
   --spacing-space-96: var(--space-96);
 
+  /* ──────────────────────────────────────────────
+     BORDER RADIUS
+     ────────────────────────────────────────────── */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
   --radius-6: var(--radius-6);
   --radius-8: var(--radius-8);
   --radius-12: var(--radius-12);
@@ -42,76 +75,94 @@
   --radius-24: var(--radius-24);
   --radius-32: var(--radius-32);
 
+  /* ──────────────────────────────────────────────
+     SHADOWS
+     ────────────────────────────────────────────── */
+  --shadow-1: var(--shadow-1);
+  --shadow-1-hover: var(--shadow-1-hover);
   --shadow-sm: var(--shadow-sm);
   --shadow-md: var(--shadow-md);
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
 
+  /* ──────────────────────────────────────────────
+     Z-INDEX
+     ────────────────────────────────────────────── */
   --z-index-dropdown: var(--z-dropdown);
   --z-index-sticky: var(--z-sticky);
   --z-index-modal: var(--z-modal);
   --z-index-toast: var(--z-toast);
   --z-index-tooltip: var(--z-tooltip);
+
+  /* ──────────────────────────────────────────────
+     FONT FAMILIES
+     ────────────────────────────────────────────── */
+  --font-primary: var(--font-family-primary);
+  --font-display: var(--font-family-display);
+  --font-body: var(--font-family-body);
 }
 
-/* Typography styles utility mapping */
+/* ──────────────────────────────────────────────
+   TYPOGRAPHY UTILITY CLASSES
+   ────────────────────────────────────────────── */
+
 .text-display {
   font-size: var(--font-size-display);
-  font-family: var(--font-display-family);
-  font-weight: 700;
-  line-height: 1.1;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
 }
 
 .text-h1 {
   font-size: var(--font-size-h1);
-  font-family: var(--font-display-family);
-  font-weight: 700;
-  line-height: 1.2;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-base);
 }
 
 .text-h2 {
   font-size: var(--font-size-h2);
-  font-family: var(--font-display-family);
-  font-weight: 600;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-medium);
   line-height: 1.25;
 }
 
 .text-h3 {
   font-size: var(--font-size-h3);
-  font-family: var(--font-display-family);
-  font-weight: 600;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-medium);
   line-height: 1.3;
 }
 
 .text-body-lg {
   font-size: var(--font-size-body-lg);
-  font-family: var(--font-body-family);
-  line-height: 1.5;
+  font-family: var(--font-family-body);
+  line-height: var(--line-height-relaxed);
 }
 
 .text-body {
   font-size: var(--font-size-body);
-  font-family: var(--font-body-family);
-  line-height: 1.5;
+  font-family: var(--font-family-body);
+  line-height: var(--line-height-relaxed);
 }
 
 .text-small {
   font-size: var(--font-size-small);
-  font-family: var(--font-body-family);
-  line-height: 1.4;
+  font-family: var(--font-family-body);
+  line-height: var(--line-height-normal);
 }
 
 .text-caption {
   font-size: var(--font-size-caption);
-  font-family: var(--font-body-family);
-  line-height: 1.4;
+  font-family: var(--font-family-body);
+  line-height: var(--line-height-normal);
   color: var(--text-secondary);
 }
 
 .text-btn {
-  font-family: var(--font-display-family);
-  font-weight: 600;
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-medium);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }

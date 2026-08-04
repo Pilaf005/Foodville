@@ -31,8 +31,8 @@ export const SearchInput = ({
         suppressHydrationWarning
         className={
           isMobile
-            ? "w-full rounded-lg border border-olive bg-white px-4 py-2 pl-4 pr-14 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-olive"
-            : `w-full rounded-full border border-cardline bg-white px-4 py-2.5 pl-10 pr-24 text-sm text-ink ${isFocused ? "placeholder:text-muted/60" : "placeholder:text-transparent"} focus:outline-none focus:border-olive`
+            ? "w-full min-h-[44px] rounded-lg border border-olive bg-white px-4 py-2 pl-4 pr-14 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-olive focus:ring-0 focus-visible:outline-none"
+            : `w-full min-h-[44px] rounded-full border border-cardline bg-white px-4 py-2.5 pl-10 pr-24 text-sm text-ink ${isFocused ? "placeholder:text-muted/60" : "placeholder:text-transparent"} focus:outline-none focus:border-olive focus:ring-0 focus-visible:outline-none`
         }
       />
       {!isMobile && !query && !isFocused && (

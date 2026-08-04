@@ -8,6 +8,7 @@ import AddressPickerModal from "@/features/address/components/AddressPickerModal
 import { MobileDrawer } from "./mobile/MobileDrawer";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { useAddresses, useAddressMutations } from "@/features/profile/hooks/useProfile";
+import AnnouncementBar from "./AnnouncementBar";
 
 export const Navbar = () => {
   const router = useRouter();
@@ -60,6 +61,7 @@ export const Navbar = () => {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-cardline bg-cream/95 backdrop-blur">
+        <AnnouncementBar />
         <div className="hidden md:block">
           <DesktopNavigation onLocationClick={handleLocationClick} activeAddress={activeAddress} />
         </div>

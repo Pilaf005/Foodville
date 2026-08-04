@@ -54,14 +54,14 @@ export const SearchSuggestions = ({
               <button 
                 type="button" 
                 onClick={onClearRecent} 
-                className="text-[10px] font-bold text-ink hover:text-olive transition"
+                className="text-[10px] font-bold text-ink hover:text-olive transition min-h-[44px] min-w-[44px] inline-flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
               >
                 CLEAR ALL
               </button>
             </div>
             <div className="space-y-0.5">
               {recentSearches.map((term, i) => (
-                <div key={i} className="flex items-center justify-between group p-2 rounded-xl hover:bg-cream cursor-pointer transition" onClick={() => onSelectSuggestion(term)}>
+                <div key={i} className="flex items-center justify-between group p-2 rounded-xl hover:bg-cream cursor-pointer transition min-h-[44px]" onClick={() => onSelectSuggestion(term)}>
                   <div className="flex items-center gap-2">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-muted">
                       <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
@@ -71,7 +71,7 @@ export const SearchSuggestions = ({
                   <button 
                     type="button" 
                     onClick={(e) => { e.stopPropagation(); onRemoveRecent(term); }}
-                    className="opacity-0 group-hover:opacity-100 p-1 text-muted hover:text-ink transition"
+                    className="opacity-0 group-hover:opacity-100 p-1 text-muted hover:text-ink transition min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                   </button>
@@ -84,7 +84,7 @@ export const SearchSuggestions = ({
         <div>
           {hasDidYouMean && (
             <div 
-              className={`bg-amber-50 border-b border-amber-100 px-4 py-2.5 cursor-pointer flex items-center gap-2 ${activeIndex === didYouMeanIdx ? 'bg-amber-100' : 'hover:bg-amber-100'} transition`}
+              className={`bg-amber-50 border-b border-amber-100 px-4 py-2.5 cursor-pointer flex items-center gap-2 min-h-[44px] ${activeIndex === didYouMeanIdx ? 'bg-amber-100' : 'hover:bg-amber-100'} transition`}
               onClick={() => onSelectSuggestion(suggestions.didYouMean)}
             >
               <span className="text-sm text-ink">Did you mean:</span>
@@ -103,7 +103,7 @@ export const SearchSuggestions = ({
                       <div
                         key={p.slug || pIdx}
                         onClick={() => onSelectSuggestion(p.name)}
-                        className={`flex items-center gap-3 p-2 rounded-xl cursor-pointer transition ${activeIndex === idx ? 'bg-cream' : 'hover:bg-cream'}`}
+                        className={`flex items-center gap-3 p-2 rounded-xl cursor-pointer transition min-h-[44px] ${activeIndex === idx ? 'bg-cream' : 'hover:bg-cream'}`}
                       >
                         <div className="h-9 w-9 rounded-lg bg-cream overflow-hidden shrink-0">
                           <img
@@ -137,7 +137,7 @@ export const SearchSuggestions = ({
                       <div
                         key={c}
                         onClick={() => onSelectCategory(c)}
-                        className={`flex items-center gap-2 p-2 rounded-xl cursor-pointer transition ${activeIndex === idx ? 'bg-cream' : 'hover:bg-cream'}`}
+                        className={`flex items-center gap-2 p-2 rounded-xl cursor-pointer transition min-h-[44px] ${activeIndex === idx ? 'bg-cream' : 'hover:bg-cream'}`}
                       >
                         <div className="w-8 h-8 rounded-full bg-cream flex items-center justify-center shrink-0">
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-olive"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>

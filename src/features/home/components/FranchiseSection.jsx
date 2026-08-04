@@ -6,7 +6,7 @@ export default function FranchiseSection() {
   return (
     <div className="w-full max-w-6xl mx-auto my-8 sm:my-12">
       <div 
-        className="relative rounded-3xl overflow-hidden text-white p-6 sm:p-10 shadow-xl border border-[#6B7F59]/30 bg-cover bg-center"
+        className="relative rounded-3xl overflow-hidden text-white p-6 sm:p-10 shadow-xl border border-olive/30 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/franchise_store_banner.png')" }}
       >
         {/* Gradient Overlay to ensure text readability */}
@@ -47,7 +47,7 @@ export default function FranchiseSection() {
           <div className="w-full lg:w-auto shrink-0">
             <Link
               href="/franchise"
-              className="w-full lg:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-white text-[#2C3624] font-extrabold text-sm shadow-xl hover:bg-stone-100 transition duration-300"
+              className="w-full lg:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-4 min-h-[44px] min-w-[44px] rounded-2xl bg-white text-[#2C3624] font-extrabold text-sm shadow-xl hover:bg-stone-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised transition duration-300"
             >
               Apply for Franchise
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#3D4A32]"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

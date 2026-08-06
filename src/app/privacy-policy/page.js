@@ -1,3 +1,11 @@
+export const metadata = {
+  title: "Privacy Policy",
+  description: "Read Foodville Consumer Products Private Limited's privacy policy and data protection guidelines.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 pt-4 pb-[20px] sm:px-6 sm:py-6 space-y-8">

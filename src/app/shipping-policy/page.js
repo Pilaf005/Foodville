@@ -1,3 +1,11 @@
+export const metadata = {
+  title: "Shipping Policy",
+  description: "Read Foodville Consumer Products Private Limited's shipping policy, delivery timelines across 24,000+ PIN codes in India, and shipping charges.",
+  alternates: {
+    canonical: "/shipping-policy",
+  },
+};
+
 export default function ShippingPolicyPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 pt-4 pb-[20px] sm:px-6 sm:py-6 space-y-8">

@@ -10,7 +10,7 @@ import ErrorBoundary from "@/components/common/ErrorBoundary";
 
 import FoodvilleChatWidget from "@/components/common/FoodvilleChatWidget";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://foodvilleindia.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.foodvilleindia.com";
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),

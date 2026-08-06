@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HeroCarousel from "@/features/home/components/HeroCarousel";
 import CategoryFilter from "@/features/categories/components/CategoryFilter";
 import ShopBy from "@/features/home/components/ShopBy";
@@ -16,10 +17,10 @@ export default function HomePage() {
         </p>
         <nav aria-label="Popular Categories">
           <ul>
-            <li><a href="/shop">Shop All Products</a></li>
-            <li><a href="/bulk-order">Bulk &amp; Wholesale Orders</a></li>
-            <li><a href="/franchise">Franchise Opportunities</a></li>
-            <li><a href="/blogs">Health &amp; Cooking Blogs</a></li>
+            <li><Link href="/shop">Shop All Products</Link></li>
+            <li><Link href="/bulk-order">Bulk &amp; Wholesale Orders</Link></li>
+            <li><Link href="/franchise">Franchise Opportunities</Link></li>
+            <li><Link href="/blogs">Health &amp; Cooking Blogs</Link></li>
           </ul>
         </nav>
       </section>

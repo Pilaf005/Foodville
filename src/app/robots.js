@@ -5,9 +5,15 @@ export default function robots() {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        allow: ["/", "/api/products", "/api/categories", "/api/blogs", "/api/search/suggestions"],
         disallow: [
-          "/api/",
+          "/api/auth/",
+          "/api/cart/",
+          "/api/orders/",
+          "/api/payments/",
+          "/api/profile/",
+          "/api/addresses/",
+          "/api/dev/",
           "/cart",
           "/checkout",
           "/profile",

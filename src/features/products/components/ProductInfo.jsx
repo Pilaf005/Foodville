@@ -11,15 +11,23 @@ function DiscountBadges({ product, discount }) {
       <span className="rounded-full bg-olive/10 px-3 py-1 text-xs font-semibold text-olive uppercase tracking-wider">
         {product.category}
       </span>
-      {discount > 0 && (
-        <span className="rounded-full bg-terracotta/10 px-3 py-1 text-xs font-semibold text-terracotta">
-          {discount}% OFF
+      {product.isComingSoon ? (
+        <span className="rounded-full bg-amber-500/15 border border-amber-500/30 px-3 py-1 text-xs font-bold text-amber-900 flex items-center gap-1.5 uppercase tracking-wider">
+          <span>⏳ Coming Soon</span>
         </span>
-      )}
-      {product.stock > 0 && product.stock <= 10 && (
-        <span className="rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-semibold text-amber-700">
-          Only {product.stock} left!
-        </span>
+      ) : (
+        <>
+          {discount > 0 && (
+            <span className="rounded-full bg-terracotta/10 px-3 py-1 text-xs font-semibold text-terracotta">
+              {discount}% OFF
+            </span>
+          )}
+          {product.stock > 0 && product.stock <= 10 && (
+            <span className="rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-semibold text-amber-700">
+              Only {product.stock} left!
+            </span>
+          )}
+        </>
       )}
     </div>
   );

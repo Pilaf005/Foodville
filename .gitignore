@@ -1,6 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# ==========================================
+# 1. DEPENDENCIES & PACKAGE MANAGERS
+# ==========================================
 /node_modules
 /.pnp
 .pnp.*
@@ -10,50 +10,66 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# ==========================================
+# 2. NEXT.JS BUILD & CACHE OUTPUTS
+# ==========================================
 /.next/
 /out/
-
-# production
 /build
+/.turbo/
+/.vercel
+*.tsbuildinfo
+next-env.d.ts
 
-# misc
-.DS_Store
+# ==========================================
+# 3. ENVIRONMENT VARIABLES & SECRETS (CRITICAL)
+# ==========================================
+.env*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 *.pem
 
-# debug
+# ==========================================
+# 4. DEBUG LOGS & TESTING
+# ==========================================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+/coverage
 
-# env files — all three stay local for now (see README "Environment files").
-# .env.example is a placeholder-only template and is safe to commit later,
-# but is held back until it's been reviewed.
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# IDEs and editors
+# ==========================================
+# 5. IDE, CODE EDITORS & AGENTS
+# ==========================================
 .vscode/
 .idea/
 *.swp
 *.swo
+.agents/
 
-# OS metadata
-[Dd]esktop.ini
+# ==========================================
+# 6. OPERATING SYSTEM ARTIFACTS
+# ==========================================
+.DS_Store
 Thumbs.db
+[Dd]esktop.ini
 
-# Temp / Scratch files
+# ==========================================
+# 7. TEMPORARY FILES, EXPORTS & AUDITS
+# ==========================================
 /scratch/
 /tmp/
 /temp/
+*.xlsx
+*.csv
+export_products.js
+foodville_security_audit.html
+foodville_security_audit.pdf
 
+# ==========================================
+# 8. LOCAL GENERATED ASSETS & MAINTENANCE SCRIPTS
+# ==========================================
+/public/qr/
+/src/scripts/

@@ -1,35 +1,49 @@
 // products.js
-// 🔹 SINGLE FILE for all product data — 128 products total.
+// 🔹 SINGLE FILE for all product data — 132 products total from Excel sheet 'All Products' using official Cloudflare R2 images.
 
 // ---------- 1. CATEGORIES ----------
 export const categories = [
   {
     "id": "powders",
-    "name": "Spice Powders"
+    "slug": "powders",
+    "name": "Spice Powders",
+    "image": "https://i.pinimg.com/736x/65/ae/dd/65aedd56ac63e9b98194b9f7c0bd0d74.jpg"
   },
   {
     "id": "seasoning",
-    "name": "Seasoning & Herbs"
+    "slug": "seasoning",
+    "name": "Seasoning & Herbs",
+    "image": "https://i.pinimg.com/736x/b8/9c/8b/b89c8bbaf5a4db2b4fe13ca26e80b40c.jpg"
   },
   {
     "id": "seeds",
-    "name": "Seeds"
+    "slug": "seeds",
+    "name": "Seeds",
+    "image": "https://i.pinimg.com/736x/b6/73/20/b67320741f3f44ab852a7749116af875.jpg"
   },
   {
     "id": "dryfruits",
-    "name": "Dry Fruits & Nuts"
+    "slug": "dryfruits",
+    "name": "Dry Fruits & Nuts",
+    "image": "https://i.pinimg.com/736x/84/67/1a/84671af313c0c46f79f4757d8c62674e.jpg"
   },
   {
     "id": "wellness",
-    "name": "Herbal & Wellness"
+    "slug": "wellness",
+    "name": "Herbal & Wellness",
+    "image": "https://i.pinimg.com/1200x/1f/d7/59/1fd759d27f9098bc2fc7847a634c5e2a.jpg"
   },
   {
     "id": "combos",
-    "name": "Combo Packs"
+    "slug": "combos",
+    "name": "Combo Packs",
+    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=180&h=180&q=80"
   },
   {
     "id": "bulk",
-    "name": "Bulk Products"
+    "slug": "bulk",
+    "name": "Bulk Products",
+    "image": "https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?auto=format&fit=crop&w=180&h=180&q=80"
   }
 ];
 
@@ -40,5138 +54,2876 @@ export const products = [
     "slug": "red-onion-powder",
     "name": "Red Onion Powder",
     "category": "powders",
-    "shopBy": "valueBuys",
-    "unit": "100g",
-    "price": 149,
-    "mrp": 179,
-    "image": "https://media.istockphoto.com/id/1466771545/photo/onion-powder-on-a-wooden-spoon-with-onions-on-black-background.jpg?s=2048x2048&w=is&k=20&c=znQlLW5hsXc__JX3my9vtqdrEvmLUO4b_0TgkQmTPoU=",
-    "description": "Sun-dried red onions, ground fresh.",
-    "stock": 40,
-    "rating": 4.4,
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 75,
+    "mrp": 149,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
     "tags": [
-      "spice",
-      "powder"
+      "powders",
+      "powder",
+      "newlyin"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png",
     "images": [
-      "https://images.unsplash.com/photo-1620574387735-3624d75b2dbc?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://images.unsplash.com/photo-1528569051709-22528f7c7527?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://i.pinimg.com/1200x/64/ae/12/64ae12e4361ae5f25cb52b3e7958877e.jpg",
-      "https://i.pinimg.com/1200x/ca/74/88/ca748847e4c600ffdaacf9c314f367c2.jpg"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/8a1b2311-f7ac-4a9d-b13a-a7403ce2cf2b.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/5363dbc6-ec27-4ca0-ab21-45cf095971f0.png"
     ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Our premium Red Onion Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
     "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
       "origin": "India",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated Red Onion",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464001",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Dehydrated Fruits and Vegetables",
-      "igst": "0 percent",
-      "cgst": "0 percent",
-      "sgst": "0 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "0712"
+      "form": "Powder",
+      "ingredients": "100% Pure Red Onion Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g / 200g options"
     },
+    "description": "Premium quality Red Onion Powder sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "newlyIn",
     "units": [
       {
+        "unit": "50g",
+        "price": 75,
+        "mrp": 149,
+        "package": "Pouch"
+      },
+      {
         "unit": "100g",
-        "price": 149,
-        "mrp": 179,
-        "gtin": "8908031464001",
-        "packaging": "Pouch 10x14"
+        "price": 99,
+        "mrp": 199,
+        "package": "Pouch"
       },
       {
         "unit": "200g",
-        "price": 268,
-        "mrp": 322,
-        "gtin": "8908031464193",
-        "packaging": "Jar 27x7.5"
+        "price": 189,
+        "mrp": 379,
+        "package": "Jar"
       }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464001",
-    "packaging": "Pouch 10x14"
+    ]
   },
   {
     "id": 2,
     "slug": "white-onion-powder",
     "name": "White Onion Powder",
     "category": "powders",
-    "shopBy": "valueBuys",
-    "unit": "100g",
-    "price": 139,
-    "mrp": 169,
-    "image": "https://images.unsplash.com/photo-1676620202070-085c67e7ccb5?q=80&w=1997&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "description": "Mild, sweet onion flavor in powder form.",
-    "stock": 35,
-    "rating": 4.3,
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 75,
+    "mrp": 149,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
     "tags": [
-      "spice",
-      "powder"
+      "powders",
+      "powder",
+      "valuebuys"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/08bba875-d3a4-45a5-aac3-9ee1c65d960c.png",
     "images": [
-      "https://i.pinimg.com/736x/04/81/f1/0481f12938f3b3745fe9c49a043a0493.jpg",
-      "https://i.pinimg.com/736x/3e/1f/58/3e1f58737a1815a5e745bbcc67657886.jpg",
-      "https://i.pinimg.com/1200x/5c/81/7d/5c817d0371817657d33a8f86404d399c.jpg",
-      "https://i.pinimg.com/1200x/a0/4c/20/a04c20ebe737bdc7ce4e801670aa167a.jpg"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/08bba875-d3a4-45a5-aac3-9ee1c65d960c.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/4844dd17-5415-4206-b72f-2f79c717373d.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Our premium White Onion Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
     "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
       "origin": "India",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated White Onion",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464018",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Dehydrated Fruits and Vegetables",
-      "igst": "0 percent",
-      "cgst": "0 percent",
-      "sgst": "0 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "0712"
+      "form": "Powder",
+      "ingredients": "100% Pure White Onion Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g / 200g options"
     },
+    "description": "Premium quality White Onion Powder sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "valueBuys",
     "units": [
       {
+        "unit": "50g",
+        "price": 75,
+        "mrp": 149,
+        "package": "Pouch"
+      },
+      {
         "unit": "100g",
-        "price": 139,
-        "mrp": 169,
-        "gtin": "8908031464018",
-        "packaging": "Pouch 10x14"
+        "price": 99,
+        "mrp": 199,
+        "package": "Pouch"
       },
       {
         "unit": "200g",
-        "price": 250,
-        "mrp": 304,
-        "gtin": "8908031464209",
-        "packaging": "Jar 27x7.5"
+        "price": 189,
+        "mrp": 379,
+        "package": "Jar"
       }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464018",
-    "packaging": "Pouch 10x14"
+    ]
   },
   {
     "id": 3,
-    "slug": "moringa-powder",
-    "name": "Moringa Powder",
-    "category": "powders",
-    "shopBy": "trending",
-    "unit": "200g",
-    "price": 199,
-    "mrp": 249,
-    "image": "https://images.unsplash.com/photo-1565117661210-fd54898de423?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "description": "Nutrient-dense superfood leaf powder.",
-    "stock": 25,
-    "rating": 4.6,
-    "tags": [
-      "superfood",
-      "powder"
-    ],
-    "images": [
-      "https://images.unsplash.com/photo-1650494701391-daceb922ce9d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://i.pinimg.com/1200x/36/10/6a/36106af0566f7626cc4f750ebded34d6.jpg",
-      "https://i.pinimg.com/736x/8d/d1/ef/8dd1ef323630e6a53b4a6c1c5781c44b.jpg",
-      "https://i.pinimg.com/736x/cf/b5/1d/cfb51d6784a16e1b5a90bd5d9a0d6805.jpg"
-    ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Our premium Moringa Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
-    "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated Moringa",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464117",
-      "netContent": "200g",
-      "packagingType": "Jar 27x7.5",
-      "category": "Food",
-      "subCategory": "Herbs and Spices",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "1211"
-    },
-    "units": [
-      {
-        "unit": "200g",
-        "price": 199,
-        "mrp": 249,
-        "gtin": "8908031464117",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464117",
-    "packaging": "Jar 27x7.5"
-  },
-  {
-    "id": 4,
-    "slug": "tomato-powder",
-    "name": "Tomato Powder",
-    "category": "powders",
-    "shopBy": "valueBuys",
-    "unit": "100g",
-    "price": 159,
-    "mrp": 189,
-    "image": "https://images.unsplash.com/photo-1616289738325-8c952648eded?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "description": "Concentrated tomato flavor, no preservatives.",
-    "stock": 30,
-    "rating": 4.2,
-    "tags": [
-      "spice",
-      "powder"
-    ],
-    "images": [
-      "https://i.pinimg.com/736x/d4/e1/1b/d4e11b225378568da9d775016f762ac3.jpg",
-      "https://images.unsplash.com/photo-1546241295-5d238887342e?q=80&w=704&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://i.pinimg.com/1200x/49/27/1a/49271abced1488524dce1b0f21c2f5dd.jpg",
-      "https://i.pinimg.com/1200x/60/1a/bf/601abf80a0ca6271d33bbf87524c3c10.jpg"
-    ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Our premium Tomato Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
-    "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated Tomato",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464049",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Dehydrated Fruits and Vegetables",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "2002"
-    },
-    "units": [
-      {
-        "unit": "100g",
-        "price": 159,
-        "mrp": 189,
-        "gtin": "8908031464049",
-        "packaging": "Pouch 10x14"
-      },
-      {
-        "unit": "200g",
-        "price": 286,
-        "mrp": 340,
-        "gtin": "8908031464230",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464049",
-    "packaging": "Pouch 10x14"
-  },
-  {
-    "id": 5,
-    "slug": "ginger-powder",
-    "name": "Ginger Powder",
-    "category": "powders",
-    "shopBy": "valueBuys",
-    "unit": "100g",
-    "price": 169,
-    "mrp": 199,
-    "image": "https://media.istockphoto.com/id/647402644/photo/ginger-root-and-ginger-powder-in-the-bowl.jpg?s=2048x2048&w=is&k=20&c=4AgwDwIQl-43vMgQzlzDVOZzYXReGb3yLVlQVdDZg7o=",
-    "description": "Pure dried ginger, finely ground.",
-    "stock": 45,
-    "rating": 4.5,
-    "tags": [
-      "spice",
-      "powder"
-    ],
-    "images": [
-      "https://i.pinimg.com/1200x/6d/ae/ae/6daeaeead1207a8262c7b083fc89168b.jpg",
-      "https://i.pinimg.com/736x/57/33/64/573364e7977dc5b4fc3c9649ab6b9e58.jpg",
-      "https://plus.unsplash.com/premium_photo-1670952897229-2bd661864858?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D0",
-      "https://i.pinimg.com/736x/da/0b/cf/da0bcfe026cd1a7f7b26db7f0c55ac66.jpg"
-    ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Our premium Ginger Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
-    "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated Ginger",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464032",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Dehydrated Fruits and Vegetables",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "0910"
-    },
-    "units": [
-      {
-        "unit": "100g",
-        "price": 169,
-        "mrp": 199,
-        "gtin": "8908031464032",
-        "packaging": "Pouch 10x14"
-      },
-      {
-        "unit": "200g",
-        "price": 304,
-        "mrp": 358,
-        "gtin": "8908031464223",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464032",
-    "packaging": "Pouch 10x14"
-  },
-  {
-    "id": 6,
     "slug": "garlic-powder",
     "name": "Garlic Powder",
     "category": "powders",
-    "shopBy": "bestseller",
-    "unit": "100g",
-    "price": 159,
-    "mrp": 189,
-    "image": "https://media.istockphoto.com/id/1366928508/photo/garlic-powder.jpg?s=2048x2048&w=is&k=20&c=pK3oyVFW0Y5eANzqlcFp4ooZUPqrVikDTtC8ueff6Bw=",
-    "description": "Strong, pure garlic flavor.",
-    "stock": 50,
-    "rating": 4.5,
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 75,
+    "mrp": 149,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
     "tags": [
-      "spice",
-      "powder"
+      "powders",
+      "powder",
+      "trending"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/457bb7d1-e10a-4bcd-9224-7999b6fb7303.png",
     "images": [
-      "https://images.unsplash.com/photo-1636210589096-a53d5dacd702?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://i.pinimg.com/1200x/49/7c/37/497c37ede9508d6ef051a9822ab51629.jpg",
-      "https://i.pinimg.com/1200x/4f/29/02/4f29025b7767a917596cd43a48c7b592.jpg",
-      "https://plus.unsplash.com/premium_photo-1726215330238-3e4ce4bcb9e6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/457bb7d1-e10a-4bcd-9224-7999b6fb7303.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/2a5dc27f-fef8-4d9b-93e6-2ab93565919a.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Our premium Garlic Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
     "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
       "origin": "India",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated Garlic",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464025",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Dehydrated Fruits and Vegetables",
-      "igst": "0 percent",
-      "cgst": "0 percent",
-      "sgst": "0 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "0712"
+      "form": "Powder",
+      "ingredients": "100% Pure Garlic Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g / 200g options"
     },
+    "description": "Premium quality Garlic Powder sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "trending",
     "units": [
       {
+        "unit": "50g",
+        "price": 75,
+        "mrp": 149,
+        "package": "Pouch"
+      },
+      {
         "unit": "100g",
-        "price": 159,
-        "mrp": 189,
-        "gtin": "8908031464025",
-        "packaging": "Pouch 10x14"
+        "price": 99,
+        "mrp": 199,
+        "package": "Pouch"
       },
       {
         "unit": "200g",
-        "price": 286,
-        "mrp": 340,
-        "gtin": "8908031464216",
-        "packaging": "Jar 27x7.5"
+        "price": 189,
+        "mrp": 379,
+        "package": "Jar"
       }
-    ],
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "ginger-powder",
+    "name": "Ginger Powder",
+    "category": "powders",
+    "extraCategories": [],
     "brand": "Foodville",
-    "gtin": "8908031464025",
-    "packaging": "Pouch 10x14"
+    "unit": "50g",
+    "price": 75,
+    "mrp": 149,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "powders",
+      "powder",
+      "bestseller"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/df3f91c8-ecd9-44ce-a399-3a73b294a1fa.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/df3f91c8-ecd9-44ce-a399-3a73b294a1fa.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/a0117908-8bcc-4a7e-851c-d7e1193a3121.jpg"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Powder",
+      "ingredients": "100% Pure Ginger Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g / 200g options"
+    },
+    "description": "Premium quality Ginger Powder sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "50g",
+        "price": 75,
+        "mrp": 149,
+        "package": "Pouch"
+      },
+      {
+        "unit": "100g",
+        "price": 99,
+        "mrp": 199,
+        "package": "Pouch"
+      },
+      {
+        "unit": "200g",
+        "price": 189,
+        "mrp": 379,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "tomato-powder",
+    "name": "Tomato Powder",
+    "category": "powders",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "100g",
+    "price": 99,
+    "mrp": 199,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "powders",
+      "powder",
+      "newlyin"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f6ef4db2-3bad-460e-9e62-caf89ef59696.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f6ef4db2-3bad-460e-9e62-caf89ef59696.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/93596de5-4c2c-40fb-a4e7-ae6b8a1420f2.jpg"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Powder",
+      "ingredients": "100% Pure Tomato Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "100g / 200g options"
+    },
+    "description": "Premium quality Tomato Powder sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "100g",
+        "price": 99,
+        "mrp": 199,
+        "package": "Pouch"
+      },
+      {
+        "unit": "200g",
+        "price": 195,
+        "mrp": 389,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "potato-flakes",
+    "name": "Potato Flakes",
+    "category": "seasoning",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "100g",
+    "price": 79,
+    "mrp": 159,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "seasoning",
+      "flakes",
+      "valuebuys"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/5c34a4aa-eff5-4f82-a246-afc38a8c5715.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/5c34a4aa-eff5-4f82-a246-afc38a8c5715.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/89752dec-0d5e-417a-bc0d-daa7b49b1c28.jpg"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Flakes",
+      "ingredients": "100% Pure Potato Flakes",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "100g / 200g / 500g options"
+    },
+    "description": "Premium quality Potato Flakes sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "100g",
+        "price": 79,
+        "mrp": 159,
+        "package": "Pouch"
+      },
+      {
+        "unit": "200g",
+        "price": 149,
+        "mrp": 299,
+        "package": "Jar"
+      },
+      {
+        "unit": "500g",
+        "price": 335,
+        "mrp": 669,
+        "package": "Jar"
+      }
+    ]
   },
   {
     "id": 7,
     "slug": "mint-powder",
     "name": "Mint Powder",
     "category": "powders",
-    "shopBy": "valueBuys",
-    "unit": "100g",
-    "price": 129,
-    "mrp": 159,
-    "image": "https://i.pinimg.com/webp85/1200x/15/5e/b7/155eb7808a53b26d7d2f46fc112f30ae.webp",
-    "description": "Refreshing dried mint leaves, ground.",
-    "stock": 28,
-    "rating": 4.3,
-    "tags": [
-      "spice",
-      "powder"
-    ],
-    "images": [
-      "https://i.pinimg.com/736x/79/c9/8f/79c98f74aecce4d1b66e7bb0bca1a76a.jpg",
-      "https://i.pinimg.com/736x/6c/fd/23/6cfd23a8111d59538f433647613aaf31.jpg",
-      "https://i.pinimg.com/736x/c0/bc/ab/c0bcab75bc75b1f8baba098446f8faa4.jpg",
-      "https://i.pinimg.com/736x/42/5a/5e/425a5edba090f5be097dcb1a48f346a2.jpg"
-    ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Our premium Mint Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
-    "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated Mint",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464063",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Herbs and Spices",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "1211"
-    },
-    "units": [
-      {
-        "unit": "100g",
-        "price": 129,
-        "mrp": 159,
-        "gtin": "8908031464063",
-        "packaging": "Pouch 10x14"
-      }
-    ],
+    "extraCategories": [],
     "brand": "Foodville",
-    "gtin": "8908031464063",
-    "packaging": "Pouch 10x14"
-  },
-  {
-    "id": 8,
-    "slug": "beetroot-powder",
-    "name": "Beetroot Powder",
-    "category": "powders",
+    "unit": "50g",
+    "price": 75,
+    "mrp": 149,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "powders",
+      "powder",
+      "trending"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0b8876ef-e3eb-4968-bf6d-ec854fae46ed.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0b8876ef-e3eb-4968-bf6d-ec854fae46ed.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/674fd8b3-0465-40a4-b102-d3ad8a3b58da.jpg"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Powder",
+      "ingredients": "100% Pure Mint Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g options"
+    },
+    "description": "Premium quality Mint Powder sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
     "shopBy": "trending",
-    "unit": "200g",
-    "price": 189,
-    "mrp": 229,
-    "image": "https://media.istockphoto.com/id/1400024680/photo/beetroot-powder-in-wooden-bowl-with-fresh-fruit-isolated-on-white.jpg?s=2048x2048&w=is&k=20&c=_BTuL93KbJ1k-HgJyc_z1jr7H2nRDUMg5uqXR_Q28To=",
-    "description": "Natural color and earthy sweetness.",
-    "stock": 22,
-    "rating": 4.4,
-    "tags": [
-      "superfood",
-      "powder"
-    ],
-    "images": [
-      "https://plus.unsplash.com/premium_photo-1700072295449-1cf40c665fe0?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://i.pinimg.com/1200x/e5/2b/bc/e52bbcc7680c5879c761fc588853a653.jpg",
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Our premium Beetroot Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
-    "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated Beetroot",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464124",
-      "netContent": "200g",
-      "packagingType": "Jar 27x7.5",
-      "category": "Food",
-      "subCategory": "Dehydrated Fruits and Vegetables",
-      "igst": "0 percent",
-      "cgst": "0 percent",
-      "sgst": "0 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "0712"
-    },
     "units": [
       {
-        "unit": "200g",
-        "price": 189,
-        "mrp": 229,
-        "gtin": "8908031464124",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464124",
-    "packaging": "Jar 27x7.5"
-  },
-  {
-    "id": 9,
-    "slug": "turmeric-powder",
-    "name": "Turmeric Powder",
-    "category": "powders",
-    "unit": "100g",
-    "price": 99,
-    "mrp": 129,
-    "image": "https://images.unsplash.com/photo-1606951444141-e5533feb55be?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "description": "Pure, high-curcumin turmeric.",
-    "stock": 60,
-    "rating": 4.7,
-    "tags": [
-      "spice",
-      "wellness",
-      "bestseller"
-    ],
-    "images": [
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
+        "unit": "50g",
+        "price": 75,
+        "mrp": 149,
+        "package": "Pouch"
       },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Our premium Turmeric Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
-    "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated Turmeric",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
-    },
-    "units": [
       {
         "unit": "100g",
         "price": 99,
-        "mrp": 129
+        "mrp": 199,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "green-chilli-powder",
+    "name": "Green Chilli Powder",
+    "category": "powders",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 75,
+    "mrp": 149,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "powders",
+      "powder",
+      "bestseller"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/3c04973e-187c-47e7-99af-c0fe2def4b2c.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/3c04973e-187c-47e7-99af-c0fe2def4b2c.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/53307cf4-30ed-4c2f-946a-44e6dd7d4387.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/eaf4a9e1-7eae-47b3-acd9-f7398c0b27ef.jpg"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Powder",
+      "ingredients": "100% Pure Green Chilli Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g / 200g options"
+    },
+    "description": "Premium quality Green Chilli Powder sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "50g",
+        "price": 75,
+        "mrp": 149,
+        "package": "Pouch"
       },
       {
-        "unit": "250g",
-        "price": 228,
-        "mrp": 297
+        "unit": "100g",
+        "price": 99,
+        "mrp": 199,
+        "package": "Pouch"
       },
       {
-        "unit": "500g",
-        "price": 416,
-        "mrp": 542
+        "unit": "200g",
+        "price": 189,
+        "mrp": 379,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "oregano",
+    "name": "Oregano",
+    "category": "seasoning",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 79,
+    "mrp": 159,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "seasoning",
+      "herb",
+      "newlyin"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Herb",
+      "ingredients": "100% Pure Oregano",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g options"
+    },
+    "description": "Premium quality Oregano sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "50g",
+        "price": 79,
+        "mrp": 159,
+        "package": "Pouch"
       },
       {
-        "unit": "1kg",
-        "price": 792,
-        "mrp": 1032
+        "unit": "100g",
+        "price": 105,
+        "mrp": 209,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 10,
-    "slug": "green-chilli-powder",
-    "name": "Green Chilli Powder",
-    "category": "powders",
-    "shopBy": "valueBuys",
+    "slug": "oregano-seasoning",
+    "name": "Oregano Seasoning",
+    "category": "seasoning",
+    "extraCategories": [],
+    "brand": "Foodville",
     "unit": "100g",
     "price": 149,
-    "mrp": 179,
-    "image": "https://i.pinimg.com/1200x/33/00/9d/33009d53a302f194e21df082c4745165.jpg",
-    "description": "Sharp heat from sun-dried green chillies.",
-    "stock": 33,
-    "rating": 4.2,
+    "mrp": 229,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
     "tags": [
-      "spice",
-      "powder"
+      "seasoning",
+      "seasoning",
+      "valuebuys"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f4da849d-15b4-4d1f-b427-c2c8527278d5.png",
     "images": [
-      "https://i.pinimg.com/1200x/33/00/9d/33009d53a302f194e21df082c4745165.jpg",
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f4da849d-15b4-4d1f-b427-c2c8527278d5.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/90da5a9a-e1f1-44eb-b8c6-5bbdc0d6f5ab.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Our premium Green Chilli Powder is carefully ground from the finest handpicked raw ingredients sourced directly from organic farmers across India. We use a low-temperature grinding process to ensure that all natural oils, rich aroma, and authentic color are locked into every packet. This versatile spice powder adds a deep, savory layer to your curries, soups, marinades, and daily recipes. It is completely free from artificial dyes, chemicals, MSG, or synthetic fillers, guaranteeing 100% purity and unmatched freshness in your kitchen.",
     "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
       "origin": "India",
-      "form": "Fine Ground Powder",
-      "ingredients": "100% Pure Dehydrated Green Chilli",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464070",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Dehydrated Fruits and Vegetables",
-      "igst": "0 percent",
-      "cgst": "0 percent",
-      "sgst": "0 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "0712"
+      "form": "Seasoning",
+      "ingredients": "100% Pure Oregano Seasoning",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "100g / 200g options"
     },
+    "description": "Premium quality Oregano Seasoning sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "valueBuys",
     "units": [
       {
         "unit": "100g",
         "price": 149,
-        "mrp": 179,
-        "gtin": "8908031464070",
-        "packaging": "Pouch 10x14"
+        "mrp": 229,
+        "package": "Pouch"
       },
       {
         "unit": "200g",
-        "price": 268,
-        "mrp": 322,
-        "gtin": "8908031464247",
-        "packaging": "Jar 27x7.5"
+        "price": 215,
+        "mrp": 429,
+        "package": "Jar"
       }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464070",
-    "packaging": "Pouch 10x14"
+    ]
   },
   {
     "id": 11,
-    "slug": "oregano",
-    "name": "Oregano",
+    "slug": "pizza-pasta-masala",
+    "name": "Pizza Pasta Masala",
     "category": "seasoning",
-    "shopBy": "bestseller",
-    "unit": "100g",
-    "price": 99,
-    "mrp": 119,
-    "image": "https://i.pinimg.com/736x/d7/d1/9c/d7d19ca6eb66a303970871ce3d881d1f.jpg",
-    "description": "Dried oregano leaves for Italian dishes.",
-    "stock": 40,
-    "rating": 4.4,
-    "tags": [
-      "herb",
-      "seasoning"
-    ],
-    "images": [
-      "https://i.pinimg.com/736x/d7/d1/9c/d7d19ca6eb66a303970871ce3d881d1f.jpg",
-      "https://images.unsplash.com/photo-1508747703725-719ae257c84a?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Bring authentic restaurant-style flavors to your home cooked dishes with our premium Oregano. Crafted from high-grade dried herbs and select ingredients, this seasoning blend is mixed in precise proportions to deliver a balanced and flavorful touch to your pizzas, pastas, salads, and snacks. Packaged in a moisture-controlled, food-safe jar to retain its volatile oils and signature aroma, it is the perfect pantry addition for food enthusiasts who value gourmet quality and clean ingredients.",
-    "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Oregano",
-      "netWeight": "50g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464087",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Herbs and Spices",
-      "igst": "0 percent",
-      "cgst": "0 percent",
-      "sgst": "0 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "0712"
-    },
-    "units": [
-      {
-        "unit": "100g",
-        "price": 99,
-        "mrp": 119,
-        "gtin": "8908031464087",
-        "packaging": "Pouch 10x14"
-      }
-    ],
+    "extraCategories": [],
     "brand": "Foodville",
-    "gtin": "8908031464087",
-    "packaging": "Pouch 10x14"
-  },
-  {
-    "id": 12,
-    "slug": "basil",
-    "name": "Basil",
-    "category": "seasoning",
     "unit": "50g",
-    "price": 109,
-    "mrp": 129,
-    "image": "https://i.pinimg.com/736x/df/da/f8/dfdaf83ceacba34e527a49dbc1cc0915.jpg",
-    "description": "Aromatic dried basil leaves.",
-    "stock": 38,
-    "rating": 4.4,
+    "price": 89,
+    "mrp": 179,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
     "tags": [
-      "herb",
-      "seasoning"
+      "seasoning",
+      "masala mix",
+      "trending"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0f9a417b-0a71-42f8-884d-ee83ded678e1.png",
     "images": [
-      "https://i.pinimg.com/736x/df/da/f8/dfdaf83ceacba34e527a49dbc1cc0915.jpg",
-      "https://images.unsplash.com/photo-1508747703725-719ae257c84a?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0f9a417b-0a71-42f8-884d-ee83ded678e1.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/4290e140-7d8e-4eb1-a344-bdf67829f8ca.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Bring authentic restaurant-style flavors to your home cooked dishes with our premium Basil. Crafted from high-grade dried herbs and select ingredients, this seasoning blend is mixed in precise proportions to deliver a balanced and flavorful touch to your pizzas, pastas, salads, and snacks. Packaged in a moisture-controlled, food-safe jar to retain its volatile oils and signature aroma, it is the perfect pantry addition for food enthusiasts who value gourmet quality and clean ingredients.",
     "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Basil",
-      "netWeight": "50g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Masala Mix",
+      "ingredients": "100% Pure Pizza Pasta Masala",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g / 200g options"
     },
+    "description": "Premium quality Pizza Pasta Masala sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "trending",
     "units": [
       {
         "unit": "50g",
-        "price": 109,
-        "mrp": 129
+        "price": 89,
+        "mrp": 179,
+        "package": "Pouch"
       },
       {
         "unit": "100g",
-        "price": 196,
-        "mrp": 232
+        "price": 149,
+        "mrp": 229,
+        "package": "Pouch"
       },
       {
-        "unit": "250g",
-        "price": 436,
-        "mrp": 516
+        "unit": "200g",
+        "price": 215,
+        "mrp": 429,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "slug": "moringa-powder",
+    "name": "Moringa Powder",
+    "category": "powders",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "200g",
+    "price": 155,
+    "mrp": 309,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "powders",
+      "wellness powder",
+      "bestseller"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Wellness Powder",
+      "ingredients": "100% Pure Moringa Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "200g options"
+    },
+    "description": "Premium quality Moringa Powder sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "200g",
+        "price": 155,
+        "mrp": 309,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 13,
-    "slug": "potato-flakes",
-    "name": "Potato Flakes",
-    "category": "seasoning",
-    "shopBy": "newlyIn",
-    "unit": "200g",
-    "price": 179,
-    "mrp": 209,
-    "image": "https://images.unsplash.com/photo-1612739406461-8b8a9bf06996?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "description": "Instant mashed potato flakes.",
-    "stock": 30,
-    "rating": 4.1,
-    "tags": [
-      "instant"
-    ],
-    "images": [
-      "https://images.unsplash.com/photo-1612739406461-8b8a9bf06996?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://images.unsplash.com/photo-1508747703725-719ae257c84a?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Bring authentic restaurant-style flavors to your home cooked dishes with our premium Potato Flakes. Crafted from high-grade dried herbs and select ingredients, this seasoning blend is mixed in precise proportions to deliver a balanced and flavorful touch to your pizzas, pastas, salads, and snacks. Packaged in a moisture-controlled, food-safe jar to retain its volatile oils and signature aroma, it is the perfect pantry addition for food enthusiasts who value gourmet quality and clean ingredients.",
-    "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Potato Flakes",
-      "netWeight": "200g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464056",
-      "netContent": "200g",
-      "packagingType": "Pouch 16x18",
-      "category": "Food",
-      "subCategory": "Dehydrated Fruits and Vegetables",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "1105"
-    },
-    "units": [
-      {
-        "unit": "200g",
-        "price": 179,
-        "mrp": 209,
-        "gtin": "8908031464056",
-        "packaging": "Pouch 16x18"
-      }
-    ],
+    "slug": "beetroot-powder",
+    "name": "Beetroot Powder",
+    "category": "powders",
+    "extraCategories": [],
     "brand": "Foodville",
-    "gtin": "8908031464056",
-    "packaging": "Pouch 16x18"
-  },
-  {
-    "id": 14,
-    "slug": "pizza-pasta-seasoning",
-    "name": "Pizza Pasta Seasoning",
-    "category": "seasoning",
-    "shopBy": "bestseller",
     "unit": "100g",
-    "price": 119,
-    "mrp": 149,
-    "image": "https://i.pinimg.com/1200x/c7/9f/90/c79f9041a6c62daa2ef07bbabab7743b.jpg",
-    "description": "Blend of herbs for pizza and pasta.",
-    "stock": 45,
-    "rating": 4.5,
+    "price": 99,
+    "mrp": 199,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
     "tags": [
-      "seasoning",
-      "bestseller"
+      "powders",
+      "wellness powder",
+      "newlyin"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/b338e9ae-49af-4598-8be7-8b61de5d97dd.png",
     "images": [
-      "https://i.pinimg.com/1200x/c7/9f/90/c79f9041a6c62daa2ef07bbabab7743b.jpg",
-      "https://images.unsplash.com/photo-1508747703725-719ae257c84a?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/b338e9ae-49af-4598-8be7-8b61de5d97dd.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/55cbbba4-3ce6-40e3-a631-273da1222351.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Bring authentic restaurant-style flavors to your home cooked dishes with our premium Pizza Pasta Seasoning. Crafted from high-grade dried herbs and select ingredients, this seasoning blend is mixed in precise proportions to deliver a balanced and flavorful touch to your pizzas, pastas, salads, and snacks. Packaged in a moisture-controlled, food-safe jar to retain its volatile oils and signature aroma, it is the perfect pantry addition for food enthusiasts who value gourmet quality and clean ingredients.",
     "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
       "origin": "India",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Pizza Pasta Seasoning",
-      "netWeight": "75g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464100",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Seasonings and Preservatives",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "0910"
+      "form": "Wellness Powder",
+      "ingredients": "100% Pure Beetroot Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "100g / 200g options"
     },
+    "description": "Premium quality Beetroot Powder sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "newlyIn",
     "units": [
       {
         "unit": "100g",
-        "price": 119,
-        "mrp": 149,
-        "gtin": "8908031464100",
-        "packaging": "Pouch 10x14"
+        "price": 99,
+        "mrp": 199,
+        "package": "Pouch"
       },
-      {
-        "unit": "200g",
-        "price": 214,
-        "mrp": 268,
-        "gtin": "8908031464261",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464100",
-    "packaging": "Pouch 10x14"
-  },
-  {
-    "id": 15,
-    "slug": "chia-seeds",
-    "name": "Chia Seeds",
-    "category": "seeds",
-    "shopBy": "trending",
-    "unit": "200g",
-    "price": 199,
-    "mrp": 249,
-    "image": "https://i.pinimg.com/736x/7c/5d/18/7c5d18a8086fb13cbd8f233151700681.jpg",
-    "description": "Omega-3 rich superfood seeds.",
-    "stock": 50,
-    "rating": 4.6,
-    "tags": [
-      "superfood",
-      "seeds"
-    ],
-    "images": [
-      "https://i.pinimg.com/736x/7c/5d/18/7c5d18a8086fb13cbd8f233151700681.jpg",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Supercharge your daily nutrition with our premium raw Chia Seeds. Loaded with essential fatty acids, protein, dietary fiber, and trace minerals like zinc and magnesium, these seeds are a powerhouse of clean energy. They are carefully cleaned, dried, and sorted to ensure that only the plumpest, highest-quality seeds reach your table. Ideal for mixing into morning smoothies, oatmeal bowls, baking healthy breads, or simply roasting for a crunchy afternoon snack.",
-    "highlights": {
-      "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Whole Dried Seeds",
-      "ingredients": "Raw Organic Chia Seeds",
-      "netWeight": "200g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464148",
-      "netContent": "200g",
-      "packagingType": "Jar 27x7.5",
-      "category": "Food",
-      "subCategory": "Dry Fruits and Seeds",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "12079990"
-    },
-    "units": [
-      {
-        "unit": "200g",
-        "price": 199,
-        "mrp": 249,
-        "gtin": "8908031464148",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464148",
-    "packaging": "Jar 27x7.5"
-  },
-  {
-    "id": 16,
-    "slug": "watermelon-seeds",
-    "name": "Watermelon Seeds",
-    "category": "seeds",
-    "shopBy": "valueBuys",
-    "unit": "200g",
-    "price": 159,
-    "mrp": 189,
-    "image": "https://i.pinimg.com/1200x/ef/5e/2c/ef5e2c5b376defcc29feb832b0071101.jpg",
-    "description": "Roasted, protein-rich watermelon seeds.",
-    "stock": 35,
-    "rating": 4.3,
-    "tags": [
-      "seeds",
-      "snack"
-    ],
-    "images": [
-      "https://i.pinimg.com/1200x/ef/5e/2c/ef5e2c5b376defcc29feb832b0071101.jpg",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Supercharge your daily nutrition with our premium raw Watermelon Seeds. Loaded with essential fatty acids, protein, dietary fiber, and trace minerals like zinc and magnesium, these seeds are a powerhouse of clean energy. They are carefully cleaned, dried, and sorted to ensure that only the plumpest, highest-quality seeds reach your table. Ideal for mixing into morning smoothies, oatmeal bowls, baking healthy breads, or simply roasting for a crunchy afternoon snack.",
-    "highlights": {
-      "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Whole Dried Seeds",
-      "ingredients": "Raw Organic Watermelon Seeds",
-      "netWeight": "150g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464155",
-      "netContent": "200g",
-      "packagingType": "Jar 27x7.5",
-      "category": "Food",
-      "subCategory": "Dry Fruits and Seeds",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "12077090"
-    },
-    "units": [
-      {
-        "unit": "200g",
-        "price": 159,
-        "mrp": 189,
-        "gtin": "8908031464155",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464155",
-    "packaging": "Jar 27x7.5"
-  },
-  {
-    "id": 17,
-    "slug": "pumpkin-seeds",
-    "name": "Pumpkin Seeds",
-    "category": "seeds",
-    "shopBy": "newlyIn",
-    "unit": "200g",
-    "price": 219,
-    "mrp": 259,
-    "image": "https://i.pinimg.com/1200x/6e/f2/b4/6ef2b4bb98bc7ddfc76ab99a776752f8.jpg",
-    "description": "Nutrient-dense roasted pumpkin seeds.",
-    "stock": 40,
-    "rating": 4.5,
-    "tags": [
-      "seeds",
-      "snack"
-    ],
-    "images": [
-      "https://i.pinimg.com/1200x/6e/f2/b4/6ef2b4bb98bc7ddfc76ab99a776752f8.jpg",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Supercharge your daily nutrition with our premium raw Pumpkin Seeds. Loaded with essential fatty acids, protein, dietary fiber, and trace minerals like zinc and magnesium, these seeds are a powerhouse of clean energy. They are carefully cleaned, dried, and sorted to ensure that only the plumpest, highest-quality seeds reach your table. Ideal for mixing into morning smoothies, oatmeal bowls, baking healthy breads, or simply roasting for a crunchy afternoon snack.",
-    "highlights": {
-      "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Whole Dried Seeds",
-      "ingredients": "Raw Organic Pumpkin Seeds",
-      "netWeight": "200g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464162",
-      "netContent": "200g",
-      "packagingType": "Jar 27x7.5",
-      "category": "Food",
-      "subCategory": "Dry Fruits and Seeds",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "12077090"
-    },
-    "units": [
-      {
-        "unit": "200g",
-        "price": 219,
-        "mrp": 259,
-        "gtin": "8908031464162",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464162",
-    "packaging": "Jar 27x7.5"
-  },
-  {
-    "id": 18,
-    "slug": "flax-seeds",
-    "name": "Flax Seeds",
-    "category": "seeds",
-    "shopBy": "valueBuys",
-    "unit": "200g",
-    "price": 149,
-    "mrp": 179,
-    "image": "https://i.pinimg.com/736x/7a/cb/68/7acb68f132d63fc52af2aa8f83de2201.jpg",
-    "description": "Fiber and omega-3 rich flax seeds.",
-    "stock": 45,
-    "rating": 4.4,
-    "tags": [
-      "superfood",
-      "seeds"
-    ],
-    "images": [
-      "https://i.pinimg.com/736x/7a/cb/68/7acb68f132d63fc52af2aa8f83de2201.jpg",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Supercharge your daily nutrition with our premium raw Flax Seeds. Loaded with essential fatty acids, protein, dietary fiber, and trace minerals like zinc and magnesium, these seeds are a powerhouse of clean energy. They are carefully cleaned, dried, and sorted to ensure that only the plumpest, highest-quality seeds reach your table. Ideal for mixing into morning smoothies, oatmeal bowls, baking healthy breads, or simply roasting for a crunchy afternoon snack.",
-    "highlights": {
-      "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "India",
-      "form": "Whole Dried Seeds",
-      "ingredients": "Raw Organic Flax Seeds",
-      "netWeight": "200g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464179",
-      "netContent": "200g",
-      "packagingType": "Jar 27x7.5",
-      "category": "Food",
-      "subCategory": "Dry Fruits and Seeds",
-      "igst": "0 percent",
-      "cgst": "0 percent",
-      "sgst": "0 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "12040090"
-    },
-    "units": [
       {
         "unit": "200g",
         "price": 149,
-        "mrp": 179,
-        "gtin": "8908031464179",
-        "packaging": "Jar 27x7.5"
+        "mrp": 229,
+        "package": "Jar"
       }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464179",
-    "packaging": "Jar 27x7.5"
+    ]
   },
   {
-    "id": 19,
-    "slug": "sesame-seeds",
-    "name": "Sesame Seeds",
-    "category": "seeds",
-    "unit": "200g",
-    "price": 129,
-    "mrp": 159,
-    "image": "https://i.pinimg.com/736x/c8/63/0a/c8630ac0ebbae890b641b657d97b9fc8.jpg",
-    "description": "Nutty, versatile sesame seeds.",
-    "stock": 50,
-    "rating": 4.3,
+    "id": 14,
+    "slug": "red-chilli-flakes",
+    "name": "Red Chilli Flakes",
+    "category": "seasoning",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 75,
+    "mrp": 149,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
     "tags": [
-      "seeds"
+      "seasoning",
+      "flakes",
+      "valuebuys"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/6598ac82-021d-4309-b629-b6eced1843a2.png",
     "images": [
-      "https://i.pinimg.com/736x/c8/63/0a/c8630ac0ebbae890b641b657d97b9fc8.jpg",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/6598ac82-021d-4309-b629-b6eced1843a2.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/2dc83499-cf56-406b-8673-41d19edcfc58.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Supercharge your daily nutrition with our premium raw Sesame Seeds. Loaded with essential fatty acids, protein, dietary fiber, and trace minerals like zinc and magnesium, these seeds are a powerhouse of clean energy. They are carefully cleaned, dried, and sorted to ensure that only the plumpest, highest-quality seeds reach your table. Ideal for mixing into morning smoothies, oatmeal bowls, baking healthy breads, or simply roasting for a crunchy afternoon snack.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Whole Dried Seeds",
-      "ingredients": "Raw Organic Sesame Seeds",
-      "netWeight": "200g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Flakes",
+      "ingredients": "100% Pure Red Chilli Flakes",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g / 200g options"
     },
+    "description": "Premium quality Red Chilli Flakes sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "50g",
+        "price": 75,
+        "mrp": 149,
+        "package": "Pouch"
+      },
+      {
+        "unit": "100g",
+        "price": 99,
+        "mrp": 199,
+        "package": "Pouch"
+      },
+      {
+        "unit": "200g",
+        "price": 189,
+        "mrp": 379,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "slug": "peri-peri-masala",
+    "name": "Peri-Peri Masala",
+    "category": "seasoning",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 75,
+    "mrp": 149,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "seasoning",
+      "masala mix",
+      "trending"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/76d75845-e7eb-4bb3-9879-235505ee7dd7.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/76d75845-e7eb-4bb3-9879-235505ee7dd7.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/72978bd3-5e06-4e5c-98f9-5d08a9814ca5.jpg"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Masala Mix",
+      "ingredients": "100% Pure Peri-Peri Masala",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 100g / 200g options"
+    },
+    "description": "Premium quality Peri-Peri Masala sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "50g",
+        "price": 75,
+        "mrp": 149,
+        "package": "Pouch"
+      },
+      {
+        "unit": "100g",
+        "price": 99,
+        "mrp": 199,
+        "package": "Pouch"
+      },
+      {
+        "unit": "200g",
+        "price": 189,
+        "mrp": 379,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "slug": "chia-seeds",
+    "name": "Chia Seeds",
+    "category": "seeds",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "200g",
+    "price": 105,
+    "mrp": 209,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "seeds",
+      "seeds",
+      "bestseller"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d48424b7-903f-48fd-804e-f005c85ddd96.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d48424b7-903f-48fd-804e-f005c85ddd96.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/75d69c7b-a818-4636-ab9f-555e7f9f64ba.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Seeds",
+      "ingredients": "100% Pure Chia Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "200g options"
+    },
+    "description": "Premium quality Chia Seeds sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "bestseller",
     "units": [
       {
         "unit": "200g",
-        "price": 129,
-        "mrp": 159
-      },
+        "price": 105,
+        "mrp": 209,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "slug": "basil-seeds",
+    "name": "Basil Seeds",
+    "category": "seeds",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "200g",
+    "price": 120,
+    "mrp": 240,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "seeds",
+      "seeds",
+      "newlyin"
+    ],
+    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Seeds",
+      "ingredients": "100% Pure Basil Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "200g options"
+    },
+    "description": "Premium quality Basil Seeds sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "newlyIn",
+    "units": [
       {
-        "unit": "500g",
-        "price": 297,
-        "mrp": 366
-      },
+        "unit": "200g",
+        "price": 120,
+        "mrp": 240,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "slug": "watermelon-seeds",
+    "name": "Watermelon Seeds",
+    "category": "seeds",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "200g",
+    "price": 160,
+    "mrp": 320,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "seeds",
+      "seeds",
+      "valuebuys"
+    ],
+    "image": "https://i.pinimg.com/1200x/ef/5e/2c/ef5e2c5b376defcc29feb832b0071101.jpg",
+    "images": [
+      "https://i.pinimg.com/1200x/ef/5e/2c/ef5e2c5b376defcc29feb832b0071101.jpg"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Seeds",
+      "ingredients": "100% Pure Watermelon Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "200g options"
+    },
+    "description": "Premium quality Watermelon Seeds sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "valueBuys",
+    "units": [
       {
-        "unit": "1kg",
-        "price": 542,
-        "mrp": 668
+        "unit": "200g",
+        "price": 160,
+        "mrp": 320,
+        "package": "Jar"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "slug": "pumpkin-seeds-pampkeen",
+    "name": "Pumpkin Seeds (Pampkeen)",
+    "category": "seeds",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "200g",
+    "price": 119,
+    "mrp": 239,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "seeds",
+      "seeds",
+      "trending"
+    ],
+    "image": "https://i.pinimg.com/1200x/6e/f2/b4/6ef2b4bb98bc7ddfc76ab99a776752f8.jpg",
+    "images": [
+      "https://i.pinimg.com/1200x/6e/f2/b4/6ef2b4bb98bc7ddfc76ab99a776752f8.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/75d69c7b-a818-4636-ab9f-555e7f9f64ba.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Seeds",
+      "ingredients": "100% Pure Pumpkin Seeds (Pampkeen)",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "200g options"
+    },
+    "description": "Premium quality Pumpkin Seeds (Pampkeen) sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "200g",
+        "price": 119,
+        "mrp": 239,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 20,
-    "slug": "sunflower-seeds",
-    "name": "Sunflower Seeds",
+    "slug": "flax-seeds",
+    "name": "Flax Seeds",
     "category": "seeds",
-    "shopBy": "valueBuys",
+    "extraCategories": [],
+    "brand": "Foodville",
     "unit": "200g",
-    "price": 139,
-    "mrp": 169,
-    "image": "https://i.pinimg.com/1200x/67/ed/a4/67eda453e41429a63cb98555c7703483.jpg",
-    "description": "Crunchy, vitamin-E rich seeds.",
-    "stock": 42,
-    "rating": 4.3,
+    "price": 99,
+    "mrp": 199,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
     "tags": [
       "seeds",
-      "snack"
+      "seeds",
+      "bestseller"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/75d69c7b-a818-4636-ab9f-555e7f9f64ba.png",
     "images": [
-      "https://i.pinimg.com/1200x/67/ed/a4/67eda453e41429a63cb98555c7703483.jpg",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/75d69c7b-a818-4636-ab9f-555e7f9f64ba.png",
+      "https://i.pinimg.com/736x/7a/cb/68/7acb68f132d63fc52af2aa8f83de2201.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Supercharge your daily nutrition with our premium raw Sunflower Seeds. Loaded with essential fatty acids, protein, dietary fiber, and trace minerals like zinc and magnesium, these seeds are a powerhouse of clean energy. They are carefully cleaned, dried, and sorted to ensure that only the plumpest, highest-quality seeds reach your table. Ideal for mixing into morning smoothies, oatmeal bowls, baking healthy breads, or simply roasting for a crunchy afternoon snack.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
+      "storage": "Store in a cool, dry place in an airtight container.",
       "origin": "India",
-      "form": "Whole Dried Seeds",
-      "ingredients": "Raw Organic Sunflower Seeds",
-      "netWeight": "200g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464186",
-      "netContent": "200g",
-      "packagingType": "Jar 27x7.5",
-      "category": "Food",
-      "subCategory": "Dry Fruits and Seeds",
-      "igst": "0 percent",
-      "cgst": "0 percent",
-      "sgst": "0 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "12060010"
+      "form": "Seeds",
+      "ingredients": "100% Pure Flax Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "200g options"
     },
+    "description": "Premium quality Flax Seeds sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "bestseller",
     "units": [
       {
         "unit": "200g",
-        "price": 139,
-        "mrp": 169,
-        "gtin": "8908031464186",
-        "packaging": "Jar 27x7.5"
+        "price": 99,
+        "mrp": 199,
+        "package": "Jar"
       }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464186",
-    "packaging": "Jar 27x7.5"
+    ]
   },
   {
     "id": 21,
-    "slug": "almonds",
-    "name": "Almonds",
-    "category": "dryfruits",
-    "shopBy": "bestseller",
-    "unit": "250g",
-    "price": 299,
-    "mrp": 349,
-    "image": "https://i.pinimg.com/736x/dd/3c/b1/dd3cb1a90ea516f35191c3684e4e63d1.jpg",
-    "description": "Premium quality whole almonds.",
-    "stock": 60,
-    "rating": 4.7,
+    "slug": "sunflower-seeds",
+    "name": "Sunflower Seeds",
+    "category": "seeds",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "200g",
+    "price": 105,
+    "mrp": 209,
+    "stock": 150,
+    "isComingSoon": false,
+    "rating": 4.8,
     "tags": [
-      "nuts",
-      "bestseller"
+      "seeds",
+      "seeds",
+      "newlyin"
     ],
+    "image": "https://i.pinimg.com/1200x/67/ed/a4/67eda453e41429a63cb98555c7703483.jpg",
     "images": [
-      "https://i.pinimg.com/736x/dd/3c/b1/dd3cb1a90ea516f35191c3684e4e63d1.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+      "https://i.pinimg.com/1200x/67/ed/a4/67eda453e41429a63cb98555c7703483.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Indulge in the finest selected Almonds, hand-gathered and naturally dried to preserve their natural sweetness, flavor, and dense nutrient profile. Rich in healthy monounsaturated fats, antioxidants, and vitamins, these premium dry fruits are perfect for daily vitality. We pack them under clean, vacuum-sealed conditions to prevent moisture and extend shelf-life without the need for any chemical preservatives or artificial sweeteners. A perfect snack on their own or a rich garnish for desserts.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Almonds",
-      "netWeight": "250g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Seeds",
+      "ingredients": "100% Pure Sunflower Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "200g options"
     },
+    "description": "Premium quality Sunflower Seeds sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "newlyIn",
     "units": [
       {
-        "unit": "250g",
-        "price": 299,
-        "mrp": 349
-      },
-      {
-        "unit": "500g",
-        "price": 538,
-        "mrp": 628
-      },
-      {
-        "unit": "1kg",
-        "price": 1017,
-        "mrp": 1187
-      },
-      {
-        "unit": "2kg",
-        "price": 1944,
-        "mrp": 2269
+        "unit": "200g",
+        "price": 105,
+        "mrp": 209,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 22,
-    "slug": "cashews",
-    "name": "Cashews",
-    "category": "dryfruits",
-    "shopBy": "bestseller",
-    "unit": "250g",
-    "price": 399,
-    "mrp": 459,
-    "image": "https://i.pinimg.com/736x/37/d4/73/37d47378cfe8efc4f8c64aa50a832c18.jpg",
-    "description": "Creamy, premium whole cashews.",
-    "stock": 55,
-    "rating": 4.6,
+    "slug": "dal-cheeni",
+    "name": "Dal Cheeni",
+    "category": "seasoning",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 65,
+    "mrp": 75,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "nuts",
-      "bestseller"
+      "seasoning",
+      "whole spices",
+      "valuebuys"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d6e98044-212b-478e-a315-0355d5b21bd9.png",
     "images": [
-      "https://i.pinimg.com/736x/37/d4/73/37d47378cfe8efc4f8c64aa50a832c18.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d6e98044-212b-478e-a315-0355d5b21bd9.png"
     ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Indulge in the finest selected Cashews, hand-gathered and naturally dried to preserve their natural sweetness, flavor, and dense nutrient profile. Rich in healthy monounsaturated fats, antioxidants, and vitamins, these premium dry fruits are perfect for daily vitality. We pack them under clean, vacuum-sealed conditions to prevent moisture and extend shelf-life without the need for any chemical preservatives or artificial sweeteners. A perfect snack on their own or a rich garnish for desserts.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Cashews",
-      "netWeight": "250g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Whole Spices",
+      "ingredients": "100% Pure Dal Cheeni",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Dal Cheeni sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "valueBuys",
     "units": [
       {
-        "unit": "250g",
-        "price": 399,
-        "mrp": 459
+        "unit": "50g",
+        "price": 65,
+        "mrp": 75,
+        "package": "Pouch"
       },
       {
-        "unit": "500g",
-        "price": 718,
-        "mrp": 826
-      },
-      {
-        "unit": "1kg",
-        "price": 1357,
-        "mrp": 1561
-      },
-      {
-        "unit": "2kg",
-        "price": 2594,
-        "mrp": 2984
+        "unit": "200g",
+        "price": 165,
+        "mrp": 190,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 23,
-    "slug": "raisins",
-    "name": "Raisins",
-    "category": "dryfruits",
-    "shopBy": "bestseller",
-    "unit": "250g",
-    "price": 159,
-    "mrp": 189,
-    "image": "https://i.pinimg.com/736x/ff/ab/4b/ffab4becedf4d7f03207cafcb1d8da05.jpg",
-    "description": "Naturally sweet seedless raisins.",
-    "stock": 65,
-    "rating": 4.4,
+    "slug": "cinnamon-sticks",
+    "name": "Cinnamon Sticks",
+    "category": "seasoning",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 65,
+    "mrp": 75,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "dryfruit"
+      "seasoning",
+      "whole spices",
+      "trending"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d6e98044-212b-478e-a315-0355d5b21bd9.png",
     "images": [
-      "https://i.pinimg.com/736x/ff/ab/4b/ffab4becedf4d7f03207cafcb1d8da05.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d6e98044-212b-478e-a315-0355d5b21bd9.png"
     ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Indulge in the finest selected Raisins, hand-gathered and naturally dried to preserve their natural sweetness, flavor, and dense nutrient profile. Rich in healthy monounsaturated fats, antioxidants, and vitamins, these premium dry fruits are perfect for daily vitality. We pack them under clean, vacuum-sealed conditions to prevent moisture and extend shelf-life without the need for any chemical preservatives or artificial sweeteners. A perfect snack on their own or a rich garnish for desserts.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Raisins",
-      "netWeight": "250g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Whole Spices",
+      "ingredients": "100% Pure Cinnamon Sticks",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Cinnamon Sticks sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "trending",
     "units": [
       {
-        "unit": "250g",
-        "price": 159,
-        "mrp": 189
+        "unit": "50g",
+        "price": 65,
+        "mrp": 75,
+        "package": "Pouch"
       },
       {
-        "unit": "500g",
-        "price": 286,
-        "mrp": 340
-      },
-      {
-        "unit": "1kg",
-        "price": 541,
-        "mrp": 643
-      },
-      {
-        "unit": "2kg",
-        "price": 1034,
-        "mrp": 1229
+        "unit": "200g",
+        "price": 165,
+        "mrp": 190,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 24,
-    "slug": "walnuts",
-    "name": "Walnuts",
-    "category": "dryfruits",
-    "unit": "250g",
-    "price": 449,
-    "mrp": 499,
-    "image": "https://i.pinimg.com/736x/a8/15/1c/a8151c84e528abc939f20f23d3e281f0.jpg",
-    "description": "Brain-healthy omega-3 rich walnuts.",
-    "stock": 40,
-    "rating": 4.6,
+    "slug": "dry-amla",
+    "name": "Dry Amla",
+    "category": "wellness",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 35,
+    "mrp": 45,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "nuts"
+      "wellness",
+      "herbal fruit",
+      "bestseller"
     ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=500&q=80",
     "images": [
-      "https://i.pinimg.com/736x/a8/15/1c/a8151c84e528abc939f20f23d3e281f0.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=500&q=80"
     ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Indulge in the finest selected Walnuts, hand-gathered and naturally dried to preserve their natural sweetness, flavor, and dense nutrient profile. Rich in healthy monounsaturated fats, antioxidants, and vitamins, these premium dry fruits are perfect for daily vitality. We pack them under clean, vacuum-sealed conditions to prevent moisture and extend shelf-life without the need for any chemical preservatives or artificial sweeteners. A perfect snack on their own or a rich garnish for desserts.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Walnuts",
-      "netWeight": "250g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Herbal Fruit",
+      "ingredients": "100% Pure Dry Amla",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Dry Amla sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "bestseller",
     "units": [
       {
-        "unit": "250g",
-        "price": 449,
-        "mrp": 499
+        "unit": "50g",
+        "price": 35,
+        "mrp": 45,
+        "package": "Pouch"
       },
       {
-        "unit": "500g",
-        "price": 808,
-        "mrp": 898
-      },
-      {
-        "unit": "1kg",
-        "price": 1527,
-        "mrp": 1697
-      },
-      {
-        "unit": "2kg",
-        "price": 2919,
-        "mrp": 3244
+        "unit": "200g",
+        "price": 95,
+        "mrp": 110,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 25,
-    "slug": "pistachios",
-    "name": "Pistachios",
-    "category": "dryfruits",
-    "shopBy": "bestseller",
-    "unit": "250g",
-    "price": 499,
-    "mrp": 569,
-    "image": "https://i.pinimg.com/736x/4c/0c/e4/4c0ce406e543a003f17f24c172d26be5.jpg",
-    "description": "Roasted, lightly salted pistachios.",
-    "stock": 35,
-    "rating": 4.6,
+    "slug": "ashwagandha-ashavgandha",
+    "name": "Ashwagandha (Ashavgandha)",
+    "category": "wellness",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 75,
+    "mrp": 85,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "nuts"
+      "wellness",
+      "herbal root",
+      "newlyin"
     ],
+    "image": "https://i.pinimg.com/1200x/79/ab/42/79ab4262e7e3ebad23d85634e7d1b23f.jpg",
     "images": [
-      "https://i.pinimg.com/736x/4c/0c/e4/4c0ce406e543a003f17f24c172d26be5.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+      "https://i.pinimg.com/1200x/79/ab/42/79ab4262e7e3ebad23d85634e7d1b23f.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Indulge in the finest selected Pistachios, hand-gathered and naturally dried to preserve their natural sweetness, flavor, and dense nutrient profile. Rich in healthy monounsaturated fats, antioxidants, and vitamins, these premium dry fruits are perfect for daily vitality. We pack them under clean, vacuum-sealed conditions to prevent moisture and extend shelf-life without the need for any chemical preservatives or artificial sweeteners. A perfect snack on their own or a rich garnish for desserts.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Pistachios",
-      "netWeight": "250g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Herbal Root",
+      "ingredients": "100% Pure Ashwagandha (Ashavgandha)",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Ashwagandha (Ashavgandha) sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "newlyIn",
     "units": [
       {
-        "unit": "250g",
-        "price": 499,
-        "mrp": 569
+        "unit": "50g",
+        "price": 75,
+        "mrp": 85,
+        "package": "Pouch"
       },
       {
-        "unit": "500g",
-        "price": 898,
-        "mrp": 1024
-      },
-      {
-        "unit": "1kg",
-        "price": 1697,
-        "mrp": 1935
-      },
-      {
-        "unit": "2kg",
-        "price": 3244,
-        "mrp": 3699
+        "unit": "200g",
+        "price": 200,
+        "mrp": 230,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 26,
-    "slug": "dates",
-    "name": "Dates",
-    "category": "dryfruits",
-    "unit": "250g",
-    "price": 199,
-    "mrp": 239,
-    "image": "https://i.pinimg.com/736x/44/d1/7f/44d17f2d098634a468b25872e066604a.jpg",
-    "description": "Soft, naturally sweet dates.",
-    "stock": 50,
-    "rating": 4.5,
+    "slug": "mulethi",
+    "name": "Mulethi",
+    "category": "wellness",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 50,
+    "mrp": 60,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "dryfruit"
+      "wellness",
+      "herbal root",
+      "valuebuys"
     ],
+    "image": "https://i.pinimg.com/1200x/1c/cb/55/1ccb555844df088f67e52e6e1a90e8d1.jpg",
     "images": [
-      "https://i.pinimg.com/736x/44/d1/7f/44d17f2d098634a468b25872e066604a.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+      "https://i.pinimg.com/1200x/1c/cb/55/1ccb555844df088f67e52e6e1a90e8d1.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Indulge in the finest selected Dates, hand-gathered and naturally dried to preserve their natural sweetness, flavor, and dense nutrient profile. Rich in healthy monounsaturated fats, antioxidants, and vitamins, these premium dry fruits are perfect for daily vitality. We pack them under clean, vacuum-sealed conditions to prevent moisture and extend shelf-life without the need for any chemical preservatives or artificial sweeteners. A perfect snack on their own or a rich garnish for desserts.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Dates",
-      "netWeight": "250g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Herbal Root",
+      "ingredients": "100% Pure Mulethi",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Mulethi sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "valueBuys",
     "units": [
       {
-        "unit": "250g",
-        "price": 199,
-        "mrp": 239
+        "unit": "50g",
+        "price": 50,
+        "mrp": 60,
+        "package": "Pouch"
       },
       {
-        "unit": "500g",
-        "price": 358,
-        "mrp": 430
-      },
-      {
-        "unit": "1kg",
-        "price": 677,
-        "mrp": 813
-      },
-      {
-        "unit": "2kg",
-        "price": 1294,
-        "mrp": 1554
+        "unit": "200g",
+        "price": 130,
+        "mrp": 150,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 27,
-    "slug": "apricots",
-    "name": "Apricots",
+    "slug": "almond",
+    "name": "Almond",
     "category": "dryfruits",
-    "shopBy": "trending",
-    "unit": "250g",
-    "price": 259,
-    "mrp": 299,
-    "image": "https://i.pinimg.com/736x/c6/02/50/c60250baec645a7c5345260713ec30ef.jpg",
-    "description": "Tangy-sweet dried apricots.",
-    "stock": 30,
-    "rating": 4.4,
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 50,
+    "mrp": 60,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "dryfruit"
+      "dryfruits",
+      "nuts",
+      "trending"
     ],
+    "image": "https://i.pinimg.com/736x/dd/3c/b1/dd3cb1a90ea516f35191c3684e4e63d1.jpg",
     "images": [
-      "https://i.pinimg.com/736x/c6/02/50/c60250baec645a7c5345260713ec30ef.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+      "https://i.pinimg.com/736x/dd/3c/b1/dd3cb1a90ea516f35191c3684e4e63d1.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/9c984584-580d-40f9-a0c8-c81acab59b14.png"
     ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Indulge in the finest selected Apricots, hand-gathered and naturally dried to preserve their natural sweetness, flavor, and dense nutrient profile. Rich in healthy monounsaturated fats, antioxidants, and vitamins, these premium dry fruits are perfect for daily vitality. We pack them under clean, vacuum-sealed conditions to prevent moisture and extend shelf-life without the need for any chemical preservatives or artificial sweeteners. A perfect snack on their own or a rich garnish for desserts.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Apricots",
-      "netWeight": "250g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Nuts",
+      "ingredients": "100% Pure Almond",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Almond sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "trending",
     "units": [
       {
-        "unit": "250g",
-        "price": 259,
-        "mrp": 299
+        "unit": "50g",
+        "price": 50,
+        "mrp": 60,
+        "package": "Pouch"
       },
       {
-        "unit": "500g",
-        "price": 466,
-        "mrp": 538
-      },
-      {
-        "unit": "1kg",
-        "price": 881,
-        "mrp": 1017
-      },
-      {
-        "unit": "2kg",
-        "price": 1684,
-        "mrp": 1944
+        "unit": "200g",
+        "price": 215,
+        "mrp": 240,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 28,
-    "slug": "fox-nuts-makhana",
-    "name": "Fox Nuts (Makhana)",
+    "slug": "kaju",
+    "name": "Kaju",
     "category": "dryfruits",
-    "unit": "100g",
-    "price": 149,
-    "mrp": 179,
-    "image": "https://i.pinimg.com/1200x/8c/96/01/8c9601fc4770844e06e2a7874f053d85.jpg",
-    "description": "Light, roasted lotus seed snack.",
-    "stock": 45,
-    "rating": 4.5,
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 55,
+    "mrp": 65,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "snack",
+      "dryfruits",
+      "nuts",
       "bestseller"
     ],
+    "image": "https://i.pinimg.com/736x/37/d4/73/37d47378cfe8efc4f8c64aa50a832c18.jpg",
     "images": [
-      "https://i.pinimg.com/1200x/8c/96/01/8c9601fc4770844e06e2a7874f053d85.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+      "https://i.pinimg.com/736x/37/d4/73/37d47378cfe8efc4f8c64aa50a832c18.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/9c984584-580d-40f9-a0c8-c81acab59b14.png"
     ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Indulge in the finest selected Fox Nuts (Makhana), hand-gathered and naturally dried to preserve their natural sweetness, flavor, and dense nutrient profile. Rich in healthy monounsaturated fats, antioxidants, and vitamins, these premium dry fruits are perfect for daily vitality. We pack them under clean, vacuum-sealed conditions to prevent moisture and extend shelf-life without the need for any chemical preservatives or artificial sweeteners. A perfect snack on their own or a rich garnish for desserts.",
     "highlights": {
       "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "Raw Organic Fox Nuts (Makhana)",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Nuts",
+      "ingredients": "100% Pure Kaju",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Kaju sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "bestseller",
     "units": [
       {
-        "unit": "100g",
-        "price": 149,
-        "mrp": 179
+        "unit": "50g",
+        "price": 55,
+        "mrp": 65,
+        "package": "Pouch"
       },
       {
-        "unit": "250g",
-        "price": 343,
-        "mrp": 412
-      },
-      {
-        "unit": "500g",
-        "price": 626,
-        "mrp": 752
-      },
-      {
-        "unit": "1kg",
-        "price": 1192,
-        "mrp": 1432
+        "unit": "200g",
+        "price": 230,
+        "mrp": 260,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 29,
-    "slug": "ashwagandha-powder",
-    "name": "Ashwagandha Powder",
-    "category": "wellness",
-    "shopBy": "trending",
-    "unit": "100g",
-    "price": 249,
-    "mrp": 299,
-    "image": "https://i.pinimg.com/1200x/79/ab/42/79ab4262e7e3ebad23d85634e7d1b23f.jpg",
-    "description": "Adaptogenic root powder.",
-    "stock": 30,
-    "rating": 4.5,
+    "slug": "raisin-kashmish",
+    "name": "Raisin (Kashmish)",
+    "category": "dryfruits",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 30,
+    "mrp": 40,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "wellness",
-      "ayurveda"
+      "dryfruits",
+      "nuts",
+      "newlyin"
     ],
+    "image": "https://i.pinimg.com/736x/ff/ab/4b/ffab4becedf4d7f03207cafcb1d8da05.jpg",
     "images": [
-      "https://i.pinimg.com/1200x/79/ab/42/79ab4262e7e3ebad23d85634e7d1b23f.jpg",
-      "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=600&q=80",
-      "https://plus.unsplash.com/premium_photo-1774416430699-ca015984fa4f?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80"
+      "https://i.pinimg.com/736x/ff/ab/4b/ffab4becedf4d7f03207cafcb1d8da05.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Our Ayurvedic Ashwagandha Powder represents the best of traditional wellness practices, prepared under strict quality standards. Sourced from high-altitude herbs and roots, this adaptogenic supplement supports overall immunity, energy levels, and stress relief. Ground into a fine, easily soluble form, it can be seamlessly blended into warm milk, tea, or water for your daily health routine. It is entirely vegetarian, organic, and ethically sourced.",
     "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "100% Pure Dehydrated Ashwagandha",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Nuts",
+      "ingredients": "100% Pure Raisin (Kashmish)",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Raisin (Kashmish) sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "newlyIn",
     "units": [
       {
-        "unit": "100g",
-        "price": 249,
-        "mrp": 299
+        "unit": "50g",
+        "price": 30,
+        "mrp": 40,
+        "package": "Pouch"
       },
       {
-        "unit": "250g",
-        "price": 573,
-        "mrp": 688
-      },
-      {
-        "unit": "500g",
-        "price": 1046,
-        "mrp": 1256
-      },
-      {
-        "unit": "1kg",
-        "price": 1992,
-        "mrp": 2392
+        "unit": "200g",
+        "price": 95,
+        "mrp": 110,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 30,
-    "slug": "giloy-powder",
-    "name": "Giloy Powder",
-    "category": "wellness",
-    "unit": "100g",
-    "price": 219,
-    "mrp": 259,
-    "image": "https://i.pinimg.com/1200x/b4/be/5c/b4be5c8d6e33ebb2ace9444ab11942d2.jpg",
-    "description": "Immunity-supporting herb powder.",
-    "stock": 28,
-    "rating": 4.4,
+    "slug": "apricot",
+    "name": "Apricot",
+    "category": "dryfruits",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 65,
+    "mrp": 75,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "wellness",
-      "ayurveda"
+      "dryfruits",
+      "nuts",
+      "valuebuys"
     ],
+    "image": "https://i.pinimg.com/736x/c6/02/50/c60250baec645a7c5345260713ec30ef.jpg",
     "images": [
-      "https://i.pinimg.com/1200x/b4/be/5c/b4be5c8d6e33ebb2ace9444ab11942d2.jpg",
-      "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=600&q=80",
-      "https://plus.unsplash.com/premium_photo-1774416430699-ca015984fa4f?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80"
+      "https://i.pinimg.com/736x/c6/02/50/c60250baec645a7c5345260713ec30ef.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Rohan P.",
-        "rating": 5,
-        "comment": "Premium crunch! Size of nuts is great. Perfect for morning breakfast.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Deepika G.",
-        "rating": 4.5,
-        "comment": "Tasty, fresh and healthy. Clean packaging.",
-        "date": "2026-05-12"
-      }
-    ],
-    "details": "Our Ayurvedic Giloy Powder represents the best of traditional wellness practices, prepared under strict quality standards. Sourced from high-altitude herbs and roots, this adaptogenic supplement supports overall immunity, energy levels, and stress relief. Ground into a fine, easily soluble form, it can be seamlessly blended into warm milk, tea, or water for your daily health routine. It is entirely vegetarian, organic, and ethically sourced.",
     "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "100% Pure Dehydrated Giloy",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Nuts",
+      "ingredients": "100% Pure Apricot",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Apricot sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "valueBuys",
     "units": [
       {
-        "unit": "100g",
-        "price": 219,
-        "mrp": 259
+        "unit": "50g",
+        "price": 65,
+        "mrp": 75,
+        "package": "Pouch"
       },
       {
-        "unit": "250g",
-        "price": 504,
-        "mrp": 596
-      },
-      {
-        "unit": "500g",
-        "price": 920,
-        "mrp": 1088
-      },
-      {
-        "unit": "1kg",
-        "price": 1752,
-        "mrp": 2072
+        "unit": "200g",
+        "price": 220,
+        "mrp": 250,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 31,
-    "slug": "mulethi-powder",
-    "name": "Mulethi (Licorice) Powder",
-    "category": "wellness",
-    "shopBy": "trending",
-    "unit": "100g",
-    "price": 179,
-    "mrp": 209,
-    "image": "https://i.pinimg.com/1200x/1c/cb/55/1ccb555844df088f67e52e6e1a90e8d1.jpg",
-    "description": "Licorice root powder for throat & skin care.",
-    "stock": 25,
-    "rating": 4.3,
+    "slug": "pista",
+    "name": "Pista",
+    "category": "dryfruits",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "50g",
+    "price": 75,
+    "mrp": 85,
+    "stock": 150,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
-      "wellness",
-      "ayurveda"
+      "dryfruits",
+      "nuts",
+      "trending"
     ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/554276ad-dca7-45dd-ba70-9bd0858b5eba.png",
     "images": [
-      "https://i.pinimg.com/1200x/1c/cb/55/1ccb555844df088f67e52e6e1a90e8d1.jpg",
-      "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=600&q=80",
-      "https://plus.unsplash.com/premium_photo-1774416430699-ca015984fa4f?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80"
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/554276ad-dca7-45dd-ba70-9bd0858b5eba.png",
+      "https://i.pinimg.com/736x/4c/0c/e4/4c0ce406e543a003f17f24c172d26be5.jpg"
     ],
-    "reviews": [
-      {
-        "name": "Aishwarya R.",
-        "rating": 5,
-        "comment": "Super fresh, smells amazing. Ground really fine. Worth every rupee!",
-        "date": "2026-06-15"
-      },
-      {
-        "name": "Vikram K.",
-        "rating": 4,
-        "comment": "Great flavor addition to my cooking. Very convenient packing.",
-        "date": "2026-05-20"
-      }
-    ],
-    "details": "Our Ayurvedic Mulethi (Licorice) Powder represents the best of traditional wellness practices, prepared under strict quality standards. Sourced from high-altitude herbs and roots, this adaptogenic supplement supports overall immunity, energy levels, and stress relief. Ground into a fine, easily soluble form, it can be seamlessly blended into warm milk, tea, or water for your daily health routine. It is entirely vegetarian, organic, and ethically sourced.",
     "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "100% Pure Dehydrated Mulethi (Licorice)",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place in an airtight container.",
+      "origin": "India",
+      "form": "Nuts",
+      "ingredients": "100% Pure Pista",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "50g / 200g options"
     },
+    "description": "Premium quality Pista sourced fresh and packaged hygienically to preserve intense aroma, taste and active properties.",
+    "shopBy": "trending",
     "units": [
       {
-        "unit": "100g",
-        "price": 179,
-        "mrp": 209
+        "unit": "50g",
+        "price": 75,
+        "mrp": 85,
+        "package": "Pouch"
       },
       {
-        "unit": "250g",
-        "price": 412,
-        "mrp": 481
-      },
-      {
-        "unit": "500g",
-        "price": 752,
-        "mrp": 878
-      },
-      {
-        "unit": "1kg",
-        "price": 1432,
-        "mrp": 1672
+        "unit": "200g",
+        "price": 290,
+        "mrp": 320,
+        "package": "Jar"
       }
     ]
   },
   {
     "id": 32,
-    "slug": "amla-powder",
-    "name": "Amla Powder",
-    "category": "wellness",
-    "shopBy": "trending",
-    "unit": "100g",
-    "price": 189,
-    "mrp": 219,
-    "image": "https://i.pinimg.com/1200x/89/fa/8c/89fa8c85c730e93158088727c5b969ce.jpg",
-    "description": "Vitamin C rich Indian gooseberry powder.",
-    "stock": 32,
-    "rating": 4.5,
-    "tags": [
-      "wellness",
-      "ayurveda"
-    ],
-    "images": [
-      "https://i.pinimg.com/1200x/89/fa/8c/89fa8c85c730e93158088727c5b969ce.jpg",
-      "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=600&q=80",
-      "https://plus.unsplash.com/premium_photo-1774416430699-ca015984fa4f?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Priya S.",
-        "rating": 5,
-        "comment": "Genuine taste. Totally organic, no synthetic smell. Highly recommended.",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Kunal M.",
-        "rating": 4,
-        "comment": "Good quality seeds, extremely clean and fresh packaging.",
-        "date": "2026-04-18"
-      },
-      {
-        "name": "Amit N.",
-        "rating": 5,
-        "comment": "First time buying this, absolutely impressed with quality.",
-        "date": "2026-06-02"
-      }
-    ],
-    "details": "Our Ayurvedic Amla Powder represents the best of traditional wellness practices, prepared under strict quality standards. Sourced from high-altitude herbs and roots, this adaptogenic supplement supports overall immunity, energy levels, and stress relief. Ground into a fine, easily soluble form, it can be seamlessly blended into warm milk, tea, or water for your daily health routine. It is entirely vegetarian, organic, and ethically sourced.",
-    "highlights": {
-      "shelfLife": "9 Months from Packaging",
-      "storage": "Store in a cool, dark, and dry place. Transfer to an airtight glass container after opening to prevent moisture absorption.",
-      "origin": "100% Indian Origin",
-      "form": "Premium Selected Grade",
-      "ingredients": "100% Pure Dehydrated Amla",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan Friendly",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
-    },
-    "units": [
-      {
-        "unit": "100g",
-        "price": 189,
-        "mrp": 219
-      },
-      {
-        "unit": "250g",
-        "price": 435,
-        "mrp": 504
-      },
-      {
-        "unit": "500g",
-        "price": 794,
-        "mrp": 920
-      },
-      {
-        "unit": "1kg",
-        "price": 1512,
-        "mrp": 1752
-      }
-    ]
-  },
-  {
-    "id": 33,
-    "slug": "red-chilli-flakes",
-    "name": "Red Chilli Flakes",
-    "category": "seasoning",
-    "shopBy": "bestseller",
-    "unit": "100g",
-    "price": 89,
-    "mrp": 109,
-    "image": "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?auto=format&fit=crop&w=500&q=80",
-    "description": "Coarsely crushed dried red chillies for bold heat.",
-    "stock": 55,
-    "rating": 4.6,
-    "tags": [
-      "spice",
-      "seasoning",
-      "bestseller"
-    ],
-    "images": [
-      "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Vivek R.",
-        "rating": 5,
-        "comment": "Perfect heat level. Goes on everything from pizza to dal!",
-        "date": "2026-06-25"
-      },
-      {
-        "name": "Meena S.",
-        "rating": 4,
-        "comment": "Very fresh and pungent. Great quality flakes.",
-        "date": "2026-06-14"
-      }
-    ],
-    "details": "Our Red Chilli Flakes are made from premium sun-dried whole red chillies, coarsely crushed to retain the seeds for maximum heat and visual appeal. Perfect as a finishing seasoning on pizzas, pastas, grilled meats, stir-fries, and dals. Stone-ground in small batches to preserve the natural capsaicin oils and vibrant colour. No artificial colours or preservatives added.",
-    "highlights": {
-      "shelfLife": "12 Months from Packaging",
-      "storage": "Store in an airtight container away from direct sunlight and moisture.",
-      "origin": "India",
-      "form": "Coarsely Crushed Flakes",
-      "ingredients": "100% Sun-Dried Red Chilli",
-      "netWeight": "50g",
-      "foodType": "100% Vegetarian / Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464292",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Herbs and Spices",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "09042219"
-    },
-    "units": [
-      {
-        "unit": "100g",
-        "price": 89,
-        "mrp": 109,
-        "gtin": "8908031464292",
-        "packaging": "Pouch 10x14"
-      },
-      {
-        "unit": "200g",
-        "price": 160,
-        "mrp": 196,
-        "gtin": "8908031464308",
-        "packaging": "Pouch 16x18"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464292",
-    "packaging": "Pouch 10x14"
-  },
-  {
-    "id": 34,
-    "slug": "basil-seeds",
-    "name": "Basil Seeds (Sabja)",
-    "category": "seeds",
-    "shopBy": "trending",
-    "unit": "200g",
-    "price": 99,
-    "mrp": 129,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
-    "description": "Cooling sabja seeds for drinks, desserts and digestion.",
-    "stock": 48,
-    "rating": 4.5,
-    "tags": [
-      "seeds",
-      "superfood",
-      "trending"
-    ],
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1528569051709-22528f7c7527?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Ananya K.",
-        "rating": 5,
-        "comment": "Perfect for my summer sherbets and falooda. Very clean seeds.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Preet S.",
-        "rating": 4,
-        "comment": "Good quality. Soaks up water quickly and swells nicely.",
-        "date": "2026-06-11"
-      }
-    ],
-    "details": "Basil Seeds (Sabja) are the small black seeds of sweet basil, prized in Ayurveda for their cooling, digestive, and weight-loss properties. When soaked in water they swell into a gel-like coating rich in soluble fibre. Add them to sherbets, falooda, lemonade, chaas, or overnight oats. They support gut health, reduce bloating, and help manage blood sugar after meals.",
-    "highlights": {
-      "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool dry place. Soak in water for 15 minutes before use.",
-      "origin": "India",
-      "form": "Whole Dried Seeds",
-      "ingredients": "Raw Organic Basil Seeds",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464285",
-      "netContent": "200g",
-      "packagingType": "Jar 27x7.5",
-      "category": "Food",
-      "subCategory": "Dry Fruits and Seeds",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "12119092"
-    },
-    "units": [
-      {
-        "unit": "200g",
-        "price": 99,
-        "mrp": 129,
-        "gtin": "8908031464285",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464285",
-    "packaging": "Jar 27x7.5"
-  },
-  {
-    "id": 35,
-    "slug": "dry-amla",
-    "name": "Dry Amla (Indian Gooseberry)",
-    "category": "wellness",
-    "shopBy": "trending",
-    "unit": "100g",
-    "price": 129,
-    "mrp": 159,
-    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=500&q=80",
-    "description": "Naturally dried whole amla berries rich in Vitamin C.",
-    "stock": 38,
-    "rating": 4.5,
-    "tags": [
-      "wellness",
-      "superfood",
-      "trending"
-    ],
-    "images": [
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Savita P.",
-        "rating": 5,
-        "comment": "Perfect for my morning routine. Very authentic tangy taste.",
-        "date": "2026-06-20"
-      },
-      {
-        "name": "Rajiv N.",
-        "rating": 4,
-        "comment": "Good quality dried amla. Clean with no added salt.",
-        "date": "2026-06-09"
-      }
-    ],
-    "details": "Dry Amla is the whole sun-dried Indian Gooseberry — one of the most nutrient-dense fruits on earth. Rich in natural Vitamin C, antioxidants, and tannins, it supports immunity, skin health, hair strength, and liver detoxification. Unlike amla powder, the dried whole form retains more of the fruit's natural fibre and slow-release nutrients. Eat directly as a snack, brew into herbal tea, or grind fresh as needed.",
-    "highlights": {
-      "shelfLife": "12 Months from Packaging",
-      "storage": "Store in an airtight container in a cool dry place.",
-      "origin": "100% Indian Origin",
-      "form": "Whole Sun-Dried Berries",
-      "ingredients": "100% Natural Dried Amla",
-      "netWeight": "100g",
-      "foodType": "100% Vegetarian / Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
-    },
-    "units": [
-      {
-        "unit": "100g",
-        "price": 129,
-        "mrp": 159
-      },
-      {
-        "unit": "250g",
-        "price": 297,
-        "mrp": 366
-      },
-      {
-        "unit": "500g",
-        "price": 542,
-        "mrp": 668
-      },
-      {
-        "unit": "1kg",
-        "price": 968,
-        "mrp": 1192
-      }
-    ]
-  },
-  {
-    "id": 36,
-    "slug": "peri-peri-masala",
-    "name": "Peri Peri Masala",
-    "category": "seasoning",
-    "shopBy": "newlyIn",
-    "unit": "100g",
-    "price": 99,
-    "mrp": 129,
-    "image": "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?auto=format&fit=crop&w=500&q=80",
-    "description": "Fiery African-inspired chilli seasoning blend.",
-    "stock": 42,
-    "rating": 4.4,
-    "tags": [
-      "seasoning",
-      "spice",
-      "newlyIn"
-    ],
-    "images": [
-      "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Kabir M.",
-        "rating": 5,
-        "comment": "Absolutely addictive on makhana and roasted chickpeas!",
-        "date": "2026-06-28"
-      },
-      {
-        "name": "Zara P.",
-        "rating": 4,
-        "comment": "Great heat level. Love it on homemade fries.",
-        "date": "2026-06-17"
-      }
-    ],
-    "details": "Our Peri Peri Masala is a bold, smoky-hot spice blend inspired by African piri-piri chilli cuisine. A perfect seasoning for fries, chips, roasted vegetables, grilled paneer, makhana, and popcorn. Made with red chillies, paprika, garlic, onion, herbs, and a touch of citrus for a complex, layered heat profile. No MSG, no artificial colours, no anti-caking agents.",
-    "highlights": {
-      "shelfLife": "12 Months from Packaging",
-      "storage": "Store in a cool dry place. Keep sealed after use.",
-      "origin": "India",
-      "form": "Fine Ground Spice Blend",
-      "ingredients": "Red Chilli, Paprika, Garlic, Onion, Herbs, Salt, Citric Acid",
-      "netWeight": "50g",
-      "foodType": "100% Vegetarian / Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001",
-      "brand": "Foodville",
-      "gtin": "8908031464131",
-      "netContent": "100g",
-      "packagingType": "Pouch 10x14",
-      "category": "Food",
-      "subCategory": "Seasonings and Preservatives",
-      "igst": "5 percent",
-      "cgst": "2.5 percent",
-      "sgst": "2.5 percent",
-      "companyName": "Foodville Consumer Products Private Limited",
-      "hsCode": "0910"
-    },
-    "units": [
-      {
-        "unit": "100g",
-        "price": 99,
-        "mrp": 129,
-        "gtin": "8908031464131",
-        "packaging": "Pouch 10x14"
-      },
-      {
-        "unit": "200g",
-        "price": 178,
-        "mrp": 232,
-        "gtin": "8908031464278",
-        "packaging": "Jar 27x7.5"
-      }
-    ],
-    "brand": "Foodville",
-    "gtin": "8908031464131",
-    "packaging": "Pouch 10x14"
-  },
-  {
-    "id": 37,
-    "slug": "cinnamon-stick",
-    "name": "Cinnamon Sticks",
-    "category": "seasoning",
-    "shopBy": "valueBuys",
-    "unit": "50g",
-    "price": 79,
-    "mrp": 109,
-    "image": "https://images.unsplash.com/photo-1508747703725-719ae257c84a?auto=format&fit=crop&w=500&q=80",
-    "description": "Aromatic Ceylon cinnamon quills for cooking and teas.",
-    "stock": 60,
-    "rating": 4.5,
-    "tags": [
-      "spice",
-      "seasoning",
-      "valueBuys"
-    ],
-    "images": [
-      "https://images.unsplash.com/photo-1508747703725-719ae257c84a?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "reviews": [
-      {
-        "name": "Pooja G.",
-        "rating": 5,
-        "comment": "Incredible fragrance. My chai has been transformed completely!",
-        "date": "2026-06-24"
-      },
-      {
-        "name": "Aryan M.",
-        "rating": 5,
-        "comment": "Authentic cinnamon with real aroma, not the cassia type most brands sell.",
-        "date": "2026-06-13"
-      }
-    ],
-    "details": "Our Cinnamon Sticks are premium quality quills with a sweet, warm, and complex aroma. They are ideal for brewing in chai, adding to biryani and pulao for depth of flavour, infusing into desserts, mulled drinks, and herbal teas. Cinnamon has well-documented blood-sugar-lowering effects and is one of the most antioxidant-rich spices available. Each quill is sourced fresh and packed airtight to preserve maximum essential oil content.",
-    "highlights": {
-      "shelfLife": "24 Months from Packaging",
-      "storage": "Store in an airtight container away from moisture.",
-      "origin": "Sri Lanka / South Indian Origin",
-      "form": "Whole Dried Quills",
-      "ingredients": "100% Natural Cinnamon",
-      "netWeight": "50g",
-      "foodType": "100% Vegetarian / Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited, H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001"
-    },
-    "units": [
-      {
-        "unit": "50g",
-        "price": 79,
-        "mrp": 109
-      },
-      {
-        "unit": "100g",
-        "price": 139,
-        "mrp": 189
-      },
-      {
-        "unit": "250g",
-        "price": 319,
-        "mrp": 429
-      },
-      {
-        "unit": "500g",
-        "price": 579,
-        "mrp": 779
-      }
-    ]
-  },
-  {
-    "id": 201,
-    "slug": "turmeric-powder-bulk",
-    "name": "Turmeric Powder — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 179,
-    "mrp": 238,
-    "image": "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=500&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "High-curcumin turmeric powder — bigger packs, bigger savings.",
-    "stock": 50,
-    "rating": 4.7,
-    "tags": [
-      "bulk",
-      "powder"
-    ],
-    "details": "Premium stone-ground high-curcumin Turmeric Powder in bulk packs. Each pack contains one 100g packet. Buy more, save more — up to 25% off vs single pack price.",
-    "highlights": {
-      "shelfLife": "9 Months",
-      "storage": "Cool dry airtight container.",
-      "origin": "100% Indian",
-      "form": "Fine Powder",
-      "ingredients": "Organic Turmeric Root",
-      "netWeight": "100g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Manish R.",
-        "rating": 5,
-        "comment": "Excellent bulk value. Very aromatic.",
-        "date": "2026-06-12"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 179,
-        "mrp": 198,
-        "perUnit": 89,
-        "savings": 19
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 339,
-        "mrp": 396,
-        "perUnit": 84,
-        "savings": 57
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 639,
-        "mrp": 792,
-        "perUnit": 79,
-        "savings": 153
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 899,
-        "mrp": 1188,
-        "perUnit": 74,
-        "savings": 289
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 1099,
-        "mrp": 1485,
-        "perUnit": 73,
-        "savings": 386
-      }
-    ]
-  },
-  {
-    "id": 202,
-    "slug": "garlic-powder-bulk",
-    "name": "Garlic Powder — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 299,
-    "mrp": 358,
-    "image": "https://media.istockphoto.com/id/1366928508/photo/garlic-powder.jpg?s=2048x2048&w=is&k=20&c=pK3oyVFW0Y5eANzqlcFp4ooZUPqrVikDTtC8ueff6Bw=",
-    "images": [
-      "https://media.istockphoto.com/id/1366928508/photo/garlic-powder.jpg?s=2048x2048&w=is&k=20&c=pK3oyVFW0Y5eANzqlcFp4ooZUPqrVikDTtC8ueff6Bw=",
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Pure garlic powder — strong flavour, bigger pack savings.",
-    "stock": 40,
-    "rating": 4.5,
-    "tags": [
-      "bulk",
-      "powder"
-    ],
-    "details": "Sun-dried garlic cloves stone-ground to aromatic powder. Each pack contains one 100g packet. Buy in bulk and save up to 25%.",
-    "highlights": {
-      "shelfLife": "9 Months",
-      "storage": "Airtight away from moisture.",
-      "origin": "100% Indian",
-      "form": "Fine Powder",
-      "ingredients": "Dehydrated Garlic",
-      "netWeight": "100g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Sunita G.",
-        "rating": 5,
-        "comment": "Saves so much buying in bulk. Great quality.",
-        "date": "2026-06-19"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 299,
-        "mrp": 358,
-        "perUnit": 149,
-        "savings": 59
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 569,
-        "mrp": 716,
-        "perUnit": 142,
-        "savings": 147
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 1079,
-        "mrp": 1432,
-        "perUnit": 134,
-        "savings": 353
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 1529,
-        "mrp": 2148,
-        "perUnit": 127,
-        "savings": 619
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 1849,
-        "mrp": 2685,
-        "perUnit": 123,
-        "savings": 836
-      }
-    ]
-  },
-  {
-    "id": 203,
-    "slug": "ginger-powder-bulk",
-    "name": "Ginger Powder — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 319,
-    "mrp": 378,
-    "image": "https://media.istockphoto.com/id/647402644/photo/ginger-root-and-ginger-powder-in-the-bowl.jpg?s=2048x2048&w=is&k=20&c=4AgwDwIQl-43vMgQzlzDVOZzYXReGb3yLVlQVdDZg7o=",
-    "images": [
-      "https://media.istockphoto.com/id/647402644/photo/ginger-root-and-ginger-powder-in-the-bowl.jpg?s=2048x2048&w=is&k=20&c=4AgwDwIQl-43vMgQzlzDVOZzYXReGb3yLVlQVdDZg7o=",
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Pure dried ginger powder — sharp warmth, everyday savings in bulk.",
-    "stock": 35,
-    "rating": 4.5,
-    "tags": [
-      "bulk",
-      "powder"
-    ],
-    "details": "Finely ground pure dried ginger. Each pack contains one 100g packet. Buy in bulk and save up to 25% vs single pack.",
-    "highlights": {
-      "shelfLife": "9 Months",
-      "storage": "Cool dry airtight storage.",
-      "origin": "100% Indian",
-      "form": "Fine Powder",
-      "ingredients": "Dehydrated Ginger",
-      "netWeight": "100g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Priya N.",
-        "rating": 5,
-        "comment": "My chai has never been better. Love bulk size.",
-        "date": "2026-06-17"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 319,
-        "mrp": 378,
-        "perUnit": 159,
-        "savings": 59
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 609,
-        "mrp": 756,
-        "perUnit": 152,
-        "savings": 147
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 1149,
-        "mrp": 1512,
-        "perUnit": 143,
-        "savings": 363
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 1629,
-        "mrp": 2268,
-        "perUnit": 135,
-        "savings": 639
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 1979,
-        "mrp": 2835,
-        "perUnit": 131,
-        "savings": 856
-      }
-    ]
-  },
-  {
-    "id": 204,
-    "slug": "moringa-powder-bulk",
-    "name": "Moringa Powder — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 369,
-    "mrp": 448,
-    "image": "https://images.unsplash.com/photo-1565117661210-fd54898de423?auto=format&fit=crop&w=500&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1565117661210-fd54898de423?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1606951444141-e5533feb55be?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Nutrient-dense moringa superfood powder — bulk packs, daily savings.",
-    "stock": 28,
-    "rating": 4.6,
-    "tags": [
-      "bulk",
-      "superfood"
-    ],
-    "details": "Cold-processed Moringa Powder from handpicked leaves. Each pack contains one 100g packet. Buy in bulk and save up to 25%.",
-    "highlights": {
-      "shelfLife": "9 Months",
-      "storage": "Cool dry place away from light.",
-      "origin": "Organic India",
-      "form": "Fine Powder",
-      "ingredients": "Moringa Leaf Powder",
-      "netWeight": "100g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Ritu S.",
-        "rating": 5,
-        "comment": "Best moringa price in bulk size.",
-        "date": "2026-06-15"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 369,
-        "mrp": 448,
-        "perUnit": 184,
-        "savings": 79
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 699,
-        "mrp": 896,
-        "perUnit": 174,
-        "savings": 197
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 1299,
-        "mrp": 1792,
-        "perUnit": 162,
-        "savings": 493
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 1849,
-        "mrp": 2688,
-        "perUnit": 154,
-        "savings": 839
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 2249,
-        "mrp": 3360,
-        "perUnit": 149,
-        "savings": 1111
-      }
-    ]
-  },
-  {
-    "id": 205,
-    "slug": "chia-seeds-bulk",
-    "name": "Chia Seeds — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 369,
-    "mrp": 448,
-    "image": "https://i.pinimg.com/736x/7c/5d/18/7c5d18a8086fb13cbd8f233151700681.jpg",
-    "images": [
-      "https://i.pinimg.com/736x/7c/5d/18/7c5d18a8086fb13cbd8f233151700681.jpg",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1528569051709-22528f7c7527?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Omega-3 rich organic chia seeds — multi-pack savings.",
-    "stock": 40,
-    "rating": 4.7,
-    "tags": [
-      "bulk",
-      "seeds",
-      "superfood"
-    ],
-    "details": "Raw organic black chia seeds. Each pack contains one 200g packet. Buy more, save more — up to 25% off vs single pack.",
-    "highlights": {
-      "shelfLife": "12 Months",
-      "storage": "Airtight container in cool dry place.",
-      "origin": "Organic India",
-      "form": "Whole Raw Seeds",
-      "ingredients": "Organic Chia Seeds",
-      "netWeight": "200g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Swati P.",
-        "rating": 5,
-        "comment": "Best price per gram for chia seeds.",
-        "date": "2026-06-05"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 369,
-        "mrp": 448,
-        "perUnit": 184,
-        "savings": 79
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 699,
-        "mrp": 896,
-        "perUnit": 174,
-        "savings": 197
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 1299,
-        "mrp": 1792,
-        "perUnit": 162,
-        "savings": 493
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 1849,
-        "mrp": 2688,
-        "perUnit": 154,
-        "savings": 839
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 2249,
-        "mrp": 3360,
-        "perUnit": 149,
-        "savings": 1111
-      }
-    ]
-  },
-  {
-    "id": 206,
-    "slug": "flax-seeds-bulk",
-    "name": "Flax Seeds — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 269,
-    "mrp": 318,
-    "image": "https://i.pinimg.com/736x/7a/cb/68/7acb68f132d63fc52af2aa8f83de2201.jpg",
-    "images": [
-      "https://i.pinimg.com/736x/7a/cb/68/7acb68f132d63fc52af2aa8f83de2201.jpg",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Fibre-rich flax seeds — omega-3 and savings in every bulk pack.",
-    "stock": 45,
-    "rating": 4.4,
-    "tags": [
-      "bulk",
-      "seeds"
-    ],
-    "details": "Raw organic flax seeds. Each pack contains one 200g packet. Grind fresh before use for maximum benefit. Save up to 25% vs single pack.",
-    "highlights": {
-      "shelfLife": "12 Months",
-      "storage": "Airtight sealed storage in cool place.",
-      "origin": "Organic India",
-      "form": "Whole Raw Seeds",
-      "ingredients": "Raw Flax Seeds",
-      "netWeight": "200g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Deepa M.",
-        "rating": 4,
-        "comment": "Good quality flax at a great bulk price.",
-        "date": "2026-06-03"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 269,
-        "mrp": 318,
-        "perUnit": 134,
-        "savings": 49
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 509,
-        "mrp": 636,
-        "perUnit": 127,
-        "savings": 127
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 949,
-        "mrp": 1272,
-        "perUnit": 118,
-        "savings": 323
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 1349,
-        "mrp": 1908,
-        "perUnit": 112,
-        "savings": 559
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 1649,
-        "mrp": 2385,
-        "perUnit": 109,
-        "savings": 736
-      }
-    ]
-  },
-  {
-    "id": 207,
-    "slug": "pumpkin-seeds-bulk",
-    "name": "Pumpkin Seeds — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 409,
-    "mrp": 478,
-    "image": "https://i.pinimg.com/1200x/6e/f2/b4/6ef2b4bb98bc7ddfc76ab99a776752f8.jpg",
-    "images": [
-      "https://i.pinimg.com/1200x/6e/f2/b4/6ef2b4bb98bc7ddfc76ab99a776752f8.jpg",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Nutrient-dense pumpkin seeds — zinc and protein powerhouse in bulk.",
-    "stock": 35,
-    "rating": 4.5,
-    "tags": [
-      "bulk",
-      "seeds"
-    ],
-    "details": "Premium raw pumpkin seeds. Each pack contains one 200g packet. Rich in zinc, magnesium and plant protein. Save up to 25% vs single pack.",
-    "highlights": {
-      "shelfLife": "12 Months",
-      "storage": "Airtight container in cool dry place.",
-      "origin": "100% Indian",
-      "form": "Whole Raw Seeds",
-      "ingredients": "Raw Pumpkin Seeds",
-      "netWeight": "200g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Harsh S.",
-        "rating": 5,
-        "comment": "Fresh and crunchy in this big pack. Great value.",
-        "date": "2026-06-08"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 409,
-        "mrp": 478,
-        "perUnit": 204,
-        "savings": 69
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 779,
-        "mrp": 956,
-        "perUnit": 194,
-        "savings": 177
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 1449,
-        "mrp": 1912,
-        "perUnit": 181,
-        "savings": 463
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 2049,
-        "mrp": 2868,
-        "perUnit": 170,
-        "savings": 819
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 2499,
-        "mrp": 3585,
-        "perUnit": 166,
-        "savings": 1086
-      }
-    ]
-  },
-  {
-    "id": 208,
-    "slug": "almonds-bulk",
-    "name": "Almonds — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 569,
-    "mrp": 648,
-    "image": "https://i.pinimg.com/736x/dd/3c/b1/dd3cb1a90ea516f35191c3684e4e63d1.jpg",
-    "images": [
-      "https://i.pinimg.com/736x/dd/3c/b1/dd3cb1a90ea516f35191c3684e4e63d1.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Premium whole almonds — daily vitality at multi-pack savings.",
-    "stock": 55,
-    "rating": 4.7,
-    "tags": [
-      "bulk",
-      "nuts"
-    ],
-    "details": "California-grade whole almonds. Each pack contains one 250g packet. Vacuum-sealed for freshness. Save up to 25% vs single pack.",
-    "highlights": {
-      "shelfLife": "12 Months",
-      "storage": "Cool dry place. Refrigerate after opening.",
-      "origin": "Premium Sourced",
-      "form": "Whole Dried Nuts",
-      "ingredients": "Premium Whole Almonds",
-      "netWeight": "250g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Karan J.",
-        "rating": 5,
-        "comment": "Best almond deal online. Fresh and crunchy.",
-        "date": "2026-06-08"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 569,
-        "mrp": 648,
-        "perUnit": 284,
-        "savings": 79
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 1079,
-        "mrp": 1296,
-        "perUnit": 269,
-        "savings": 217
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 1999,
-        "mrp": 2592,
-        "perUnit": 249,
-        "savings": 593
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 2849,
-        "mrp": 3888,
-        "perUnit": 237,
-        "savings": 1039
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 3449,
-        "mrp": 4860,
-        "perUnit": 229,
-        "savings": 1411
-      }
-    ]
-  },
-  {
-    "id": 209,
-    "slug": "cashews-bulk",
-    "name": "Cashews — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 769,
-    "mrp": 878,
-    "image": "https://i.pinimg.com/736x/37/d4/73/37d47378cfe8efc4f8c64aa50a832c18.jpg",
-    "images": [
-      "https://i.pinimg.com/736x/37/d4/73/37d47378cfe8efc4f8c64aa50a832c18.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Creamy premium whole cashews — restaurant kitchen savings in bulk.",
-    "stock": 45,
-    "rating": 4.6,
-    "tags": [
-      "bulk",
-      "nuts"
-    ],
-    "details": "W240 grade premium whole cashews. Each pack contains one 250g packet. Perfect for sweet preparations, cooking and snacking. Save up to 25% vs single pack.",
-    "highlights": {
-      "shelfLife": "12 Months",
-      "storage": "Cool dry place. Refrigerate after opening.",
-      "origin": "100% India Sourced",
-      "form": "Whole Raw Cashews",
-      "ingredients": "Selected Cashews",
-      "netWeight": "250g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Tarun S.",
-        "rating": 5,
-        "comment": "Big whole cashews, zero broken pieces.",
-        "date": "2026-06-01"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 769,
-        "mrp": 878,
-        "perUnit": 384,
-        "savings": 109
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 1469,
-        "mrp": 1756,
-        "perUnit": 367,
-        "savings": 287
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 2749,
-        "mrp": 3512,
-        "perUnit": 343,
-        "savings": 763
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 3899,
-        "mrp": 5268,
-        "perUnit": 324,
-        "savings": 1369
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 4749,
-        "mrp": 6585,
-        "perUnit": 316,
-        "savings": 1836
-      }
-    ]
-  },
-  {
-    "id": 210,
-    "slug": "walnuts-bulk",
-    "name": "Walnuts — Bulk Pack",
-    "category": "bulk",
-    "unit": "Pack of 2",
-    "price": 869,
-    "mrp": 978,
-    "image": "https://i.pinimg.com/736x/a8/15/1c/a8151c84e528abc939f20f23d3e281f0.jpg",
-    "images": [
-      "https://i.pinimg.com/736x/a8/15/1c/a8151c84e528abc939f20f23d3e281f0.jpg",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Brain-healthy walnut kernels — omega-3 in money-saving bulk packs.",
-    "stock": 38,
-    "rating": 4.6,
-    "tags": [
-      "bulk",
-      "nuts"
-    ],
-    "details": "Premium walnut kernels. Each pack contains one 250g packet. Rich in omega-3 fatty acids. Save up to 25% vs single pack.",
-    "highlights": {
-      "shelfLife": "12 Months",
-      "storage": "Refrigerate or cool dry storage.",
-      "origin": "100% Indian Origin",
-      "form": "Whole Dried Walnut Kernels",
-      "ingredients": "Walnut Kernels",
-      "netWeight": "250g per packet",
-      "foodType": "Vegan",
-      "manufacturedBy": "Foodville Consumer Products Private Limited"
-    },
-    "reviews": [
-      {
-        "name": "Rohit K.",
-        "rating": 5,
-        "comment": "Excellent walnut quality at bulk price.",
-        "date": "2026-06-04"
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2",
-        "price": 869,
-        "mrp": 978,
-        "perUnit": 434,
-        "savings": 109
-      },
-      {
-        "unit": "Pack of 4",
-        "price": 1649,
-        "mrp": 1956,
-        "perUnit": 412,
-        "savings": 307
-      },
-      {
-        "unit": "Pack of 8",
-        "price": 3099,
-        "mrp": 3912,
-        "perUnit": 387,
-        "savings": 813
-      },
-      {
-        "unit": "Pack of 12",
-        "price": 4399,
-        "mrp": 5868,
-        "perUnit": 366,
-        "savings": 1469
-      },
-      {
-        "unit": "Pack of 15",
-        "price": 5349,
-        "mrp": 7335,
-        "perUnit": 356,
-        "savings": 1986
-      }
-    ]
-  },
-  {
-    "id": 301,
     "slug": "premium-daily-nuts",
     "name": "Premium Daily Nuts",
     "category": "combos",
-    "unit": "Pack of 2 (250g each)",
-    "price": 614,
-    "mrp": 808,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Premium Daily Nuts combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 29,
-    "rating": 4.7,
-    "tags": [
-      "combo",
-      "dryfruits",
-      "2-product-combo",
-      "bestseller"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Almonds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Cashews",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2 (250g each)",
-        "price": 614,
-        "mrp": 808
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1050,
-        "mrp": 1454
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Bestseller",
-      "bestFor": "Daily Snacking, Morning Nutrition",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Premium Daily Nuts is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Amit Sharma",
-        "rating": 5,
-        "comment": "This Premium Daily Nuts is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-12"
-      },
-      {
-        "name": "Sneha Patel",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-15"
-      }
-    ]
-  },
-  {
-    "id": 302,
-    "slug": "sweet-and-crunchy-pack",
-    "name": "Sweet and Crunchy Pack",
-    "category": "combos",
-    "unit": "Pack of 2 (250g each)",
-    "price": 403,
-    "mrp": 538,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Sweet and Crunchy Pack combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 33,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 95,
+    "mrp": 125,
+    "stock": 99,
+    "isComingSoon": true,
     "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "2-product-combo",
-      "value-buy"
+      "bundle",
+      "bestseller",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/5cab458c-a2d7-4871-9edf-de5475c0afce.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/5cab458c-a2d7-4871-9edf-de5475c0afce.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Almond, Kaju",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Premium Daily Nuts is a specially curated bundle including: Almond, Kaju. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 95,
+        "mrp": 125,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Raisins",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Almonds",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (250g each)",
-        "price": 403,
-        "mrp": 538
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 689,
-        "mrp": 968
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Value Buy",
-      "bestFor": "Energy Boost, Kids Tiffin",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Sweet and Crunchy Pack is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Rohan Gupta",
-        "rating": 5,
-        "comment": "This Sweet and Crunchy Pack is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Priya Nair",
-        "rating": 4.5,
-        "comment": "Good value pack. Raisins and Almonds are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-17"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 303,
+    "id": 33,
+    "slug": "sweet-and-crunchy-pack",
+    "name": "Sweet & Crunchy Pack",
+    "category": "combos",
+    "extraCategories": [
+      "dryfruits"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 72,
+    "mrp": 100,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "newlyin",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Raisin (Kashmish), Almond",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Sweet & Crunchy Pack is a specially curated bundle including: Raisin (Kashmish), Almond. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 72,
+        "mrp": 100,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Raisin (Kashmish)",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Almond",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 34,
     "slug": "festive-treat-combo",
     "name": "Festive Treat Combo",
     "category": "combos",
-    "unit": "Pack of 2 (250g each)",
-    "price": 790,
-    "mrp": 1028,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Festive Treat Combo combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 42,
-    "rating": 4.5,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 117,
+    "mrp": 150,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "2-product-combo",
-      "premium-gifting"
+      "bundle",
+      "valuebuys",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pista, Kaju",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Festive Treat Combo is a specially curated bundle including: Pista, Kaju. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 117,
+        "mrp": 150,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (250g each)",
-        "price": 790,
-        "mrp": 1028
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1351,
-        "mrp": 1850
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Premium Gifting",
-      "bestFor": "Festive Snacking, Gifting",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Festive Treat Combo is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Vikram Singh",
-        "rating": 5,
-        "comment": "This Festive Treat Combo is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-16"
-      },
-      {
-        "name": "Sonal Mehta",
-        "rating": 4.5,
-        "comment": "Good value pack. Pistachios and Cashews are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-19"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 304,
+    "id": 35,
     "slug": "sweet-and-salty-crunch",
-    "name": "Sweet and Salty Crunch",
+    "name": "Sweet & Salty Crunch",
     "category": "combos",
-    "unit": "Pack of 2 (250g each)",
-    "price": 579,
-    "mrp": 758,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Sweet and Salty Crunch combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 34,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 95,
+    "mrp": 125,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "2-product-combo",
-      "bestseller"
+      "bundle",
+      "trending",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pista, Raisin (Kashmish)",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Sweet & Salty Crunch is a specially curated bundle including: Pista, Raisin (Kashmish). Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 95,
+        "mrp": 125,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Raisins",
+        "name": "Raisin (Kashmish)",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (250g each)",
-        "price": 579,
-        "mrp": 758
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 990,
-        "mrp": 1364
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Bestseller",
-      "bestFor": "Travel Snacking, Evening Treats",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Sweet and Salty Crunch is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Kunal Shah",
-        "rating": 5,
-        "comment": "This Sweet and Salty Crunch is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Shweta Rao",
-        "rating": 4.5,
-        "comment": "Good value pack. Pistachios and Raisins are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-21"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 305,
+    "id": 36,
     "slug": "nutty-fiber-blend",
     "name": "Nutty Fiber Blend",
     "category": "combos",
-    "unit": "Pack of 2 (250g each)",
-    "price": 491,
-    "mrp": 648,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Nutty Fiber Blend combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 22,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 104,
+    "mrp": 135,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "2-product-combo",
-      "value-buy"
+      "bundle",
+      "bestseller",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/280112eb-3957-4b32-b4da-61529f574995.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/280112eb-3957-4b32-b4da-61529f574995.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Almond, Apricot",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Nutty Fiber Blend is a specially curated bundle including: Almond, Apricot. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 104,
+        "mrp": 135,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Apricots",
+        "name": "Apricot",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (250g each)",
-        "price": 491,
-        "mrp": 648
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 840,
-        "mrp": 1166
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Value Buy",
-      "bestFor": "Digestive Health, Fiber intake",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Nutty Fiber Blend is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Rajesh Tiwari",
-        "rating": 5,
-        "comment": "This Nutty Fiber Blend is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-20"
-      },
-      {
-        "name": "Neha Verma",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Apricots are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-23"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 306,
+    "id": 37,
     "slug": "hair-and-skin-care-pack",
-    "name": "Hair and Skin Care Pack",
+    "name": "Hair & Skin Care Pack",
     "category": "combos",
-    "unit": "Pack of 2 (250g each)",
-    "price": 524,
-    "mrp": 715,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Hair and Skin Care Pack combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 43,
-    "rating": 4.5,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 77,
+    "mrp": 105,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "2-product-combo",
-      "ayurvedic-health"
+      "bundle",
+      "newlyin",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Dry Amla, Almond",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Hair & Skin Care Pack is a specially curated bundle including: Dry Amla, Almond. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 77,
+        "mrp": 105,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Dry Amla (Indian Gooseberry)",
+        "name": "Dry Amla",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (250g each)",
-        "price": 524,
-        "mrp": 715
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 903,
-        "mrp": 1296
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Ayurvedic Health",
-      "bestFor": "Hair Strength, Skin Glow",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Hair and Skin Care Pack is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Arjun Kapoor",
-        "rating": 5,
-        "comment": "This Hair and Skin Care Pack is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Karan Malhotra",
-        "rating": 4.5,
-        "comment": "Good value pack. Dry Amla and Almonds are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-25"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 307,
+    "id": 38,
     "slug": "royal-energy-bite",
     "name": "Royal Energy Bite",
     "category": "combos",
-    "unit": "Pack of 2 (250g each)",
-    "price": 579,
-    "mrp": 758,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Royal Energy Bite combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 30,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 108,
+    "mrp": 140,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "2-product-combo",
-      "premium-snacking"
+      "bundle",
+      "valuebuys",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Kaju, Apricot",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Royal Energy Bite is a specially curated bundle including: Kaju, Apricot. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 108,
+        "mrp": 140,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Apricots",
+        "name": "Apricot",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (250g each)",
-        "price": 579,
-        "mrp": 758
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 990,
-        "mrp": 1364
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Premium Snacking",
-      "bestFor": "Pre-Workout Energy, Dessert Prep",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Royal Energy Bite is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Ananya Sen",
-        "rating": 5,
-        "comment": "This Royal Energy Bite is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-24"
-      },
-      {
-        "name": "Deepak Joshi",
-        "rating": 4.5,
-        "comment": "Good value pack. Cashews and Apricots are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-27"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 308,
+    "id": 39,
     "slug": "classic-trio-pack",
     "name": "Classic Trio Pack",
     "category": "combos",
-    "unit": "Pack of 3 (250g each)",
-    "price": 728,
-    "mrp": 997,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Classic Trio Pack combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 39,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 122,
+    "mrp": 165,
+    "stock": 100,
+    "isComingSoon": true,
     "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "3-product-combo",
-      "bestseller"
+      "bundle",
+      "trending",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f17fd3d5-0e62-41b9-a239-068fede2f588.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f17fd3d5-0e62-41b9-a239-068fede2f588.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Almond, Kaju, Raisin (Kashmish)",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Classic Trio Pack is a specially curated bundle including: Almond, Kaju, Raisin (Kashmish). Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 122,
+        "mrp": 165,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Raisins",
+        "name": "Raisin (Kashmish)",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (250g each)",
-        "price": 728,
-        "mrp": 997
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1245,
-        "mrp": 1794
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Bestseller",
-      "bestFor": "Daily Energy, Household Pantry",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Classic Trio Pack is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Pooja Mishra",
-        "rating": 5,
-        "comment": "This Classic Trio Pack is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Sanjay Kumar",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-29"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 309,
+    "id": 40,
     "slug": "energy-booster-pack",
     "name": "Energy Booster Pack",
     "category": "combos",
-    "unit": "Pack of 3 (250g each)",
-    "price": 898,
-    "mrp": 1217,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Energy Booster Pack combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 26,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 171,
+    "mrp": 220,
+    "stock": 100,
+    "isComingSoon": true,
     "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "3-product-combo",
-      "premium-health"
+      "bundle",
+      "bestseller",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pista, Apricot, Almond",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Energy Booster Pack is a specially curated bundle including: Pista, Apricot, Almond. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 171,
+        "mrp": 220,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Apricots",
+        "name": "Apricot",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (250g each)",
-        "price": 898,
-        "mrp": 1217
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1536,
-        "mrp": 2190
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Premium Health",
-      "bestFor": "Active Lifestyles, Gym Diet",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Energy Booster Pack is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Aditi Roy",
-        "rating": 5,
-        "comment": "This Energy Booster Pack is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-28"
-      },
-      {
-        "name": "Varun Saxena",
-        "rating": 4.5,
-        "comment": "Good value pack. Pistachios and Apricots are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-12"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 310,
+    "id": 41,
     "slug": "premium-rich-nuts-trio",
     "name": "Premium Rich Nuts Trio",
     "category": "combos",
-    "unit": "Pack of 3 (250g each)",
-    "price": 1017,
-    "mrp": 1377,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Premium Rich Nuts Trio combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 22,
-    "rating": 4.5,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 162,
+    "mrp": 210,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "3-product-combo",
-      "luxury-snacking"
+      "bundle",
+      "newlyin",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/de84e203-b0ab-460d-9528-d64f73afdb68.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/de84e203-b0ab-460d-9528-d64f73afdb68.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Almond, Kaju, Pista",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Premium Rich Nuts Trio is a specially curated bundle including: Almond, Kaju, Pista. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 162,
+        "mrp": 210,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (250g each)",
-        "price": 1017,
-        "mrp": 1377
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1739,
-        "mrp": 2478
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Luxury Snacking",
-      "bestFor": "Guest Serving, Premium Gift Packs",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Premium Rich Nuts Trio is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Simran Gill",
-        "rating": 5,
-        "comment": "This Premium Rich Nuts Trio is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Manish Bansal",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-14"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 311,
+    "id": 42,
     "slug": "tangy-sweet-antioxidant-pack",
     "name": "Tangy Sweet Antioxidant Pack",
     "category": "combos",
-    "unit": "Pack of 3 (250g each)",
-    "price": 608,
-    "mrp": 854,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Tangy Sweet Antioxidant Pack combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 37,
-    "rating": 4.3,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 117,
+    "mrp": 160,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "3-product-combo",
-      "immunity-booster"
+      "bundle",
+      "valuebuys",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Raisin (Kashmish), Apricot, Dry Amla",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Tangy Sweet Antioxidant Pack is a specially curated bundle including: Raisin (Kashmish), Apricot, Dry Amla. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 117,
+        "mrp": 160,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Raisins",
+        "name": "Raisin (Kashmish)",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Apricots",
+        "name": "Apricot",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Dry Amla (Indian Gooseberry)",
+        "name": "Dry Amla",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (250g each)",
-        "price": 608,
-        "mrp": 854
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1045,
-        "mrp": 1546
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Immunity Booster",
-      "bestFor": "Detoxification, Rich Vitamin C",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Tangy Sweet Antioxidant Pack is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Tarun Goel",
-        "rating": 5,
-        "comment": "This Tangy Sweet Antioxidant Pack is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-12"
-      },
-      {
-        "name": "Divya Reddy",
-        "rating": 4.5,
-        "comment": "Good value pack. Raisins and Apricots are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-16"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 312,
+    "id": 43,
     "slug": "royal-dessert-mix",
     "name": "Royal Dessert Mix",
     "category": "combos",
-    "unit": "Pack of 3 (250g each)",
-    "price": 983,
-    "mrp": 1327,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Royal Dessert Mix combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 22,
-    "rating": 4.3,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 176,
+    "mrp": 225,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "3-product-combo",
-      "sweet-prep"
+      "bundle",
+      "trending",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Kaju, Pista, Apricot",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Royal Dessert Mix is a specially curated bundle including: Kaju, Pista, Apricot. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 176,
+        "mrp": 225,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Apricots",
+        "name": "Apricot",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (250g each)",
-        "price": 983,
-        "mrp": 1327
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1682,
-        "mrp": 2388
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Sweet Prep",
-      "bestFor": "Kheer & Halwa Garnish, Sweet Treats",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Royal Dessert Mix is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Harsh Vardhan",
-        "rating": 5,
-        "comment": "This Royal Dessert Mix is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Swati Kulkarni",
-        "rating": 4.5,
-        "comment": "Good value pack. Cashews and Pistachios are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-18"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 313,
+    "id": 44,
     "slug": "royal-dry-fruit-platter",
     "name": "Royal Dry Fruit Platter",
     "category": "combos",
-    "unit": "Pack of 4 (250g each)",
-    "price": 1112,
-    "mrp": 1566,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Royal Dry Fruit Platter combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 35,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 189,
+    "mrp": 250,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "4-product-combo",
-      "luxury-platter"
+      "bundle",
+      "bestseller",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Almond, Kaju, Raisin (Kashmish), Pista",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Royal Dry Fruit Platter is a specially curated bundle including: Almond, Kaju, Raisin (Kashmish), Pista. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 189,
+        "mrp": 250,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Raisins",
+        "name": "Raisin (Kashmish)",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 4 (250g each)",
-        "price": 1112,
-        "mrp": 1566
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1901,
-        "mrp": 2818
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Luxury Platter",
-      "bestFor": "Festivals, Family Feast",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Royal Dry Fruit Platter is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Kavita Deshmukh",
-        "rating": 5,
-        "comment": "This Royal Dry Fruit Platter is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-16"
-      },
-      {
-        "name": "Nitin Khurana",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-20"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 314,
+    "id": 45,
     "slug": "healthy-immunity-combo",
     "name": "Healthy Immunity Combo",
     "category": "combos",
-    "unit": "Pack of 4 (250g each)",
-    "price": 1028,
-    "mrp": 1473,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Healthy Immunity Combo combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 20,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 185,
+    "mrp": 245,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "4-product-combo",
-      "immunity-boost"
+      "bundle",
+      "newlyin",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Almond, Kaju, Apricot, Dry Amla",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Healthy Immunity Combo is a specially curated bundle including: Almond, Kaju, Apricot, Dry Amla. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 185,
+        "mrp": 245,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Apricots",
+        "name": "Apricot",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Dry Amla (Indian Gooseberry)",
+        "name": "Dry Amla",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 4 (250g each)",
-        "price": 1028,
-        "mrp": 1473
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1763,
-        "mrp": 2660
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Immunity Boost",
-      "bestFor": "Vitamins C & E, Disease Resistance",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Healthy Immunity Combo is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Geeta Pillai",
-        "rating": 5,
-        "comment": "This Healthy Immunity Combo is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Rahul Bose",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-22"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 315,
+    "id": 46,
     "slug": "elite-dry-fruit-feast",
     "name": "Elite Dry Fruit Feast",
     "category": "combos",
-    "unit": "Pack of 4 (250g each)",
-    "price": 1194,
-    "mrp": 1676,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Elite Dry Fruit Feast combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 26,
-    "rating": 4.3,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 221,
+    "mrp": 285,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "4-product-combo",
-      "premium-feast"
+      "bundle",
+      "valuebuys",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Almond, Kaju, Apricot, Pista",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Elite Dry Fruit Feast is a specially curated bundle including: Almond, Kaju, Apricot, Pista. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 221,
+        "mrp": 285,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Apricots",
+        "name": "Apricot",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 4 (250g each)",
-        "price": 1194,
-        "mrp": 1676
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 2041,
-        "mrp": 3016
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Premium Feast",
-      "bestFor": "Gourmet Eating, High Protein Snacking",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Elite Dry Fruit Feast is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Jyoti Sharma",
-        "rating": 5,
-        "comment": "This Elite Dry Fruit Feast is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-20"
-      },
-      {
-        "name": "Vijay Yadav",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-24"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 316,
+    "id": 47,
     "slug": "vitality-antioxidant-pack",
     "name": "Vitality Antioxidant Pack",
     "category": "combos",
-    "unit": "Pack of 4 (250g each)",
-    "price": 995,
-    "mrp": 1423,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Vitality Antioxidant Pack combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 48,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 185,
+    "mrp": 245,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "4-product-combo",
-      "antioxidant-rich"
+      "bundle",
+      "trending",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pista, Raisin (Kashmish), Apricot, Dry Amla",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Vitality Antioxidant Pack is a specially curated bundle including: Pista, Raisin (Kashmish), Apricot, Dry Amla. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 185,
+        "mrp": 245,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Raisins",
+        "name": "Raisin (Kashmish)",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Apricots",
+        "name": "Apricot",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Dry Amla (Indian Gooseberry)",
+        "name": "Dry Amla",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 4 (250g each)",
-        "price": 995,
-        "mrp": 1423
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1707,
-        "mrp": 2570
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (250g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Antioxidant Rich",
-      "bestFor": "Cell Protection, Complete Vitality",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Vitality Antioxidant Pack is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Amit Sharma",
-        "rating": 5,
-        "comment": "This Vitality Antioxidant Pack is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Sneha Patel",
-        "rating": 4.5,
-        "comment": "Good value pack. Pistachios and Raisins are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-26"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 317,
+    "id": 48,
     "slug": "super-saver-dry-fruit-deal",
     "name": "Super Saver Dry Fruit Deal",
     "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 280,
-    "mrp": 400,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Super Saver Dry Fruit Deal combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 35,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 105,
+    "mrp": 165,
+    "stock": 100,
+    "isComingSoon": true,
     "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "buy-2-get-1-free",
-      "super-saver-deal"
+      "bundle",
+      "bestseller",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/e89a4574-fede-476b-b034-967f1e0b448a.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/e89a4574-fede-476b-b034-967f1e0b448a.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Almond, Kaju, Raisin (Kashmish)",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Super Saver Dry Fruit Deal is a specially curated bundle including: Almond, Kaju, Raisin (Kashmish). Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 105,
+        "mrp": 165,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Raisins",
+        "name": "Raisin (Kashmish)",
         "qty": "1 unit",
         "isFree": true
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 280,
-        "mrp": 400
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 530,
-        "mrp": 797
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g each)",
-      "strategy": "Super Saver Deal",
-      "bestFor": "Maximum Savings, Home Baking",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Super Saver Dry Fruit Deal is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Rohan Gupta",
-        "rating": 5,
-        "comment": "This Super Saver Dry Fruit Deal is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-24"
-      },
-      {
-        "name": "Priya Nair",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-28"
-      }
-    ]
+    "comboType": "buy2get1"
   },
   {
-    "id": 318,
+    "id": 49,
     "slug": "healthy-bones-and-hair-offer",
-    "name": "Healthy Bones and Hair Offer",
+    "name": "Healthy Bones & Hair Offer",
     "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 320,
-    "mrp": 527,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Healthy Bones and Hair Offer combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 49,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 125,
+    "mrp": 190,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "buy-2-get-1-free",
-      "wellness-offer"
+      "bundle",
+      "newlyin",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0f88e166-65b6-43ae-b9e9-3f879c3062da.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0f88e166-65b6-43ae-b9e9-3f879c3062da.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pista, Almond, Dry Amla",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Healthy Bones & Hair Offer is a specially curated bundle including: Pista, Almond, Dry Amla. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 125,
+        "mrp": 190,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Dry Amla (Indian Gooseberry)",
+        "name": "Dry Amla",
         "qty": "1 unit",
         "isFree": true
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 320,
-        "mrp": 527
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 606,
-        "mrp": 1027
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g each)",
-      "strategy": "Wellness Offer",
-      "bestFor": "Calcium & Vitamin C Intake",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Healthy Bones and Hair Offer is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Vikram Singh",
-        "rating": 5,
-        "comment": "This Healthy Bones and Hair Offer is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Sonal Mehta",
-        "rating": 4.5,
-        "comment": "Good value pack. Pistachios and Almonds are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-11"
-      }
-    ]
+    "comboType": "buy2get1"
   },
   {
-    "id": 319,
+    "id": 50,
     "slug": "gym-diet-premium-deal",
     "name": "Gym Diet Premium Deal",
     "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 320,
-    "mrp": 488,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Gym Diet Premium Deal combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 50,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 125,
+    "mrp": 220,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "buy-2-get-1-free",
-      "fitness-deal"
+      "bundle",
+      "valuebuys",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Almond, Pista, Apricot",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Gym Diet Premium Deal is a specially curated bundle including: Almond, Pista, Apricot. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 125,
+        "mrp": 220,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Almonds",
+        "name": "Almond",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Pistachios",
+        "name": "Pista",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Apricots",
+        "name": "Apricot",
         "qty": "1 unit",
         "isFree": true
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 320,
-        "mrp": 488
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 606,
-        "mrp": 973
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g each)",
-      "strategy": "Fitness Deal",
-      "bestFor": "Gym Goers, Pre & Post Workout",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Gym Diet Premium Deal is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Kunal Shah",
-        "rating": 5,
-        "comment": "This Gym Diet Premium Deal is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-28"
-      },
-      {
-        "name": "Shweta Rao",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Pistachios are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-13"
-      }
-    ]
+    "comboType": "buy2get1"
   },
   {
-    "id": 320,
+    "id": 51,
     "slug": "festive-dessert-special",
     "name": "Festive Dessert Special",
     "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 224,
-    "mrp": 419,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "dryfruits"
     ],
-    "description": "Festive Dessert Special combining premium natural ingredients for healthy, vital living. High in nutrition and protein.",
-    "stock": 27,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 85,
+    "mrp": 150,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "dryfruits",
-      "buy-2-get-1-free",
-      "festive-special"
+      "bundle",
+      "trending",
+      "dryfruits"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Kaju, Raisin (Kashmish), Dry Amla",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Festive Dessert Special is a specially curated bundle including: Kaju, Raisin (Kashmish), Dry Amla. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 85,
+        "mrp": 150,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Cashews",
+        "name": "Kaju",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Raisins",
+        "name": "Raisin (Kashmish)",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Dry Amla (Indian Gooseberry)",
+        "name": "Dry Amla",
         "qty": "1 unit",
         "isFree": true
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 224,
-        "mrp": 419
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 424,
-        "mrp": 811
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g each)",
-      "strategy": "Festive Special",
-      "bestFor": "Festive Dessert Prep, Immunity",
-      "storage": "Store in a cool, dry place. Keep packets tightly sealed to avoid humidity.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Festive Dessert Special is a curated selection of premium organic whole foods. Stone-packed to seal in authentic freshness, crunchiness, and deep aromatic oils. 100% natural, free from preservatives or chemical additives. Safe for daily household use.",
-    "reviews": [
-      {
-        "name": "Rajesh Tiwari",
-        "rating": 5,
-        "comment": "This Festive Dessert Special is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Neha Verma",
-        "rating": 4.5,
-        "comment": "Good value pack. Cashews and Raisins are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-15"
-      }
-    ]
+    "comboType": "buy2get1"
   },
   {
-    "id": 321,
+    "id": 52,
     "slug": "weight-management-duo",
     "name": "Weight Management Duo",
     "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 335,
-    "mrp": 487,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Weight Management Duo combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 35,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 81,
+    "mrp": 110,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "2-product-combo",
-      "trending"
+      "bundle",
+      "bestseller",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Basil Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Weight Management Duo is a specially curated bundle including: Chia Seeds, Basil Seeds. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 81,
+        "mrp": 110,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -5180,72 +2932,58 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 335,
-        "mrp": 487
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 731,
-        "mrp": 1115
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Trending",
-      "bestFor": "Weight Loss, Hydration",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Weight Management Duo includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Arjun Kapoor",
-        "rating": 5,
-        "comment": "This Weight Management Duo is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-12"
-      },
-      {
-        "name": "Karan Malhotra",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Basil Seeds are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-17"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 322,
+    "id": 53,
     "slug": "heart-healthy-mix",
     "name": "Heart Healthy Mix",
     "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 253,
-    "mrp": 348,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Heart Healthy Mix combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 44,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 68,
+    "mrp": 95,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "2-product-combo",
-      "value-buy"
+      "bundle",
+      "newlyin",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Flax Seeds, Sunflower Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Heart Healthy Mix is a specially curated bundle including: Flax Seeds, Sunflower Seeds. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 68,
+        "mrp": 95,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -5259,67 +2997,53 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 253,
-        "mrp": 348
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 554,
-        "mrp": 801
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Value Buy",
-      "bestFor": "Cholesterol Support, Heart Care",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Heart Healthy Mix includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Ananya Sen",
-        "rating": 5,
-        "comment": "This Heart Healthy Mix is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Deepak Joshi",
-        "rating": 4.5,
-        "comment": "Good value pack. Flax Seeds and Sunflower Seeds are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-19"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 323,
+    "id": 54,
     "slug": "melon-and-pumpkin-power",
-    "name": "Melon and Pumpkin Power",
+    "name": "Melon & Pumpkin Power",
     "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 379,
-    "mrp": 511,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Melon and Pumpkin Power combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 48,
-    "rating": 4.5,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 86,
+    "mrp": 115,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "2-product-combo",
-      "nutrient-rich"
+      "bundle",
+      "valuebuys",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Watermelon Seeds, Pumpkin Seeds (Pampkeen)",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Melon & Pumpkin Power is a specially curated bundle including: Watermelon Seeds, Pumpkin Seeds (Pampkeen). Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 86,
+        "mrp": 115,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -5328,72 +3052,58 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Pumpkin Seeds",
+        "name": "Pumpkin Seeds (Pampkeen)",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 379,
-        "mrp": 511
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 820,
-        "mrp": 1163
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Nutrient Rich",
-      "bestFor": "Zinc & Iron, Salad Crunch",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Melon and Pumpkin Power includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Pooja Mishra",
-        "rating": 5,
-        "comment": "This Melon and Pumpkin Power is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-16"
-      },
-      {
-        "name": "Sanjay Kumar",
-        "rating": 4.5,
-        "comment": "Good value pack. Watermelon Seeds and Pumpkin Seeds are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-21"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 324,
+    "id": 55,
     "slug": "omega-3-core-duo",
     "name": "Omega-3 Core Duo",
     "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 306,
-    "mrp": 428,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Omega-3 Core Duo combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 38,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 63,
+    "mrp": 90,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "2-product-combo",
-      "fitness-core"
+      "bundle",
+      "trending",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Flax Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Omega-3 Core Duo is a specially curated bundle including: Chia Seeds, Flax Seeds. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 63,
+        "mrp": 90,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -5407,141 +3117,113 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 306,
-        "mrp": 428
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 670,
-        "mrp": 985
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Fitness Core",
-      "bestFor": "Healthy Fats, Brain Health",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Omega-3 Core Duo includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Aditi Roy",
-        "rating": 5,
-        "comment": "This Omega-3 Core Duo is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Varun Saxena",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Flax Seeds are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-23"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 325,
+    "id": 56,
     "slug": "fiber-rich-refresh-pack",
     "name": "Fiber Rich Refresh Pack",
     "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 353,
-    "mrp": 497,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Fiber Rich Refresh Pack combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 42,
-    "rating": 4.5,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 99,
+    "mrp": 130,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "2-product-combo",
-      "gut-health"
+      "bundle",
+      "bestseller",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pumpkin Seeds (Pampkeen), Basil Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Fiber Rich Refresh Pack is a specially curated bundle including: Pumpkin Seeds (Pampkeen), Basil Seeds. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 99,
+        "mrp": 130,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pumpkin Seeds",
+        "name": "Pumpkin Seeds (Pampkeen)",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 353,
-        "mrp": 497
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 770,
-        "mrp": 1138
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Gut Health",
-      "bestFor": "Digestive Relief, High Fiber",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Fiber Rich Refresh Pack includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Simran Gill",
-        "rating": 5,
-        "comment": "This Fiber Rich Refresh Pack is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-20"
-      },
-      {
-        "name": "Manish Bansal",
-        "rating": 4.5,
-        "comment": "Good value pack. Pumpkin Seeds and Basil Seeds are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-25"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 326,
+    "id": 57,
     "slug": "summer-crunch-pair",
     "name": "Summer Crunch Pair",
     "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 309,
-    "mrp": 421,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Summer Crunch Pair combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 33,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 72,
+    "mrp": 100,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "2-product-combo",
-      "summer-snack"
+      "bundle",
+      "newlyin",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Sunflower Seeds, Watermelon Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Summer Crunch Pair is a specially curated bundle including: Sunflower Seeds, Watermelon Seeds. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 72,
+        "mrp": 100,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -5555,67 +3237,53 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 309,
-        "mrp": 421
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 666,
-        "mrp": 956
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Summer Snack",
-      "bestFor": "Replacing Junk Food, Light Crunch",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Summer Crunch Pair includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Tarun Goel",
-        "rating": 5,
-        "comment": "This Summer Crunch Pair is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Divya Reddy",
-        "rating": 4.5,
-        "comment": "Good value pack. Sunflower Seeds and Watermelon Seeds are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-27"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 327,
+    "id": 58,
     "slug": "protein-booster-duo",
     "name": "Protein Booster Duo",
     "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 297,
-    "mrp": 418,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Protein Booster Duo combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 44,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 77,
+    "mrp": 105,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "2-product-combo",
-      "protein-boost"
+      "bundle",
+      "valuebuys",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Sunflower Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Protein Booster Duo is a specially curated bundle including: Chia Seeds, Sunflower Seeds. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 77,
+        "mrp": 105,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -5629,67 +3297,53 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 297,
-        "mrp": 418
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 651,
-        "mrp": 962
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Protein Boost",
-      "bestFor": "Vegans, Energy Maintenance",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Protein Booster Duo includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Harsh Vardhan",
-        "rating": 5,
-        "comment": "This Protein Booster Duo is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-24"
-      },
-      {
-        "name": "Swati Kulkarni",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Sunflower Seeds are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-29"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 328,
+    "id": 59,
     "slug": "omega-3-rich-trio",
     "name": "Omega-3 Rich Trio",
     "category": "combos",
-    "unit": "Pack of 3 (200g each)",
-    "price": 451,
-    "mrp": 666,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Omega-3 Rich Trio combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 35,
-    "rating": 4.2,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 108,
+    "mrp": 150,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "3-product-combo",
-      "trending-trio"
+      "bundle",
+      "trending",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Flax Seeds, Basil Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Omega-3 Rich Trio is a specially curated bundle including: Chia Seeds, Flax Seeds, Basil Seeds. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 108,
+        "mrp": 150,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -5703,76 +3357,62 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 451,
-        "mrp": 666
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 982,
-        "mrp": 1527
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Trending Trio",
-      "bestFor": "Total Omega-3, Metabolism Boost",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Omega-3 Rich Trio includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Kavita Deshmukh",
-        "rating": 5,
-        "comment": "This Omega-3 Rich Trio is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Nitin Khurana",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Flax Seeds are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-12"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 329,
+    "id": 60,
     "slug": "crunchy-salad-topping-pack",
     "name": "Crunchy Salad Topping Pack",
     "category": "combos",
-    "unit": "Pack of 3 (200g each)",
-    "price": 485,
-    "mrp": 680,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Crunchy Salad Topping Pack combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 23,
-    "rating": 4.2,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 126,
+    "mrp": 170,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "3-product-combo",
-      "salad-pack"
+      "bundle",
+      "bestseller",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pumpkin Seeds (Pampkeen), Sunflower Seeds, Watermelon Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Crunchy Salad Topping Pack is a specially curated bundle including: Pumpkin Seeds (Pampkeen), Sunflower Seeds, Watermelon Seeds. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 126,
+        "mrp": 170,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pumpkin Seeds",
+        "name": "Pumpkin Seeds (Pampkeen)",
         "qty": "1 unit",
         "isFree": false
       },
@@ -5787,67 +3427,53 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 485,
-        "mrp": 680
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1051,
-        "mrp": 1552
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Salad Pack",
-      "bestFor": "Soups & Salads, Seeds Garnish",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Crunchy Salad Topping Pack includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Geeta Pillai",
-        "rating": 5,
-        "comment": "This Crunchy Salad Topping Pack is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-28"
-      },
-      {
-        "name": "Rahul Bose",
-        "rating": 4.5,
-        "comment": "Good value pack. Pumpkin Seeds and Sunflower Seeds are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-14"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 330,
+    "id": 61,
     "slug": "breakfast-smoothie-crunchy-mix",
     "name": "Breakfast Smoothie Crunchy Mix",
     "category": "combos",
-    "unit": "Pack of 3 (200g each)",
-    "price": 468,
-    "mrp": 670,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Breakfast Smoothie Crunchy Mix combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 23,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 108,
+    "mrp": 150,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "3-product-combo",
-      "smoothie-special"
+      "bundle",
+      "newlyin",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Watermelon Seeds, Sunflower Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Breakfast Smoothie Crunchy Mix is a specially curated bundle including: Chia Seeds, Watermelon Seeds, Sunflower Seeds. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 108,
+        "mrp": 150,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -5866,71 +3492,57 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 468,
-        "mrp": 670
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1014,
-        "mrp": 1529
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Smoothie Special",
-      "bestFor": "Smoothie Bowls, Overnight Oats",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Breakfast Smoothie Crunchy Mix includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Jyoti Sharma",
-        "rating": 5,
-        "comment": "This Breakfast Smoothie Crunchy Mix is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Vijay Yadav",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Watermelon Seeds are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-16"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 331,
+    "id": 62,
     "slug": "superfood-digestion-trio",
     "name": "Superfood Digestion Trio",
     "category": "combos",
-    "unit": "Pack of 3 (200g each)",
-    "price": 468,
-    "mrp": 676,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Superfood Digestion Trio combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 32,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 126,
+    "mrp": 170,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "3-product-combo",
-      "digestion-active"
+      "bundle",
+      "valuebuys",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Basil Seeds, Flax Seeds, Pumpkin Seeds (Pampkeen)",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Superfood Digestion Trio is a specially curated bundle including: Basil Seeds, Flax Seeds, Pumpkin Seeds (Pampkeen). Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 126,
+        "mrp": 170,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": false
       },
@@ -5940,72 +3552,58 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Pumpkin Seeds",
+        "name": "Pumpkin Seeds (Pampkeen)",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 468,
-        "mrp": 676
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1020,
-        "mrp": 1550
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Digestion Active",
-      "bestFor": "Bloating Relief, Smooth Digestion",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Superfood Digestion Trio includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Amit Sharma",
-        "rating": 5,
-        "comment": "This Superfood Digestion Trio is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-12"
-      },
-      {
-        "name": "Sneha Patel",
-        "rating": 4.5,
-        "comment": "Good value pack. Basil Seeds and Flax Seeds are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-18"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 332,
+    "id": 63,
     "slug": "ultimate-hydration-and-fiber-mix",
-    "name": "Ultimate Hydration and Fiber Mix",
+    "name": "Ultimate Hydration & Fiber Mix",
     "category": "combos",
-    "unit": "Pack of 3 (200g each)",
-    "price": 510,
-    "mrp": 746,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Ultimate Hydration and Fiber Mix combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 43,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 135,
+    "mrp": 180,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "3-product-combo",
-      "hydration-plus"
+      "bundle",
+      "trending",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Basil Seeds, Pumpkin Seeds (Pampkeen)",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Ultimate Hydration & Fiber Mix is a specially curated bundle including: Chia Seeds, Basil Seeds, Pumpkin Seeds (Pampkeen). Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 135,
+        "mrp": 180,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -6014,77 +3612,63 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Pumpkin Seeds",
+        "name": "Pumpkin Seeds (Pampkeen)",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 510,
-        "mrp": 746
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1112,
-        "mrp": 1711
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Hydration Plus",
-      "bestFor": "Summer Cooling, High Fiber diet",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Ultimate Hydration and Fiber Mix includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Rohan Gupta",
-        "rating": 5,
-        "comment": "This Ultimate Hydration and Fiber Mix is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Priya Nair",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Basil Seeds are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-20"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 333,
+    "id": 64,
     "slug": "ultimate-superseeds-combo",
     "name": "Ultimate Superseeds Combo",
     "category": "combos",
-    "unit": "Pack of 4 (200g each)",
-    "price": 549,
-    "mrp": 835,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Ultimate Superseeds Combo combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 40,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 149,
+    "mrp": 205,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "4-product-combo",
-      "all-in-one-super"
+      "bundle",
+      "bestseller",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Basil Seeds, Flax Seeds, Sunflower Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Ultimate Superseeds Combo is a specially curated bundle including: Chia Seeds, Basil Seeds, Flax Seeds, Sunflower Seeds. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 149,
+        "mrp": 205,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -6093,7 +3677,7 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": false
       },
@@ -6108,71 +3692,57 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 549,
-        "mrp": 835
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1197,
-        "mrp": 1916
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "All-in-One Super",
-      "bestFor": "Complete Seed Intake, High Nutrition",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Ultimate Superseeds Combo includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Vikram Singh",
-        "rating": 5,
-        "comment": "This Ultimate Superseeds Combo is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-16"
-      },
-      {
-        "name": "Sonal Mehta",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Basil Seeds are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-22"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 334,
+    "id": 65,
     "slug": "daily-nutrition-seeds-pack",
     "name": "Daily Nutrition Seeds Pack",
     "category": "combos",
-    "unit": "Pack of 4 (200g each)",
-    "price": 639,
-    "mrp": 939,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Daily Nutrition Seeds Pack combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 28,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 149,
+    "mrp": 205,
+    "stock": 100,
+    "isComingSoon": true,
     "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "4-product-combo",
-      "daily-nutrition"
+      "bundle",
+      "newlyin",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pumpkin Seeds (Pampkeen), Watermelon Seeds, Flax Seeds, Chia Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Daily Nutrition Seeds Pack is a specially curated bundle including: Pumpkin Seeds (Pampkeen), Watermelon Seeds, Flax Seeds, Chia Seeds. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 149,
+        "mrp": 205,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pumpkin Seeds",
+        "name": "Pumpkin Seeds (Pampkeen)",
         "qty": "1 unit",
         "isFree": false
       },
@@ -6192,71 +3762,57 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 639,
-        "mrp": 939
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1388,
-        "mrp": 2148
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Daily Nutrition",
-      "bestFor": "Vitamins and Minerals, Snack Bowl",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Daily Nutrition Seeds Pack includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Kunal Shah",
-        "rating": 5,
-        "comment": "This Daily Nutrition Seeds Pack is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Shweta Rao",
-        "rating": 4.5,
-        "comment": "Good value pack. Pumpkin Seeds and Watermelon Seeds are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-24"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 335,
+    "id": 66,
     "slug": "nutrient-dense-trail-mix",
-    "name": "Nutrient Dense Trail Mix",
+    "name": "Nutrient-Dense Trail Mix",
     "category": "combos",
-    "unit": "Pack of 4 (200g each)",
-    "price": 617,
-    "mrp": 918,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Nutrient Dense Trail Mix combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 41,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 171,
+    "mrp": 230,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "4-product-combo",
-      "trail-mix-special"
+      "bundle",
+      "valuebuys",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Basil Seeds, Watermelon Seeds, Sunflower Seeds, Pumpkin Seeds (Pampkeen)",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Nutrient-Dense Trail Mix is a specially curated bundle including: Basil Seeds, Watermelon Seeds, Sunflower Seeds, Pumpkin Seeds (Pampkeen). Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 171,
+        "mrp": 230,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": false
       },
@@ -6271,72 +3827,58 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Pumpkin Seeds",
+        "name": "Pumpkin Seeds (Pampkeen)",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 617,
-        "mrp": 918
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1338,
-        "mrp": 2094
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Trail Mix Special",
-      "bestFor": "Keto snackers, Travel, Work desk",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Nutrient Dense Trail Mix includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Rajesh Tiwari",
-        "rating": 5,
-        "comment": "This Nutrient Dense Trail Mix is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-20"
-      },
-      {
-        "name": "Neha Verma",
-        "rating": 4.5,
-        "comment": "Good value pack. Basil Seeds and Watermelon Seeds are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-26"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 336,
+    "id": 67,
     "slug": "complete-fitness-seed-mix",
     "name": "Complete Fitness Seed Mix",
     "category": "combos",
-    "unit": "Pack of 4 (200g each)",
-    "price": 608,
-    "mrp": 918,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Complete Fitness Seed Mix combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 22,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 140,
+    "mrp": 195,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "4-product-combo",
-      "fitness-active"
+      "bundle",
+      "trending",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Basil Seeds, Flax Seeds, Watermelon Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Complete Fitness Seed Mix is a specially curated bundle including: Chia Seeds, Basil Seeds, Flax Seeds, Watermelon Seeds. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 140,
+        "mrp": 195,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -6345,7 +3887,7 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": false
       },
@@ -6360,67 +3902,53 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 608,
-        "mrp": 918
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1320,
-        "mrp": 2094
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (200g each)",
-      "bulkAvailable": "Yes (500g each)",
-      "strategy": "Fitness Active",
-      "bestFor": "Gym recovery, Pure Plant Fats",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Complete Fitness Seed Mix includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Arjun Kapoor",
-        "rating": 5,
-        "comment": "This Complete Fitness Seed Mix is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Karan Malhotra",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Basil Seeds are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-28"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 337,
+    "id": 68,
     "slug": "diet-special-offer",
     "name": "Diet Special Offer",
     "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 175,
-    "mrp": 344,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Diet Special Offer combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 29,
-    "rating": 4.2,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 70,
+    "mrp": 150,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "buy-2-get-1-free",
-      "diet-special"
+      "bundle",
+      "bestseller",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Flax Seeds, Basil Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Diet Special Offer is a specially curated bundle including: Chia Seeds, Flax Seeds, Basil Seeds. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 70,
+        "mrp": 150,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -6434,76 +3962,62 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": true
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 175,
-        "mrp": 344
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 331,
-        "mrp": 666
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g each)",
-      "strategy": "Diet Special",
-      "bestFor": "Weight Management, Fiber Intake",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Diet Special Offer includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Ananya Sen",
-        "rating": 5,
-        "comment": "This Diet Special Offer is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-24"
-      },
-      {
-        "name": "Deepak Joshi",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Flax Seeds are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-11"
-      }
-    ]
+    "comboType": "buy2get1"
   },
   {
-    "id": 338,
+    "id": 69,
     "slug": "snacks-corner-freebie",
     "name": "Snacks Corner Freebie",
     "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 180,
-    "mrp": 341,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Snacks Corner Freebie combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 30,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 105,
+    "mrp": 170,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "buy-2-get-1-free",
-      "snack-deal"
+      "bundle",
+      "newlyin",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pumpkin Seeds (Pampkeen), Sunflower Seeds, Watermelon Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Snacks Corner Freebie is a specially curated bundle including: Pumpkin Seeds (Pampkeen), Sunflower Seeds, Watermelon Seeds. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 105,
+        "mrp": 170,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pumpkin Seeds",
+        "name": "Pumpkin Seeds (Pampkeen)",
         "qty": "1 unit",
         "isFree": false
       },
@@ -6518,67 +4032,53 @@ export const products = [
         "isFree": true
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 180,
-        "mrp": 341
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 340,
-        "mrp": 680
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g each)",
-      "strategy": "Snack Deal",
-      "bestFor": "Crunchy Munching, Seed Lovers",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Snacks Corner Freebie includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Pooja Mishra",
-        "rating": 5,
-        "comment": "This Snacks Corner Freebie is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Sanjay Kumar",
-        "rating": 4.5,
-        "comment": "Good value pack. Pumpkin Seeds and Sunflower Seeds are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-13"
-      }
-    ]
+    "comboType": "buy2get1"
   },
   {
-    "id": 339,
+    "id": 70,
     "slug": "weight-loss-super-combo",
     "name": "Weight Loss Super Combo",
     "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 199,
-    "mrp": 344,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Weight Loss Super Combo combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 34,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 90,
+    "mrp": 150,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "buy-2-get-1-free",
-      "weight-loss-deal"
+      "bundle",
+      "valuebuys",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Chia Seeds, Basil Seeds, Flax Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Weight Loss Super Combo is a specially curated bundle including: Chia Seeds, Basil Seeds, Flax Seeds. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 90,
+        "mrp": 150,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -6587,7 +4087,7 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Basil Seeds (Sabja)",
+        "name": "Basil Seeds",
         "qty": "1 unit",
         "isFree": false
       },
@@ -6597,67 +4097,53 @@ export const products = [
         "isFree": true
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 199,
-        "mrp": 344
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 362,
-        "mrp": 666
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g each)",
-      "strategy": "Weight Loss Deal",
-      "bestFor": "Fat Loss, Detox Drinks",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Weight Loss Super Combo includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Aditi Roy",
-        "rating": 5,
-        "comment": "This Weight Loss Super Combo is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-28"
-      },
-      {
-        "name": "Varun Saxena",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Basil Seeds are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-15"
-      }
-    ]
+    "comboType": "buy2get1"
   },
   {
-    "id": 340,
+    "id": 71,
     "slug": "healthy-munching-offer",
     "name": "Healthy Munching Offer",
     "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 216,
-    "mrp": 341,
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "seeds"
     ],
-    "description": "Healthy Munching Offer combining premium natural raw seeds to support weight management, dietary fiber, and dynamic energy.",
-    "stock": 21,
-    "rating": 4.3,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 95,
+    "mrp": 170,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "seeds",
-      "buy-2-get-1-free",
-      "healthy-munching"
+      "bundle",
+      "trending",
+      "seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Watermelon Seeds, Pumpkin Seeds (Pampkeen), Sunflower Seeds",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Healthy Munching Offer is a specially curated bundle including: Watermelon Seeds, Pumpkin Seeds (Pampkeen), Sunflower Seeds. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 95,
+        "mrp": 170,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -6666,7 +4152,7 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Pumpkin Seeds",
+        "name": "Pumpkin Seeds (Pampkeen)",
         "qty": "1 unit",
         "isFree": false
       },
@@ -6676,1307 +4162,116 @@ export const products = [
         "isFree": true
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 216,
-        "mrp": 341
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 409,
-        "mrp": 680
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g each)",
-      "strategy": "Healthy Munching",
-      "bestFor": "Low Calorie Snacking",
-      "storage": "Keep in an airtight jar in a cool, dry location.",
-      "foodType": "100% Vegan"
-    },
-    "details": "Healthy Munching Offer includes direct organic farm-harvested whole superseeds. Loaded with omega-3 fatty acids, plant proteins, essential zinc, and iron. Cleaned and packaged under strict hygienic conditions.",
-    "reviews": [
-      {
-        "name": "Simran Gill",
-        "rating": 5,
-        "comment": "This Healthy Munching Offer is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Manish Bansal",
-        "rating": 4.5,
-        "comment": "Good value pack. Watermelon Seeds and Pumpkin Seeds are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-17"
-      }
-    ]
+    "comboType": "buy2get1"
   },
   {
-    "id": 341,
-    "slug": "essential-onion-garlic-pair",
-    "name": "Essential Onion-Garlic Pair",
+    "id": 72,
+    "slug": "essential-kitchen-combo",
+    "name": "Essential Kitchen Combo",
     "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 271,
-    "mrp": 368,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Essential Onion-Garlic Pair - high performance premium kitchen masala/health package combining Red Onion Powder and Garlic Powder.",
-    "stock": 31,
-    "rating": 4.2,
-    "tags": [
-      "combo",
-      "2-product-combo",
-      "bestseller-value-buy"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Red Onion Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Garlic Powder",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 271,
-        "mrp": 368
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 499,
-        "mrp": 678
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1082,
-        "mrp": 1546
-      },
-      {
-        "unit": "Pack of 2 (1kg each)",
-        "price": 2060,
-        "mrp": 2944
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g, 1kg)",
-      "strategy": "Bestseller / Value Buy",
-      "bestFor": "Curry Base, Quick Gravies, Tadka",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Essential Onion-Garlic Pair is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Tarun Goel",
-        "rating": 5,
-        "comment": "This Essential Onion-Garlic Pair is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-12"
-      },
-      {
-        "name": "Divya Reddy",
-        "rating": 4.5,
-        "comment": "Good value pack. Red Onion Powder and Garlic Powder are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-19"
-      }
-    ]
-  },
-  {
-    "id": 342,
-    "slug": "italian-pizza-duo",
-    "name": "Italian Pizza Duo",
-    "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 297,
-    "mrp": 403,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Italian Pizza Duo - high performance premium kitchen masala/health package combining Oregano and Red Chilli Flakes.",
-    "stock": 49,
-    "rating": 4.7,
-    "tags": [
-      "combo",
-      "2-product-combo",
-      "hot-selling-bestseller"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Oregano",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Red Chilli Flakes",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 297,
-        "mrp": 403
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 524,
-        "mrp": 716
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1188,
-        "mrp": 1701
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Hot Selling / Bestseller",
-      "bestFor": "Pizza & Pasta, Garlic Bread Seasoning",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Italian Pizza Duo is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Harsh Vardhan",
-        "rating": 5,
-        "comment": "This Italian Pizza Duo is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Swati Kulkarni",
-        "rating": 4.5,
-        "comment": "Good value pack. Oregano and Red Chilli Flakes are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-21"
-      }
-    ]
-  },
-  {
-    "id": 343,
-    "slug": "immunity-weight-loss-seeds",
-    "name": "Immunity Weight-Loss Seeds",
-    "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 335,
-    "mrp": 487,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Immunity Weight-Loss Seeds - high performance premium kitchen masala/health package combining Chia Seeds and Basil Seeds.",
-    "stock": 25,
-    "rating": 4.7,
-    "tags": [
-      "combo",
-      "2-product-combo",
-      "trending-fast-moving"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Chia Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Basil Seeds (Sabja)",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 335,
-        "mrp": 487
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 769,
-        "mrp": 1115
-      },
-      {
-        "unit": "Pack of 2 (1kg each)",
-        "price": 1320,
-        "mrp": 2013
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (1kg)",
-      "strategy": "Trending / Fast Moving",
-      "bestFor": "Immunity Boost, Detox Water, Hydration",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Immunity Weight-Loss Seeds is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Kavita Deshmukh",
-        "rating": 5,
-        "comment": "This Immunity Weight-Loss Seeds is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-16"
-      },
-      {
-        "name": "Nitin Khurana",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Basil Seeds are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-23"
-      }
-    ]
-  },
-  {
-    "id": 344,
-    "slug": "premium-festive-dry-fruits",
-    "name": "Premium Festive Dry Fruits",
-    "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 491,
-    "mrp": 646,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Premium Festive Dry Fruits - high performance premium kitchen masala/health package combining Almonds and Cashews.",
-    "stock": 37,
-    "rating": 4.4,
-    "tags": [
-      "combo",
-      "2-product-combo",
-      "bestseller-premium"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Almonds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Cashews",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 491,
-        "mrp": 646
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1105,
-        "mrp": 1454
-      },
-      {
-        "unit": "Pack of 2 (1kg each)",
-        "price": 1985,
-        "mrp": 2748
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (1kg)",
-      "strategy": "Bestseller / Premium",
-      "bestFor": "Festive Sweets, Premium Healthy Snacking",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Premium Festive Dry Fruits is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Geeta Pillai",
-        "rating": 5,
-        "comment": "This Premium Festive Dry Fruits is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Rahul Bose",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-25"
-      }
-    ]
-  },
-  {
-    "id": 345,
-    "slug": "healthy-nutrition-seeds",
-    "name": "Healthy Nutrition Seeds",
-    "category": "combos",
-    "unit": "Pack of 2 (200g each)",
-    "price": 253,
-    "mrp": 348,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Healthy Nutrition Seeds - high performance premium kitchen masala/health package combining Flax Seeds and Sunflower Seeds.",
-    "stock": 31,
-    "rating": 4.5,
-    "tags": [
-      "combo",
-      "2-product-combo",
-      "value-buys"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Flax Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Sunflower Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 253,
-        "mrp": 348
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 583,
-        "mrp": 801
-      },
-      {
-        "unit": "Pack of 2 (1kg each)",
-        "price": 1012,
-        "mrp": 1462
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (200g each)",
-      "bulkAvailable": "Yes (1kg)",
-      "strategy": "Value Buys",
-      "bestFor": "Thyroid & Heart Care, Dietary Fiber",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Healthy Nutrition Seeds is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Jyoti Sharma",
-        "rating": 5,
-        "comment": "This Healthy Nutrition Seeds is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-20"
-      },
-      {
-        "name": "Vijay Yadav",
-        "rating": 4.5,
-        "comment": "Good value pack. Flax Seeds and Sunflower Seeds are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-27"
-      }
-    ]
-  },
-  {
-    "id": 346,
-    "slug": "herbal-wellness-duo",
-    "name": "Herbal Wellness Duo",
-    "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 377,
-    "mrp": 508,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Herbal Wellness Duo - high performance premium kitchen masala/health package combining Ashwagandha and Mulethi.",
-    "stock": 26,
-    "rating": 4.5,
-    "tags": [
-      "combo",
-      "2-product-combo",
-      "trending-ayurvedic"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Ashwagandha Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Mulethi (Licorice) Powder",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 377,
-        "mrp": 508
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 693,
-        "mrp": 935
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1503,
-        "mrp": 2134
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Trending / Ayurvedic",
-      "bestFor": "Stress Relief, Cough & Throat Care",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Herbal Wellness Duo is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Amit Sharma",
-        "rating": 5,
-        "comment": "This Herbal Wellness Duo is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Sneha Patel",
-        "rating": 4.5,
-        "comment": "Good value pack. Ashwagandha and Mulethi are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-29"
-      }
-    ]
-  },
-  {
-    "id": 347,
-    "slug": "kitchen-fast-food-masala-combo",
-    "name": "Kitchen Fast-Food Masala Combo",
-    "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 422,
-    "mrp": 627,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Kitchen Fast-Food Masala Combo - high performance premium kitchen masala/health package combining Pizza Pasta Masala and Oregano Seasoning and Peri-Peri Masala.",
-    "stock": 23,
-    "rating": 4.5,
-    "tags": [
-      "combo",
-      "3-product-combo",
-      "newly-products-hot-selling"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Pizza Pasta Seasoning",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Oregano",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Peri Peri Masala",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 422,
-        "mrp": 627
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 810,
-        "mrp": 1193
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 973,
-        "mrp": 1495
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Newly products / Hot Selling",
-      "bestFor": "Fries, Pizza, Pasta, Continental snacks",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Kitchen Fast-Food Masala Combo is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Rohan Gupta",
-        "rating": 5,
-        "comment": "This Kitchen Fast-Food Masala Combo is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-24"
-      },
-      {
-        "name": "Priya Nair",
-        "rating": 4.5,
-        "comment": "Good value pack. Pizza Pasta Masala and Oregano Seasoning are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-12"
-      }
-    ]
-  },
-  {
-    "id": 348,
-    "slug": "daily-cooking-base-powder",
-    "name": "Daily Cooking Base Powder",
-    "category": "combos",
-    "unit": "Pack of 3 (200g each)",
-    "price": 746,
-    "mrp": 1044,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Daily Cooking Base Powder - high performance premium kitchen masala/health package combining Red Onion Powder and Garlic Powder and Ginger Powder.",
-    "stock": 37,
-    "rating": 4.3,
-    "tags": [
-      "combo",
-      "3-product-combo",
-      "bulk-products-value-buys"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Red Onion Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Garlic Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Ginger Powder",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 746,
-        "mrp": 1044
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1703,
-        "mrp": 2382
-      },
-      {
-        "unit": "Pack of 3 (1kg each)",
-        "price": 3082,
-        "mrp": 4536
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (200g each)",
-      "bulkAvailable": "Yes (1kg)",
-      "strategy": "Bulk products / Value Buys",
-      "bestFor": "Gravy Base, Everyday Indian Cooking, Marinades",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Daily Cooking Base Powder is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Vikram Singh",
-        "rating": 5,
-        "comment": "This Daily Cooking Base Powder is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Sonal Mehta",
-        "rating": 4.5,
-        "comment": "Good value pack. Red Onion Powder and Garlic Powder are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-14"
-      }
-    ]
-  },
-  {
-    "id": 349,
-    "slug": "omega-3-super-seeds-trio",
-    "name": "Omega-3 Super Seeds Trio",
-    "category": "combos",
-    "unit": "Pack of 3 (200g each)",
-    "price": 482,
-    "mrp": 687,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Omega-3 Super Seeds Trio - high performance premium kitchen masala/health package combining Chia Seeds and Flax Seeds and Pumpkin Seeds.",
-    "stock": 29,
-    "rating": 4.8,
-    "tags": [
-      "combo",
-      "3-product-combo",
-      "trending-healthy"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Chia Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Flax Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Pumpkin Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 482,
-        "mrp": 687
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1109,
-        "mrp": 1581
-      },
-      {
-        "unit": "Pack of 3 (1kg each)",
-        "price": 1924,
-        "mrp": 2886
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (200g each)",
-      "bulkAvailable": "Yes (1kg)",
-      "strategy": "Trending / Healthy",
-      "bestFor": "Omega-3 Fats, High Fiber, Morning Seed Mix",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Omega-3 Super Seeds Trio is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Kunal Shah",
-        "rating": 5,
-        "comment": "This Omega-3 Super Seeds Trio is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-28"
-      },
-      {
-        "name": "Shweta Rao",
-        "rating": 4.5,
-        "comment": "Good value pack. Chia Seeds and Flax Seeds are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-16"
-      }
-    ]
-  },
-  {
-    "id": 350,
-    "slug": "royal-dry-fruits-mix",
-    "name": "Royal Dry Fruits Mix",
-    "category": "combos",
-    "unit": "Pack of 3 (200g each)",
-    "price": 813,
-    "mrp": 1101,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Royal Dry Fruits Mix - high performance premium kitchen masala/health package combining Almonds and Cashews and Pistachios.",
-    "stock": 22,
-    "rating": 4.7,
-    "tags": [
-      "combo",
-      "3-product-combo",
-      "bestseller-premium"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Almonds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Cashews",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Pistachios",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 813,
-        "mrp": 1101
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1831,
-        "mrp": 2478
-      },
-      {
-        "unit": "Pack of 3 (1kg each)",
-        "price": 3287,
-        "mrp": 4683
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (200g each)",
-      "bulkAvailable": "Yes (1kg)",
-      "strategy": "Bestseller / Premium",
-      "bestFor": "Royal Desserts, Gifting, High Energy snacks",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Royal Dry Fruits Mix is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Rajesh Tiwari",
-        "rating": 5,
-        "comment": "This Royal Dry Fruits Mix is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Neha Verma",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-18"
-      }
-    ]
-  },
-  {
-    "id": 351,
-    "slug": "natural-detox-combo",
-    "name": "Natural Detox Combo",
-    "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 439,
-    "mrp": 637,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Natural Detox Combo - high performance premium kitchen masala/health package combining Moringa Powder and Beetroot Powder and Dry Amla.",
-    "stock": 44,
-    "rating": 4.4,
-    "tags": [
-      "combo",
-      "3-product-combo",
-      "trending-new-launch"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Moringa Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Beetroot Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Dry Amla (Indian Gooseberry)",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 439,
-        "mrp": 637
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 809,
-        "mrp": 1173
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1754,
-        "mrp": 2676
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Trending / New Launch",
-      "bestFor": "Blood Purification, Skin Detox, Vitality Drink",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Natural Detox Combo is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Arjun Kapoor",
-        "rating": 5,
-        "comment": "This Natural Detox Combo is amazing. Great value combo for my daily health routine. Clean and prompt delivery.",
-        "date": "2026-06-12"
-      },
-      {
-        "name": "Karan Malhotra",
-        "rating": 4.5,
-        "comment": "Good value pack. Moringa Powder and Beetroot Powder are top notch. Perfect mix. Sourced fresh, clean, and full of natural aroma. Definitely buying again.",
-        "date": "2026-06-20"
-      }
-    ]
-  },
-  {
-    "id": 352,
-    "slug": "complete-continental-chef-kit",
-    "name": "Complete Continental Chef Kit",
-    "category": "combos",
-    "unit": "Pack of 4 (100g each)",
-    "price": 537,
-    "mrp": 801,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Complete Continental Chef Kit - high performance premium kitchen masala/health package combining Oregano and Oregano Seasoning and Pizza Pasta Masala and Red Chilli Flakes.",
-    "stock": 29,
-    "rating": 4.8,
-    "tags": [
-      "combo",
-      "4-product-combo",
-      "hot-selling-bestseller"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Oregano",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Pizza Pasta Seasoning",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Peri Peri Masala",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Red Chilli Flakes",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 4 (100g each)",
-        "price": 537,
-        "mrp": 801
-      },
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 1009,
-        "mrp": 1510
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1478,
-        "mrp": 2297
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Hot Selling / Bestseller",
-      "bestFor": "Professional Kitchens, Gourmet Continental Dishes",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Complete Continental Chef Kit is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Ananya Sen",
-        "rating": 5,
-        "comment": "This Complete Continental Chef Kit is amazing. Unbelievable discount compared to buying them individually. Perfect addition to the kitchen.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Deepak Joshi",
-        "rating": 4.5,
-        "comment": "Good value pack. Oregano and Oregano Seasoning are top notch. Authentic taste and absolute purity. Very fresh product.",
-        "date": "2026-06-22"
-      }
-    ]
-  },
-  {
-    "id": 353,
-    "slug": "ultimate-4-wall-kitchen-powders",
-    "name": "Ultimate 4-Wall Kitchen Powders",
-    "category": "combos",
-    "unit": "Pack of 4 (200g each)",
-    "price": 930,
-    "mrp": 1355,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Ultimate 4-Wall Kitchen Powders - high performance premium kitchen masala/health package combining Red Onion Powder and White Onion Powder and Garlic Powder and Ginger Powder.",
-    "stock": 25,
-    "rating": 4.7,
-    "tags": [
-      "combo",
-      "4-product-combo",
-      "bulk-products-kitchen-king"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Red Onion Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "White Onion Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Garlic Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Ginger Powder",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 930,
-        "mrp": 1355
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 2122,
-        "mrp": 3092
-      },
-      {
-        "unit": "Pack of 4 (1kg each)",
-        "price": 3839,
-        "mrp": 5888
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (200g each)",
-      "bulkAvailable": "Yes (1kg)",
-      "strategy": "Bulk products / Kitchen King",
-      "bestFor": "Stocking pantry, Quick gravies & rubs, Restaurants",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Ultimate 4-Wall Kitchen Powders is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Pooja Mishra",
-        "rating": 5,
-        "comment": "This Ultimate 4-Wall Kitchen Powders is amazing. Saves so much time in prep. Very clean ingredients, high quality standards.",
-        "date": "2026-06-16"
-      },
-      {
-        "name": "Sanjay Kumar",
-        "rating": 4.5,
-        "comment": "Good value pack. Red Onion Powder and White Onion Powder are top notch. Very high quality. Ground fine and smells amazing. Totally worth it.",
-        "date": "2026-06-24"
-      }
-    ]
-  },
-  {
-    "id": 354,
-    "slug": "healthy-salad-snack-seeds-kit",
-    "name": "Healthy Salad & Snack Seeds Kit",
-    "category": "combos",
-    "unit": "Pack of 4 (200g each)",
-    "price": 590,
-    "mrp": 859,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Healthy Salad & Snack Seeds Kit - high performance premium kitchen masala/health package combining Watermelon Seeds and Pumpkin Seeds and Flax Seeds and Sunflower Seeds.",
-    "stock": 32,
-    "rating": 4.2,
-    "tags": [
-      "combo",
-      "4-product-combo",
-      "value-buys-fitness"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Watermelon Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Pumpkin Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Flax Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Sunflower Seeds",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 590,
-        "mrp": 859
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1348,
-        "mrp": 1964
-      },
-      {
-        "unit": "Pack of 4 (1kg each)",
-        "price": 2352,
-        "mrp": 3608
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (200g each)",
-      "bulkAvailable": "Yes (1kg)",
-      "strategy": "Value Buys / Fitness",
-      "bestFor": "Keto salad dressing, Crunchy snacks, Bread baking",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Healthy Salad & Snack Seeds Kit is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Aditi Roy",
-        "rating": 5,
-        "comment": "This Healthy Salad & Snack Seeds Kit is amazing. Perfect crunch and taste. Premium selection, highly satisfied.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Varun Saxena",
-        "rating": 4.5,
-        "comment": "Good value pack. Watermelon Seeds and Pumpkin Seeds are top notch. Extremely useful wellness bundle. Safe, pure, and very fast delivery.",
-        "date": "2026-06-26"
-      }
-    ]
-  },
-  {
-    "id": 355,
-    "slug": "luxury-dry-fruit-platter",
-    "name": "Luxury Dry Fruit Platter",
-    "category": "combos",
-    "unit": "Pack of 4 (200g each)",
-    "price": 731,
-    "mrp": 1036,
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556909211-36987daf7b4d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Luxury Dry Fruit Platter - high performance premium kitchen masala/health package combining Almonds and Cashews and Raisin and Apricot.",
-    "stock": 36,
-    "rating": 4.6,
-    "tags": [
-      "combo",
-      "4-product-combo",
-      "bestseller-gifting-bulk"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Almonds",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Cashews",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Raisins",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Apricots",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 731,
-        "mrp": 1036
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1647,
-        "mrp": 2332
-      },
-      {
-        "unit": "Pack of 4 (1kg each)",
-        "price": 2957,
-        "mrp": 4408
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (200g each)",
-      "bulkAvailable": "Yes (1kg)",
-      "strategy": "Bestseller / Gifting Bulk",
-      "bestFor": "Festival platters, Premium wedding/party Gifting",
-      "storage": "Airtight containers in dark and cool place.",
-      "foodType": "100% Vegetarian"
-    },
-    "details": "Luxury Dry Fruit Platter is selected for its high potency, freshness, and delicious taste. 100% natural, certified spices, seeds, or herbs tailored for direct consumption or quick kitchen prep. Guaranteed premium experience.",
-    "reviews": [
-      {
-        "name": "Simran Gill",
-        "rating": 5,
-        "comment": "This Luxury Dry Fruit Platter is amazing. Super fresh and high quality. The combination is very convenient and cost-effective.",
-        "date": "2026-06-20"
-      },
-      {
-        "name": "Manish Bansal",
-        "rating": 4.5,
-        "comment": "Good value pack. Almonds and Cashews are top notch. Excellent packaging, both ingredients feel large and genuine. Highly recommended!",
-        "date": "2026-06-28"
-      }
-    ]
-  },
-  {
-    "id": 356,
-    "slug": "tangy-and-warm-blend",
-    "name": "Tangy and Warm Blend",
-    "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 289,
-    "mrp": 388,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Tangy and Warm Blend — a premium curated pack of 2 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 21,
-    "rating": 4.3,
-    "tags": [
-      "combo",
-      "spices",
+    "extraCategories": [
       "powders",
-      "2-product-combo"
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 90,
+    "mrp": 120,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "bestseller",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/4a0bc01a-00c6-4136-9f22-eb7932510c08.jpg",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/4a0bc01a-00c6-4136-9f22-eb7932510c08.jpg"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Red Onion Powder, Garlic Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Essential Kitchen Combo is a specially curated bundle including: Red Onion Powder, Garlic Powder. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 90,
+        "mrp": 120,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Red Onion Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Garlic Powder",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 73,
+    "slug": "tangy-and-warm-blend",
+    "name": "Tangy & Warm Blend",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 108,
+    "mrp": 140,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "newlyin",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Tomato Powder, Ginger Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Tangy & Warm Blend is a specially curated bundle including: Tomato Powder, Ginger Powder. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 108,
+        "mrp": 140,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -7990,235 +4285,303 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 289,
-        "mrp": 388
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 532,
-        "mrp": 714
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1152,
-        "mrp": 1630
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Value Buy",
-      "bestFor": "Soups, Gravies, Chutneys",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Tangy and Warm Blend bundles the finest quality Tomato Powder, Ginger Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Ramesh K.",
-        "rating": 5,
-        "comment": "Perfect for Indian cooking. The powders are clean and pure. The Tangy and Warm Blend combo is a kitchen essential.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Sunita M.",
-        "rating": 4.5,
-        "comment": "Loved the Tomato Powder in this pack. Exactly what I needed for my daily cooking. Highly recommend!",
-        "date": "2026-06-17"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 357,
+    "id": 74,
+    "slug": "classic-pizza-partner",
+    "name": "Classic Pizza Partner",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 122,
+    "mrp": 155,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "valuebuys",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Oregano, Red Chilli Flakes",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Classic Pizza Partner is a specially curated bundle including: Oregano, Red Chilli Flakes. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 122,
+        "mrp": 155,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Oregano",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Red Chilli Flakes",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 75,
+    "slug": "ayurvedic-immunity-duo",
+    "name": "Ayurvedic Immunity Duo",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 113,
+    "mrp": 145,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "trending",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Ashwagandha (Ashavgandha), Mulethi",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Ayurvedic Immunity Duo is a specially curated bundle including: Ashwagandha (Ashavgandha), Mulethi. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 113,
+        "mrp": 145,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Ashwagandha (Ashavgandha)",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Mulethi",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 76,
     "slug": "rich-white-gravy-base",
     "name": "Rich White Gravy Base",
     "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 262,
-    "mrp": 358,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Rich White Gravy Base — a premium curated pack of 2 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 22,
-    "rating": 4.3,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 95,
+    "mrp": 125,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "bestseller",
       "powders",
-      "2-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: White Onion Powder, Garlic Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Rich White Gravy Base is a specially curated bundle including: White Onion Powder, Garlic Powder. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 95,
+        "mrp": 125,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
-      {
-        "name": "Garlic Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
       {
         "name": "White Onion Powder",
         "qty": "1 unit",
         "isFree": false
+      },
+      {
+        "name": "Garlic Powder",
+        "qty": "1 unit",
+        "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 262,
-        "mrp": 358
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 483,
-        "mrp": 659
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1047,
-        "mrp": 1504
-      },
-      {
-        "unit": "Pack of 2 (1kg each)",
-        "price": 1993,
-        "mrp": 2864
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g, 1kg)",
-      "strategy": "Bestseller",
-      "bestFor": "White Gravy, Shahi Curries, Korma",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Rich White Gravy Base bundles the finest quality Garlic Powder, White Onion Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Mohan D.",
-        "rating": 5,
-        "comment": "The spices are very authentic and enhance flavour beautifully. The Rich White Gravy Base combo is a kitchen essential.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Priti G.",
-        "rating": 4.5,
-        "comment": "Loved the Garlic Powder in this pack. Premium quality at a great price. Love this pack.",
-        "date": "2026-06-21"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 358,
+    "id": 77,
     "slug": "snack-fries-sprinkler-duo",
     "name": "Snack Fries Sprinkler Duo",
     "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 297,
-    "mrp": 428,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Snack Fries Sprinkler Duo — a premium curated pack of 2 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 22,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 131,
+    "mrp": 170,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "newlyin",
       "powders",
-      "2-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Oregano Seasoning, Peri-Peri Masala",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Snack Fries Sprinkler Duo is a specially curated bundle including: Oregano Seasoning, Peri-Peri Masala. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 131,
+        "mrp": 170,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pizza Pasta Seasoning",
+        "name": "Oregano Seasoning",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Peri Peri Masala",
+        "name": "Peri-Peri Masala",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 297,
-        "mrp": 428
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 560,
-        "mrp": 796
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 808,
-        "mrp": 1197
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Hot Selling",
-      "bestFor": "Fries, Popcorn, Roasted Snacks",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Snack Fries Sprinkler Duo bundles the finest quality Pizza Pasta Seasoning, Peri Peri Masala for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Vikas R.",
-        "rating": 5,
-        "comment": "Great spice combo! Both products are very fresh and aromatic. The Snack Fries Sprinkler Duo combo is a kitchen essential.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Lata B.",
-        "rating": 4.5,
-        "comment": "Loved the Pizza Pasta Seasoning in this pack. Perfect for Indian cooking. The powders are clean and pure.",
-        "date": "2026-06-25"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 359,
+    "id": 78,
     "slug": "daily-detox-and-glow-duo",
-    "name": "Daily Detox and Glow Duo",
+    "name": "Daily Detox & Glow Duo",
     "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 341,
-    "mrp": 478,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Daily Detox and Glow Duo — a premium curated pack of 2 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 35,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 140,
+    "mrp": 185,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "valuebuys",
       "powders",
-      "2-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Moringa Powder, Beetroot Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Daily Detox & Glow Duo is a specially curated bundle including: Moringa Powder, Beetroot Powder. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 140,
+        "mrp": 185,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -8232,151 +4595,117 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 341,
-        "mrp": 478
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 628,
-        "mrp": 880
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1362,
-        "mrp": 2008
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Trending",
-      "bestFor": "Detox Smoothies, Immunity Drinks",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Daily Detox and Glow Duo bundles the finest quality Moringa Powder, Beetroot Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Yusuf A.",
-        "rating": 5,
-        "comment": "Exactly what I needed for my daily cooking. Highly recommend! The Daily Detox and Glow Duo combo is a kitchen essential.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Meera V.",
-        "rating": 4.5,
-        "comment": "Loved the Moringa Powder in this pack. The spices are very authentic and enhance flavour beautifully.",
-        "date": "2026-06-29"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 360,
+    "id": 79,
     "slug": "pure-cinnamon-bakers-pack",
-    "name": "Pure Cinnamon Bakers Pack",
+    "name": "Pure Cinnamon Baker's Pack",
     "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 271,
-    "mrp": 388,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Pure Cinnamon Bakers Pack — a premium curated pack of 2 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 46,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 117,
+    "mrp": 150,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "trending",
       "powders",
-      "2-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Dal Cheeni, Cinnamon Sticks",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Pure Cinnamon Baker's Pack is a specially curated bundle including: Dal Cheeni, Cinnamon Sticks. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 117,
+        "mrp": 150,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
+      {
+        "name": "Dal Cheeni",
+        "qty": "1 unit",
+        "isFree": false
+      },
       {
         "name": "Cinnamon Sticks",
         "qty": "1 unit",
         "isFree": false
-      },
-      {
-        "name": "Ginger Powder",
-        "qty": "1 unit",
-        "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 271,
-        "mrp": 388
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 498,
-        "mrp": 709
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 1077,
-        "mrp": 1615
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Newly In",
-      "bestFor": "Baking, Chai Masala, Desserts",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Pure Cinnamon Bakers Pack bundles the finest quality Cinnamon Sticks, Ginger Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Girish F.",
-        "rating": 5,
-        "comment": "Premium quality at a great price. Love this pack. The Pure Cinnamon Bakers Pack combo is a kitchen essential.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Smita Q.",
-        "rating": 4.5,
-        "comment": "Loved the Cinnamon Sticks in this pack. Great spice combo! Both products are very fresh and aromatic.",
-        "date": "2026-06-14"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 361,
+    "id": 80,
     "slug": "instant-soup-base-pair",
     "name": "Instant Soup Base Pair",
     "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 219,
-    "mrp": 294,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Instant Soup Base Pair — a premium curated pack of 2 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 26,
-    "rating": 4.5,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 99,
+    "mrp": 130,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "bestseller",
       "powders",
-      "2-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Potato Flakes, Tomato Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Instant Soup Base Pair is a specially curated bundle including: Potato Flakes, Tomato Powder. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 99,
+        "mrp": 130,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -8390,72 +4719,55 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 219,
-        "mrp": 294
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 415,
-        "mrp": 557
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 903,
-        "mrp": 1275
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Value Buy",
-      "bestFor": "Instant Soup, Mashed Potato, Pav Bhaji",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Instant Soup Base Pair bundles the finest quality Potato Flakes, Tomato Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Naresh O.",
-        "rating": 5,
-        "comment": "Perfect for Indian cooking. The powders are clean and pure. The Instant Soup Base Pair combo is a kitchen essential.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Shruti I.",
-        "rating": 4.5,
-        "comment": "Loved the Potato Flakes in this pack. Exactly what I needed for my daily cooking. Highly recommend!",
-        "date": "2026-06-18"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 362,
-    "slug": "chatpatta-raite-and-dip-mix",
-    "name": "Chatpatta Raite and Dip Mix",
+    "id": 81,
+    "slug": "chatpatta-raita-and-dip-mix",
+    "name": "Chatpatta Raita & Dip Mix",
     "category": "combos",
-    "unit": "Pack of 2 (100g each)",
-    "price": 245,
-    "mrp": 338,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Chatpatta Raite and Dip Mix — a premium curated pack of 2 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 22,
-    "rating": 4.2,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 122,
+    "mrp": 155,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "newlyin",
       "powders",
-      "2-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Mint Powder, Green Chilli Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Chatpatta Raita & Dip Mix is a specially curated bundle including: Mint Powder, Green Chilli Powder. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 122,
+        "mrp": 155,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -8469,72 +4781,55 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 2 (100g each)",
-        "price": 245,
-        "mrp": 338
-      },
-      {
-        "unit": "Pack of 2 (200g each)",
-        "price": 451,
-        "mrp": 623
-      },
-      {
-        "unit": "Pack of 2 (500g each)",
-        "price": 977,
-        "mrp": 1420
-      }
-    ],
-    "highlights": {
-      "packType": "2-Product Combo",
-      "totalProducts": "2 Packets",
-      "recommendedSize": "Pack of 2 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Trending",
-      "bestFor": "Raita, Chutneys, Dips, Salads",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Chatpatta Raite and Dip Mix bundles the finest quality Mint Powder, Green Chilli Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Arvind Y.",
-        "rating": 5,
-        "comment": "The spices are very authentic and enhance flavour beautifully. The Chatpatta Raite and Dip Mix combo is a kitchen essential.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Shobha Z.",
-        "rating": 4.5,
-        "comment": "Loved the Mint Powder in this pack. Premium quality at a great price. Love this pack.",
-        "date": "2026-06-22"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 363,
+    "id": 82,
     "slug": "all-in-one-onion-garlic-base",
     "name": "All-in-One Onion Garlic Base",
     "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 380,
-    "mrp": 537,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "All-in-One Onion Garlic Base — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 36,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 144,
+    "mrp": 190,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "valuebuys",
       "powders",
-      "3-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Red Onion Powder, White Onion Powder, Garlic Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "All-in-One Onion Garlic Base is a specially curated bundle including: Red Onion Powder, White Onion Powder, Garlic Powder. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 144,
+        "mrp": 190,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -8553,86 +4848,64 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 380,
-        "mrp": 537
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 700,
-        "mrp": 989
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1516,
-        "mrp": 2256
-      },
-      {
-        "unit": "Pack of 3 (1kg each)",
-        "price": 2888,
-        "mrp": 4296
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g, 1kg)",
-      "strategy": "Kitchen Essential",
-      "bestFor": "Everyday Curries, Restaurant Style Gravies",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "All-in-One Onion Garlic Base bundles the finest quality Red Onion Powder, White Onion Powder, Garlic Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Anil P.",
-        "rating": 5,
-        "comment": "Great spice combo! Both products are very fresh and aromatic. The All-in-One Onion Garlic Base combo is a kitchen essential.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Kavita S.",
-        "rating": 4.5,
-        "comment": "Loved the Red Onion Powder in this pack. Perfect for Indian cooking. The powders are clean and pure.",
-        "date": "2026-06-26"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 364,
+    "id": 83,
     "slug": "italian-restaurant-style-combo",
     "name": "Italian Restaurant Style Combo",
     "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 422,
-    "mrp": 602,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Italian Restaurant Style Combo — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 33,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 180,
+    "mrp": 230,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "trending",
       "powders",
-      "3-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pizza Pasta Masala, Oregano Seasoning, Red Chilli Flakes",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Italian Restaurant Style Combo is a specially curated bundle including: Pizza Pasta Masala, Oregano Seasoning, Red Chilli Flakes. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 180,
+        "mrp": 230,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pizza Pasta Seasoning",
+        "name": "Pizza Pasta Masala",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Oregano",
+        "name": "Oregano Seasoning",
         "qty": "1 unit",
         "isFree": false
       },
@@ -8642,72 +4915,55 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 422,
-        "mrp": 602
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 776,
-        "mrp": 1113
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1340,
-        "mrp": 1999
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Hot Selling",
-      "bestFor": "Pizza, Pasta, Garlic Bread, Continental",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Italian Restaurant Style Combo bundles the finest quality Pizza Pasta Seasoning, Oregano, Red Chilli Flakes for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Suresh J.",
-        "rating": 5,
-        "comment": "Exactly what I needed for my daily cooking. Highly recommend! The Italian Restaurant Style Combo combo is a kitchen essential.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Nandita H.",
-        "rating": 4.5,
-        "comment": "Loved the Pizza Pasta Seasoning in this pack. The spices are very authentic and enhance flavour beautifully.",
-        "date": "2026-06-11"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 365,
+    "id": 84,
     "slug": "superfood-health-shake-mix",
     "name": "Superfood Health Shake Mix",
     "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 541,
-    "mrp": 777,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Superfood Health Shake Mix — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 37,
-    "rating": 4.6,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 198,
+    "mrp": 260,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "bestseller",
       "powders",
-      "3-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Moringa Powder, Beetroot Powder, Mint Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Superfood Health Shake Mix is a specially curated bundle including: Moringa Powder, Beetroot Powder, Mint Powder. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 198,
+        "mrp": 260,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -8721,77 +4977,60 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Ashwagandha Powder",
+        "name": "Mint Powder",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 541,
-        "mrp": 777
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 996,
-        "mrp": 1430
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 2161,
-        "mrp": 3264
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Trending / Healthy",
-      "bestFor": "Morning Health Shakes, Smoothie Bowls",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Superfood Health Shake Mix bundles the finest quality Moringa Powder, Beetroot Powder, Ashwagandha Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Deepak C.",
-        "rating": 5,
-        "comment": "Premium quality at a great price. Love this pack. The Superfood Health Shake Mix combo is a kitchen essential.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Asha T.",
-        "rating": 4.5,
-        "comment": "Loved the Moringa Powder in this pack. Great spice combo! Both products are very fresh and aromatic.",
-        "date": "2026-06-15"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 366,
+    "id": 85,
     "slug": "instant-chatpatta-tadka",
     "name": "Instant Chatpatta Tadka",
     "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 405,
-    "mrp": 567,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Instant Chatpatta Tadka — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 42,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 171,
+    "mrp": 220,
+    "stock": 100,
+    "isComingSoon": true,
     "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "newlyin",
       "powders",
-      "3-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Tomato Powder, Green Chilli Powder, Ginger Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Instant Chatpatta Tadka is a specially curated bundle including: Tomato Powder, Green Chilli Powder, Ginger Powder. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 171,
+        "mrp": 220,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -8810,76 +5049,59 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 405,
-        "mrp": 567
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 746,
-        "mrp": 1044
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1618,
-        "mrp": 2382
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Bestseller",
-      "bestFor": "Dal Tadka, Sabzi, Quick Marinades",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Instant Chatpatta Tadka bundles the finest quality Tomato Powder, Green Chilli Powder, Ginger Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Harish L.",
-        "rating": 5,
-        "comment": "Perfect for Indian cooking. The powders are clean and pure. The Instant Chatpatta Tadka combo is a kitchen essential.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Pallavi N.",
-        "rating": 4.5,
-        "comment": "Loved the Tomato Powder in this pack. Exactly what I needed for my daily cooking. Highly recommend!",
-        "date": "2026-06-19"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 367,
+    "id": 86,
     "slug": "spicy-italian-twist-mix",
     "name": "Spicy Italian Twist Mix",
     "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 397,
-    "mrp": 567,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Spicy Italian Twist Mix — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 31,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 176,
+    "mrp": 225,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "valuebuys",
       "powders",
-      "3-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pizza Pasta Masala, Red Chilli Flakes, Green Chilli Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Spicy Italian Twist Mix is a specially curated bundle including: Pizza Pasta Masala, Red Chilli Flakes, Green Chilli Powder. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 176,
+        "mrp": 225,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pizza Pasta Seasoning",
+        "name": "Pizza Pasta Masala",
         "qty": "1 unit",
         "isFree": false
       },
@@ -8894,156 +5116,122 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 397,
-        "mrp": 567
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 740,
-        "mrp": 1062
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1206,
-        "mrp": 1799
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Hot Selling",
-      "bestFor": "Spicy Pizza, Continental Snacks, Fries",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Spicy Italian Twist Mix bundles the finest quality Pizza Pasta Seasoning, Red Chilli Flakes, Green Chilli Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Bharat E.",
-        "rating": 5,
-        "comment": "The spices are very authentic and enhance flavour beautifully. The Spicy Italian Twist Mix combo is a kitchen essential.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Rekha W.",
-        "rating": 4.5,
-        "comment": "Loved the Pizza Pasta Seasoning in this pack. Premium quality at a great price. Love this pack.",
-        "date": "2026-06-23"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 368,
+    "id": 87,
     "slug": "immunity-and-throat-care-mix",
-    "name": "Immunity and Throat Care Mix",
+    "name": "Immunity & Throat Care Mix",
     "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 482,
-    "mrp": 697,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Immunity and Throat Care Mix — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 37,
-    "rating": 4.4,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 171,
+    "mrp": 220,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "trending",
       "powders",
-      "3-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Ashwagandha (Ashavgandha), Mulethi, Dal Cheeni",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Immunity & Throat Care Mix is a specially curated bundle including: Ashwagandha (Ashavgandha), Mulethi, Dal Cheeni. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 171,
+        "mrp": 220,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Ashwagandha Powder",
+        "name": "Ashwagandha (Ashavgandha)",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Mulethi (Licorice) Powder",
+        "name": "Mulethi",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Cinnamon Sticks",
+        "name": "Dal Cheeni",
         "qty": "1 unit",
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 482,
-        "mrp": 697
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 887,
-        "mrp": 1278
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1919,
-        "mrp": 2913
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Ayurvedic",
-      "bestFor": "Immunity Kadha, Throat Soothing, Cough Relief",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Immunity and Throat Care Mix bundles the finest quality Ashwagandha Powder, Mulethi (Licorice) Powder, Cinnamon Sticks for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Uday U.",
-        "rating": 5,
-        "comment": "Great spice combo! Both products are very fresh and aromatic. The Immunity and Throat Care Mix combo is a kitchen essential.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Vandana X.",
-        "rating": 4.5,
-        "comment": "Loved the Ashwagandha Powder in this pack. Perfect for Indian cooking. The powders are clean and pure.",
-        "date": "2026-06-27"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 369,
+    "id": 88,
     "slug": "quick-creamy-tomato-soup-mix",
     "name": "Quick Creamy Tomato Soup Mix",
     "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 321,
-    "mrp": 453,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Quick Creamy Tomato Soup Mix — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 28,
-    "rating": 4.7,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 158,
+    "mrp": 205,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "bestseller",
       "powders",
-      "3-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Tomato Powder, Potato Flakes, Mint Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Quick Creamy Tomato Soup Mix is a specially curated bundle including: Tomato Powder, Potato Flakes, Mint Powder. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 158,
+        "mrp": 205,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -9062,72 +5250,55 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 321,
-        "mrp": 453
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 604,
-        "mrp": 850
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1310,
-        "mrp": 1943
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Value Buy",
-      "bestFor": "Creamy Soup, Tomato Curry, Quick Meals",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Quick Creamy Tomato Soup Mix bundles the finest quality Tomato Powder, Potato Flakes, Mint Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Ramesh K.",
-        "rating": 5,
-        "comment": "Exactly what I needed for my daily cooking. Highly recommend! The Quick Creamy Tomato Soup Mix combo is a kitchen essential.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Sunita M.",
-        "rating": 4.5,
-        "comment": "Loved the Tomato Powder in this pack. The spices are very authentic and enhance flavour beautifully.",
-        "date": "2026-06-12"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 370,
+    "id": 89,
     "slug": "tandoori-marination-special",
     "name": "Tandoori Marination Special",
     "category": "combos",
-    "unit": "Pack of 3 (100g each)",
-    "price": 380,
-    "mrp": 537,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Tandoori Marination Special — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 34,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 144,
+    "mrp": 190,
+    "stock": 100,
+    "isComingSoon": true,
     "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "newlyin",
       "powders",
-      "3-product-combo"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Garlic Powder, Ginger Powder, Mint Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Tandoori Marination Special is a specially curated bundle including: Garlic Powder, Ginger Powder, Mint Powder. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 144,
+        "mrp": 190,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
@@ -9136,7 +5307,7 @@ export const products = [
         "isFree": false
       },
       {
-        "name": "Tomato Powder",
+        "name": "Ginger Powder",
         "qty": "1 unit",
         "isFree": false
       },
@@ -9146,1000 +5317,2860 @@ export const products = [
         "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (100g each)",
-        "price": 380,
-        "mrp": 537
-      },
-      {
-        "unit": "Pack of 3 (200g each)",
-        "price": 700,
-        "mrp": 989
-      },
-      {
-        "unit": "Pack of 3 (500g each)",
-        "price": 1516,
-        "mrp": 2256
-      }
-    ],
-    "highlights": {
-      "packType": "3-Product Combo",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Bestseller",
-      "bestFor": "Tandoori Chicken, Kebabs, BBQ Marinades",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Tandoori Marination Special bundles the finest quality Garlic Powder, Tomato Powder, Mint Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Mohan D.",
-        "rating": 5,
-        "comment": "Premium quality at a great price. Love this pack. The Tandoori Marination Special combo is a kitchen essential.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Priti G.",
-        "rating": 4.5,
-        "comment": "Loved the Garlic Powder in this pack. Great spice combo! Both products are very fresh and aromatic.",
-        "date": "2026-06-16"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 371,
+    "id": 90,
     "slug": "complete-gravy-base-pack",
     "name": "Complete Gravy Base Pack",
     "category": "combos",
-    "unit": "Pack of 4 (100g each)",
-    "price": 522,
-    "mrp": 756,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Complete Gravy Base Pack — a premium curated pack of 4 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 29,
-    "rating": 4.5,
-    "tags": [
-      "combo",
-      "spices",
+    "extraCategories": [
       "powders",
-      "4-product-combo"
+      "seasoning"
     ],
-    "comboIncludes": [
-      {
-        "name": "Red Onion Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Garlic Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Ginger Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Tomato Powder",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 4 (100g each)",
-        "price": 522,
-        "mrp": 756
-      },
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 960,
-        "mrp": 1392
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 2081,
-        "mrp": 3176
-      },
-      {
-        "unit": "Pack of 4 (1kg each)",
-        "price": 3963,
-        "mrp": 6048
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (100g each)",
-      "bulkAvailable": "Yes (500g, 1kg)",
-      "strategy": "Kitchen King",
-      "bestFor": "All Indian Gravies, Restaurant Style Cooking",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Complete Gravy Base Pack bundles the finest quality Red Onion Powder, Garlic Powder, Ginger Powder, Tomato Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Vikas R.",
-        "rating": 5,
-        "comment": "Perfect for Indian cooking. The powders are clean and pure. The Complete Gravy Base Pack combo is a kitchen essential.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Lata B.",
-        "rating": 4.5,
-        "comment": "Loved the Red Onion Powder in this pack. Exactly what I needed for my daily cooking. Highly recommend!",
-        "date": "2026-06-20"
-      }
-    ]
-  },
-  {
-    "id": 372,
-    "slug": "premium-superfood-wellness-kit",
-    "name": "Premium Superfood Wellness Kit",
-    "category": "combos",
-    "unit": "Pack of 4 (100g each)",
-    "price": 669,
-    "mrp": 986,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Premium Superfood Wellness Kit — a premium curated pack of 4 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 42,
-    "rating": 4.6,
-    "tags": [
-      "combo",
-      "spices",
-      "powders",
-      "4-product-combo"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Moringa Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Beetroot Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Ashwagandha Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Mulethi (Licorice) Powder",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 4 (100g each)",
-        "price": 669,
-        "mrp": 986
-      },
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 1232,
-        "mrp": 1815
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 2670,
-        "mrp": 4142
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Premium Wellness",
-      "bestFor": "Complete Immunity, Daily Wellness Routine",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Premium Superfood Wellness Kit bundles the finest quality Moringa Powder, Beetroot Powder, Ashwagandha Powder, Mulethi (Licorice) Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Yusuf A.",
-        "rating": 5,
-        "comment": "The spices are very authentic and enhance flavour beautifully. The Premium Superfood Wellness Kit combo is a kitchen essential.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Meera V.",
-        "rating": 4.5,
-        "comment": "Loved the Moringa Powder in this pack. Premium quality at a great price. Love this pack.",
-        "date": "2026-06-24"
-      }
-    ]
-  },
-  {
-    "id": 373,
-    "slug": "healthy-green-soup-and-smoothie-mix",
-    "name": "Healthy Green Soup and Smoothie Mix",
-    "category": "combos",
-    "unit": "Pack of 4 (100g each)",
-    "price": 546,
-    "mrp": 816,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Healthy Green Soup and Smoothie Mix — a premium curated pack of 4 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 25,
-    "rating": 4.7,
-    "tags": [
-      "combo",
-      "spices",
-      "powders",
-      "4-product-combo"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Moringa Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Beetroot Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Mint Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Green Chilli Powder",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 4 (100g each)",
-        "price": 546,
-        "mrp": 816
-      },
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 1005,
-        "mrp": 1503
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 2179,
-        "mrp": 3428
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (100g each)",
-      "bulkAvailable": "Yes (500g)",
-      "strategy": "Trending / Healthy",
-      "bestFor": "Green Smoothies, Detox Soups, Juice Bars",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Healthy Green Soup and Smoothie Mix bundles the finest quality Moringa Powder, Beetroot Powder, Mint Powder, Green Chilli Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Girish F.",
-        "rating": 5,
-        "comment": "Great spice combo! Both products are very fresh and aromatic. The Healthy Green Soup and Smoothie Mix combo is a kitchen essential.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Smita Q.",
-        "rating": 4.5,
-        "comment": "Loved the Moringa Powder in this pack. Perfect for Indian cooking. The powders are clean and pure.",
-        "date": "2026-06-28"
-      }
-    ]
-  },
-  {
-    "id": 374,
-    "slug": "instant-pav-bhaji-curry-base",
-    "name": "Instant Pav Bhaji Curry Base",
-    "category": "combos",
-    "unit": "Pack of 4 (100g each)",
-    "price": 457,
-    "mrp": 662,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Instant Pav Bhaji Curry Base — a premium curated pack of 4 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 26,
-    "rating": 4.4,
-    "tags": [
-      "combo",
-      "spices",
-      "powders",
-      "4-product-combo"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Tomato Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Potato Flakes",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Garlic Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Red Onion Powder",
-        "qty": "1 unit",
-        "isFree": false
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 4 (100g each)",
-        "price": 457,
-        "mrp": 662
-      },
-      {
-        "unit": "Pack of 4 (200g each)",
-        "price": 852,
-        "mrp": 1235
-      },
-      {
-        "unit": "Pack of 4 (500g each)",
-        "price": 1850,
-        "mrp": 2821
-      },
-      {
-        "unit": "Pack of 4 (1kg each)",
-        "price": 3496,
-        "mrp": 5334
-      }
-    ],
-    "highlights": {
-      "packType": "4-Product Combo",
-      "totalProducts": "4 Packets",
-      "recommendedSize": "Pack of 4 (100g each)",
-      "bulkAvailable": "Yes (500g, 1kg)",
-      "strategy": "Bestseller",
-      "bestFor": "Pav Bhaji, Curry Base, Street Food Prep",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Instant Pav Bhaji Curry Base bundles the finest quality Tomato Powder, Potato Flakes, Garlic Powder, Red Onion Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Naresh O.",
-        "rating": 5,
-        "comment": "Exactly what I needed for my daily cooking. Highly recommend! The Instant Pav Bhaji Curry Base combo is a kitchen essential.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Shruti I.",
-        "rating": 4.5,
-        "comment": "Loved the Tomato Powder in this pack. The spices are very authentic and enhance flavour beautifully.",
-        "date": "2026-06-13"
-      }
-    ]
-  },
-  {
-    "id": 375,
-    "slug": "daily-cooking-dhamaka",
-    "name": "Daily Cooking Dhamaka",
-    "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 308,
-    "mrp": 567,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Daily Cooking Dhamaka — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 32,
-    "rating": 4.2,
-    "tags": [
-      "combo",
-      "spices",
-      "powders",
-      "buy-2-get-1-free"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Red Onion Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Garlic Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Ginger Powder",
-        "qty": "1 unit",
-        "isFree": true
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 308,
-        "mrp": 567
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 539,
-        "mrp": 1044
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g)",
-      "strategy": "Super Saver",
-      "bestFor": "Daily Cooking, Gravy Prep, Tadka",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Daily Cooking Dhamaka bundles the finest quality Red Onion Powder, Garlic Powder, Ginger Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Arvind Y.",
-        "rating": 5,
-        "comment": "Premium quality at a great price. Love this pack. The Daily Cooking Dhamaka combo is a kitchen essential.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Shobha Z.",
-        "rating": 4.5,
-        "comment": "Loved the Red Onion Powder in this pack. Great spice combo! Both products are very fresh and aromatic.",
-        "date": "2026-06-17"
-      }
-    ]
-  },
-  {
-    "id": 376,
-    "slug": "fast-food-special-offer",
-    "name": "Fast Food Special Offer",
-    "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 337,
-    "mrp": 642,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Fast Food Special Offer — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 21,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 198,
+    "mrp": 260,
+    "stock": 100,
+    "isComingSoon": true,
     "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "valuebuys",
       "powders",
-      "buy-2-get-1-free"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Red Onion Powder, Garlic Powder, Ginger Powder, Tomato Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Complete Gravy Base Pack is a specially curated bundle including: Red Onion Powder, Garlic Powder, Ginger Powder, Tomato Powder. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 198,
+        "mrp": 260,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
       {
-        "name": "Pizza Pasta Seasoning",
+        "name": "Red Onion Powder",
         "qty": "1 unit",
         "isFree": false
       },
+      {
+        "name": "Garlic Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Ginger Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Tomato Powder",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 91,
+    "slug": "party-seasoning-pack",
+    "name": "Party Seasoning Pack",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 248,
+    "mrp": 320,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "trending",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Oregano, Pizza Pasta Masala, Peri-Peri Masala, Red Chilli Flakes",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Party Seasoning Pack is a specially curated bundle including: Oregano, Pizza Pasta Masala, Peri-Peri Masala, Red Chilli Flakes. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 248,
+        "mrp": 320,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
       {
         "name": "Oregano",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Peri Peri Masala",
-        "qty": "1 unit",
-        "isFree": true
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 337,
-        "mrp": 642
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 602,
-        "mrp": 1177
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g)",
-      "strategy": "Snack Deal",
-      "bestFor": "Fast Food Seasoning, Snacks, Cafes",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Fast Food Special Offer bundles the finest quality Pizza Pasta Seasoning, Oregano, Peri Peri Masala for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Anil P.",
-        "rating": 5,
-        "comment": "Perfect for Indian cooking. The powders are clean and pure. The Fast Food Special Offer combo is a kitchen essential.",
-        "date": "2026-06-14"
-      },
-      {
-        "name": "Kavita S.",
-        "rating": 4.5,
-        "comment": "Loved the Pizza Pasta Seasoning in this pack. Exactly what I needed for my daily cooking. Highly recommend!",
-        "date": "2026-06-21"
-      }
-    ]
-  },
-  {
-    "id": 377,
-    "slug": "herbal-wellness-gift",
-    "name": "Herbal Wellness Gift",
-    "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 428,
-    "mrp": 757,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Herbal Wellness Gift — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 44,
-    "rating": 4.3,
-    "tags": [
-      "combo",
-      "spices",
-      "powders",
-      "buy-2-get-1-free"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Ashwagandha Powder",
+        "name": "Pizza Pasta Masala",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Mulethi (Licorice) Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Moringa Powder",
-        "qty": "1 unit",
-        "isFree": true
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 428,
-        "mrp": 757
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 749,
-        "mrp": 1393
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g)",
-      "strategy": "Wellness Deal",
-      "bestFor": "Immunity Boosting, Herbal Kadha",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Herbal Wellness Gift bundles the finest quality Ashwagandha Powder, Mulethi (Licorice) Powder, Moringa Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Suresh J.",
-        "rating": 5,
-        "comment": "The spices are very authentic and enhance flavour beautifully. The Herbal Wellness Gift combo is a kitchen essential.",
-        "date": "2026-06-18"
-      },
-      {
-        "name": "Nandita H.",
-        "rating": 4.5,
-        "comment": "Loved the Ashwagandha Powder in this pack. Premium quality at a great price. Love this pack.",
-        "date": "2026-06-25"
-      }
-    ]
-  },
-  {
-    "id": 378,
-    "slug": "instant-soup-and-dip-deal",
-    "name": "Instant Soup and Dip Deal",
-    "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 249,
-    "mrp": 453,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Instant Soup and Dip Deal — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 44,
-    "rating": 4.8,
-    "tags": [
-      "combo",
-      "spices",
-      "powders",
-      "buy-2-get-1-free"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Tomato Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Potato Flakes",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Mint Powder",
-        "qty": "1 unit",
-        "isFree": true
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 249,
-        "mrp": 453
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 448,
-        "mrp": 850
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g)",
-      "strategy": "Value Deal",
-      "bestFor": "Instant Soups, Dips, Quick Snacks",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Instant Soup and Dip Deal bundles the finest quality Tomato Powder, Potato Flakes, Mint Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Deepak C.",
-        "rating": 5,
-        "comment": "Great spice combo! Both products are very fresh and aromatic. The Instant Soup and Dip Deal combo is a kitchen essential.",
-        "date": "2026-06-22"
-      },
-      {
-        "name": "Asha T.",
-        "rating": 4.5,
-        "comment": "Loved the Tomato Powder in this pack. Perfect for Indian cooking. The powders are clean and pure.",
-        "date": "2026-06-29"
-      }
-    ]
-  },
-  {
-    "id": 379,
-    "slug": "cafe-freebie-pack",
-    "name": "Cafe Freebie Pack",
-    "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 338,
-    "mrp": 617,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "Cafe Freebie Pack — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 31,
-    "rating": 4.8,
-    "tags": [
-      "combo",
-      "spices",
-      "powders",
-      "buy-2-get-1-free"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Pizza Pasta Seasoning",
-        "qty": "1 unit",
-        "isFree": false
-      },
-      {
-        "name": "Peri Peri Masala",
+        "name": "Peri-Peri Masala",
         "qty": "1 unit",
         "isFree": false
       },
       {
         "name": "Red Chilli Flakes",
         "qty": "1 unit",
-        "isFree": true
+        "isFree": false
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 338,
-        "mrp": 617
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 604,
-        "mrp": 1131
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g)",
-      "strategy": "Cafe Special",
-      "bestFor": "Cafe & Restaurant Seasoning",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Cafe Freebie Pack bundles the finest quality Pizza Pasta Seasoning, Peri Peri Masala, Red Chilli Flakes for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Harish L.",
-        "rating": 5,
-        "comment": "Exactly what I needed for my daily cooking. Highly recommend! The Cafe Freebie Pack combo is a kitchen essential.",
-        "date": "2026-06-26"
-      },
-      {
-        "name": "Pallavi N.",
-        "rating": 4.5,
-        "comment": "Loved the Pizza Pasta Seasoning in this pack. The spices are very authentic and enhance flavour beautifully.",
-        "date": "2026-06-14"
-      }
-    ]
+    "comboType": "standard"
   },
   {
-    "id": 380,
-    "slug": "nutri-glow-wellness-offer",
-    "name": "Nutri-Glow Wellness Offer",
+    "id": 92,
+    "slug": "ultimate-herbal-wellness-kit",
+    "name": "Ultimate Herbal Wellness Kit",
     "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 388,
-    "mrp": 637,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+    "extraCategories": [
+      "powders",
+      "seasoning"
     ],
-    "description": "Nutri-Glow Wellness Offer — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 21,
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 252,
+    "mrp": 330,
+    "stock": 100,
+    "isComingSoon": true,
     "rating": 4.8,
     "tags": [
       "combo",
-      "spices",
+      "bundle",
+      "bestseller",
       "powders",
-      "buy-2-get-1-free"
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Moringa Powder, Beetroot Powder, Ashwagandha (Ashavgandha), Mulethi",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Ultimate Herbal Wellness Kit is a specially curated bundle including: Moringa Powder, Beetroot Powder, Ashwagandha (Ashavgandha), Mulethi. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 252,
+        "mrp": 330,
+        "package": "Assorted Box"
+      }
     ],
     "comboIncludes": [
-      {
-        "name": "Beetroot Powder",
-        "qty": "1 unit",
-        "isFree": false
-      },
       {
         "name": "Moringa Powder",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Mint Powder",
-        "qty": "1 unit",
-        "isFree": true
-      }
-    ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 388,
-        "mrp": 637
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 678,
-        "mrp": 1173
-      }
-    ],
-    "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g)",
-      "strategy": "Wellness Saver",
-      "bestFor": "Detox, Skin Glow, Immunity",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
-    },
-    "details": "Nutri-Glow Wellness Offer bundles the finest quality Beetroot Powder, Moringa Powder, Mint Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
-      {
-        "name": "Bharat E.",
-        "rating": 5,
-        "comment": "Premium quality at a great price. Love this pack. The Nutri-Glow Wellness Offer combo is a kitchen essential.",
-        "date": "2026-06-10"
-      },
-      {
-        "name": "Rekha W.",
-        "rating": 4.5,
-        "comment": "Loved the Beetroot Powder in this pack. Great spice combo! Both products are very fresh and aromatic.",
-        "date": "2026-06-18"
-      }
-    ]
-  },
-  {
-    "id": 381,
-    "slug": "north-indian-tadka-special",
-    "name": "North Indian Tadka Special",
-    "category": "combos",
-    "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-    "price": 328,
-    "mrp": 557,
-    "image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
-    ],
-    "description": "North Indian Tadka Special — a premium curated pack of 3 essential spices & powders designed for authentic Indian and continental cooking.",
-    "stock": 23,
-    "rating": 4.7,
-    "tags": [
-      "combo",
-      "spices",
-      "powders",
-      "buy-2-get-1-free"
-    ],
-    "comboIncludes": [
-      {
-        "name": "Garlic Powder",
+        "name": "Beetroot Powder",
         "qty": "1 unit",
         "isFree": false
       },
       {
-        "name": "Ginger Powder",
+        "name": "Ashwagandha (Ashavgandha)",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Mulethi",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 93,
+    "slug": "master-culinary-base-kit",
+    "name": "Master Culinary Base Kit",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 189,
+    "mrp": 250,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "newlyin",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Red Onion Powder, White Onion Powder, Garlic Powder, Ginger Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Master Culinary Base Kit is a specially curated bundle including: Red Onion Powder, White Onion Powder, Garlic Powder, Ginger Powder. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 189,
+        "mrp": 250,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Red Onion Powder",
         "qty": "1 unit",
         "isFree": false
       },
       {
         "name": "White Onion Powder",
         "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Garlic Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Ginger Powder",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 94,
+    "slug": "ultimate-italian-cafe-kit",
+    "name": "Ultimate Italian Cafe Kit",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 252,
+    "mrp": 320,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "valuebuys",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Oregano, Oregano Seasoning, Pizza Pasta Masala, Red Chilli Flakes",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Ultimate Italian Cafe Kit is a specially curated bundle including: Oregano, Oregano Seasoning, Pizza Pasta Masala, Red Chilli Flakes. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 252,
+        "mrp": 320,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Oregano",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Oregano Seasoning",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Pizza Pasta Masala",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Red Chilli Flakes",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 95,
+    "slug": "healthy-green-soup-and-smoothie-mix",
+    "name": "Healthy Green Soup & Smoothie Mix",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 261,
+    "mrp": 340,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "trending",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Moringa Powder, Beetroot Powder, Mint Powder, Green Chilli Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Healthy Green Soup & Smoothie Mix is a specially curated bundle including: Moringa Powder, Beetroot Powder, Mint Powder, Green Chilli Powder. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 261,
+        "mrp": 340,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Moringa Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Beetroot Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Mint Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Green Chilli Powder",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 96,
+    "slug": "instant-pav-bhaji-curry-base",
+    "name": "Instant Pav Bhaji / Curry Base",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 189,
+    "mrp": 250,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "bestseller",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Tomato Powder, Potato Flakes, Garlic Powder, Red Onion Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Instant Pav Bhaji / Curry Base is a specially curated bundle including: Tomato Powder, Potato Flakes, Garlic Powder, Red Onion Powder. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 189,
+        "mrp": 250,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Tomato Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Potato Flakes",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Garlic Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Red Onion Powder",
+        "qty": "1 unit",
+        "isFree": false
+      }
+    ],
+    "comboType": "standard"
+  },
+  {
+    "id": 97,
+    "slug": "daily-cooking-dhamaka",
+    "name": "Daily Cooking Dhamaka",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 100,
+    "mrp": 180,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "newlyin",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Red Onion Powder, Garlic Powder, Ginger Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Daily Cooking Dhamaka is a specially curated bundle including: Red Onion Powder, Garlic Powder, Ginger Powder. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 100,
+        "mrp": 180,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Red Onion Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Garlic Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Ginger Powder",
+        "qty": "1 unit",
         "isFree": true
       }
     ],
-    "units": [
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-        "price": 328,
-        "mrp": 557
-      },
-      {
-        "unit": "Pack of 3 (Buy 2 Get 1 Free - 200g)",
-        "price": 574,
-        "mrp": 1025
-      }
+    "comboType": "buy2get1"
+  },
+  {
+    "id": 98,
+    "slug": "fast-food-special-offer",
+    "name": "Fast Food Special Offer",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 150,
+    "mrp": 255,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "valuebuys",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
     ],
     "highlights": {
-      "packType": "Buy 2 Get 1 Free",
-      "totalProducts": "3 Packets",
-      "recommendedSize": "Pack of 3 (Buy 2 Get 1 Free - 100g)",
-      "bulkAvailable": "Yes (200g)",
-      "strategy": "Regional Special",
-      "bestFor": "North Indian Dal, Sabzi, Tadka",
-      "storage": "Store in a cool, dry place in airtight containers away from moisture.",
-      "foodType": "100% Vegetarian / Vegan"
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Pizza Pasta Masala, Oregano, Peri-Peri Masala",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
     },
-    "details": "North Indian Tadka Special bundles the finest quality Garlic Powder, Ginger Powder, White Onion Powder for your kitchen. All powders are stone-ground or naturally dried, free from artificial colours and preservatives. Packed airtight to preserve freshness and intense aroma.",
-    "reviews": [
+    "description": "Fast Food Special Offer is a specially curated bundle including: Pizza Pasta Masala, Oregano, Peri-Peri Masala. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
       {
-        "name": "Uday U.",
-        "rating": 5,
-        "comment": "Perfect for Indian cooking. The powders are clean and pure. The North Indian Tadka Special combo is a kitchen essential.",
-        "date": "2026-06-14"
+        "unit": "Combo Pack",
+        "price": 150,
+        "mrp": 255,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Pizza Pasta Masala",
+        "qty": "1 unit",
+        "isFree": false
       },
       {
-        "name": "Vandana X.",
-        "rating": 4.5,
-        "comment": "Loved the Garlic Powder in this pack. Exactly what I needed for my daily cooking. Highly recommend!",
-        "date": "2026-06-22"
+        "name": "Oregano",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Peri-Peri Masala",
+        "qty": "1 unit",
+        "isFree": true
+      }
+    ],
+    "comboType": "buy2get1"
+  },
+  {
+    "id": 99,
+    "slug": "herbal-wellness-gift",
+    "name": "Herbal Wellness Gift",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 125,
+    "mrp": 240,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "trending",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Ashwagandha (Ashavgandha), Mulethi, Moringa Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Herbal Wellness Gift is a specially curated bundle including: Ashwagandha (Ashavgandha), Mulethi, Moringa Powder. Designed for maximum value and convenience.",
+    "shopBy": "trending",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 125,
+        "mrp": 240,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Ashwagandha (Ashavgandha)",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Mulethi",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Moringa Powder",
+        "qty": "1 unit",
+        "isFree": true
+      }
+    ],
+    "comboType": "buy2get1"
+  },
+  {
+    "id": 100,
+    "slug": "instant-soup-and-dip-deal",
+    "name": "Instant Soup & Dip Deal",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 110,
+    "mrp": 205,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "bestseller",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Tomato Powder, Potato Flakes, Mint Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Instant Soup & Dip Deal is a specially curated bundle including: Tomato Powder, Potato Flakes, Mint Powder. Designed for maximum value and convenience.",
+    "shopBy": "bestseller",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 110,
+        "mrp": 205,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Tomato Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Potato Flakes",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Mint Powder",
+        "qty": "1 unit",
+        "isFree": true
+      }
+    ],
+    "comboType": "buy2get1"
+  },
+  {
+    "id": 101,
+    "slug": "cafe-style-freebie-pack",
+    "name": "Cafe Style Freebie Pack",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 145,
+    "mrp": 235,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "newlyin",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Oregano Seasoning, Peri-Peri Masala, Red Chilli Flakes",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Cafe Style Freebie Pack is a specially curated bundle including: Oregano Seasoning, Peri-Peri Masala, Red Chilli Flakes. Designed for maximum value and convenience.",
+    "shopBy": "newlyIn",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 145,
+        "mrp": 235,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Oregano Seasoning",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Peri-Peri Masala",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Red Chilli Flakes",
+        "qty": "1 unit",
+        "isFree": true
+      }
+    ],
+    "comboType": "buy2get1"
+  },
+  {
+    "id": 102,
+    "slug": "nutri-glow-wellness-offer",
+    "name": "Nutri-Glow Wellness Offer",
+    "category": "combos",
+    "extraCategories": [
+      "powders",
+      "seasoning"
+    ],
+    "brand": "Foodville",
+    "unit": "Combo Pack",
+    "price": 155,
+    "mrp": 260,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "combo",
+      "bundle",
+      "valuebuys",
+      "powders",
+      "seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/cba17785-5b33-4bd1-84d6-80940dd47e8f.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/341c8326-a73f-48a5-8544-129e4c63d2c4.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place.",
+      "origin": "India",
+      "form": "Assorted Gift Pack / Combo",
+      "ingredients": "Assorted: Beetroot Powder, Moringa Powder, Mint Powder",
+      "foodType": "Vegetarian",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "Combined standard sizes"
+    },
+    "description": "Nutri-Glow Wellness Offer is a specially curated bundle including: Beetroot Powder, Moringa Powder, Mint Powder. Designed for maximum value and convenience.",
+    "shopBy": "valueBuys",
+    "units": [
+      {
+        "unit": "Combo Pack",
+        "price": 155,
+        "mrp": 260,
+        "package": "Assorted Box"
+      }
+    ],
+    "comboIncludes": [
+      {
+        "name": "Beetroot Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Moringa Powder",
+        "qty": "1 unit",
+        "isFree": false
+      },
+      {
+        "name": "Mint Powder",
+        "qty": "1 unit",
+        "isFree": true
+      }
+    ],
+    "comboType": "buy2get1"
+  },
+  {
+    "id": 103,
+    "slug": "red-onion-powder-bulk-pack",
+    "name": "Red Onion Powder \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 450,
+    "mrp": 900,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "red-onion-powder"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Red Onion Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Red Onion Powder designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 900,
+        "package": "Pouch Sack",
+        "perUnit": 441,
+        "savings": 18
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2250,
+        "package": "Pouch Sack",
+        "perUnit": 428,
+        "savings": 113
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 4500,
+        "package": "Woven Sack",
+        "perUnit": 414,
+        "savings": 360
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 11250,
+        "package": "Heavy Duty Sack",
+        "perUnit": 396,
+        "savings": 1350
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "slug": "white-onion-powder-bulk-pack",
+    "name": "White Onion Powder \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 480,
+    "mrp": 960,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "white-onion-powder"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/08bba875-d3a4-45a5-aac3-9ee1c65d960c.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/08bba875-d3a4-45a5-aac3-9ee1c65d960c.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure White Onion Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of White Onion Powder designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 960,
+        "package": "Pouch Sack",
+        "perUnit": 470,
+        "savings": 19
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2400,
+        "package": "Pouch Sack",
+        "perUnit": 456,
+        "savings": 120
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 4800,
+        "package": "Woven Sack",
+        "perUnit": 442,
+        "savings": 384
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 12000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 422,
+        "savings": 1440
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "slug": "garlic-powder-bulk-pack",
+    "name": "Garlic Powder \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 380,
+    "mrp": 760,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "garlic-powder"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/457bb7d1-e10a-4bcd-9224-7999b6fb7303.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/457bb7d1-e10a-4bcd-9224-7999b6fb7303.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Garlic Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Garlic Powder designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 760,
+        "package": "Pouch Sack",
+        "perUnit": 372,
+        "savings": 15
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 1900,
+        "package": "Pouch Sack",
+        "perUnit": 361,
+        "savings": 95
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 3800,
+        "package": "Woven Sack",
+        "perUnit": 350,
+        "savings": 304
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 9500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 334,
+        "savings": 1140
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "slug": "ginger-powder-bulk-pack",
+    "name": "Ginger Powder \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 420,
+    "mrp": 840,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "ginger-powder"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/df3f91c8-ecd9-44ce-a399-3a73b294a1fa.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/df3f91c8-ecd9-44ce-a399-3a73b294a1fa.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Ginger Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Ginger Powder designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 840,
+        "package": "Pouch Sack",
+        "perUnit": 412,
+        "savings": 17
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2100,
+        "package": "Pouch Sack",
+        "perUnit": 399,
+        "savings": 105
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 4200,
+        "package": "Woven Sack",
+        "perUnit": 386,
+        "savings": 336
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 10500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 370,
+        "savings": 1260
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "slug": "tomato-powder-bulk-pack",
+    "name": "Tomato Powder \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 550,
+    "mrp": 1100,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "tomato-powder"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f6ef4db2-3bad-460e-9e62-caf89ef59696.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f6ef4db2-3bad-460e-9e62-caf89ef59696.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Tomato Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Tomato Powder designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1100,
+        "package": "Pouch Sack",
+        "perUnit": 539,
+        "savings": 22
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2750,
+        "package": "Pouch Sack",
+        "perUnit": 523,
+        "savings": 138
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 5500,
+        "package": "Woven Sack",
+        "perUnit": 506,
+        "savings": 440
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 13750,
+        "package": "Heavy Duty Sack",
+        "perUnit": 484,
+        "savings": 1650
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "slug": "potato-flakes-bulk-pack",
+    "name": "Potato Flakes \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 260,
+    "mrp": 520,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "potato-flakes"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/5c34a4aa-eff5-4f82-a246-afc38a8c5715.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/5c34a4aa-eff5-4f82-a246-afc38a8c5715.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Potato Flakes",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Potato Flakes designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 520,
+        "package": "Pouch Sack",
+        "perUnit": 255,
+        "savings": 10
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 1300,
+        "package": "Pouch Sack",
+        "perUnit": 247,
+        "savings": 65
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 2600,
+        "package": "Woven Sack",
+        "perUnit": 239,
+        "savings": 208
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 6500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 229,
+        "savings": 780
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "slug": "mint-powder-bulk-pack",
+    "name": "Mint Powder \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 500,
+    "mrp": 1000,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "mint-powder"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0b8876ef-e3eb-4968-bf6d-ec854fae46ed.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0b8876ef-e3eb-4968-bf6d-ec854fae46ed.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Mint Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Mint Powder designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1000,
+        "package": "Pouch Sack",
+        "perUnit": 490,
+        "savings": 20
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2500,
+        "package": "Pouch Sack",
+        "perUnit": 475,
+        "savings": 125
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 5000,
+        "package": "Woven Sack",
+        "perUnit": 460,
+        "savings": 400
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 12500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 440,
+        "savings": 1500
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "slug": "green-chilli-powder-bulk-pack",
+    "name": "Green Chilli Powder \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 460,
+    "mrp": 920,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "green-chilli-powder"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/3c04973e-187c-47e7-99af-c0fe2def4b2c.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/3c04973e-187c-47e7-99af-c0fe2def4b2c.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Green Chilli Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Green Chilli Powder designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 920,
+        "package": "Pouch Sack",
+        "perUnit": 451,
+        "savings": 18
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2300,
+        "package": "Pouch Sack",
+        "perUnit": 437,
+        "savings": 115
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 4600,
+        "package": "Woven Sack",
+        "perUnit": 423,
+        "savings": 368
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 11500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 405,
+        "savings": 1380
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "slug": "oregano-bulk-pack",
+    "name": "Oregano \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 680,
+    "mrp": 1360,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "oregano"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Oregano",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Oregano designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1360,
+        "package": "Pouch Sack",
+        "perUnit": 666,
+        "savings": 27
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 3400,
+        "package": "Pouch Sack",
+        "perUnit": 646,
+        "savings": 170
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 6800,
+        "package": "Woven Sack",
+        "perUnit": 626,
+        "savings": 544
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 17000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 598,
+        "savings": 2040
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "slug": "oregano-seasoning-bulk-pack",
+    "name": "Oregano Seasoning \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 620,
+    "mrp": 1240,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "oregano-seasoning"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f4da849d-15b4-4d1f-b427-c2c8527278d5.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f4da849d-15b4-4d1f-b427-c2c8527278d5.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Oregano Seasoning",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Oregano Seasoning designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1240,
+        "package": "Pouch Sack",
+        "perUnit": 608,
+        "savings": 25
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 3100,
+        "package": "Pouch Sack",
+        "perUnit": 589,
+        "savings": 155
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 6200,
+        "package": "Woven Sack",
+        "perUnit": 570,
+        "savings": 496
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 15500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 546,
+        "savings": 1860
+      }
+    ]
+  },
+  {
+    "id": 113,
+    "slug": "pizza-pasta-masala-bulk-pack",
+    "name": "Pizza Pasta Masala \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 540,
+    "mrp": 1080,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "pizza-pasta-masala"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0f9a417b-0a71-42f8-884d-ee83ded678e1.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0f9a417b-0a71-42f8-884d-ee83ded678e1.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Pizza Pasta Masala",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Pizza Pasta Masala designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1080,
+        "package": "Pouch Sack",
+        "perUnit": 529,
+        "savings": 22
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2700,
+        "package": "Pouch Sack",
+        "perUnit": 513,
+        "savings": 135
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 5400,
+        "package": "Woven Sack",
+        "perUnit": 497,
+        "savings": 432
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 13500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 475,
+        "savings": 1620
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "slug": "moringa-powder-bulk-pack",
+    "name": "Moringa Powder \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 720,
+    "mrp": 1440,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "moringa-powder"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Moringa Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Moringa Powder designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1440,
+        "package": "Pouch Sack",
+        "perUnit": 706,
+        "savings": 29
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 3600,
+        "package": "Pouch Sack",
+        "perUnit": 684,
+        "savings": 180
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 7200,
+        "package": "Woven Sack",
+        "perUnit": 662,
+        "savings": 576
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 18000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 634,
+        "savings": 2160
+      }
+    ]
+  },
+  {
+    "id": 115,
+    "slug": "beetroot-powder-bulk-pack",
+    "name": "Beetroot Powder \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 650,
+    "mrp": 1300,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "beetroot-powder"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/b338e9ae-49af-4598-8be7-8b61de5d97dd.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/b338e9ae-49af-4598-8be7-8b61de5d97dd.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Beetroot Powder",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Beetroot Powder designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1300,
+        "package": "Pouch Sack",
+        "perUnit": 637,
+        "savings": 26
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 3250,
+        "package": "Pouch Sack",
+        "perUnit": 618,
+        "savings": 163
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 6500,
+        "package": "Woven Sack",
+        "perUnit": 598,
+        "savings": 520
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 16250,
+        "package": "Heavy Duty Sack",
+        "perUnit": 572,
+        "savings": 1950
+      }
+    ]
+  },
+  {
+    "id": 116,
+    "slug": "red-chilli-flakes-bulk-pack",
+    "name": "Red Chilli Flakes \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 360,
+    "mrp": 720,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "red-chilli-flakes"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/6598ac82-021d-4309-b629-b6eced1843a2.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/6598ac82-021d-4309-b629-b6eced1843a2.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Red Chilli Flakes",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Red Chilli Flakes designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 720,
+        "package": "Pouch Sack",
+        "perUnit": 353,
+        "savings": 14
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 1800,
+        "package": "Pouch Sack",
+        "perUnit": 342,
+        "savings": 90
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 3600,
+        "package": "Woven Sack",
+        "perUnit": 331,
+        "savings": 288
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 9000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 317,
+        "savings": 1080
+      }
+    ]
+  },
+  {
+    "id": 117,
+    "slug": "peri-peri-masala-bulk-pack",
+    "name": "Peri-Peri Masala \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 490,
+    "mrp": 980,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "peri-peri-masala"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/76d75845-e7eb-4bb3-9879-235505ee7dd7.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/76d75845-e7eb-4bb3-9879-235505ee7dd7.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Peri-Peri Masala",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Peri-Peri Masala designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 980,
+        "package": "Pouch Sack",
+        "perUnit": 480,
+        "savings": 20
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2450,
+        "package": "Pouch Sack",
+        "perUnit": 466,
+        "savings": 123
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 4900,
+        "package": "Woven Sack",
+        "perUnit": 451,
+        "savings": 392
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 12250,
+        "package": "Heavy Duty Sack",
+        "perUnit": 431,
+        "savings": 1470
+      }
+    ]
+  },
+  {
+    "id": 118,
+    "slug": "chia-seeds-bulk-pack",
+    "name": "Chia Seeds \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 320,
+    "mrp": 640,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "chia-seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d48424b7-903f-48fd-804e-f005c85ddd96.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d48424b7-903f-48fd-804e-f005c85ddd96.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Chia Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Chia Seeds designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 640,
+        "package": "Pouch Sack",
+        "perUnit": 314,
+        "savings": 13
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 1600,
+        "package": "Pouch Sack",
+        "perUnit": 304,
+        "savings": 80
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 3200,
+        "package": "Woven Sack",
+        "perUnit": 294,
+        "savings": 256
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 8000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 282,
+        "savings": 960
+      }
+    ]
+  },
+  {
+    "id": 119,
+    "slug": "basil-seeds-bulk-pack",
+    "name": "Basil Seeds \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 400,
+    "mrp": 800,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "basil-seeds"
+    ],
+    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Basil Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Basil Seeds designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 800,
+        "package": "Pouch Sack",
+        "perUnit": 392,
+        "savings": 16
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2000,
+        "package": "Pouch Sack",
+        "perUnit": 380,
+        "savings": 100
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 4000,
+        "package": "Woven Sack",
+        "perUnit": 368,
+        "savings": 320
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 10000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 352,
+        "savings": 1200
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "slug": "watermelon-seeds-bulk-pack",
+    "name": "Watermelon Seeds \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 280,
+    "mrp": 560,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "watermelon-seeds"
+    ],
+    "image": "https://i.pinimg.com/1200x/ef/5e/2c/ef5e2c5b376defcc29feb832b0071101.jpg",
+    "images": [
+      "https://i.pinimg.com/1200x/ef/5e/2c/ef5e2c5b376defcc29feb832b0071101.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Watermelon Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Watermelon Seeds designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 560,
+        "package": "Pouch Sack",
+        "perUnit": 274,
+        "savings": 11
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 1400,
+        "package": "Pouch Sack",
+        "perUnit": 266,
+        "savings": 70
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 2800,
+        "package": "Woven Sack",
+        "perUnit": 258,
+        "savings": 224
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 7000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 246,
+        "savings": 840
+      }
+    ]
+  },
+  {
+    "id": 121,
+    "slug": "pumpkin-seeds-pampkeen-bulk-pack",
+    "name": "Pumpkin Seeds (Pampkeen) \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 520,
+    "mrp": 1040,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "pumpkin-seeds-pampkeen"
+    ],
+    "image": "https://i.pinimg.com/1200x/6e/f2/b4/6ef2b4bb98bc7ddfc76ab99a776752f8.jpg",
+    "images": [
+      "https://i.pinimg.com/1200x/6e/f2/b4/6ef2b4bb98bc7ddfc76ab99a776752f8.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Pumpkin Seeds (Pampkeen)",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Pumpkin Seeds (Pampkeen) designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1040,
+        "package": "Pouch Sack",
+        "perUnit": 510,
+        "savings": 21
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2600,
+        "package": "Pouch Sack",
+        "perUnit": 494,
+        "savings": 130
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 5200,
+        "package": "Woven Sack",
+        "perUnit": 478,
+        "savings": 416
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 13000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 458,
+        "savings": 1560
+      }
+    ]
+  },
+  {
+    "id": 122,
+    "slug": "flax-seeds-bulk-pack",
+    "name": "Flax Seeds \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 190,
+    "mrp": 380,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "flax-seeds"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/75d69c7b-a818-4636-ab9f-555e7f9f64ba.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/75d69c7b-a818-4636-ab9f-555e7f9f64ba.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Flax Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Flax Seeds designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 380,
+        "package": "Pouch Sack",
+        "perUnit": 186,
+        "savings": 8
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 950,
+        "package": "Pouch Sack",
+        "perUnit": 181,
+        "savings": 48
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 1900,
+        "package": "Woven Sack",
+        "perUnit": 175,
+        "savings": 152
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 4750,
+        "package": "Heavy Duty Sack",
+        "perUnit": 167,
+        "savings": 570
+      }
+    ]
+  },
+  {
+    "id": 123,
+    "slug": "sunflower-seeds-bulk-pack",
+    "name": "Sunflower Seeds \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 340,
+    "mrp": 680,
+    "stock": 100,
+    "isComingSoon": false,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "sunflower-seeds"
+    ],
+    "image": "https://i.pinimg.com/1200x/67/ed/a4/67eda453e41429a63cb98555c7703483.jpg",
+    "images": [
+      "https://i.pinimg.com/1200x/67/ed/a4/67eda453e41429a63cb98555c7703483.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Sunflower Seeds",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Sunflower Seeds designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 680,
+        "package": "Pouch Sack",
+        "perUnit": 333,
+        "savings": 14
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 1700,
+        "package": "Pouch Sack",
+        "perUnit": 323,
+        "savings": 85
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 3400,
+        "package": "Woven Sack",
+        "perUnit": 313,
+        "savings": 272
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 8500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 299,
+        "savings": 1020
+      }
+    ]
+  },
+  {
+    "id": 124,
+    "slug": "cinnamon-sticks-bulk-pack",
+    "name": "Cinnamon Sticks \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 600,
+    "mrp": 1200,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "cinnamon-sticks"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d6e98044-212b-478e-a315-0355d5b21bd9.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/d6e98044-212b-478e-a315-0355d5b21bd9.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Cinnamon Sticks",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Cinnamon Sticks designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1200,
+        "package": "Pouch Sack",
+        "perUnit": 588,
+        "savings": 24
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 3000,
+        "package": "Pouch Sack",
+        "perUnit": 570,
+        "savings": 150
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 6000,
+        "package": "Woven Sack",
+        "perUnit": 552,
+        "savings": 480
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 15000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 528,
+        "savings": 1800
+      }
+    ]
+  },
+  {
+    "id": 125,
+    "slug": "dry-amla-bulk-pack",
+    "name": "Dry Amla \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 240,
+    "mrp": 480,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "dry-amla"
+    ],
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=500&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=500&q=80",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Dry Amla",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Dry Amla designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 480,
+        "package": "Pouch Sack",
+        "perUnit": 235,
+        "savings": 10
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 1200,
+        "package": "Pouch Sack",
+        "perUnit": 228,
+        "savings": 60
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 2400,
+        "package": "Woven Sack",
+        "perUnit": 221,
+        "savings": 192
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 6000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 211,
+        "savings": 720
+      }
+    ]
+  },
+  {
+    "id": 126,
+    "slug": "ashwagandha-ashavgandha-bulk-pack",
+    "name": "Ashwagandha (Ashavgandha) \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 750,
+    "mrp": 1500,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "ashwagandha-ashavgandha"
+    ],
+    "image": "https://i.pinimg.com/1200x/79/ab/42/79ab4262e7e3ebad23d85634e7d1b23f.jpg",
+    "images": [
+      "https://i.pinimg.com/1200x/79/ab/42/79ab4262e7e3ebad23d85634e7d1b23f.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Ashwagandha (Ashavgandha)",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Ashwagandha (Ashavgandha) designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1500,
+        "package": "Pouch Sack",
+        "perUnit": 735,
+        "savings": 30
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 3750,
+        "package": "Pouch Sack",
+        "perUnit": 713,
+        "savings": 188
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 7500,
+        "package": "Woven Sack",
+        "perUnit": 690,
+        "savings": 600
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 18750,
+        "package": "Heavy Duty Sack",
+        "perUnit": 660,
+        "savings": 2250
+      }
+    ]
+  },
+  {
+    "id": 127,
+    "slug": "mulethi-bulk-pack",
+    "name": "Mulethi \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 450,
+    "mrp": 900,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "mulethi"
+    ],
+    "image": "https://i.pinimg.com/1200x/1c/cb/55/1ccb555844df088f67e52e6e1a90e8d1.jpg",
+    "images": [
+      "https://i.pinimg.com/1200x/1c/cb/55/1ccb555844df088f67e52e6e1a90e8d1.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Mulethi",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Mulethi designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 900,
+        "package": "Pouch Sack",
+        "perUnit": 441,
+        "savings": 18
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 2250,
+        "package": "Pouch Sack",
+        "perUnit": 428,
+        "savings": 113
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 4500,
+        "package": "Woven Sack",
+        "perUnit": 414,
+        "savings": 360
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 11250,
+        "package": "Heavy Duty Sack",
+        "perUnit": 396,
+        "savings": 1350
+      }
+    ]
+  },
+  {
+    "id": 128,
+    "slug": "almond-bulk-pack",
+    "name": "Almond \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 780,
+    "mrp": 1560,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "almond"
+    ],
+    "image": "https://i.pinimg.com/736x/dd/3c/b1/dd3cb1a90ea516f35191c3684e4e63d1.jpg",
+    "images": [
+      "https://i.pinimg.com/736x/dd/3c/b1/dd3cb1a90ea516f35191c3684e4e63d1.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Almond",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Almond designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1560,
+        "package": "Pouch Sack",
+        "perUnit": 764,
+        "savings": 31
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 3900,
+        "package": "Pouch Sack",
+        "perUnit": 741,
+        "savings": 195
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 7800,
+        "package": "Woven Sack",
+        "perUnit": 718,
+        "savings": 624
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 19500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 686,
+        "savings": 2340
+      }
+    ]
+  },
+  {
+    "id": 129,
+    "slug": "kaju-bulk-pack",
+    "name": "Kaju \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 840,
+    "mrp": 1680,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "kaju"
+    ],
+    "image": "https://i.pinimg.com/736x/37/d4/73/37d47378cfe8efc4f8c64aa50a832c18.jpg",
+    "images": [
+      "https://i.pinimg.com/736x/37/d4/73/37d47378cfe8efc4f8c64aa50a832c18.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Kaju",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Kaju designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1680,
+        "package": "Pouch Sack",
+        "perUnit": 823,
+        "savings": 34
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 4200,
+        "package": "Pouch Sack",
+        "perUnit": 798,
+        "savings": 210
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 8400,
+        "package": "Woven Sack",
+        "perUnit": 773,
+        "savings": 672
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 21000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 739,
+        "savings": 2520
+      }
+    ]
+  },
+  {
+    "id": 130,
+    "slug": "raisin-kashmish-bulk-pack",
+    "name": "Raisin (Kashmish) \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 320,
+    "mrp": 640,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "raisin-kashmish"
+    ],
+    "image": "https://i.pinimg.com/736x/ff/ab/4b/ffab4becedf4d7f03207cafcb1d8da05.jpg",
+    "images": [
+      "https://i.pinimg.com/736x/ff/ab/4b/ffab4becedf4d7f03207cafcb1d8da05.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Raisin (Kashmish)",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Raisin (Kashmish) designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 640,
+        "package": "Pouch Sack",
+        "perUnit": 314,
+        "savings": 13
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 1600,
+        "package": "Pouch Sack",
+        "perUnit": 304,
+        "savings": 80
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 3200,
+        "package": "Woven Sack",
+        "perUnit": 294,
+        "savings": 256
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 8000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 282,
+        "savings": 960
+      }
+    ]
+  },
+  {
+    "id": 131,
+    "slug": "apricot-bulk-pack",
+    "name": "Apricot \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 800,
+    "mrp": 1600,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "apricot"
+    ],
+    "image": "https://i.pinimg.com/736x/c6/02/50/c60250baec645a7c5345260713ec30ef.jpg",
+    "images": [
+      "https://i.pinimg.com/736x/c6/02/50/c60250baec645a7c5345260713ec30ef.jpg",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Apricot",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Apricot designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 1600,
+        "package": "Pouch Sack",
+        "perUnit": 784,
+        "savings": 32
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 4000,
+        "package": "Pouch Sack",
+        "perUnit": 760,
+        "savings": 200
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 8000,
+        "package": "Woven Sack",
+        "perUnit": 736,
+        "savings": 640
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 20000,
+        "package": "Heavy Duty Sack",
+        "perUnit": 704,
+        "savings": 2400
+      }
+    ]
+  },
+  {
+    "id": 132,
+    "slug": "pista-bulk-pack",
+    "name": "Pista \u2014 Bulk Pack",
+    "category": "bulk",
+    "extraCategories": [],
+    "brand": "Foodville",
+    "unit": "Pack of 2 (1kg each)",
+    "price": 1100,
+    "mrp": 2200,
+    "stock": 100,
+    "isComingSoon": true,
+    "rating": 4.8,
+    "tags": [
+      "bulk",
+      "wholesale",
+      "pista"
+    ],
+    "image": "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/554276ad-dca7-45dd-ba70-9bd0858b5eba.png",
+    "images": [
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/554276ad-dca7-45dd-ba70-9bd0858b5eba.png",
+      "https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/c4ec2b9c-5245-48f2-9d13-5edf42ab85f2.png"
+    ],
+    "highlights": {
+      "shelfLife": "12 Months from Packaging",
+      "storage": "Store in a cool, dry place off the ground.",
+      "origin": "India",
+      "form": "Bulk Packages (Sacks)",
+      "ingredients": "100% Pure Pista",
+      "foodType": "Vegetarian / Vegan",
+      "manufacturedBy": "Foodville Consumer Products Private Limited",
+      "netWeight": "1kg packets in master sacks"
+    },
+    "description": "Commercial B2B package of Pista designed for commercial kitchens, distributors, food chains and manufacturers. Wholesale pricing from mandi source.",
+    "units": [
+      {
+        "unit": "Pack of 2",
+        "mrp": 2200,
+        "package": "Pouch Sack",
+        "perUnit": 1078,
+        "savings": 44
+      },
+      {
+        "unit": "Pack of 5",
+        "mrp": 5500,
+        "package": "Pouch Sack",
+        "perUnit": 1045,
+        "savings": 275
+      },
+      {
+        "unit": "Pack of 10",
+        "mrp": 11000,
+        "package": "Woven Sack",
+        "perUnit": 1012,
+        "savings": 880
+      },
+      {
+        "unit": "Pack of 25",
+        "mrp": 27500,
+        "package": "Heavy Duty Sack",
+        "perUnit": 968,
+        "savings": 3300
       }
     ]
   }
 ];
-
-// ---------- 3. HELPER FUNCTIONS ----------
-export function getAllProducts() { return products; }
-
-export function getProductBySlug(slug) {
-  return products.find((p) => p.slug === slug);
-}
-
-export function getProductById(id) {
-  return products.find((p) => p.id === Number(id));
-}
-
-export function getProductsByCategory(categoryId) {
-  if (!categoryId || categoryId === "all") return products;
-  return products.filter((p) => p.category === categoryId);
-}
-
-export function searchProducts(query) {
-  const q = query.trim().toLowerCase();
-  if (!q) return products;
-  return products.filter(
-    (p) =>
-      p.name.toLowerCase().includes(q) ||
-      p.tags?.some((t) => t.toLowerCase().includes(q))
-  );
-}
-
-export function getCategoryName(categoryId) {
-  return categories.find((c) => c.id === categoryId)?.name || "Other";
-}
-
-export function getTopSellers() {
-  return products.filter((p) => p.rating >= 4.5);
-}

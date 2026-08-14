@@ -37,21 +37,25 @@ export default function ProductCard({ product }) {
       {/* Edge-to-edge Image + link to detail page */}
       <Link href={`/product/${product.slug}`} className="block">
         <div className="aspect-square overflow-hidden bg-cream relative w-full">
-          <ProductRibbon shopBy={product.shopBy} />
-          {discount > 0 && (
-            <div
-              className="absolute left-2.5 sm:left-3 top-0 z-10 bg-terracotta text-white font-black text-[9px] sm:text-[10px] leading-none px-2 pt-1.5 pb-2.5 flex flex-col items-center justify-center text-center select-none"
-              style={{
-                clipPath: "polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%)",
-                minWidth: "34px"
-              }}
-            >
-              <span>{discount}%</span>
-              <span className="text-[7px] font-bold opacity-90 tracking-wide mt-0.5">OFF</span>
-            </div>
+          {!product.isComingSoon && (
+            <>
+              <ProductRibbon shopBy={product.shopBy} />
+              {discount > 0 && (
+                <div
+                  className="absolute left-2.5 sm:left-3 top-0 z-10 bg-terracotta text-white font-black text-[9px] sm:text-[10px] leading-none px-2 pt-1.5 pb-2.5 flex flex-col items-center justify-center text-center select-none"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%)",
+                    minWidth: "34px"
+                  }}
+                >
+                  <span>{discount}%</span>
+                  <span className="text-[7px] font-bold opacity-90 tracking-wide mt-0.5">OFF</span>
+                </div>
+              )}
+            </>
           )}
           <img
-            src={product.image}
+            src={product.image || PRODUCT_FALLBACK_IMAGE}
             alt={product.name}
             className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
             onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = PRODUCT_FALLBACK_IMAGE; }}
@@ -70,53 +74,63 @@ export default function ProductCard({ product }) {
 
           <div className="flex items-center justify-between mt-1">
             <p className="text-[11px] sm:text-xs font-normal text-muted leading-none">{product.unit}</p>
-            <Link
-              href={`/bulk-order?productName=${encodeURIComponent(product.name)}`}
-              className="text-[10px] sm:text-[11px] font-bold text-terracotta hover:underline transition shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded"
-              title="Buy in Wholesale / Bulk (10kg+)"
-            >
-              📦 Buy Bulk?
-            </Link>
+            {!product.isComingSoon && (
+              <Link
+                href={`/bulk-order?productName=${encodeURIComponent(product.name)}`}
+                className="text-[10px] sm:text-[11px] font-bold text-terracotta hover:underline transition shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded"
+                title="Buy in Wholesale / Bulk (10kg+)"
+              >
+                📦 Buy Bulk?
+              </Link>
+            )}
           </div>
         </div>
 
         {/* Price and action row */}
-        <div className="mt-auto flex items-center justify-between gap-1.5 pt-2 border-t border-cardline/20">
-          <div className="flex flex-col">
-            <span className="text-sm sm:text-base font-bold text-ink leading-none">₹{product.price}</span>
-            {product.mrp > product.price && (
-              <span className="text-[9px] sm:text-[11px] font-normal text-muted line-through mt-0.5">₹{product.mrp}</span>
-            )}
-          </div>
-
-          {currentQty === 0 ? (
-            <button
-              onClick={() => addToCart(product, 1)}
-              disabled={product.stock === 0}
-              className="border-2 border-olive text-olive bg-olive/5 hover:bg-olive/10 transition font-bold uppercase text-xs sm:text-sm rounded-xl h-10 sm:h-11 min-h-[44px] px-4 sm:px-5 flex items-center justify-center tracking-wider active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none"
-            >
-              {product.stock === 0 ? "OUT" : "ADD"}
-            </button>
+        <div className="mt-auto pt-2 border-t border-cardline/20">
+          {product.isComingSoon ? (
+            <div className="w-full bg-amber-500/10 border border-amber-500/25 text-amber-900 rounded-xl h-10 sm:h-11 min-h-[44px] px-3 flex items-center justify-center font-bold text-xs sm:text-sm tracking-wider uppercase select-none">
+              ⏳ Coming Soon
+            </div>
           ) : (
-            <div className="flex items-center justify-between border-2 border-olive bg-olive text-white rounded-full min-h-[44px] h-11 px-1.5 w-[96px] sm:w-[108px] shadow-sm select-none overflow-hidden">
-              <button
-                type="button"
-                onClick={() => updateQty(cartItem.id, currentQty - 1)}
-                className="w-8 h-full flex items-center justify-center text-white text-lg font-extrabold hover:opacity-75 active:scale-90 transition focus:outline-none cursor-pointer"
-                aria-label="Decrease quantity"
-              >
-                −
-              </button>
-              <span className="text-sm font-bold text-white text-center px-1 select-none">{currentQty}</span>
-              <button
-                type="button"
-                onClick={() => updateQty(cartItem.id, currentQty + 1)}
-                disabled={product.stock > 0 && currentQty >= product.stock}
-                className="w-8 h-full flex items-center justify-center text-white text-lg font-extrabold hover:opacity-75 active:scale-90 transition disabled:opacity-40 focus:outline-none cursor-pointer"
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
+            <div className="flex items-center justify-between gap-1.5">
+              <div className="flex flex-col">
+                <span className="text-sm sm:text-base font-bold text-ink leading-none">₹{product.price}</span>
+                {product.mrp > product.price && (
+                  <span className="text-[9px] sm:text-[11px] font-normal text-muted line-through mt-0.5">₹{product.mrp}</span>
+                )}
+              </div>
+
+              {currentQty === 0 ? (
+                <button
+                  onClick={() => addToCart(product, 1)}
+                  disabled={product.stock === 0}
+                  className="border-2 border-olive text-olive bg-olive/5 hover:bg-olive/10 transition font-bold uppercase text-xs sm:text-sm rounded-xl h-10 sm:h-11 min-h-[44px] px-4 sm:px-5 flex items-center justify-center tracking-wider active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none"
+                >
+                  {product.stock === 0 ? "OUT" : "ADD"}
+                </button>
+              ) : (
+                <div className="flex items-center justify-between border-2 border-olive bg-olive text-white rounded-full min-h-[44px] h-11 px-1.5 w-[96px] sm:w-[108px] shadow-sm select-none overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => updateQty(cartItem.id, currentQty - 1)}
+                    className="w-8 h-full flex items-center justify-center text-white text-lg font-extrabold hover:opacity-75 active:scale-90 transition focus:outline-none cursor-pointer"
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
+                  <span className="text-sm font-bold text-white text-center px-1 select-none">{currentQty}</span>
+                  <button
+                    type="button"
+                    onClick={() => updateQty(cartItem.id, currentQty + 1)}
+                    disabled={product.stock > 0 && currentQty >= product.stock}
+                    className="w-8 h-full flex items-center justify-center text-white text-lg font-extrabold hover:opacity-75 active:scale-90 transition disabled:opacity-40 focus:outline-none cursor-pointer"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -122,18 +122,22 @@ function PackUnitSelector({ product, units, selectedUnit, qty, setSelectedUnit, 
                 <span className={`text-sm font-extrabold leading-tight ${isSelected ? "text-olive" : "text-ink"}`}>
                   {u.unit}
                 </span>
-                <div className="flex items-baseline gap-1 mt-1.5">
-                  <span className="text-sm font-black text-gold">₹{u.price}</span>
-                  {u.mrp > u.price && <span className="text-[10px] text-muted line-through">₹{u.mrp}</span>}
-                </div>
-                {u.perUnit && <span className="text-[10px] text-muted mt-0.5">₹{u.perUnit}/set</span>}
-                {discPct > 0 && (
-                  <span className="mt-1.5 rounded-md bg-terracotta/10 px-1.5 py-0.5 text-[10px] font-bold text-terracotta leading-none">
-                    {discPct}% OFF
-                  </span>
-                )}
-                {u.savings > 0 && (
-                  <span className="mt-0.5 text-[10px] font-semibold text-olive">Save ₹{u.savings}</span>
+                {!product.isComingSoon && (
+                  <>
+                    <div className="flex items-baseline gap-1 mt-1.5">
+                      <span className="text-sm font-black text-gold">₹{u.price}</span>
+                      {u.mrp > u.price && <span className="text-[10px] text-muted line-through">₹{u.mrp}</span>}
+                    </div>
+                    {u.perUnit && <span className="text-[10px] text-muted mt-0.5">₹{u.perUnit}/set</span>}
+                    {discPct > 0 && (
+                      <span className="mt-1.5 rounded-md bg-terracotta/10 px-1.5 py-0.5 text-[10px] font-bold text-terracotta leading-none">
+                        {discPct}% OFF
+                      </span>
+                    )}
+                    {u.savings > 0 && (
+                      <span className="mt-0.5 text-[10px] font-semibold text-olive">Save ₹{u.savings}</span>
+                    )}
+                  </>
                 )}
               </button>
             );
@@ -141,26 +145,55 @@ function PackUnitSelector({ product, units, selectedUnit, qty, setSelectedUnit, 
         </div>
       </div>
 
-      {/* Summary */}
-      <div className="rounded-2xl bg-cream/30 p-4 border border-cardline/60 flex items-center justify-between gap-4">
-        <div>
-          <PriceSummary
-            selectedUnit={selectedUnit}
-            qty={qty}
-            label="Total Price"
-          />
-          <span className="text-xs text-muted font-medium mt-0.5 block">
-            {selectedUnit.unit} × {qty} {qty > 1 ? "orders" : "order"} · ₹{selectedUnit.price}/order
-          </span>
-          {selectedUnit.savings > 0 && (
-            <span className="text-xs font-bold text-olive mt-0.5 block">
-              You save ₹{selectedUnit.savings * qty} on this order
-            </span>
-          )}
+      {/* Summary or Coming Soon Banner */}
+      {product.isComingSoon ? (
+        <div className="flex gap-3">
+          <div className="flex-1 rounded-2xl bg-amber-500/10 border border-amber-500/30 p-4 text-center">
+            <p className="text-sm font-bold text-amber-900 flex items-center justify-center gap-2">
+              <span>⏳</span> Coming Soon
+            </p>
+            <p className="text-xs text-amber-800/90 mt-1">
+              This item will be available for purchase soon. Add it to your wishlist to stay updated!
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={actionButtonsProps.onToggleWishlist}
+            className={`h-auto px-4 min-h-[44px] min-w-[44px] shrink-0 rounded-2xl border-2 flex items-center justify-center transition active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised ${
+              actionButtonsProps.inWishlist
+                ? "border-terracotta bg-terracotta/10 text-terracotta"
+                : "border-cardline bg-white text-muted hover:border-terracotta hover:text-terracotta"
+            }`}
+            aria-label="Toggle wishlist"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill={actionButtonsProps.inWishlist ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+          </button>
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="rounded-2xl bg-cream/30 p-4 border border-cardline/60 flex items-center justify-between gap-4">
+            <div>
+              <PriceSummary
+                selectedUnit={selectedUnit}
+                qty={qty}
+                label="Total Price"
+              />
+              <span className="text-xs text-muted font-medium mt-0.5 block">
+                {selectedUnit.unit} × {qty} {qty > 1 ? "orders" : "order"} · ₹{selectedUnit.price}/order
+              </span>
+              {selectedUnit.savings > 0 && (
+                <span className="text-xs font-bold text-olive mt-0.5 block">
+                  You save ₹{selectedUnit.savings * qty} on this order
+                </span>
+              )}
+            </div>
+          </div>
 
-      <ActionButtons {...actionButtonsProps} />
+          <ActionButtons {...actionButtonsProps} />
+        </>
+      )}
     </div>
   );
 }
@@ -184,37 +217,69 @@ function WeightUnitSelector({ product, units, selectedUnit, qty, setSelectedUnit
                   isSelected ? "border-olive bg-olive/5 shadow-sm" : "border-cardline bg-white hover:border-olive/30 hover:bg-cream/20"
                 }`}
               >
-                {unitDiscount > 0 && (
+                {!product.isComingSoon && unitDiscount > 0 && (
                   <span className="mb-1.5 self-end rounded-md bg-terracotta/10 px-1.5 py-0.5 text-[10px] font-bold text-terracotta leading-none">
                     {unitDiscount}% OFF
                   </span>
                 )}
                 <span className={`text-sm font-extrabold ${isSelected ? "text-olive" : "text-ink"}`}>{u.unit}</span>
-                <div className="flex items-baseline gap-1 mt-2">
-                  <span className="text-sm font-black text-gold">₹{u.price}</span>
-                  {u.mrp > u.price && <span className="text-xs text-muted line-through font-medium">₹{u.mrp}</span>}
-                </div>
+                {!product.isComingSoon && (
+                  <div className="flex items-baseline gap-1 mt-2">
+                    <span className="text-sm font-black text-gold">₹{u.price}</span>
+                    {u.mrp > u.price && <span className="text-xs text-muted line-through font-medium">₹{u.mrp}</span>}
+                  </div>
+                )}
               </button>
             );
           })}
         </div>
       </div>
 
-      <div className="rounded-2xl bg-cream/30 p-4 border border-cardline/60 flex items-center justify-between">
-        <div>
-          <PriceSummary
-            selectedUnit={selectedUnit}
-            qty={qty}
-            label="Selected Price"
-            perUnitLabel={`₹${selectedUnit.price} per packet (${selectedUnit.unit})`}
-          />
-          <span className="text-[10px] text-muted font-medium mt-0.5 block">
-            Inclusive of all taxes · Qty: {qty}
-          </span>
+      {/* Summary or Coming Soon Banner */}
+      {product.isComingSoon ? (
+        <div className="flex gap-3">
+          <div className="flex-1 rounded-2xl bg-amber-500/10 border border-amber-500/30 p-4 text-center">
+            <p className="text-sm font-bold text-amber-900 flex items-center justify-center gap-2">
+              <span>⏳</span> Coming Soon
+            </p>
+            <p className="text-xs text-amber-800/90 mt-1">
+              This item will be available for purchase soon. Add it to your wishlist to stay updated!
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={actionButtonsProps.onToggleWishlist}
+            className={`h-auto px-4 min-h-[44px] min-w-[44px] shrink-0 rounded-2xl border-2 flex items-center justify-center transition active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised ${
+              actionButtonsProps.inWishlist
+                ? "border-terracotta bg-terracotta/10 text-terracotta"
+                : "border-cardline bg-white text-muted hover:border-terracotta hover:text-terracotta"
+            }`}
+            aria-label="Toggle wishlist"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill={actionButtonsProps.inWishlist ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+          </button>
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="rounded-2xl bg-cream/30 p-4 border border-cardline/60 flex items-center justify-between">
+            <div>
+              <PriceSummary
+                selectedUnit={selectedUnit}
+                qty={qty}
+                label="Selected Price"
+                perUnitLabel={`₹${selectedUnit.price} per packet (${selectedUnit.unit})`}
+              />
+              <span className="text-[10px] text-muted font-medium mt-0.5 block">
+                Inclusive of all taxes · Qty: {qty}
+              </span>
+            </div>
+          </div>
 
-      <ActionButtons {...actionButtonsProps} />
+          <ActionButtons {...actionButtonsProps} />
+        </>
+      )}
     </div>
   );
 }

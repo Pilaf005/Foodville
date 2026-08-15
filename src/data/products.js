@@ -48,6 +48,9 @@ export const categories = [
 ];
 
 // ---------- 2. PRODUCTS ----------
+;
+
+// ---------- 2. PRODUCTS ----------
 export const products = [
   {
     "id": 1,
@@ -6228,12 +6231,12 @@ export const products = [
   {
     "id": 103,
     "slug": "red-onion-powder-bulk-pack",
-    "name": "Red Onion Powder \u2014 Bulk Pack",
+    "name": "Red Onion Powder — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 450,
+    "price": 882,
     "mrp": 900,
     "stock": 100,
     "isComingSoon": false,
@@ -6265,40 +6268,44 @@ export const products = [
         "mrp": 900,
         "package": "Pouch Sack",
         "perUnit": 441,
-        "savings": 18
+        "savings": 18,
+        "price": 882
       },
       {
         "unit": "Pack of 5",
         "mrp": 2250,
         "package": "Pouch Sack",
         "perUnit": 428,
-        "savings": 113
+        "savings": 113,
+        "price": 2138
       },
       {
         "unit": "Pack of 10",
         "mrp": 4500,
         "package": "Woven Sack",
         "perUnit": 414,
-        "savings": 360
+        "savings": 360,
+        "price": 4140
       },
       {
         "unit": "Pack of 25",
         "mrp": 11250,
         "package": "Heavy Duty Sack",
         "perUnit": 396,
-        "savings": 1350
+        "savings": 1350,
+        "price": 9900
       }
     ]
   },
   {
     "id": 104,
     "slug": "white-onion-powder-bulk-pack",
-    "name": "White Onion Powder \u2014 Bulk Pack",
+    "name": "White Onion Powder — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 480,
+    "price": 941,
     "mrp": 960,
     "stock": 100,
     "isComingSoon": false,
@@ -6330,40 +6337,44 @@ export const products = [
         "mrp": 960,
         "package": "Pouch Sack",
         "perUnit": 470,
-        "savings": 19
+        "savings": 19,
+        "price": 941
       },
       {
         "unit": "Pack of 5",
         "mrp": 2400,
         "package": "Pouch Sack",
         "perUnit": 456,
-        "savings": 120
+        "savings": 120,
+        "price": 2280
       },
       {
         "unit": "Pack of 10",
         "mrp": 4800,
         "package": "Woven Sack",
         "perUnit": 442,
-        "savings": 384
+        "savings": 384,
+        "price": 4416
       },
       {
         "unit": "Pack of 25",
         "mrp": 12000,
         "package": "Heavy Duty Sack",
         "perUnit": 422,
-        "savings": 1440
+        "savings": 1440,
+        "price": 10560
       }
     ]
   },
   {
     "id": 105,
     "slug": "garlic-powder-bulk-pack",
-    "name": "Garlic Powder \u2014 Bulk Pack",
+    "name": "Garlic Powder — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 380,
+    "price": 745,
     "mrp": 760,
     "stock": 100,
     "isComingSoon": false,
@@ -6395,40 +6406,44 @@ export const products = [
         "mrp": 760,
         "package": "Pouch Sack",
         "perUnit": 372,
-        "savings": 15
+        "savings": 15,
+        "price": 745
       },
       {
         "unit": "Pack of 5",
         "mrp": 1900,
         "package": "Pouch Sack",
         "perUnit": 361,
-        "savings": 95
+        "savings": 95,
+        "price": 1805
       },
       {
         "unit": "Pack of 10",
         "mrp": 3800,
         "package": "Woven Sack",
         "perUnit": 350,
-        "savings": 304
+        "savings": 304,
+        "price": 3496
       },
       {
         "unit": "Pack of 25",
         "mrp": 9500,
         "package": "Heavy Duty Sack",
         "perUnit": 334,
-        "savings": 1140
+        "savings": 1140,
+        "price": 8360
       }
     ]
   },
   {
     "id": 106,
     "slug": "ginger-powder-bulk-pack",
-    "name": "Ginger Powder \u2014 Bulk Pack",
+    "name": "Ginger Powder — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 420,
+    "price": 823,
     "mrp": 840,
     "stock": 100,
     "isComingSoon": false,
@@ -6460,40 +6475,44 @@ export const products = [
         "mrp": 840,
         "package": "Pouch Sack",
         "perUnit": 412,
-        "savings": 17
+        "savings": 17,
+        "price": 823
       },
       {
         "unit": "Pack of 5",
         "mrp": 2100,
         "package": "Pouch Sack",
         "perUnit": 399,
-        "savings": 105
+        "savings": 105,
+        "price": 1995
       },
       {
         "unit": "Pack of 10",
         "mrp": 4200,
         "package": "Woven Sack",
         "perUnit": 386,
-        "savings": 336
+        "savings": 336,
+        "price": 3864
       },
       {
         "unit": "Pack of 25",
         "mrp": 10500,
         "package": "Heavy Duty Sack",
         "perUnit": 370,
-        "savings": 1260
+        "savings": 1260,
+        "price": 9240
       }
     ]
   },
   {
     "id": 107,
     "slug": "tomato-powder-bulk-pack",
-    "name": "Tomato Powder \u2014 Bulk Pack",
+    "name": "Tomato Powder — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 550,
+    "price": 1078,
     "mrp": 1100,
     "stock": 100,
     "isComingSoon": false,
@@ -6525,40 +6544,44 @@ export const products = [
         "mrp": 1100,
         "package": "Pouch Sack",
         "perUnit": 539,
-        "savings": 22
+        "savings": 22,
+        "price": 1078
       },
       {
         "unit": "Pack of 5",
         "mrp": 2750,
         "package": "Pouch Sack",
         "perUnit": 523,
-        "savings": 138
+        "savings": 138,
+        "price": 2613
       },
       {
         "unit": "Pack of 10",
         "mrp": 5500,
         "package": "Woven Sack",
         "perUnit": 506,
-        "savings": 440
+        "savings": 440,
+        "price": 5060
       },
       {
         "unit": "Pack of 25",
         "mrp": 13750,
         "package": "Heavy Duty Sack",
         "perUnit": 484,
-        "savings": 1650
+        "savings": 1650,
+        "price": 12100
       }
     ]
   },
   {
     "id": 108,
     "slug": "potato-flakes-bulk-pack",
-    "name": "Potato Flakes \u2014 Bulk Pack",
+    "name": "Potato Flakes — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 260,
+    "price": 510,
     "mrp": 520,
     "stock": 100,
     "isComingSoon": false,
@@ -6590,40 +6613,44 @@ export const products = [
         "mrp": 520,
         "package": "Pouch Sack",
         "perUnit": 255,
-        "savings": 10
+        "savings": 10,
+        "price": 510
       },
       {
         "unit": "Pack of 5",
         "mrp": 1300,
         "package": "Pouch Sack",
         "perUnit": 247,
-        "savings": 65
+        "savings": 65,
+        "price": 1235
       },
       {
         "unit": "Pack of 10",
         "mrp": 2600,
         "package": "Woven Sack",
         "perUnit": 239,
-        "savings": 208
+        "savings": 208,
+        "price": 2392
       },
       {
         "unit": "Pack of 25",
         "mrp": 6500,
         "package": "Heavy Duty Sack",
         "perUnit": 229,
-        "savings": 780
+        "savings": 780,
+        "price": 5720
       }
     ]
   },
   {
     "id": 109,
     "slug": "mint-powder-bulk-pack",
-    "name": "Mint Powder \u2014 Bulk Pack",
+    "name": "Mint Powder — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 500,
+    "price": 980,
     "mrp": 1000,
     "stock": 100,
     "isComingSoon": false,
@@ -6655,40 +6682,44 @@ export const products = [
         "mrp": 1000,
         "package": "Pouch Sack",
         "perUnit": 490,
-        "savings": 20
+        "savings": 20,
+        "price": 980
       },
       {
         "unit": "Pack of 5",
         "mrp": 2500,
         "package": "Pouch Sack",
         "perUnit": 475,
-        "savings": 125
+        "savings": 125,
+        "price": 2375
       },
       {
         "unit": "Pack of 10",
         "mrp": 5000,
         "package": "Woven Sack",
         "perUnit": 460,
-        "savings": 400
+        "savings": 400,
+        "price": 4600
       },
       {
         "unit": "Pack of 25",
         "mrp": 12500,
         "package": "Heavy Duty Sack",
         "perUnit": 440,
-        "savings": 1500
+        "savings": 1500,
+        "price": 11000
       }
     ]
   },
   {
     "id": 110,
     "slug": "green-chilli-powder-bulk-pack",
-    "name": "Green Chilli Powder \u2014 Bulk Pack",
+    "name": "Green Chilli Powder — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 460,
+    "price": 902,
     "mrp": 920,
     "stock": 100,
     "isComingSoon": false,
@@ -6720,40 +6751,44 @@ export const products = [
         "mrp": 920,
         "package": "Pouch Sack",
         "perUnit": 451,
-        "savings": 18
+        "savings": 18,
+        "price": 902
       },
       {
         "unit": "Pack of 5",
         "mrp": 2300,
         "package": "Pouch Sack",
         "perUnit": 437,
-        "savings": 115
+        "savings": 115,
+        "price": 2185
       },
       {
         "unit": "Pack of 10",
         "mrp": 4600,
         "package": "Woven Sack",
         "perUnit": 423,
-        "savings": 368
+        "savings": 368,
+        "price": 4232
       },
       {
         "unit": "Pack of 25",
         "mrp": 11500,
         "package": "Heavy Duty Sack",
         "perUnit": 405,
-        "savings": 1380
+        "savings": 1380,
+        "price": 10120
       }
     ]
   },
   {
     "id": 111,
     "slug": "oregano-bulk-pack",
-    "name": "Oregano \u2014 Bulk Pack",
+    "name": "Oregano — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 680,
+    "price": 1333,
     "mrp": 1360,
     "stock": 100,
     "isComingSoon": false,
@@ -6784,40 +6819,44 @@ export const products = [
         "mrp": 1360,
         "package": "Pouch Sack",
         "perUnit": 666,
-        "savings": 27
+        "savings": 27,
+        "price": 1333
       },
       {
         "unit": "Pack of 5",
         "mrp": 3400,
         "package": "Pouch Sack",
         "perUnit": 646,
-        "savings": 170
+        "savings": 170,
+        "price": 3230
       },
       {
         "unit": "Pack of 10",
         "mrp": 6800,
         "package": "Woven Sack",
         "perUnit": 626,
-        "savings": 544
+        "savings": 544,
+        "price": 6256
       },
       {
         "unit": "Pack of 25",
         "mrp": 17000,
         "package": "Heavy Duty Sack",
         "perUnit": 598,
-        "savings": 2040
+        "savings": 2040,
+        "price": 14960
       }
     ]
   },
   {
     "id": 112,
     "slug": "oregano-seasoning-bulk-pack",
-    "name": "Oregano Seasoning \u2014 Bulk Pack",
+    "name": "Oregano Seasoning — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 620,
+    "price": 1215,
     "mrp": 1240,
     "stock": 100,
     "isComingSoon": false,
@@ -6849,40 +6888,44 @@ export const products = [
         "mrp": 1240,
         "package": "Pouch Sack",
         "perUnit": 608,
-        "savings": 25
+        "savings": 25,
+        "price": 1215
       },
       {
         "unit": "Pack of 5",
         "mrp": 3100,
         "package": "Pouch Sack",
         "perUnit": 589,
-        "savings": 155
+        "savings": 155,
+        "price": 2945
       },
       {
         "unit": "Pack of 10",
         "mrp": 6200,
         "package": "Woven Sack",
         "perUnit": 570,
-        "savings": 496
+        "savings": 496,
+        "price": 5704
       },
       {
         "unit": "Pack of 25",
         "mrp": 15500,
         "package": "Heavy Duty Sack",
         "perUnit": 546,
-        "savings": 1860
+        "savings": 1860,
+        "price": 13640
       }
     ]
   },
   {
     "id": 113,
     "slug": "pizza-pasta-masala-bulk-pack",
-    "name": "Pizza Pasta Masala \u2014 Bulk Pack",
+    "name": "Pizza Pasta Masala — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 540,
+    "price": 1058,
     "mrp": 1080,
     "stock": 100,
     "isComingSoon": false,
@@ -6914,40 +6957,44 @@ export const products = [
         "mrp": 1080,
         "package": "Pouch Sack",
         "perUnit": 529,
-        "savings": 22
+        "savings": 22,
+        "price": 1058
       },
       {
         "unit": "Pack of 5",
         "mrp": 2700,
         "package": "Pouch Sack",
         "perUnit": 513,
-        "savings": 135
+        "savings": 135,
+        "price": 2565
       },
       {
         "unit": "Pack of 10",
         "mrp": 5400,
         "package": "Woven Sack",
         "perUnit": 497,
-        "savings": 432
+        "savings": 432,
+        "price": 4968
       },
       {
         "unit": "Pack of 25",
         "mrp": 13500,
         "package": "Heavy Duty Sack",
         "perUnit": 475,
-        "savings": 1620
+        "savings": 1620,
+        "price": 11880
       }
     ]
   },
   {
     "id": 114,
     "slug": "moringa-powder-bulk-pack",
-    "name": "Moringa Powder \u2014 Bulk Pack",
+    "name": "Moringa Powder — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 720,
+    "price": 1411,
     "mrp": 1440,
     "stock": 100,
     "isComingSoon": false,
@@ -6978,40 +7025,44 @@ export const products = [
         "mrp": 1440,
         "package": "Pouch Sack",
         "perUnit": 706,
-        "savings": 29
+        "savings": 29,
+        "price": 1411
       },
       {
         "unit": "Pack of 5",
         "mrp": 3600,
         "package": "Pouch Sack",
         "perUnit": 684,
-        "savings": 180
+        "savings": 180,
+        "price": 3420
       },
       {
         "unit": "Pack of 10",
         "mrp": 7200,
         "package": "Woven Sack",
         "perUnit": 662,
-        "savings": 576
+        "savings": 576,
+        "price": 6624
       },
       {
         "unit": "Pack of 25",
         "mrp": 18000,
         "package": "Heavy Duty Sack",
         "perUnit": 634,
-        "savings": 2160
+        "savings": 2160,
+        "price": 15840
       }
     ]
   },
   {
     "id": 115,
     "slug": "beetroot-powder-bulk-pack",
-    "name": "Beetroot Powder \u2014 Bulk Pack",
+    "name": "Beetroot Powder — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 650,
+    "price": 1274,
     "mrp": 1300,
     "stock": 100,
     "isComingSoon": false,
@@ -7043,40 +7094,44 @@ export const products = [
         "mrp": 1300,
         "package": "Pouch Sack",
         "perUnit": 637,
-        "savings": 26
+        "savings": 26,
+        "price": 1274
       },
       {
         "unit": "Pack of 5",
         "mrp": 3250,
         "package": "Pouch Sack",
         "perUnit": 618,
-        "savings": 163
+        "savings": 163,
+        "price": 3088
       },
       {
         "unit": "Pack of 10",
         "mrp": 6500,
         "package": "Woven Sack",
         "perUnit": 598,
-        "savings": 520
+        "savings": 520,
+        "price": 5980
       },
       {
         "unit": "Pack of 25",
         "mrp": 16250,
         "package": "Heavy Duty Sack",
         "perUnit": 572,
-        "savings": 1950
+        "savings": 1950,
+        "price": 14300
       }
     ]
   },
   {
     "id": 116,
     "slug": "red-chilli-flakes-bulk-pack",
-    "name": "Red Chilli Flakes \u2014 Bulk Pack",
+    "name": "Red Chilli Flakes — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 360,
+    "price": 706,
     "mrp": 720,
     "stock": 100,
     "isComingSoon": false,
@@ -7108,40 +7163,44 @@ export const products = [
         "mrp": 720,
         "package": "Pouch Sack",
         "perUnit": 353,
-        "savings": 14
+        "savings": 14,
+        "price": 706
       },
       {
         "unit": "Pack of 5",
         "mrp": 1800,
         "package": "Pouch Sack",
         "perUnit": 342,
-        "savings": 90
+        "savings": 90,
+        "price": 1710
       },
       {
         "unit": "Pack of 10",
         "mrp": 3600,
         "package": "Woven Sack",
         "perUnit": 331,
-        "savings": 288
+        "savings": 288,
+        "price": 3312
       },
       {
         "unit": "Pack of 25",
         "mrp": 9000,
         "package": "Heavy Duty Sack",
         "perUnit": 317,
-        "savings": 1080
+        "savings": 1080,
+        "price": 7920
       }
     ]
   },
   {
     "id": 117,
     "slug": "peri-peri-masala-bulk-pack",
-    "name": "Peri-Peri Masala \u2014 Bulk Pack",
+    "name": "Peri-Peri Masala — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 490,
+    "price": 960,
     "mrp": 980,
     "stock": 100,
     "isComingSoon": false,
@@ -7173,40 +7232,44 @@ export const products = [
         "mrp": 980,
         "package": "Pouch Sack",
         "perUnit": 480,
-        "savings": 20
+        "savings": 20,
+        "price": 960
       },
       {
         "unit": "Pack of 5",
         "mrp": 2450,
         "package": "Pouch Sack",
         "perUnit": 466,
-        "savings": 123
+        "savings": 123,
+        "price": 2328
       },
       {
         "unit": "Pack of 10",
         "mrp": 4900,
         "package": "Woven Sack",
         "perUnit": 451,
-        "savings": 392
+        "savings": 392,
+        "price": 4508
       },
       {
         "unit": "Pack of 25",
         "mrp": 12250,
         "package": "Heavy Duty Sack",
         "perUnit": 431,
-        "savings": 1470
+        "savings": 1470,
+        "price": 10780
       }
     ]
   },
   {
     "id": 118,
     "slug": "chia-seeds-bulk-pack",
-    "name": "Chia Seeds \u2014 Bulk Pack",
+    "name": "Chia Seeds — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 320,
+    "price": 627,
     "mrp": 640,
     "stock": 100,
     "isComingSoon": false,
@@ -7238,40 +7301,44 @@ export const products = [
         "mrp": 640,
         "package": "Pouch Sack",
         "perUnit": 314,
-        "savings": 13
+        "savings": 13,
+        "price": 627
       },
       {
         "unit": "Pack of 5",
         "mrp": 1600,
         "package": "Pouch Sack",
         "perUnit": 304,
-        "savings": 80
+        "savings": 80,
+        "price": 1520
       },
       {
         "unit": "Pack of 10",
         "mrp": 3200,
         "package": "Woven Sack",
         "perUnit": 294,
-        "savings": 256
+        "savings": 256,
+        "price": 2944
       },
       {
         "unit": "Pack of 25",
         "mrp": 8000,
         "package": "Heavy Duty Sack",
         "perUnit": 282,
-        "savings": 960
+        "savings": 960,
+        "price": 7040
       }
     ]
   },
   {
     "id": 119,
     "slug": "basil-seeds-bulk-pack",
-    "name": "Basil Seeds \u2014 Bulk Pack",
+    "name": "Basil Seeds — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 400,
+    "price": 784,
     "mrp": 800,
     "stock": 100,
     "isComingSoon": false,
@@ -7303,40 +7370,44 @@ export const products = [
         "mrp": 800,
         "package": "Pouch Sack",
         "perUnit": 392,
-        "savings": 16
+        "savings": 16,
+        "price": 784
       },
       {
         "unit": "Pack of 5",
         "mrp": 2000,
         "package": "Pouch Sack",
         "perUnit": 380,
-        "savings": 100
+        "savings": 100,
+        "price": 1900
       },
       {
         "unit": "Pack of 10",
         "mrp": 4000,
         "package": "Woven Sack",
         "perUnit": 368,
-        "savings": 320
+        "savings": 320,
+        "price": 3680
       },
       {
         "unit": "Pack of 25",
         "mrp": 10000,
         "package": "Heavy Duty Sack",
         "perUnit": 352,
-        "savings": 1200
+        "savings": 1200,
+        "price": 8800
       }
     ]
   },
   {
     "id": 120,
     "slug": "watermelon-seeds-bulk-pack",
-    "name": "Watermelon Seeds \u2014 Bulk Pack",
+    "name": "Watermelon Seeds — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 280,
+    "price": 549,
     "mrp": 560,
     "stock": 100,
     "isComingSoon": false,
@@ -7368,40 +7439,44 @@ export const products = [
         "mrp": 560,
         "package": "Pouch Sack",
         "perUnit": 274,
-        "savings": 11
+        "savings": 11,
+        "price": 549
       },
       {
         "unit": "Pack of 5",
         "mrp": 1400,
         "package": "Pouch Sack",
         "perUnit": 266,
-        "savings": 70
+        "savings": 70,
+        "price": 1330
       },
       {
         "unit": "Pack of 10",
         "mrp": 2800,
         "package": "Woven Sack",
         "perUnit": 258,
-        "savings": 224
+        "savings": 224,
+        "price": 2576
       },
       {
         "unit": "Pack of 25",
         "mrp": 7000,
         "package": "Heavy Duty Sack",
         "perUnit": 246,
-        "savings": 840
+        "savings": 840,
+        "price": 6160
       }
     ]
   },
   {
     "id": 121,
     "slug": "pumpkin-seeds-pampkeen-bulk-pack",
-    "name": "Pumpkin Seeds (Pampkeen) \u2014 Bulk Pack",
+    "name": "Pumpkin Seeds (Pampkeen) — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 520,
+    "price": 1019,
     "mrp": 1040,
     "stock": 100,
     "isComingSoon": false,
@@ -7433,40 +7508,44 @@ export const products = [
         "mrp": 1040,
         "package": "Pouch Sack",
         "perUnit": 510,
-        "savings": 21
+        "savings": 21,
+        "price": 1019
       },
       {
         "unit": "Pack of 5",
         "mrp": 2600,
         "package": "Pouch Sack",
         "perUnit": 494,
-        "savings": 130
+        "savings": 130,
+        "price": 2470
       },
       {
         "unit": "Pack of 10",
         "mrp": 5200,
         "package": "Woven Sack",
         "perUnit": 478,
-        "savings": 416
+        "savings": 416,
+        "price": 4784
       },
       {
         "unit": "Pack of 25",
         "mrp": 13000,
         "package": "Heavy Duty Sack",
         "perUnit": 458,
-        "savings": 1560
+        "savings": 1560,
+        "price": 11440
       }
     ]
   },
   {
     "id": 122,
     "slug": "flax-seeds-bulk-pack",
-    "name": "Flax Seeds \u2014 Bulk Pack",
+    "name": "Flax Seeds — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 190,
+    "price": 372,
     "mrp": 380,
     "stock": 100,
     "isComingSoon": false,
@@ -7498,40 +7577,44 @@ export const products = [
         "mrp": 380,
         "package": "Pouch Sack",
         "perUnit": 186,
-        "savings": 8
+        "savings": 8,
+        "price": 372
       },
       {
         "unit": "Pack of 5",
         "mrp": 950,
         "package": "Pouch Sack",
         "perUnit": 181,
-        "savings": 48
+        "savings": 48,
+        "price": 903
       },
       {
         "unit": "Pack of 10",
         "mrp": 1900,
         "package": "Woven Sack",
         "perUnit": 175,
-        "savings": 152
+        "savings": 152,
+        "price": 1748
       },
       {
         "unit": "Pack of 25",
         "mrp": 4750,
         "package": "Heavy Duty Sack",
         "perUnit": 167,
-        "savings": 570
+        "savings": 570,
+        "price": 4180
       }
     ]
   },
   {
     "id": 123,
     "slug": "sunflower-seeds-bulk-pack",
-    "name": "Sunflower Seeds \u2014 Bulk Pack",
+    "name": "Sunflower Seeds — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 340,
+    "price": 666,
     "mrp": 680,
     "stock": 100,
     "isComingSoon": false,
@@ -7563,40 +7646,44 @@ export const products = [
         "mrp": 680,
         "package": "Pouch Sack",
         "perUnit": 333,
-        "savings": 14
+        "savings": 14,
+        "price": 666
       },
       {
         "unit": "Pack of 5",
         "mrp": 1700,
         "package": "Pouch Sack",
         "perUnit": 323,
-        "savings": 85
+        "savings": 85,
+        "price": 1615
       },
       {
         "unit": "Pack of 10",
         "mrp": 3400,
         "package": "Woven Sack",
         "perUnit": 313,
-        "savings": 272
+        "savings": 272,
+        "price": 3128
       },
       {
         "unit": "Pack of 25",
         "mrp": 8500,
         "package": "Heavy Duty Sack",
         "perUnit": 299,
-        "savings": 1020
+        "savings": 1020,
+        "price": 7480
       }
     ]
   },
   {
     "id": 124,
     "slug": "cinnamon-sticks-bulk-pack",
-    "name": "Cinnamon Sticks \u2014 Bulk Pack",
+    "name": "Cinnamon Sticks — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 600,
+    "price": 1176,
     "mrp": 1200,
     "stock": 100,
     "isComingSoon": true,
@@ -7628,40 +7715,44 @@ export const products = [
         "mrp": 1200,
         "package": "Pouch Sack",
         "perUnit": 588,
-        "savings": 24
+        "savings": 24,
+        "price": 1176
       },
       {
         "unit": "Pack of 5",
         "mrp": 3000,
         "package": "Pouch Sack",
         "perUnit": 570,
-        "savings": 150
+        "savings": 150,
+        "price": 2850
       },
       {
         "unit": "Pack of 10",
         "mrp": 6000,
         "package": "Woven Sack",
         "perUnit": 552,
-        "savings": 480
+        "savings": 480,
+        "price": 5520
       },
       {
         "unit": "Pack of 25",
         "mrp": 15000,
         "package": "Heavy Duty Sack",
         "perUnit": 528,
-        "savings": 1800
+        "savings": 1800,
+        "price": 13200
       }
     ]
   },
   {
     "id": 125,
     "slug": "dry-amla-bulk-pack",
-    "name": "Dry Amla \u2014 Bulk Pack",
+    "name": "Dry Amla — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 240,
+    "price": 470,
     "mrp": 480,
     "stock": 100,
     "isComingSoon": true,
@@ -7693,40 +7784,44 @@ export const products = [
         "mrp": 480,
         "package": "Pouch Sack",
         "perUnit": 235,
-        "savings": 10
+        "savings": 10,
+        "price": 470
       },
       {
         "unit": "Pack of 5",
         "mrp": 1200,
         "package": "Pouch Sack",
         "perUnit": 228,
-        "savings": 60
+        "savings": 60,
+        "price": 1140
       },
       {
         "unit": "Pack of 10",
         "mrp": 2400,
         "package": "Woven Sack",
         "perUnit": 221,
-        "savings": 192
+        "savings": 192,
+        "price": 2208
       },
       {
         "unit": "Pack of 25",
         "mrp": 6000,
         "package": "Heavy Duty Sack",
         "perUnit": 211,
-        "savings": 720
+        "savings": 720,
+        "price": 5280
       }
     ]
   },
   {
     "id": 126,
     "slug": "ashwagandha-ashavgandha-bulk-pack",
-    "name": "Ashwagandha (Ashavgandha) \u2014 Bulk Pack",
+    "name": "Ashwagandha (Ashavgandha) — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 750,
+    "price": 1470,
     "mrp": 1500,
     "stock": 100,
     "isComingSoon": true,
@@ -7758,40 +7853,44 @@ export const products = [
         "mrp": 1500,
         "package": "Pouch Sack",
         "perUnit": 735,
-        "savings": 30
+        "savings": 30,
+        "price": 1470
       },
       {
         "unit": "Pack of 5",
         "mrp": 3750,
         "package": "Pouch Sack",
         "perUnit": 713,
-        "savings": 188
+        "savings": 188,
+        "price": 3563
       },
       {
         "unit": "Pack of 10",
         "mrp": 7500,
         "package": "Woven Sack",
         "perUnit": 690,
-        "savings": 600
+        "savings": 600,
+        "price": 6900
       },
       {
         "unit": "Pack of 25",
         "mrp": 18750,
         "package": "Heavy Duty Sack",
         "perUnit": 660,
-        "savings": 2250
+        "savings": 2250,
+        "price": 16500
       }
     ]
   },
   {
     "id": 127,
     "slug": "mulethi-bulk-pack",
-    "name": "Mulethi \u2014 Bulk Pack",
+    "name": "Mulethi — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 450,
+    "price": 882,
     "mrp": 900,
     "stock": 100,
     "isComingSoon": true,
@@ -7823,40 +7922,44 @@ export const products = [
         "mrp": 900,
         "package": "Pouch Sack",
         "perUnit": 441,
-        "savings": 18
+        "savings": 18,
+        "price": 882
       },
       {
         "unit": "Pack of 5",
         "mrp": 2250,
         "package": "Pouch Sack",
         "perUnit": 428,
-        "savings": 113
+        "savings": 113,
+        "price": 2138
       },
       {
         "unit": "Pack of 10",
         "mrp": 4500,
         "package": "Woven Sack",
         "perUnit": 414,
-        "savings": 360
+        "savings": 360,
+        "price": 4140
       },
       {
         "unit": "Pack of 25",
         "mrp": 11250,
         "package": "Heavy Duty Sack",
         "perUnit": 396,
-        "savings": 1350
+        "savings": 1350,
+        "price": 9900
       }
     ]
   },
   {
     "id": 128,
     "slug": "almond-bulk-pack",
-    "name": "Almond \u2014 Bulk Pack",
+    "name": "Almond — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 780,
+    "price": 1529,
     "mrp": 1560,
     "stock": 100,
     "isComingSoon": true,
@@ -7888,40 +7991,44 @@ export const products = [
         "mrp": 1560,
         "package": "Pouch Sack",
         "perUnit": 764,
-        "savings": 31
+        "savings": 31,
+        "price": 1529
       },
       {
         "unit": "Pack of 5",
         "mrp": 3900,
         "package": "Pouch Sack",
         "perUnit": 741,
-        "savings": 195
+        "savings": 195,
+        "price": 3705
       },
       {
         "unit": "Pack of 10",
         "mrp": 7800,
         "package": "Woven Sack",
         "perUnit": 718,
-        "savings": 624
+        "savings": 624,
+        "price": 7176
       },
       {
         "unit": "Pack of 25",
         "mrp": 19500,
         "package": "Heavy Duty Sack",
         "perUnit": 686,
-        "savings": 2340
+        "savings": 2340,
+        "price": 17160
       }
     ]
   },
   {
     "id": 129,
     "slug": "kaju-bulk-pack",
-    "name": "Kaju \u2014 Bulk Pack",
+    "name": "Kaju — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 840,
+    "price": 1646,
     "mrp": 1680,
     "stock": 100,
     "isComingSoon": true,
@@ -7953,40 +8060,44 @@ export const products = [
         "mrp": 1680,
         "package": "Pouch Sack",
         "perUnit": 823,
-        "savings": 34
+        "savings": 34,
+        "price": 1646
       },
       {
         "unit": "Pack of 5",
         "mrp": 4200,
         "package": "Pouch Sack",
         "perUnit": 798,
-        "savings": 210
+        "savings": 210,
+        "price": 3990
       },
       {
         "unit": "Pack of 10",
         "mrp": 8400,
         "package": "Woven Sack",
         "perUnit": 773,
-        "savings": 672
+        "savings": 672,
+        "price": 7728
       },
       {
         "unit": "Pack of 25",
         "mrp": 21000,
         "package": "Heavy Duty Sack",
         "perUnit": 739,
-        "savings": 2520
+        "savings": 2520,
+        "price": 18480
       }
     ]
   },
   {
     "id": 130,
     "slug": "raisin-kashmish-bulk-pack",
-    "name": "Raisin (Kashmish) \u2014 Bulk Pack",
+    "name": "Raisin (Kashmish) — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 320,
+    "price": 627,
     "mrp": 640,
     "stock": 100,
     "isComingSoon": true,
@@ -8018,40 +8129,44 @@ export const products = [
         "mrp": 640,
         "package": "Pouch Sack",
         "perUnit": 314,
-        "savings": 13
+        "savings": 13,
+        "price": 627
       },
       {
         "unit": "Pack of 5",
         "mrp": 1600,
         "package": "Pouch Sack",
         "perUnit": 304,
-        "savings": 80
+        "savings": 80,
+        "price": 1520
       },
       {
         "unit": "Pack of 10",
         "mrp": 3200,
         "package": "Woven Sack",
         "perUnit": 294,
-        "savings": 256
+        "savings": 256,
+        "price": 2944
       },
       {
         "unit": "Pack of 25",
         "mrp": 8000,
         "package": "Heavy Duty Sack",
         "perUnit": 282,
-        "savings": 960
+        "savings": 960,
+        "price": 7040
       }
     ]
   },
   {
     "id": 131,
     "slug": "apricot-bulk-pack",
-    "name": "Apricot \u2014 Bulk Pack",
+    "name": "Apricot — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 800,
+    "price": 1568,
     "mrp": 1600,
     "stock": 100,
     "isComingSoon": true,
@@ -8083,40 +8198,44 @@ export const products = [
         "mrp": 1600,
         "package": "Pouch Sack",
         "perUnit": 784,
-        "savings": 32
+        "savings": 32,
+        "price": 1568
       },
       {
         "unit": "Pack of 5",
         "mrp": 4000,
         "package": "Pouch Sack",
         "perUnit": 760,
-        "savings": 200
+        "savings": 200,
+        "price": 3800
       },
       {
         "unit": "Pack of 10",
         "mrp": 8000,
         "package": "Woven Sack",
         "perUnit": 736,
-        "savings": 640
+        "savings": 640,
+        "price": 7360
       },
       {
         "unit": "Pack of 25",
         "mrp": 20000,
         "package": "Heavy Duty Sack",
         "perUnit": 704,
-        "savings": 2400
+        "savings": 2400,
+        "price": 17600
       }
     ]
   },
   {
     "id": 132,
     "slug": "pista-bulk-pack",
-    "name": "Pista \u2014 Bulk Pack",
+    "name": "Pista — Bulk Pack",
     "category": "bulk",
     "extraCategories": [],
     "brand": "Foodville",
     "unit": "Pack of 2 (1kg each)",
-    "price": 1100,
+    "price": 2156,
     "mrp": 2200,
     "stock": 100,
     "isComingSoon": true,
@@ -8148,28 +8267,32 @@ export const products = [
         "mrp": 2200,
         "package": "Pouch Sack",
         "perUnit": 1078,
-        "savings": 44
+        "savings": 44,
+        "price": 2156
       },
       {
         "unit": "Pack of 5",
         "mrp": 5500,
         "package": "Pouch Sack",
         "perUnit": 1045,
-        "savings": 275
+        "savings": 275,
+        "price": 5225
       },
       {
         "unit": "Pack of 10",
         "mrp": 11000,
         "package": "Woven Sack",
         "perUnit": 1012,
-        "savings": 880
+        "savings": 880,
+        "price": 10120
       },
       {
         "unit": "Pack of 25",
         "mrp": 27500,
         "package": "Heavy Duty Sack",
         "perUnit": 968,
-        "savings": 3300
+        "savings": 3300,
+        "price": 24200
       }
     ]
   }

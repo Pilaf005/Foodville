@@ -446,13 +446,34 @@ export default function CartPage() {
 
   const { products: recommendationPool } = useProducts({ limit: 12, sort: "rating" });
 
-  const handleApplyCoupon = (code) => {
+  const handleApplyCoupon = async (code) => {
     const clean = code.trim().toUpperCase();
-    const found = availableCoupons.find((c) => c.code === clean);
+    const found = availableCoupons.find((c) => c.code === clean) ||
+      DEFAULT_COUPONS.find((c) => c.code === clean);
     if (found && !found.isEligible && found.reason) {
       toast.error(found.reason);
       return;
     }
+
+    if (isAuthenticated) {
+      try {
+        const res = await fetch(`/api/cart?couponCode=${encodeURIComponent(clean)}`).then((r) => r.json());
+        if (res.success && res.data) {
+          if (res.data.amounts?.couponError) {
+            toast.error(res.data.amounts.couponError);
+            return;
+          }
+          if (!res.data.amounts?.couponCode || res.data.amounts?.couponCode !== clean) {
+            toast.error(`Coupon code ${clean} is not eligible or has already been used.`);
+            return;
+          }
+          setServerCartData(res.data);
+        }
+      } catch (err) {
+        console.error("Coupon validation error:", err);
+      }
+    }
+
     setIsCouponRemoved(false);
     setAppliedCouponCode(clean);
     toast.success(`Coupon code ${clean} applied!`);
@@ -478,15 +499,22 @@ export default function CartPage() {
 
     if (!isCouponRemoved) {
       if (appliedCouponCode) {
-        const found = availableCoupons.find((c) => c.code === appliedCouponCode) ||
-          DEFAULT_COUPONS.find((c) => c.code === appliedCouponCode);
-        if (found) {
-          const evalRes = evaluateCouponClient(found, subtotal);
-          if (evalRes.isEligible) {
-            localDiscount = evalRes.amount;
-            localDiscountLabel = evalRes.discountLabel;
-            localCouponCode = evalRes.code;
-            localAppliedCoupon = evalRes;
+        if (serverCartData && serverCartData.amounts?.couponError) {
+          localDiscount = 0;
+          localDiscountLabel = "";
+          localCouponCode = "";
+          localAppliedCoupon = null;
+        } else {
+          const found = availableCoupons.find((c) => c.code === appliedCouponCode) ||
+            DEFAULT_COUPONS.find((c) => c.code === appliedCouponCode);
+          if (found) {
+            const evalRes = evaluateCouponClient(found, subtotal);
+            if (evalRes.isEligible) {
+              localDiscount = evalRes.amount;
+              localDiscountLabel = evalRes.discountLabel;
+              localCouponCode = evalRes.code;
+              localAppliedCoupon = evalRes;
+            }
           }
         }
       }

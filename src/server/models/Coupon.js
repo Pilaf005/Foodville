@@ -10,8 +10,9 @@ const CouponSchema = new Schema(
     discountType: { type: String, enum: ["percentage", "flat"], default: "percentage" },
     discountValue: { type: Number, required: true }, // e.g. 10 = 10%, 50 = ₹50
     maxDiscount: { type: Number, default: null }, // e.g. 500 cap
-    minSubtotal: { type: Number, default: 0 },
     firstOrderOnly: { type: Boolean, default: false },
+    oncePerUser: { type: Boolean, default: false },
+    showInCards: { type: Boolean, default: true },
     isActive: { type: Boolean, default: true, index: true },
   },
   { timestamps: true }

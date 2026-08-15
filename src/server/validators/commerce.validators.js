@@ -19,6 +19,7 @@ export const createOrderSchema = z
     addressId: z.string().trim().optional(),
     address: addressSchema.partial().optional(),
     paymentMethod: z.enum(["cod", "razorpay"]),
+    couponCode: z.string().trim().nullable().optional(),
   })
   .refine((d) => d.addressId || d.address, {
     message: "A delivery address is required.",

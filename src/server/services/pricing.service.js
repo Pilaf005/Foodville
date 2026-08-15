@@ -45,6 +45,20 @@ export const DEFAULT_COUPONS = [
     maxDiscount: 500,
     minSubtotal: 1999,
     firstOrderOnly: false,
+    showInCards: true,
+    isActive: true,
+  },
+  {
+    code: "SHIV20",
+    title: "Special 12% OFF (SHIV20)",
+    description: "Exclusive 12% discount on your order",
+    discountType: "percentage",
+    discountValue: 12,
+    maxDiscount: null,
+    minSubtotal: 0,
+    firstOrderOnly: false,
+    oncePerUser: true,
+    showInCards: false,
     isActive: true,
   },
 ];
@@ -80,6 +94,10 @@ function estimateCartWeight(items) {
 
 import mongoose from "mongoose";
 
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 /** Check if user is a first-time customer */
 export async function isFirstTimeCustomer(userId) {
   if (!userId) return false;
@@ -98,6 +116,26 @@ export async function isFirstTimeCustomer(userId) {
   }
 }
 
+/** Check if user has already placed an order with this specific coupon */
+export async function hasUserUsedCoupon(userId, couponCode) {
+  if (!userId || !couponCode) return false;
+  try {
+    const userObjId = typeof userId === "string" && mongoose.Types.ObjectId.isValid(userId)
+      ? new mongoose.Types.ObjectId(userId)
+      : userId;
+    const clean = String(couponCode).trim();
+    const existingOrder = await Order.exists({
+      user: userObjId,
+      "amounts.couponCode": new RegExp(`^${escapeRegex(clean)}$`, "i"),
+      status: { $ne: "cancelled" },
+      isDraft: { $ne: true },
+    });
+    return !!existingOrder;
+  } catch {
+    return false;
+  }
+}
+
 /** Fetch active coupons from DB merged with defaults */
 export async function getAllActiveCoupons() {
   let dbCoupons = [];
@@ -110,7 +148,11 @@ export async function getAllActiveCoupons() {
   const codeMap = new Map();
   // Load defaults first
   for (const c of DEFAULT_COUPONS) {
-    codeMap.set(c.code.toUpperCase(), c);
+    codeMap.set(c.code.toUpperCase(), {
+      ...c,
+      showInCards: c.showInCards !== false,
+      oncePerUser: c.oncePerUser === true,
+    });
   }
   // DB coupons override defaults if same code
   for (const c of dbCoupons) {
@@ -123,6 +165,8 @@ export async function getAllActiveCoupons() {
       maxDiscount: c.maxDiscount,
       minSubtotal: c.minSubtotal,
       firstOrderOnly: c.firstOrderOnly,
+      oncePerUser: c.oncePerUser === true,
+      showInCards: c.showInCards !== false,
       isActive: c.isActive,
     });
   }
@@ -149,6 +193,18 @@ export async function evaluateCoupon(couponObj, subtotal, userId) {
       return {
         isEligible: false,
         reason: `Code ${couponObj.code} is valid for first-time customers only.`,
+        amount: 0,
+        coupon: couponObj,
+      };
+    }
+  }
+
+  if (couponObj.oncePerUser) {
+    const hasUsed = await hasUserUsedCoupon(userId, couponObj.code);
+    if (hasUsed) {
+      return {
+        isEligible: false,
+        reason: `You have already used coupon code ${couponObj.code} on a previous order.`,
         amount: 0,
         coupon: couponObj,
       };
@@ -198,7 +254,9 @@ export async function evaluateCoupon(couponObj, subtotal, userId) {
 /** Find all eligible coupons and return the best one (highest ₹ savings) */
 export async function getBestEligibleCoupon(subtotal, userId) {
   const coupons = await getAllActiveCoupons();
-  const evaluated = await Promise.all(coupons.map((c) => evaluateCoupon(c, subtotal, userId)));
+  // Only public coupons are candidates for auto-apply (hidden coupons require explicit entry)
+  const publicCoupons = coupons.filter((c) => c.showInCards !== false);
+  const evaluated = await Promise.all(publicCoupons.map((c) => evaluateCoupon(c, subtotal, userId)));
 
   const eligible = evaluated.filter((e) => e.isEligible && e.amount > 0);
   if (eligible.length === 0) return null;
@@ -320,6 +378,7 @@ export async function priceItems(
 
   // Coupon evaluation
   let appliedCoupon = null;
+  let couponError = null;
 
   if (couponCode && String(couponCode).trim()) {
     const cleanCode = String(couponCode).trim().toUpperCase();
@@ -329,7 +388,11 @@ export async function priceItems(
       const evalRes = await evaluateCoupon(found, subtotal, userId);
       if (evalRes.isEligible) {
         appliedCoupon = evalRes;
+      } else {
+        couponError = evalRes.reason || `Coupon code ${cleanCode} is not eligible.`;
       }
+    } else {
+      couponError = `Coupon code ${cleanCode} is invalid.`;
     }
   }
 
@@ -352,6 +415,7 @@ export async function priceItems(
       savings,
       discount,
       couponCode: appliedCouponCode,
+      couponError,
       discountLabel,
       baseDeliveryCharge,
       codCharge,

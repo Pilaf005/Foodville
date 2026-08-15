@@ -14,6 +14,7 @@ export const DEFAULT_COUPONS = [
     maxDiscount: null,
     minSubtotal: 0,
     firstOrderOnly: true,
+    showInCards: true,
   },
   {
     code: "FOODVILLE15",
@@ -24,6 +25,7 @@ export const DEFAULT_COUPONS = [
     maxDiscount: null,
     minSubtotal: 999,
     firstOrderOnly: false,
+    showInCards: true,
   },
   {
     code: "FOODVILLE20",
@@ -34,6 +36,19 @@ export const DEFAULT_COUPONS = [
     maxDiscount: 500,
     minSubtotal: 1999,
     firstOrderOnly: false,
+    showInCards: true,
+  },
+  {
+    code: "SHIV20",
+    title: "Special 12% OFF (SHIV20)",
+    description: "Exclusive 12% discount on your order",
+    discountType: "percentage",
+    discountValue: 12,
+    maxDiscount: null,
+    minSubtotal: 0,
+    firstOrderOnly: false,
+    oncePerUser: true,
+    showInCards: false,
   },
 ];
 
@@ -102,7 +117,9 @@ export function evaluateCouponClient(coupon, subtotal, isFirstTime = true) {
 }
 
 export function getBestCouponClient(subtotal, isFirstTime = true, availableCoupons = DEFAULT_COUPONS) {
-  const couponsToTest = availableCoupons.length > 0 ? availableCoupons : DEFAULT_COUPONS;
+  const pool = availableCoupons.length > 0 ? availableCoupons : DEFAULT_COUPONS;
+  // Only public coupons are candidates for auto-apply (hidden coupons require explicit entry)
+  const couponsToTest = pool.filter((c) => c.showInCards !== false);
   const evaluated = couponsToTest.map((c) => evaluateCouponClient(c, subtotal, isFirstTime));
   const eligible = evaluated.filter((e) => e.isEligible && e.amount > 0);
   if (!eligible.length) return null;

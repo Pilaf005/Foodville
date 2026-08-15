@@ -14,7 +14,9 @@ export const GET = withRoute(async (req) => {
   const userId = user?.userId || null;
   const subtotal = Number(req.nextUrl?.searchParams?.get("subtotal")) || 0;
 
-  const coupons = await getAllActiveCoupons();
+  const allCoupons = await getAllActiveCoupons();
+  // Filter out secret / hidden coupons so they do not appear in the coupon card listing
+  const coupons = allCoupons.filter((c) => c.showInCards !== false);
   const evaluated = await Promise.all(
     coupons.map(async (c) => {
       const res = await evaluateCoupon(c, subtotal, userId);

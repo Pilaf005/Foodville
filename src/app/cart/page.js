@@ -411,7 +411,7 @@ export default function CartPage() {
     }
   }, [cartDep, appliedCouponCode, isAuthenticated, fetchCartAndCoupons]);
 
-  // Fetch available coupons list
+  // Fetch available coupons list (re-fetch when auth state changes so eligibility is up-to-date)
   useEffect(() => {
     const baseBilling = calcBilling(cart || []);
     fetch(`/api/coupons?subtotal=${baseBilling.totalSellingPrice}`)
@@ -422,7 +422,7 @@ export default function CartPage() {
         }
       })
       .catch((err) => console.error("Error fetching coupons:", err));
-  }, [cartDep]);
+  }, [cartDep, isAuthenticated]);
 
   // Fetch dynamic Shiprocket shipping rates based on active address pincode and payment method
   useEffect(() => {

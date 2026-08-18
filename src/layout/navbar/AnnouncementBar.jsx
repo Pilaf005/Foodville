@@ -13,14 +13,14 @@ export function AnnouncementBar() {
     setIsMounted(true);
   }, []);
 
-  // Dynamically generated from codebase single source of truth
+  // Dynamically generated from codebase single source of truth (excluding secret/hidden coupons)
   const announcements = [
     {
       icon: "🚚",
       text: `FREE Shipping on Orders Above ₹${DELIVERY_THRESHOLD}`,
       highlight: "PAN India Delivery across 24,000+ PIN Codes",
     },
-    ...DEFAULT_COUPONS.map((c) => ({
+    ...DEFAULT_COUPONS.filter((c) => c.showInCards !== false).map((c) => ({
       icon: c.firstOrderOnly ? "🎁" : "🏷️",
       text: `${c.title}`,
       highlight: `Use Code: ${c.code}`,

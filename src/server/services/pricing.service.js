@@ -98,17 +98,16 @@ function escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-/** Check if user is a first-time customer */
+/** Check if user is a first-time customer (guests / expired sessions are eligible) */
 export async function isFirstTimeCustomer(userId) {
-  if (!userId) return false;
+  if (!userId) return true;
   try {
     const userObjId = typeof userId === "string" && mongoose.Types.ObjectId.isValid(userId)
       ? new mongoose.Types.ObjectId(userId)
       : userId;
     const existingOrder = await Order.exists({
       user: userObjId,
-      status: { $ne: "cancelled" },
-      isDraft: { $ne: true },
+      status: { $in: ["placed", "confirmed", "packed", "shipped", "out_for_delivery", "delivered"] },
     });
     return !existingOrder;
   } catch {
@@ -116,7 +115,7 @@ export async function isFirstTimeCustomer(userId) {
   }
 }
 
-/** Check if user has already placed an order with this specific coupon */
+/** Check if user has already placed a completed order with this specific coupon */
 export async function hasUserUsedCoupon(userId, couponCode) {
   if (!userId || !couponCode) return false;
   try {
@@ -127,8 +126,7 @@ export async function hasUserUsedCoupon(userId, couponCode) {
     const existingOrder = await Order.exists({
       user: userObjId,
       "amounts.couponCode": new RegExp(`^${escapeRegex(clean)}$`, "i"),
-      status: { $ne: "cancelled" },
-      isDraft: { $ne: true },
+      status: { $in: ["placed", "confirmed", "packed", "shipped", "out_for_delivery", "delivered"] },
     });
     return !!existingOrder;
   } catch {

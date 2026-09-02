@@ -138,7 +138,7 @@ export async function hasUserUsedCoupon(userId, couponCode) {
 export async function getAllActiveCoupons() {
   let dbCoupons = [];
   try {
-    dbCoupons = await Coupon.find({ isActive: true }).lean();
+    dbCoupons = await Coupon.find({}).lean();
   } catch (err) {
     console.error("[pricing.service] Error loading DB coupons:", err?.message);
   }
@@ -150,6 +150,7 @@ export async function getAllActiveCoupons() {
       ...c,
       showInCards: c.showInCards !== false,
       oncePerUser: c.oncePerUser === true,
+      isActive: c.isActive !== false,
     });
   }
   // DB coupons override defaults if same code
@@ -165,16 +166,39 @@ export async function getAllActiveCoupons() {
       firstOrderOnly: c.firstOrderOnly,
       oncePerUser: c.oncePerUser === true,
       showInCards: c.showInCards !== false,
-      isActive: c.isActive,
+      isActive: c.isActive !== false,
+      expiresAt: c.expiresAt,
+      usageLimit: c.usageLimit,
+      usageCount: c.usageCount,
     });
   }
 
-  return Array.from(codeMap.values()).filter((c) => c.isActive);
+  return Array.from(codeMap.values()).filter((c) => c.isActive !== false);
 }
 
 /** Evaluate a single coupon against cart subtotal and user state */
 export async function evaluateCoupon(couponObj, subtotal, userId) {
   if (!couponObj) return { isEligible: false, reason: "Invalid coupon.", amount: 0 };
+
+  // Check if coupon has expired
+  if (couponObj.expiresAt && new Date(couponObj.expiresAt) < new Date()) {
+    return {
+      isEligible: false,
+      reason: `Coupon ${couponObj.code} has expired.`,
+      amount: 0,
+      coupon: couponObj,
+    };
+  }
+
+  // Check if coupon has reached its total usage limit
+  if (couponObj.usageLimit != null && couponObj.usageCount >= couponObj.usageLimit) {
+    return {
+      isEligible: false,
+      reason: `Coupon ${couponObj.code} has reached its maximum usage limit.`,
+      amount: 0,
+      coupon: couponObj,
+    };
+  }
 
   if (subtotal < (couponObj.minSubtotal || 0)) {
     return {

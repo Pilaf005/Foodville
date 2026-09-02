@@ -8,19 +8,28 @@ export function AnnouncementBar() {
   const [index, setIndex] = useState(0);
   const [isDismissed, setIsDismissed] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [activeCoupons, setActiveCoupons] = useState(DEFAULT_COUPONS);
 
   useEffect(() => {
     setIsMounted(true);
+    fetch("/api/coupons")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data)) {
+          setActiveCoupons(res.data);
+        }
+      })
+      .catch(() => {});
   }, []);
 
-  // Dynamically generated from codebase single source of truth (excluding secret/hidden coupons)
+  // Dynamically generated from active coupons (excluding secret/hidden coupons)
   const announcements = [
     {
       icon: "🚚",
       text: `FREE Shipping on Orders Above ₹${DELIVERY_THRESHOLD}`,
       highlight: "PAN India Delivery across 24,000+ PIN Codes",
     },
-    ...DEFAULT_COUPONS.filter((c) => c.showInCards !== false).map((c) => ({
+    ...activeCoupons.filter((c) => c.showInCards !== false).map((c) => ({
       icon: c.firstOrderOnly ? "🎁" : "🏷️",
       text: `${c.title}`,
       highlight: `Use Code: ${c.code}`,

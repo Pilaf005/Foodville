@@ -375,6 +375,7 @@ export default function CartPage() {
 
   // Coupon state
   const [appliedCouponCode, setAppliedCouponCode] = useState("");
+  const [appliedCouponObj, setAppliedCouponObj] = useState(null);
   const [isCouponRemoved, setIsCouponRemoved] = useState(false);
   const [availableCoupons, setAvailableCoupons] = useState(DEFAULT_COUPONS);
   const [serverCartData, setServerCartData] = useState(null);
@@ -448,10 +449,30 @@ export default function CartPage() {
 
   const handleApplyCoupon = async (code) => {
     const clean = code.trim().toUpperCase();
-    const found = availableCoupons.find((c) => c.code === clean) ||
+    const baseBilling = calcBilling(cart || []);
+    const subtotal = baseBilling.totalSellingPrice;
+
+    // Check if coupon exists in available list, defaults, or fetch single coupon via server lookup (supports hidden/secret coupons)
+    let targetCoupon = availableCoupons.find((c) => c.code === clean) ||
       DEFAULT_COUPONS.find((c) => c.code === clean);
-    if (found && !found.isEligible && found.reason) {
-      toast.error(found.reason);
+
+    if (!targetCoupon) {
+      try {
+        const res = await fetch(`/api/coupons?code=${encodeURIComponent(clean)}&subtotal=${subtotal}`).then((r) => r.json());
+        if (res.success && res.data) {
+          if (!res.data.isEligible) {
+            toast.error(res.data.reason || `Coupon code ${clean} is not eligible.`);
+            return;
+          }
+          targetCoupon = res.data;
+        }
+      } catch (err) {
+        console.error("Single coupon fetch error:", err);
+      }
+    }
+
+    if (targetCoupon && !targetCoupon.isEligible && targetCoupon.reason) {
+      toast.error(targetCoupon.reason);
       return;
     }
 
@@ -474,6 +495,7 @@ export default function CartPage() {
       }
     }
 
+    setAppliedCouponObj(targetCoupon || null);
     setIsCouponRemoved(false);
     setAppliedCouponCode(clean);
     toast.success(`Coupon code ${clean} applied!`);
@@ -482,6 +504,7 @@ export default function CartPage() {
   const handleRemoveCoupon = () => {
     setIsCouponRemoved(true);
     setAppliedCouponCode("");
+    setAppliedCouponObj(null);
     toast.info("Coupon removed.");
   };
 
@@ -505,8 +528,10 @@ export default function CartPage() {
           localCouponCode = "";
           localAppliedCoupon = null;
         } else {
-          const found = availableCoupons.find((c) => c.code === appliedCouponCode) ||
-            DEFAULT_COUPONS.find((c) => c.code === appliedCouponCode);
+          const found = (appliedCouponObj && appliedCouponObj.code === appliedCouponCode)
+            ? appliedCouponObj
+            : availableCoupons.find((c) => c.code === appliedCouponCode) ||
+              DEFAULT_COUPONS.find((c) => c.code === appliedCouponCode);
           if (found) {
             const evalRes = evaluateCouponClient(found, subtotal);
             if (evalRes.isEligible) {
@@ -515,6 +540,11 @@ export default function CartPage() {
               localCouponCode = evalRes.code;
               localAppliedCoupon = evalRes;
             }
+          } else if (serverCartData?.amounts?.discount > 0 && serverCartData?.amounts?.couponCode === appliedCouponCode) {
+            localDiscount = serverCartData.amounts.discount;
+            localDiscountLabel = serverCartData.amounts.discountLabel || `Discount (${appliedCouponCode})`;
+            localCouponCode = appliedCouponCode;
+            localAppliedCoupon = { code: appliedCouponCode, amount: localDiscount, discountLabel: localDiscountLabel };
           }
         }
       }

@@ -10,6 +10,7 @@ import Cart from "@/server/models/Cart";
 import Address from "@/server/models/Address";
 import Product from "@/server/models/Product";
 import Payment from "@/server/models/Payment";
+import Coupon from "@/server/models/Coupon";
 import { nextSequence } from "@/server/models/Counter";
 import { priceItems } from "@/server/services/pricing.service";
 import { refundPayment } from "@/server/services/razorpay.service";
@@ -147,6 +148,15 @@ export async function finaliseOrder(order) {
       Product.updateOne({ numericId: item.productId }, { $inc: { stock: -item.qty } })
     )
   );
+
+  // Increment coupon usage count if a coupon was used
+  const couponCode = order.amounts?.couponCode;
+  if (couponCode) {
+    await Coupon.updateOne(
+      { code: couponCode.toUpperCase() },
+      { $inc: { usageCount: 1 } }
+    ).catch(() => {}); // Non-blocking — don't fail the order if coupon tracking fails
+  }
 }
 
 /**

@@ -5,6 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Autoplay, EffectCreative, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/effect-creative";
 import "swiper/css/pagination";
@@ -122,11 +123,17 @@ const Carousel_005 = ({
         >
           {images.map((image, index) => (
             <SwiperSlide key={index} className="">
-              <img
-                className="h-full w-full rounded-lg sm:rounded-3xl object-cover"
-                src={image.src}
-                alt={image.alt || `Hero slide ${index + 1}`}
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  className="rounded-lg sm:rounded-3xl object-cover"
+                  src={image.src}
+                  alt={image.alt || `Foodville hero slide ${index + 1}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1200px) 95vw, 1152px"
+                  priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </div>
             </SwiperSlide>
           ))}
           {showNavigation && (

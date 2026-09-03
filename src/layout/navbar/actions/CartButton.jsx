@@ -20,7 +20,7 @@ export const CartButton = () => {
   const { cartCount } = useCart();
 
   return (
-    <Link href="/cart" className="relative transition flex items-center justify-center">
+    <Link href="/cart" aria-label="View Shopping Cart" className="relative transition flex items-center justify-center">
       <div className="p-2.5 rounded-full text-ink hover:text-olive hover:bg-white/70 transition min-h-[44px] min-w-[44px] flex items-center justify-center relative">
         <CartIcon />
         <ActionBadge count={cartCount} className="bg-olive" />

@@ -8,6 +8,7 @@ const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(self)" },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
   {
     key: "Content-Security-Policy",
     value: [
@@ -15,10 +16,10 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.razorpay.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://*.r2.dev https://pub-*.r2.dev https://images.unsplash.com https://plus.unsplash.com",
-      "connect-src 'self' https://nominatim.openstreetmap.org https://*.r2.dev https://pub-*.r2.dev",
+      "img-src 'self' data: blob: https://*.r2.dev https://images.unsplash.com https://plus.unsplash.com https://*.pinimg.com https://i.pinimg.com",
+      "connect-src 'self' https://nominatim.openstreetmap.org https://*.r2.dev",
       // media-src allows <video> and <audio> to load from R2 CDN (required for product video playback)
-      "media-src 'self' https://*.r2.dev https://pub-*.r2.dev",
+      "media-src 'self' https://*.r2.dev",
       "frame-src https://api.razorpay.com https://checkout.razorpay.com",
       "object-src 'none'",
       "base-uri 'self'",
@@ -41,6 +42,9 @@ const nextConfig = {
       // Unsplash hero images
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "plus.unsplash.com" },
+      // Pinterest images used in seeds/catalog
+      { protocol: "https", hostname: "*.pinimg.com" },
+      { protocol: "https", hostname: "i.pinimg.com" },
       // Google profile pictures (used for SSO avatars if added in future)
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
     ],

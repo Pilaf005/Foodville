@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useCategories } from "@/features/categories/hooks/useCategories";
 import { CategoryFilterSkeleton } from "@/components/feedback/Skeleton";
 
@@ -88,9 +89,11 @@ export default function CategoryFilter({ active }) {
                       : "border-cardline group-hover:scale-105 group-hover:shadow-md group-hover:border-olive/40"
                   }`}
                 >
-                  <img
+                  <Image
                     src={item.image}
-                    alt={item.name}
+                    alt=""
+                    width={96}
+                    height={96}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     draggable={false}
                   />

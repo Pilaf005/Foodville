@@ -18,7 +18,7 @@ export const WishlistButton = () => {
   const { wishlistCount } = useWishlist();
 
   return (
-    <Link href="/wishlist" className="relative p-2.5 rounded-full text-ink hover:text-terracotta hover:bg-white/70 transition min-h-[44px] min-w-[44px] flex items-center justify-center">
+    <Link href="/wishlist" aria-label="View Wishlist" className="relative p-2.5 rounded-full text-ink hover:text-terracotta hover:bg-white/70 transition min-h-[44px] min-w-[44px] flex items-center justify-center">
       <HeartIcon />
       <ActionBadge count={wishlistCount} className="bg-terracotta" />
     </Link>

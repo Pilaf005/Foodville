@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import ProductRibbon from "./ProductRibbon";
@@ -15,6 +17,7 @@ function getCartQty(cart, productId) {
 export default function ProductCard({ product }) {
   const { cart, addToCart, updateQty } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
+  const [imgSrc, setImgSrc] = useState(product?.image || PRODUCT_FALLBACK_IMAGE);
 
   const inWishlist = isInWishlist(product.id);
   const discount   = Math.round(((product.mrp - product.price) / product.mrp) * 100);
@@ -54,11 +57,13 @@ export default function ProductCard({ product }) {
               )}
             </>
           )}
-          <img
-            src={product.image || PRODUCT_FALLBACK_IMAGE}
-            alt={product.name}
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-            onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = PRODUCT_FALLBACK_IMAGE; }}
+          <Image
+            src={imgSrc}
+            alt={product.name || "Foodville product"}
+            fill
+            sizes="(max-width: 640px) 165px, (max-width: 1024px) 25vw, 20vw"
+            className="object-cover transition duration-500 group-hover:scale-105"
+            onError={() => setImgSrc(PRODUCT_FALLBACK_IMAGE)}
           />
         </div>
       </Link>
@@ -66,7 +71,7 @@ export default function ProductCard({ product }) {
       {/* Card Content body: Title, Unit, Price, ADD button */}
       <div className="flex flex-col flex-1 p-2.5 sm:p-3.5 justify-between">
         <div>
-          <Link href={`/product/${product.slug}`} className="block">
+          <Link href={`/product/${product.slug}`} className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded" aria-label={`View details for ${product.name}`}>
             <div className="h-10 sm:h-12 flex items-start overflow-hidden">
               <h3 className="line-clamp-2 text-xs sm:text-sm font-semibold text-ink leading-tight sm:leading-snug tracking-tight">{product.name}</h3>
             </div>
@@ -77,8 +82,9 @@ export default function ProductCard({ product }) {
             {!product.isComingSoon && (
               <Link
                 href={`/bulk-order?productName=${encodeURIComponent(product.name)}`}
-                className="text-[10px] sm:text-[11px] font-bold text-terracotta hover:underline transition shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded"
+                className="text-[10px] sm:text-[11px] font-bold text-terracotta hover:underline transition shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded inline-flex items-center py-1 px-1 -mr-1"
                 title="Buy in Wholesale / Bulk (10kg+)"
+                aria-label={`Buy ${product.name} in bulk wholesale`}
               >
                 📦 Buy Bulk?
               </Link>

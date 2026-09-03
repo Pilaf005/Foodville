@@ -81,8 +81,8 @@ export const DEFAULT_MAX_QTY = 99;
 
 // Product ribbon badge config keyed by shopBy value
 export const PRODUCT_RIBBONS = {
-  bestseller: { label: "★ Bestseller", className: "bg-amber-400" },
-  trending:   { label: "↑ Trending",   className: "bg-olive" },
-  newlyIn:    { label: "✦ New",        className: "bg-blue-500" },
-  valueBuys:  { label: "% Value Buy",  className: "bg-terracotta" },
+  bestseller: { label: "★ Bestseller", className: "bg-amber-300", textClass: "text-amber-950 font-black" },
+  trending:   { label: "↑ Trending",   className: "bg-olive",     textClass: "text-white font-bold" },
+  newlyIn:    { label: "✦ New",        className: "bg-blue-600",  textClass: "text-white font-bold" },
+  valueBuys:  { label: "% Value Buy",  className: "bg-terracotta",textClass: "text-white font-bold" },
 };

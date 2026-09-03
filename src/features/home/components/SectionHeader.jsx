@@ -11,7 +11,8 @@ export function SectionHeader({ title, viewAllHref }) {
       {viewAllHref && (
         <Link
           href={viewAllHref}
-          className="inline-flex items-center min-h-[44px] min-w-[44px] text-xs font-semibold text-olive hover:underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised transition"
+          aria-label={`View all ${title}`}
+          className="inline-flex items-center min-h-[44px] min-w-[44px] text-xs font-bold text-olive-dark hover:underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised transition"
         >
           View All
         </Link>

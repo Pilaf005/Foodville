@@ -62,29 +62,31 @@ export function AnnouncementBar() {
               }`}
             >
               <span className="text-sm">{item.icon}</span>
-              <span className="text-white/90 font-semibold truncate">
+              <span className="text-white font-semibold truncate">
                 {item.text}
               </span>
-              <span className="hidden md:inline-block text-[#C9A86C] font-bold border-l border-white/20 pl-2">
+              <span className="hidden md:inline-block text-[#F0C060] font-bold border-l border-white/20 pl-2">
                 {item.highlight}
               </span>
             </div>
           ))}
         </div>
 
-        {/* Ticker Indicator Dots */}
-        <div suppressHydrationWarning className="hidden sm:flex items-center gap-1.5 shrink-0">
+        {/* Ticker Indicator Dots — min 24x24px touch targets for Best Practices */}
+        <div suppressHydrationWarning className="hidden sm:flex items-center gap-1 shrink-0">
           {announcements.map((_, i) => (
             <button
               key={i}
               type="button"
               suppressHydrationWarning
               onClick={() => setIndex(i)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === index ? "w-4 bg-[#C9A86C]" : "w-1.5 bg-white/30 hover:bg-white/60"
-              }`}
+              className={`min-h-[24px] min-w-[24px] flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none`}
               aria-label={`Announcement ${i + 1}`}
-            />
+            >
+              <span className={`block rounded-full transition-all duration-300 ${
+                i === index ? "w-4 h-1.5 bg-[#F0C060]" : "w-1.5 h-1.5 bg-white/30 hover:bg-white/60"
+              }`} />
+            </button>
           ))}
         </div>
 

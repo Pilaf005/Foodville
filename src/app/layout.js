@@ -7,8 +7,18 @@ import { CartProvider } from "@/context/CartContext";
 import { WishlistProvider } from "@/context/WishlistContext";
 import AppProviders from "@/providers";
 import ErrorBoundary from "@/components/common/ErrorBoundary";
+import { Nunito_Sans } from "next/font/google";
+// ChatWidgetLoader is a "use client" component that lazy-loads FoodvilleChatWidget with ssr:false
+import ChatWidgetLoader from "@/components/common/ChatWidgetLoader";
 
-import FoodvilleChatWidget from "@/components/common/FoodvilleChatWidget";
+// Self-hosted font via next/font — eliminates the 440ms render-blocking external Google Fonts request
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  style: ["normal", "italic"],
+  variable: "--font-nunito-sans",
+  display: "swap",
+});
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.foodvilleindia.com";
 
@@ -96,14 +106,10 @@ const jsonLdWebSite = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={nunitoSans.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400;1,6..12,700&display=swap"
-          rel="stylesheet"
-        />
+        {/* Preconnect to Cloudflare R2 CDN — eliminates DNS/TLS handshake delay for all product images */}
+        <link rel="preconnect" href="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
@@ -135,7 +141,7 @@ export default function RootLayout({ children }) {
               </ErrorBoundary>
               <ScrollToTop />
               <ErrorBoundary>
-                <FoodvilleChatWidget />
+                <ChatWidgetLoader />
               </ErrorBoundary>
             </WishlistProvider>
           </CartProvider>

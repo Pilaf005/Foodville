@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
@@ -179,9 +180,11 @@ export const MobileDrawer = ({ isOpen, onClose }) => {
         {/* Drawer header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-cardline bg-cream/50">
           <div className="flex flex-col items-start gap-0.5">
-            <img
+            <Image
               src="/foodville-logo.png"
               alt="Foodville"
+              width={112}
+              height={28}
               className="h-7 w-auto object-contain"
             />
             {addressLabel && (

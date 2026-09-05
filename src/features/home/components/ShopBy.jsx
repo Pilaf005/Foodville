@@ -7,7 +7,7 @@ import { SHOP_BY_TABS, SHOP_BY_PREVIEW_COUNT } from "../constants/shopByTabs";
 import { useProducts } from "@/features/products/hooks/useProducts";
 import { ProductCardSkeleton } from "@/components/feedback/Skeleton";
 
-function ProductRowSection({ tab }) {
+function ProductRowSection({ tab, isFirstSection = false }) {
   // The API maps the kebab tab key ("newly-in") to the product's shopBy value.
   const { products, isPending } = useProducts({
     tab: tab.key,
@@ -32,9 +32,9 @@ function ProductRowSection({ tab }) {
           <p className="text-sm text-muted py-6 text-center">No products found.</p>
         ) : (
           <div className="flex md:grid gap-3.5 md:gap-3 md:grid-cols-4 lg:grid-cols-5 overflow-x-auto md:overflow-x-visible no-scrollbar mobile-bleed-scroll snap-x snap-mandatory">
-            {products.map((product) => (
+            {products.map((product, idx) => (
               <div key={product.id} className="w-[165px] min-w-[165px] md:w-auto md:min-w-0 shrink-0 md:shrink snap-start h-full">
-                <ProductCard product={product} />
+                <ProductCard product={product} priority={isFirstSection && idx < 2} />
               </div>
             ))}
           </div>
@@ -47,8 +47,8 @@ function ProductRowSection({ tab }) {
 export default function ShopBy() {
   return (
     <div className="space-y-2 sm:space-y-4">
-      {SHOP_BY_TABS.map((tab) => (
-        <ProductRowSection key={tab.key} tab={tab} />
+      {SHOP_BY_TABS.map((tab, tabIdx) => (
+        <ProductRowSection key={tab.key} tab={tab} isFirstSection={tabIdx === 0} />
       ))}
     </div>
   );

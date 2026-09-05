@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 export default function FoodvilleChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -267,8 +268,8 @@ export default function FoodvilleChatWidget() {
           <div className="bg-olive px-4 py-3.5 flex items-center justify-between text-white flex-shrink-0">
             <div className="flex items-center gap-2.5">
               <div className="relative">
-                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center p-1.5 border border-white/30">
-                  <img src="/chatbot-icon.png" alt="Foodville" className="w-full h-full object-contain" />
+                <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center p-1.5 border border-white/30 relative">
+                  <Image src="/chatbot-icon.png" alt="Foodville Assistant" width={28} height={28} className="w-full h-full object-contain" />
                 </div>
                 <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-olive"></span>
               </div>
@@ -451,7 +452,7 @@ export default function FoodvilleChatWidget() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
           </svg>
         ) : (
-          <img src="/chatbot-icon.png" alt="Foodville" className="w-8 h-8 object-contain pointer-events-none drop-shadow-sm" />
+          <Image src="/chatbot-icon.png" alt="Foodville Assistant" width={32} height={32} className="w-8 h-8 object-contain pointer-events-none drop-shadow-sm" />
         )}
       </div>
     </div>

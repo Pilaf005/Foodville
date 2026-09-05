@@ -5,10 +5,14 @@ import { toast } from "sonner";
 import profileService, { addressService, uploadService } from "@/features/profile/services/profile.service";
 import { queryKeys } from "@/lib/queryKeys";
 
+import { useAuth } from "@/features/auth/hooks/useAuth";
+
 export function useProfile() {
+  const { user } = useAuth();
   const query = useQuery({
     queryKey: queryKeys.auth.me,
     queryFn: profileService.get,
+    enabled: !!user,
     retry: false,
   });
   return { ...query, profile: query.data ?? null };
@@ -29,9 +33,12 @@ export function useUpdateProfile({ silent = false } = {}) {
 }
 
 export function useAddresses() {
+  const { isAuthenticated } = useAuth();
   const query = useQuery({
     queryKey: queryKeys.addresses.all,
     queryFn: addressService.list,
+    enabled: !!isAuthenticated,
+    retry: false,
   });
   return { ...query, addresses: query.data ?? [] };
 }

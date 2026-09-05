@@ -16,10 +16,12 @@ export const dynamic = "force-dynamic";
  * works, no re-login needed.
  */
 export const GET = withRoute(async (req) => {
-  const auth = await requireAuth(req);
+  const auth = await getAuth(req);
+  if (!auth) return ok(null);
+
   const user = await getMe(auth.userId);
 
-  if (user.role !== auth.role) {
+  if (user && user.role !== auth.role) {
     const token = await signAuthToken({ userId: user.id, email: user.email, role: user.role });
     return setAuthCookie(ok(user), token);
   }

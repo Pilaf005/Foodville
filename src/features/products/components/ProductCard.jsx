@@ -14,7 +14,7 @@ function getCartQty(cart, productId) {
     .reduce((sum, item) => sum + item.qty, 0);
 }
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, priority = false }) {
   const { cart, addToCart, updateQty } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
   const [imgSrc, setImgSrc] = useState(product?.image || PRODUCT_FALLBACK_IMAGE);
@@ -45,14 +45,14 @@ export default function ProductCard({ product }) {
               <ProductRibbon shopBy={product.shopBy} />
               {discount > 0 && (
                 <div
-                  className="absolute left-2.5 sm:left-3 top-0 z-10 bg-terracotta text-white font-black text-[9px] sm:text-[10px] leading-none px-2 pt-1.5 pb-2.5 flex flex-col items-center justify-center text-center select-none"
+                  className="absolute left-2.5 sm:left-3 top-0 z-10 bg-[#88290B] text-white font-black text-[9px] sm:text-[10px] leading-none px-2 pt-1.5 pb-2.5 flex flex-col items-center justify-center text-center select-none"
                   style={{
                     clipPath: "polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%)",
                     minWidth: "34px"
                   }}
                 >
                   <span>{discount}%</span>
-                  <span className="text-[7px] font-bold opacity-90 tracking-wide mt-0.5">OFF</span>
+                  <span className="text-[7px] font-bold text-amber-100 tracking-wide mt-0.5">OFF</span>
                 </div>
               )}
             </>
@@ -61,6 +61,7 @@ export default function ProductCard({ product }) {
             src={imgSrc}
             alt={product.name || "Foodville product"}
             fill
+            priority={priority}
             sizes="(max-width: 640px) 165px, (max-width: 1024px) 25vw, 20vw"
             className="object-cover transition duration-500 group-hover:scale-105"
             onError={() => setImgSrc(PRODUCT_FALLBACK_IMAGE)}
@@ -78,11 +79,11 @@ export default function ProductCard({ product }) {
           </Link>
 
           <div className="flex items-center justify-between mt-1">
-            <p className="text-[11px] sm:text-xs font-normal text-muted leading-none">{product.unit}</p>
+            <p className="text-[11px] sm:text-xs font-semibold text-muted leading-none">{product.unit}</p>
             {!product.isComingSoon && (
               <Link
                 href={`/bulk-order?productName=${encodeURIComponent(product.name)}`}
-                className="text-[10px] sm:text-[11px] font-bold text-terracotta hover:underline transition shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded inline-flex items-center py-1 px-1 -mr-1"
+                className="text-[10px] sm:text-[11px] font-extrabold text-[#88290B] hover:text-[#5C1A05] hover:underline transition shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded inline-flex items-center py-1 px-1 -mr-1"
                 title="Buy in Wholesale / Bulk (10kg+)"
                 aria-label={`Buy ${product.name} in bulk wholesale`}
               >
@@ -103,7 +104,7 @@ export default function ProductCard({ product }) {
               <div className="flex flex-col">
                 <span className="text-sm sm:text-base font-bold text-ink leading-none">₹{product.price}</span>
                 {product.mrp > product.price && (
-                  <span className="text-[9px] sm:text-[11px] font-normal text-muted line-through mt-0.5">₹{product.mrp}</span>
+                  <span className="text-[9px] sm:text-[11px] font-medium text-muted line-through mt-0.5">₹{product.mrp}</span>
                 )}
               </div>
 
@@ -111,7 +112,7 @@ export default function ProductCard({ product }) {
                 <button
                   onClick={() => addToCart(product, 1)}
                   disabled={product.stock === 0}
-                  className="border-2 border-olive text-olive bg-olive/5 hover:bg-olive/10 transition font-bold uppercase text-xs sm:text-sm rounded-xl h-10 sm:h-11 min-h-[44px] px-4 sm:px-5 flex items-center justify-center tracking-wider active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none"
+                  className="border-2 border-olive-dark text-olive-dark bg-olive/10 hover:bg-olive-dark hover:text-white transition font-extrabold uppercase text-xs sm:text-sm rounded-xl h-10 sm:h-11 min-h-[44px] px-4 sm:px-5 flex items-center justify-center tracking-wider active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none"
                 >
                   {product.stock === 0 ? "OUT" : "ADD"}
                 </button>

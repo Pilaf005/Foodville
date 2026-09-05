@@ -40,7 +40,7 @@ export const LocationSelector = ({ onClick, activeAddress }) => {
       </span>
       <div className="hidden md:block leading-tight max-w-[200px]">
         <div className="text-sm font-black text-ink">{locationLabel}</div>
-        <div className="flex items-center gap-0.5 text-[11px] font-bold text-muted mt-0.5 max-w-[180px]">
+        <div className="flex items-center gap-0.5 text-[11px] font-bold text-stone-700 mt-0.5 max-w-[180px]">
           <span className="truncate">{locationSub}</span>
           <ChevronDownIcon />
         </div>

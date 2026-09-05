@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useCategories } from "@/features/categories/hooks/useCategories";
@@ -17,28 +17,28 @@ export default function CategoryFilter({ active }) {
   const didRestoreRef = useRef(false);   // guard: only restore once per mount
 
   // ── On mount: restore saved scroll position OR scroll active item into view ──
-  // useLayoutEffect fires BEFORE the browser paints → no visible flash at position 0
-  useLayoutEffect(() => {
+  // useEffect with requestAnimationFrame avoids synchronous layout recalculation (forced reflow)
+  useEffect(() => {
     if (didRestoreRef.current) return;
     const container = scrollRef.current;
     if (!container) return;
 
     const saved = sessionStorage.getItem(SCROLL_KEY);
 
-    if (saved !== null) {
-      // Restore the exact scroll position the user was at before navigation
-      container.scrollLeft = Number(saved);
-      sessionStorage.removeItem(SCROLL_KEY); // clear after restoring
-      didRestoreRef.current = true;
-    } else if (activeRef.current) {
-      // No saved position — scroll the active category button into center view
-      activeRef.current.scrollIntoView({
-        behavior: "instant",
-        block: "nearest",
-        inline: "center",
-      });
-      didRestoreRef.current = true;
-    }
+    requestAnimationFrame(() => {
+      if (saved !== null) {
+        container.scrollLeft = Number(saved);
+        sessionStorage.removeItem(SCROLL_KEY);
+        didRestoreRef.current = true;
+      } else if (activeRef.current) {
+        activeRef.current.scrollIntoView({
+          behavior: "instant",
+          block: "nearest",
+          inline: "center",
+        });
+        didRestoreRef.current = true;
+      }
+    });
   }, [categories]); // re-run once categories are loaded
 
   // ── Navigate: save scroll position then push to new category page ──

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import QualityBadge from "./QualityBadge";
 import { COMPANY_INFO } from "../constants";
 
@@ -14,13 +15,12 @@ export const FooterLogo = () => {
           className="relative inline-flex transition-transform duration-300 group-hover:scale-105"
           style={{ willChange: "transform", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
         >
-          <img
+          <Image
             src="/foodville-logo.png"
             alt="Foodville Logo"
             width={155}
             height={48}
             className="h-12 w-auto object-contain"
-            style={{ transform: "translateZ(0)", imageRendering: "auto" }}
           />
           {/* ® mark — circle bottom-left just touches the top-right corner of letter E */}
           <span

@@ -4,14 +4,14 @@ import { CONTACT_INFO } from "../constants";
 export const FooterContact = () => {
   return (
     <div className="col-span-2 md:col-span-3 space-y-4">
-      <h4 className="text-xs font-bold uppercase tracking-wider text-gold">Contact Support</h4>
+      <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#F3D08A]">Contact Support</h4>
       <div className="space-y-3">
         {/* WhatsApp Redirect Link */}
         <a 
           href={CONTACT_INFO.whatsapp.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-xs text-white hover:text-white transition group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] rounded"
+          className="flex items-center gap-2 text-xs text-stone-200 hover:text-white transition group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] rounded"
         >
           <div className="w-7 h-7 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0 text-white group-hover:bg-[#25D366] group-hover:text-white group-hover:border-transparent transition-all">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -19,7 +19,7 @@ export const FooterContact = () => {
             </svg>
           </div>
           <div className="leading-tight">
-            <div className="text-[9px] text-gold font-bold">{CONTACT_INFO.whatsapp.label}</div>
+            <div className="text-[10px] text-[#F3D08A] font-bold">{CONTACT_INFO.whatsapp.label}</div>
             <div className="font-extrabold text-white">{CONTACT_INFO.whatsapp.value}</div>
           </div>
         </a>
@@ -27,7 +27,7 @@ export const FooterContact = () => {
         {/* Tap-to-call phone link */}
         <a
           href={CONTACT_INFO.phone.href}
-          className="flex items-center gap-2 text-xs text-white hover:text-white transition group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] rounded"
+          className="flex items-center gap-2 text-xs text-stone-200 hover:text-white transition group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] rounded"
         >
           <div className="w-7 h-7 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0 text-white group-hover:bg-olive group-hover:text-white group-hover:border-transparent transition-all">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -35,7 +35,7 @@ export const FooterContact = () => {
             </svg>
           </div>
           <div className="leading-tight">
-            <div className="text-[9px] text-gold font-bold">{CONTACT_INFO.phone.label}</div>
+            <div className="text-[10px] text-[#F3D08A] font-bold">{CONTACT_INFO.phone.label}</div>
             <div className="font-extrabold text-white">{CONTACT_INFO.phone.value}</div>
           </div>
         </a>
@@ -43,7 +43,7 @@ export const FooterContact = () => {
         {/* Email Link */}
         <a 
           href={CONTACT_INFO.email.href}
-          className="flex items-center gap-2 text-xs text-white hover:text-white transition group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] rounded"
+          className="flex items-center gap-2 text-xs text-stone-200 hover:text-white transition group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] rounded"
         >
           <div className="w-7 h-7 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0 text-white group-hover:bg-gold group-hover:text-white group-hover:border-transparent transition-all">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -52,7 +52,7 @@ export const FooterContact = () => {
             </svg>
           </div>
           <div className="leading-tight">
-            <div className="text-[9px] text-gold font-bold">{CONTACT_INFO.email.label}</div>
+            <div className="text-[10px] text-[#F3D08A] font-bold">{CONTACT_INFO.email.label}</div>
             <div className="font-extrabold text-white truncate">{CONTACT_INFO.email.value}</div>
           </div>
         </a>

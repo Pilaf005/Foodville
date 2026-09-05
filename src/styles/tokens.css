@@ -4,9 +4,9 @@
      ────────────────────────────────────────────── */
 
   /* Text */
-  --text-primary: #292d32;
-  --text-secondary: #8a8275;
-  --text-muted: #a39e93;
+  --text-primary: #1e2519;
+  --text-secondary: #524c44;
+  --text-muted: #59534a;
   --text-tertiary: #f3f3f3;
   --text-inverse: #fbd535;
 
@@ -25,11 +25,11 @@
   --surface: #faf7f2;
   --primary: #6b7f59;
   --primary-hover: #56684a;
-  --secondary: #b5651d;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --text-primary-legacy: #2e2a26;
+  --secondary: #963514;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --text-primary-legacy: #1e2519;
   --border: #ede6d9;
   --gold: #c9a86c;
 

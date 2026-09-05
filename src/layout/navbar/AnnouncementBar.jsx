@@ -47,7 +47,7 @@ export function AnnouncementBar() {
   if (isDismissed) return null;
 
   return (
-    <div suppressHydrationWarning className="bg-olive text-white text-[11px] sm:text-xs font-medium border-b border-olive-dark/30 py-2 px-4 transition-all duration-300">
+    <div suppressHydrationWarning className="bg-olive text-stone-50 text-[11px] sm:text-xs font-bold border-b border-olive-dark/30 py-2 px-4 transition-all duration-300">
       <div suppressHydrationWarning className="max-w-6xl mx-auto flex items-center justify-between gap-2">
         {/* Dynamic Codebase Ticker Slider */}
         <div suppressHydrationWarning className="flex-1 overflow-hidden relative h-5 flex items-center justify-center sm:justify-start">
@@ -62,10 +62,10 @@ export function AnnouncementBar() {
               }`}
             >
               <span className="text-sm">{item.icon}</span>
-              <span className="text-white font-semibold truncate">
+              <span className="text-stone-50 font-extrabold truncate">
                 {item.text}
               </span>
-              <span className="hidden md:inline-block text-[#F0C060] font-bold border-l border-white/20 pl-2">
+              <span className="hidden md:inline-block text-[#FFDE59] font-black border-l border-white/20 pl-2">
                 {item.highlight}
               </span>
             </div>
@@ -80,12 +80,17 @@ export function AnnouncementBar() {
               type="button"
               suppressHydrationWarning
               onClick={() => setIndex(i)}
-              className={`min-h-[24px] min-w-[24px] flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none`}
+              className={`min-h-[24px] min-w-[24px] flex items-center justify-center rounded-full focus:outline-none`}
               aria-label={`Announcement ${i + 1}`}
             >
-              <span className={`block rounded-full transition-all duration-300 ${
-                i === index ? "w-4 h-1.5 bg-[#F0C060]" : "w-1.5 h-1.5 bg-white/30 hover:bg-white/60"
-              }`} />
+              <span
+                className={`block h-1.5 rounded-full transition-transform transition-opacity duration-300 ${
+                  i === index
+                    ? "w-4 bg-[#F0C060] opacity-100 scale-100"
+                    : "w-4 bg-white/40 hover:bg-white/70 scale-x-50 opacity-60"
+                }`}
+                style={{ willChange: "transform, opacity" }}
+              />
             </button>
           ))}
         </div>

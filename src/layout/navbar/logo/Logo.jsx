@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export const Logo = () => {
@@ -25,13 +26,13 @@ export const Logo = () => {
         className="relative inline-flex shrink-0 mr-2 transition-transform duration-300 group-hover:scale-105"
         style={{ willChange: "transform", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
       >
-        <img
+        <Image
           src="/foodville-logo.png"
           alt="Foodville"
           width={142}
           height={44}
+          priority
           className="h-8 sm:h-11 w-auto object-contain"
-          style={{ transform: "translateZ(0)", imageRendering: "auto" }}
         />
         {/* ® mark — circle bottom-left just touches the top-right corner of letter E */}
         <span

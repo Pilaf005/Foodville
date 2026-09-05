@@ -32,6 +32,10 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion", "sonner", "swiper"],
+  },
+
   images: {
     // Remote hosts used by the catalog + avatar imagery.
     remotePatterns: [
@@ -49,6 +53,9 @@ const nextConfig = {
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
     ],
     formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 200, 256, 384],
+    minimumCacheTTL: 31536000,
   },
 
   async headers() {

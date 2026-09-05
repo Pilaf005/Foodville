@@ -1,15 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { Autoplay, EffectCreative, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import "swiper/css";
-import "swiper/css/effect-creative";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
 
 import { cn } from "@/lib/utils";
 import { HERO_IMAGES } from "../constants/heroImages";
@@ -23,62 +18,9 @@ const Carousel_005 = ({
   autoplay = true,
   spaceBetween = 0,
 }) => {
-  const css = `
-  .Carousal_005 {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    padding-bottom: 35px !important;
-  }
-  
-  @media (min-width: 640px) {
-    .Carousal_005 {
-      aspect-ratio: auto;
-      height: 380px;
-      padding-bottom: 40px !important;
-    }
-  }
-  
-  .Carousal_005 .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  @media (min-width: 640px) {
-    .Carousal_005 .swiper-slide {
-      border-radius: 25px;
-    }
-  }
-
-  .Carousal_005 .swiper-pagination-bullet {
-    background-color: #6B7F59 !important;
-  }
-  .Carousal_005 .swiper-pagination-bullet-active {
-    width: 24px !important;
-    border-radius: 6px !important;
-  }
-  `;
-
   return (
-    <motion.div
-      initial={{ opacity: 0, translateY: 20 }}
-      animate={{ opacity: 1, translateY: 0 }}
-      transition={{
-        duration: 0.3,
-        delay: 0.2,
-      }}
-      className={cn("relative w-full max-w-6xl mx-auto px-2 sm:px-4", className)}
-    >
-      <style>{css}</style>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className="w-full"
-      >
+    <div className={cn("relative w-full max-w-6xl mx-auto px-2 sm:px-4", className)}>
+      <div className="w-full aspect-[16/9] sm:h-[380px] overflow-hidden rounded-lg sm:rounded-3xl relative bg-stone-150">
         <Swiper
           spaceBetween={spaceBetween}
           autoplay={
@@ -109,7 +51,7 @@ const Carousel_005 = ({
                 }
               : false
           }
-          className="Carousal_005"
+          className="Carousal_005 h-full w-full"
           creativeEffect={{
             prev: {
               shadow: true,
@@ -122,8 +64,8 @@ const Carousel_005 = ({
           modules={[EffectCreative, Pagination, Autoplay]}
         >
           {images.map((image, index) => (
-            <SwiperSlide key={index} className="">
-              <div className="relative h-full w-full">
+            <SwiperSlide key={index} className="h-full w-full">
+              <div className="relative h-full w-full overflow-hidden rounded-lg sm:rounded-3xl">
                 <Image
                   className="rounded-lg sm:rounded-3xl object-cover"
                   src={image.src}
@@ -131,7 +73,6 @@ const Carousel_005 = ({
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1200px) 95vw, 1152px"
                   priority={index === 0}
-                  loading={index === 0 ? "eager" : "lazy"}
                 />
               </div>
             </SwiperSlide>
@@ -147,8 +88,8 @@ const Carousel_005 = ({
             </div>
           )}
         </Swiper>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

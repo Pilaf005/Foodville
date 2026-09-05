@@ -1,9 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+
+const BLOG_FALLBACK = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'><rect width='400' height='225' fill='%23F5F0E8'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='14' fill='%23A8A29E'>No Image</text></svg>";
 
 // darkBorder prop adds border-ink border, used only in New Reads section
 export default function BlogCard({ blog, darkBorder = false }) {
+  const [imgSrc, setImgSrc] = useState(blog.image || BLOG_FALLBACK);
+
   return (
     <Link
       href={`/blogs/${blog.slug}`}
@@ -14,16 +20,14 @@ export default function BlogCard({ blog, darkBorder = false }) {
       }`}
     >
       {/* Cover image */}
-      <div className="aspect-[16/9] overflow-hidden bg-cream shrink-0 rounded-t-[19px] sm:rounded-t-[23px]">
-        <img
-          src={blog.image}
-          alt={blog.title}
-          className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-          onError={(e) => {
-            e.currentTarget.onerror = null;
-            e.currentTarget.src =
-              "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'><rect width='400' height='225' fill='%23F5F0E8'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='14' fill='%23A8A29E'>No Image</text></svg>";
-          }}
+      <div className="aspect-[16/9] overflow-hidden bg-cream shrink-0 rounded-t-[19px] sm:rounded-t-[23px] relative w-full">
+        <Image
+          src={imgSrc}
+          alt={blog.title || "Foodville Blog"}
+          fill
+          sizes="(max-width: 640px) 165px, (max-width: 1024px) 300px, 360px"
+          className="object-cover transition duration-500 group-hover:scale-105"
+          onError={() => setImgSrc(BLOG_FALLBACK)}
         />
       </div>
 
@@ -42,7 +46,7 @@ export default function BlogCard({ blog, darkBorder = false }) {
         </h3>
 
         {/* Date */}
-        <p className="text-xs font-semibold text-olive">{blog.date}</p>
+        <p className="text-xs font-bold text-olive-dark">{blog.date}</p>
 
         {/* Preview */}
         <p className="text-xs text-muted leading-relaxed line-clamp-3 flex-1 mt-0.5">

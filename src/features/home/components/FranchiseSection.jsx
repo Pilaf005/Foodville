@@ -1,16 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function FranchiseSection() {
   return (
     <div className="w-full max-w-6xl mx-auto my-8 sm:my-12">
-      <div 
-        className="relative rounded-3xl overflow-hidden text-white p-6 sm:p-10 shadow-xl border border-olive/30 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/franchise_store_banner.png')" }}
-      >
-        {/* Gradient Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent pointer-events-none"></div>
+      <div className="relative rounded-3xl overflow-hidden text-white p-6 sm:p-10 shadow-xl border border-olive/30 bg-stone-900">
+        {/* Background Image Layer */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/franchise_store_banner.png"
+            alt="Foodville Franchise Retail Store Banner"
+            fill
+            sizes="(max-width: 1200px) 100vw, 1152px"
+            className="object-cover"
+          />
+          {/* Gradient Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30 pointer-events-none"></div>
+        </div>
 
         <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           

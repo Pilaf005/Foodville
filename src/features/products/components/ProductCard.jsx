@@ -8,9 +8,14 @@ import { useWishlist } from "@/context/WishlistContext";
 import ProductRibbon from "./ProductRibbon";
 import { PRODUCT_FALLBACK_IMAGE } from "../constants";
 
-function getCartQty(cart, productId) {
+function getCartQty(cart, product) {
+  const targetId = String(product.id);
+  const cartItem = cart.find((item) => String(item.id) === targetId);
+  if (cartItem) return cartItem.qty;
+
+  // Fallback for base product IDs matching any variant
   return cart
-    .filter((item) => String(item.id) === String(productId) || String(item.id).startsWith(String(productId) + "-"))
+    .filter((item) => String(item.id) === targetId || String(item.id).startsWith(targetId + "-"))
     .reduce((sum, item) => sum + item.qty, 0);
 }
 
@@ -19,18 +24,25 @@ export default function ProductCard({ product, priority = false }) {
   const { isInWishlist, toggleWishlist } = useWishlist();
   const [imgSrc, setImgSrc] = useState(product?.image || PRODUCT_FALLBACK_IMAGE);
 
-  const inWishlist = isInWishlist(product.id);
-  const discount   = Math.round(((product.mrp - product.price) / product.mrp) * 100);
-  const cartItem   = cart.find((item) => String(item.id) === String(product.id) || String(item.id).startsWith(String(product.id) + "-"));
-  const currentQty = getCartQty(cart, product.id);
+  const rawProductId = product.parentProductId ?? product.numericId ?? (typeof product.id === "string" && product.id.includes("-") ? Number(product.id.split("-")[0]) : product.id);
+  const inWishlist   = isInWishlist(rawProductId) || isInWishlist(product.id);
+  const discount     = Math.round(((product.mrp - product.price) / product.mrp) * 100);
+
+  const targetCartId = String(product.id);
+  const cartItem     = cart.find((item) => String(item.id) === targetCartId) || cart.find((item) => String(item.id) === String(rawProductId));
+  const currentQty   = cartItem ? cartItem.qty : 0;
+
+  const detailHref = product.unit
+    ? `/product/${product.slug}?unit=${encodeURIComponent(product.unit)}`
+    : `/product/${product.slug}`;
 
   return (
     <div className="group relative flex flex-col h-full rounded-2xl border border-cardline/60 bg-surface overflow-hidden transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.025)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.065)] hover:border-olive/20 active:scale-[0.99] sm:active:scale-100 hover:z-10 hover:relative">
       {/* Wishlist heart */}
       <button
-        onClick={() => toggleWishlist(product)}
+        onClick={() => toggleWishlist({ ...product, id: rawProductId })}
         aria-label="Toggle wishlist"
-        className="absolute right-2.5 top-2.5 z-10 p-1 min-h-[44px] min-w-[44px] flex items-center justify-center text-terracotta transition-transform hover:scale-110 active:scale-90 drop-shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded-full"
+        className="absolute right-2 top-2 z-10 p-1 flex items-center justify-center text-terracotta transition-transform hover:scale-110 active:scale-90 drop-shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded-full"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill={inWishlist ? "currentColor" : "rgba(255,255,255,0.4)"} stroke="currentColor" strokeWidth="2">
           <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
@@ -38,7 +50,7 @@ export default function ProductCard({ product, priority = false }) {
       </button>
 
       {/* Edge-to-edge Image + link to detail page */}
-      <Link href={`/product/${product.slug}`} className="block">
+      <Link href={detailHref} className="block">
         <div className="aspect-square overflow-hidden bg-cream relative w-full">
           {!product.isComingSoon && (
             <>
@@ -72,7 +84,7 @@ export default function ProductCard({ product, priority = false }) {
       {/* Card Content body: Title, Unit, Price, ADD button */}
       <div className="flex flex-col flex-1 p-2.5 sm:p-3.5 justify-between">
         <div>
-          <Link href={`/product/${product.slug}`} className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded" aria-label={`View details for ${product.name}`}>
+          <Link href={detailHref} className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded" aria-label={`View details for ${product.name}`}>
             <div className="h-10 sm:h-12 flex items-start overflow-hidden">
               <h3 className="line-clamp-2 text-xs sm:text-sm font-semibold text-ink leading-tight sm:leading-snug tracking-tight">{product.name}</h3>
             </div>
@@ -110,9 +122,10 @@ export default function ProductCard({ product, priority = false }) {
 
               {currentQty === 0 ? (
                 <button
+                  suppressHydrationWarning
                   onClick={() => addToCart(product, 1)}
                   disabled={product.stock === 0}
-                  className="border-2 border-olive-dark text-olive-dark bg-olive/10 hover:bg-olive-dark hover:text-white transition font-extrabold uppercase text-xs sm:text-sm rounded-xl h-10 sm:h-11 min-h-[44px] px-4 sm:px-5 flex items-center justify-center tracking-wider active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none"
+                  className="border-2 border-olive-dark text-olive-dark bg-olive/10 hover:bg-olive-dark hover:text-white transition font-extrabold uppercase text-xs sm:text-sm rounded-xl h-10 sm:h-11 min-h-[44px] px-4 sm:px-5 flex items-center justify-center tracking-wider active:scale-95 shadow-sm disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none cursor-pointer"
                 >
                   {product.stock === 0 ? "OUT" : "ADD"}
                 </button>
@@ -120,6 +133,7 @@ export default function ProductCard({ product, priority = false }) {
                 <div className="flex items-center justify-between border-2 border-olive bg-olive text-white rounded-full min-h-[44px] h-11 px-1.5 w-[96px] sm:w-[108px] shadow-sm select-none overflow-hidden">
                   <button
                     type="button"
+                    suppressHydrationWarning
                     onClick={() => updateQty(cartItem.id, currentQty - 1)}
                     className="w-8 h-full flex items-center justify-center text-white text-lg font-extrabold hover:opacity-75 active:scale-90 transition focus:outline-none cursor-pointer"
                     aria-label="Decrease quantity"
@@ -129,6 +143,7 @@ export default function ProductCard({ product, priority = false }) {
                   <span className="text-sm font-bold text-white text-center px-1 select-none">{currentQty}</span>
                   <button
                     type="button"
+                    suppressHydrationWarning
                     onClick={() => updateQty(cartItem.id, currentQty + 1)}
                     disabled={product.stock > 0 && currentQty >= product.stock}
                     className="w-8 h-full flex items-center justify-center text-white text-lg font-extrabold hover:opacity-75 active:scale-90 transition disabled:opacity-40 focus:outline-none cursor-pointer"

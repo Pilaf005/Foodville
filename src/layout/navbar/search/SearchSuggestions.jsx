@@ -101,13 +101,13 @@ export const SearchSuggestions = ({
                     const idx = productStartIdx + pIdx;
                     return (
                       <div
-                        key={p.slug || pIdx}
-                        onClick={() => onSelectSuggestion(p.name)}
+                        key={p.id || `${p.slug}-${p.unit}` || pIdx}
+                        onClick={() => onSelectSuggestion(p)}
                         className={`flex items-center gap-3 p-2 rounded-xl cursor-pointer transition min-h-[44px] ${activeIndex === idx ? 'bg-cream' : 'hover:bg-cream'}`}
                       >
                         <div className="h-9 w-9 rounded-lg bg-cream overflow-hidden shrink-0">
                           <img
-                            src={p.image}
+                            src={p.image || PRODUCT_FALLBACK_IMAGE}
                             alt={p.name}
                             className="h-full w-full object-cover"
                             onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = PRODUCT_FALLBACK_IMAGE; }}

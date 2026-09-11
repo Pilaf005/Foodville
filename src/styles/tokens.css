@@ -36,10 +36,10 @@
   /* ──────────────────────────────────────────────
      TYPOGRAPHY TOKENS
      ────────────────────────────────────────────── */
-  --font-family-primary: "Nunito Sans", sans-serif;
+  --font-family-primary: var(--font-nunito-sans), "Nunito Sans", system-ui, -apple-system, sans-serif;
   --font-family-display:
-    "Nunito Sans", "Outfit", "Inter", system-ui, sans-serif;
-  --font-family-body: "Nunito Sans", "Inter", system-ui, sans-serif;
+    var(--font-nunito-sans), "Nunito Sans", "Outfit", "Inter", system-ui, sans-serif;
+  --font-family-body: var(--font-nunito-sans), "Nunito Sans", "Inter", system-ui, sans-serif;
 
   /* Legacy aliases for existing @theme references */
   --font-display-family: var(--font-family-display);

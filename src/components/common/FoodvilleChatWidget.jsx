@@ -37,7 +37,8 @@ export default function FoodvilleChatWidget() {
     { icon: "🏷️", label: "Active Discount Coupons", action: "__coupons__" },
     { icon: "🌿", label: "Popular Spices & Combos", action: "__products__" },
     { icon: "📦", label: "Bulk & Wholesale Packs", action: "__bulk__" },
-    { icon: "🏪", label: "Franchise Inquiry", action: "__franchise__" },
+    { icon: "🏢", label: "Distributorship Inquiry", action: "__distributor__" },
+    { icon: "🌐", label: "Global Spice Export", action: "__export__" },
     { icon: "💬", label: "Chat on WhatsApp Support", action: "__human__", highlight: true },
   ];
 
@@ -215,11 +216,21 @@ export default function FoodvilleChatWidget() {
           "We offer factory-direct 25kg bulk sacks & commercial packaging for restaurants, food manufacturers, and wholesalers with GST billing.\n\n" +
           "👉 Visit our **[Bulk Order Page](/bulk-order)** or tap **Chat on WhatsApp** to request wholesale pricing!"
         );
-      } else if (clean === "__franchise__" || lower.includes("franchise") || lower.includes("dealership") || lower.includes("store")) {
+      } else if (clean === "__distributor__" || clean === "__franchise__" || lower.includes("distributor") || lower.includes("distributorship") || lower.includes("franchise") || lower.includes("dealership") || lower.includes("stockist")) {
         addBotMessage(
-          "🏪 **Foodville Store Franchise**:\n\n" +
-          "Partner with Foodville to open an exclusive spices & dry fruits franchise store in your city with full marketing and supply support.\n\n" +
-          "👉 Fill out our quick application at **[Franchise Page](/franchise)**!"
+          "🏢 **Foodville FMCG Distributorship & Channel Partner**:\n\n" +
+          "Partner with Foodville as an Authorized FMCG Distributor, Super Stockist, or Wholesale Partner in your territory with lucrative ROI, factory-direct supply, and protected pincode rights.\n\n" +
+          "👉 Submit your partnership request at **[Distributorship Page](/distributorship)**!"
+        );
+      } else if (clean === "__export__" || lower.includes("export") || lower.includes("overseas") || lower.includes("international") || lower.includes("fob") || lower.includes("cif") || lower.includes("container") || lower.includes("apeda") || lower.includes("phytosanitary")) {
+        addBotMessage(
+          "🌐 **Foodville Global Spice & Powder Export (50+ Countries)**:\n\n" +
+          "We export pure Indian spices, whole seeds, and dehydrated vegetable powders worldwide with full statutory compliance:\n\n" +
+          "• **Certifications**: APEDA, Spices Board of India, US-FDA registered, ISO 9001:2015.\n" +
+          "• **Container Loads**: 20ft / 40ft FCL and LCL consolidated shipments.\n" +
+          "• **Trade Terms**: FOB India, CIF destination port, CFR, and OEM private labeling.\n" +
+          "• **Documentation**: Product Lab Test Reports (COA), Phytosanitary, Certificate of Origin, and ISPM-15 Fumigation.\n\n" +
+          "👉 Submit your RFQ on our **[Global Export Page](/global-export)** or tap **Chat on WhatsApp** to connect with our Export Trade Desk!"
         );
       } else if (lower.includes("shipping") || lower.includes("delivery") || lower.includes("free") || lower.includes("charge")) {
         addBotMessage(

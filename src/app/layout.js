@@ -119,7 +119,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
       </head>
-      <body className="min-h-screen bg-cream text-ink antialiased flex flex-col justify-between">
+      <body className="min-h-screen bg-cream text-ink antialiased flex flex-col justify-between overflow-x-hidden">
         <AppProviders>
           <CartProvider>
             <WishlistProvider>

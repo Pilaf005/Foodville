@@ -8,17 +8,21 @@ import { serializeProduct, serializeProducts } from "@/server/utils/serialize";
 import { findBestMatch, fuzzySearchProducts } from "@/server/utils/fuzzyMatch";
 
 const SORT_MAP = {
-  price_asc: { price: 1 },
-  price_desc: { price: -1 },
-  rating: { rating: -1 },
-  newest: { createdAt: -1 },
-  relevance: { rating: -1, numericId: 1 },
+  price_asc: { isComingSoon: 1, price: 1 },
+  price_desc: { isComingSoon: 1, price: -1 },
+  rating: { isComingSoon: 1, rating: -1 },
+  newest: { isComingSoon: 1, createdAt: -1 },
+  relevance: { isComingSoon: 1, rating: -1, numericId: 1 },
 };
 
 export async function listProducts(query) {
-  const { category, shopBy, search, sort, topSellers, minPrice, maxPrice, page, limit } = query;
+  const { category, shopBy, search, sort, topSellers, showInReels, minPrice, maxPrice, page, limit } = query;
 
   const filter = { isActive: true };
+  if (showInReels) {
+    filter.showInReels = true;
+    filter.video = { $ne: "" };
+  }
   if (category) {
     filter.$or = [
       { category },
@@ -92,7 +96,7 @@ export async function getSimilarProducts(key, limit = 8) {
     numericId: { $ne: base.numericId },
     isActive: true,
   })
-    .sort({ rating: -1 })
+    .sort({ isComingSoon: 1, rating: -1 })
     .limit(limit)
     .lean();
   return serializeProducts(docs);
@@ -113,11 +117,12 @@ export async function searchSuggestions(query) {
     isActive: true,
     $or: [{ name: rx }, { tags: rx }]
   })
+    .sort({ isComingSoon: 1 })
     .limit(5)
     .lean();
 
   if (products.length === 0) {
-    const allProducts = await Product.find({ isActive: true }).select("name tags slug price image category rating").lean();
+    const allProducts = await Product.find({ isActive: true }).select("name tags slug price image category rating units isComingSoon").lean();
     const candidates = Array.from(
       new Set(allProducts.flatMap(p => [p.name, ...(p.tags || [])]))
     ).filter(Boolean);

@@ -50,7 +50,7 @@ export default function WishlistCard({ product }) {
       <Link href={`/product/${product.slug}`} className="block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised rounded-xl">
         <div className="mb-3 aspect-square overflow-hidden rounded-xl bg-cream">
           <img
-            src={product.image}
+            src={product.image || PRODUCT_FALLBACK_IMAGE}
             alt={product.name}
             className="h-full w-full object-cover transition group-hover:scale-105"
             onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = PRODUCT_FALLBACK_IMAGE; }}

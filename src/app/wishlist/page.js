@@ -26,8 +26,10 @@ function WishlistHeader({ count }) {
 function WishlistEmptyState() {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center space-y-4 rounded-3xl border border-cardline bg-white/50 p-6">
-      <div className="h-16 w-16 rounded-full bg-terracotta/10 flex items-center justify-center text-terracotta text-2xl">
-        ♥
+      <div className="h-16 w-16 rounded-full bg-terracotta/10 flex items-center justify-center text-terracotta">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+        </svg>
       </div>
       <h2 className="text-xl font-bold text-ink">Your Wishlist is Empty</h2>
       <p className="text-sm text-muted max-w-sm">

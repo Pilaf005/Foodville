@@ -1,0 +1,70 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+
+export default function DistributorSection({ className = "" }) {
+  return (
+    <div className="relative w-full max-w-full mx-auto px-2 sm:px-4">
+      <div className={`w-full relative rounded-2xl sm:rounded-3xl overflow-hidden text-white p-6 sm:p-8 shadow-md border border-[#56684A]/30 bg-stone-900 ${className}`}>
+        {/* Background Image Layer */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/distributor_network_banner.jpg"
+            alt="Foodville Distributorship FMCG Network Banner"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1200px) 95vw, 1152px"
+            className="object-cover object-center"
+          />
+          {/* Gradient Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/70 to-black/35 pointer-events-none" />
+        </div>
+
+        <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          
+          <div className="space-y-3 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-amber-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+              Authorized FMCG Distributorship &amp; Channel Partner Program
+            </div>
+
+            <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight leading-tight">
+              Become an Authorized Foodville Distributor
+            </h2>
+
+            <p className="text-stone-200 text-xs sm:text-sm leading-relaxed">
+              Partner directly with Foodville's ISO 9001:2015 Ghaziabad processing facility. Distribute 130+ cold-ground spices, seasonings, superfoods, and dry fruits to modern trade and kirana retail networks in your exclusive territory.
+            </p>
+
+            <div className="flex flex-wrap gap-2 sm:gap-3 text-xs font-medium text-stone-200 pt-1">
+              <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-lg border border-white/10">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-400"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                High Trade Margins &amp; ROI
+              </div>
+              <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-lg border border-white/10">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-emerald-400"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                Protected PIN Code Exclusivity
+              </div>
+              <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-lg border border-white/10">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-blue-400"><path d="M3 21h18M3 7v14M21 7v14M6 11h12M6 15h12M9 3h6v4H9z"/></svg>
+                130+ Certified SKUs &amp; POS Kits
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full lg:w-auto shrink-0">
+            <Link
+              href="/distributorship"
+              className="w-full lg:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 min-h-[44px] rounded-2xl bg-white text-ink font-extrabold text-xs sm:text-sm shadow-lg hover:bg-stone-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised transition duration-300"
+            >
+              <span>Apply for Distributorship</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
+}

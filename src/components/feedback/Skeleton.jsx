@@ -64,8 +64,8 @@ export function BlogGridSkeleton({ count = 6, className = "grid grid-cols-2 gap-
 /** Matches the round category tiles on the home page. */
 export function CategoryFilterSkeleton({ count = 8 }) {
   return (
-    <div className="mx-auto w-full max-w-6xl px-2 py-6 sm:px-0 sm:py-8">
-      <div className="grid w-full grid-cols-4 justify-items-center gap-x-2.5 gap-y-6 sm:grid-cols-8 sm:gap-x-4">
+    <div className="w-full px-0 py-6 sm:py-8">
+      <div className="grid w-full grid-cols-4 justify-items-center gap-x-2.5 gap-y-6 sm:grid-cols-8 sm:gap-x-4 lg:gap-x-6">
         {Array.from({ length: count }).map((_, i) => (
           <div key={i} className="flex w-full flex-col items-center gap-2">
             <Skeleton className="h-14 w-14 rounded-full sm:h-20 sm:w-20 lg:h-24 lg:w-24" />

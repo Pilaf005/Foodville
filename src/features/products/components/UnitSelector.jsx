@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import ComboIncludesList from "./ComboIncludesList";
@@ -286,15 +286,43 @@ function WeightUnitSelector({ product, units, selectedUnit, qty, setSelectedUnit
 
 // ─── Main export ──────────────────────────────────────────────────────────
 export default function UnitSelector({ product }) {
-  const units = product.units || [{ unit: product.unit, price: product.price, mrp: product.mrp }];
+  const searchParams = useSearchParams();
+  const urlUnit = searchParams ? searchParams.get("unit") : null;
 
-  const [selectedUnit, setSelectedUnit] = useState(units[0]);
+  const units = product.units?.length > 0
+    ? product.units
+    : [{ unit: product.unit, price: product.price, mrp: product.mrp }];
+
+  const initialUnit = (urlUnit && units.find((u) => u.unit?.toLowerCase() === urlUnit.toLowerCase())) || units[0];
+
+  const [selectedUnit, setSelectedUnit] = useState(initialUnit);
   const [qty, setQty] = useState(1);
+
+  // Sync state if URL search param changes
+  useEffect(() => {
+    if (urlUnit) {
+      const matched = units.find((u) => u.unit?.toLowerCase() === urlUnit.toLowerCase());
+      if (matched && matched.unit !== selectedUnit.unit) {
+        setSelectedUnit(matched);
+      }
+    }
+  }, [urlUnit, units]);
+
+  const handleSelectUnit = (u) => {
+    setSelectedUnit(u);
+    setQty(1);
+    if (typeof window !== "undefined" && window.history && u.unit) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("unit", u.unit);
+      window.history.replaceState({}, "", url.toString());
+    }
+  };
 
   const { cart, addToCart, updateQty } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
 
-  const inWishlist   = isInWishlist(product.id);
+  const rawProductId = product.parentProductId ?? product.numericId ?? (typeof product.id === "string" && product.id.includes("-") ? Number(product.id.split("-")[0]) : product.id);
+  const inWishlist   = isInWishlist(rawProductId) || isInWishlist(product.id);
   const isOutOfStock = product.stock === 0;
   const isPackBased  = product.category === "bulk" || product.category === "combos";
 
@@ -335,7 +363,7 @@ export default function UnitSelector({ product }) {
     isOutOfStock,
     inWishlist,
     onAddToCart: handleAddToCart,
-    onToggleWishlist: () => toggleWishlist(product),
+    onToggleWishlist: () => toggleWishlist({ ...product, id: rawProductId }),
     stepperProps,
   };
 
@@ -344,7 +372,7 @@ export default function UnitSelector({ product }) {
     units,
     selectedUnit,
     qty: displayQty,
-    setSelectedUnit,
+    setSelectedUnit: handleSelectUnit,
     setQty,
     actionButtonsProps,
   };

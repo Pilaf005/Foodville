@@ -43,7 +43,11 @@ export default function ProductInfo({ product }) {
       {/* Product Name */}
       <div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-ink leading-tight">{product.name}</h1>
-        <p className="mt-1 text-sm text-muted">{product.unit} · {product.category}</p>
+        <p className="mt-1 text-sm text-muted capitalize">
+          {product.units?.length > 1
+            ? `${product.units.map((u) => u.unit).join(" / ")} · ${product.category}`
+            : `${product.unit ? `${product.unit} · ` : ""}${product.category}`}
+        </p>
       </div>
 
       {/* Combo includes */}

@@ -28,12 +28,20 @@ export const SearchBar = ({ isMobile = false }) => {
   const { recentSearches, addSearch, removeSearch, clearAll } = useRecentSearches();
   const [isMobileOverlayOpen, setIsMobileOverlayOpen] = useState(false);
 
-  const handleSelectSuggestion = (name) => {
+  const handleSelectSuggestion = (suggestion) => {
+    const name = typeof suggestion === "object" ? suggestion.name : suggestion;
     addSearch(name);
     setQuery(name);
     setIsSearchFocused(false);
     setIsMobileOverlayOpen(false);
-    router.push(`/search?q=${encodeURIComponent(name)}`);
+    if (typeof suggestion === "object" && suggestion.slug) {
+      const href = suggestion.unit
+        ? `/product/${suggestion.slug}?unit=${encodeURIComponent(suggestion.unit)}`
+        : `/product/${suggestion.slug}`;
+      router.push(href);
+    } else {
+      router.push(`/search?q=${encodeURIComponent(name)}`);
+    }
   };
 
   const handleSelectCategory = (c) => {

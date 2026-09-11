@@ -1,6 +1,6 @@
 "use client";
 
-import { use } from "react";
+import { use, Suspense } from "react";
 import Link from "next/link";
 import { useProduct } from "@/features/products/hooks/useProducts";
 import ProductGallery from "@/features/products/components/ProductGallery";
@@ -88,7 +88,11 @@ export default function ProductDetailPage({ params: paramsPromise }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
         <div className="min-w-0 w-full"><ProductGallery images={productImages} videos={productVideos} name={product.name} /></div>
-        <div className="min-w-0 w-full"><ProductInfo product={product} /></div>
+        <div className="min-w-0 w-full">
+          <Suspense fallback={null}>
+            <ProductInfo product={product} />
+          </Suspense>
+        </div>
       </div>
 
       <ProductDescription details={product.details} />

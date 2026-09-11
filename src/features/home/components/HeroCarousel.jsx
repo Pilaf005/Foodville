@@ -2,7 +2,7 @@
 
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import React from "react";
-import { Autoplay, EffectCreative, Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 
@@ -19,22 +19,21 @@ const Carousel_005 = ({
   spaceBetween = 0,
 }) => {
   return (
-    <div className={cn("relative w-full max-w-6xl mx-auto px-2 sm:px-4", className)}>
+    <div className={cn("relative w-full max-w-full mx-auto px-2 sm:px-4", className)}>
       <div className="w-full aspect-[16/9] sm:h-[380px] overflow-hidden rounded-lg sm:rounded-3xl relative bg-stone-150">
         <Swiper
           spaceBetween={spaceBetween}
+          speed={600}
           autoplay={
             autoplay
               ? {
-                  delay: 2500,
+                  delay: 3500,
                   disableOnInteraction: false,
                 }
               : false
           }
-          effect="creative"
           grabCursor={true}
-          slidesPerView="auto"
-          centeredSlides={true}
+          slidesPerView={1}
           loop={loop}
           pagination={
             showPagination
@@ -52,16 +51,7 @@ const Carousel_005 = ({
               : false
           }
           className="Carousal_005 h-full w-full"
-          creativeEffect={{
-            prev: {
-              shadow: true,
-              translate: [0, 0, -400],
-            },
-            next: {
-              translate: ["100%", 0, 0],
-            },
-          }}
-          modules={[EffectCreative, Pagination, Autoplay]}
+          modules={[Pagination, Autoplay]}
         >
           {images.map((image, index) => (
             <SwiperSlide key={index} className="h-full w-full">

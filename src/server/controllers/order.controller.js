@@ -15,6 +15,7 @@ import { nextSequence } from "@/server/models/Counter";
 import { priceItems } from "@/server/services/pricing.service";
 import { refundPayment } from "@/server/services/razorpay.service";
 import { cancelShiprocketOrder } from "@/server/services/shiprocket.service";
+import { sendOrderNotificationEmails } from "@/server/services/email.service";
 import { badRequest, notFound } from "@/server/utils/apiError";
 import BlockedPincode from "@/server/models/BlockedPincode";
 
@@ -157,6 +158,12 @@ export async function finaliseOrder(order) {
       { $inc: { usageCount: 1 } }
     ).catch(() => {}); // Non-blocking — don't fail the order if coupon tracking fails
   }
+
+  // Trigger order confirmation emails to Admin & Customer (non-blocking)
+  sendOrderNotificationEmails(order).catch((err) => {
+    // eslint-disable-next-line no-console
+    console.error("[Order Email Error]:", err?.message || err);
+  });
 }
 
 /**

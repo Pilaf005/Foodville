@@ -61,11 +61,11 @@ export default function CategoryFilter({ active }) {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-0 sm:px-0 py-0 sm:py-2 -mt-3 sm:mt-0">
+    <div className="w-full px-0 py-0 sm:py-2 -mt-3 sm:mt-0">
       {/* Horizontal scroll on mobile (full screen width), grid on desktop */}
       <div
         ref={scrollRef}
-        className="flex sm:grid gap-x-2.5 gap-y-6 sm:grid-cols-8 overflow-x-auto sm:overflow-x-visible no-scrollbar mobile-bleed-scroll py-2 sm:py-0 snap-x snap-mandatory"
+        className="flex sm:grid gap-x-2.5 sm:gap-x-4 lg:gap-x-6 gap-y-6 sm:grid-cols-8 overflow-x-auto sm:overflow-x-visible no-scrollbar mobile-bleed-scroll py-2 sm:py-0 snap-x snap-mandatory"
       >
         {categoriesList.map((item) => {
           const isActive = active === item.id;
@@ -74,10 +74,10 @@ export default function CategoryFilter({ active }) {
               key={item.id}
               ref={isActive ? activeRef : null}
               onClick={() => handleCategoryClick(item.id)}
-              className="flex flex-col items-center gap-1.5 group min-h-[44px] min-w-[44px] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised select-none transition cursor-pointer w-[62px] sm:w-auto shrink-0 sm:shrink snap-start animate-fadeIn"
+              className="flex flex-col items-center gap-1.5 group min-h-[44px] min-w-[44px] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised select-none transition cursor-pointer w-16 sm:w-full shrink-0 sm:shrink snap-start animate-fadeIn"
             >
               {/* Rounded Square with visible active border */}
-              <div className={`p-[3px] rounded-[20px] transition-all duration-300 ${
+              <div className={`p-[3px] rounded-[20px] transition-all duration-300 flex justify-center ${
                 isActive
                   ? "bg-olive shadow-lg shadow-olive/20 scale-105"
                   : "bg-transparent"

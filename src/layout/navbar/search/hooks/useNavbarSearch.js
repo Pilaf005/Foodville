@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import { expandProductVariants } from "@/features/products/utils/variantUtils";
 
 export function useNavbarSearch() {
   const router = useRouter();
@@ -29,7 +30,7 @@ export function useNavbarSearch() {
 
   const debouncedQuery = useDebounce(query.trim(), 300);
 
-  const { data: suggestions, isFetching } = useQuery({
+  const { data: rawSuggestions, isFetching } = useQuery({
     queryKey: ["search-suggestions", debouncedQuery],
     queryFn: async () => {
       const res = await fetch(`/api/search/suggestions?q=${encodeURIComponent(debouncedQuery)}`);
@@ -42,7 +43,17 @@ export function useNavbarSearch() {
     staleTime: 30_000,
   });
 
-  const currentSuggestions = suggestions || { products: [], categories: [], didYouMean: null };
+  const expandedProducts = useMemo(
+    () => expandProductVariants(rawSuggestions?.products || []),
+    [rawSuggestions?.products]
+  );
+
+  const currentSuggestions = {
+    didYouMean: rawSuggestions?.didYouMean || null,
+    categories: rawSuggestions?.categories || [],
+    products: expandedProducts,
+  };
+
   const totalItemsCount =
     (currentSuggestions.didYouMean ? 1 : 0) +
     currentSuggestions.products.length +
@@ -102,7 +113,10 @@ export function useNavbarSearch() {
           const product = currentSuggestions.products[activeIndex - currentIndex];
           setQuery(product.name);
           setIsSearchFocused(false);
-          router.push(`/shop/${product.slug}`);
+          const href = product.unit
+            ? `/product/${product.slug}?unit=${encodeURIComponent(product.unit)}`
+            : `/product/${product.slug}`;
+          router.push(href);
           return;
         }
         currentIndex += currentSuggestions.products.length;

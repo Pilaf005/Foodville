@@ -2,6 +2,7 @@
  
 import { useMemo } from "react";
 import ProductCard from "./ProductCard";
+import { expandProductVariants } from "../utils/variantUtils";
  
 // Fisher-Yates Shuffle — runs during render, not after paint (no flash)
 function shuffleArray(array) {
@@ -14,12 +15,13 @@ function shuffleArray(array) {
 }
  
 export default function ProductGrid({ products }) {
-  // useMemo: shuffle is computed synchronously during render.
+  // useMemo: expand variants for multi-weight products, then shuffle during render.
   // No second render cycle → no visible flash when switching categories.
-  const displayProducts = useMemo(
-    () => (products && products.length > 0 ? shuffleArray(products) : []),
-    [products]
-  );
+  const displayProducts = useMemo(() => {
+    if (!products || products.length === 0) return [];
+    const shuffled = shuffleArray(products);
+    return expandProductVariants(shuffled);
+  }, [products]);
  
   if (!products || products.length === 0) {
     return (

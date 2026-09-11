@@ -214,28 +214,28 @@ function BulkOrderForm() {
 
 export default function BulkOrderPage() {
   return (
-    <div className="min-h-screen bg-cream py-8 sm:py-12 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto space-y-12">
-        {/* Header Hero */}
+    <div className="sm:-mx-12 overflow-x-hidden">
+      <div className="relative w-full max-w-full mx-auto px-2 sm:px-4 space-y-8 sm:space-y-12 pb-10">
+        {/* Header Hero — exact same height & width as Homepage Hero Banner */}
         <div
-          className="relative rounded-3xl text-white p-8 sm:p-12 overflow-hidden shadow-xl border border-olive/30 bg-cover bg-center"
+          className="w-full min-h-[340px] sm:h-[380px] relative rounded-lg sm:rounded-3xl text-white p-6 sm:p-10 overflow-hidden shadow-md border border-olive/30 bg-cover bg-center flex flex-col justify-center"
           style={{ backgroundImage: "url('/images/bulk_wholesale_banner.png')" }}
         >
           {/* Overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent pointer-events-none" />
           
-          <div className="relative z-10 max-w-2xl space-y-4">
+          <div className="relative z-10 max-w-2xl space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-wide text-amber-300">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/>
               </svg>
               Foodville Direct Commercial Program
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-              B2B Commercial Spices, Dry Fruits & Seeds
+            <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+              B2B Commercial Spices, Dry Fruits &amp; Seeds
             </h1>
-            <p className="text-stone-200 text-sm sm:text-base leading-relaxed">
-              Wholesale distribution & private labeling. Secure direct pricing, lab-certified batches, and nationwide logistics dispatching within 24 hours.
+            <p className="text-stone-200 text-xs sm:text-sm leading-relaxed max-w-xl">
+              Wholesale distribution &amp; private labeling. Secure direct pricing, lab-certified batches, and nationwide logistics dispatching within 24 hours.
             </p>
           </div>
         </div>

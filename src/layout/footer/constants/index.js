@@ -6,8 +6,10 @@ export const COMPANY_INFO = {
 
 export const INFORMATION_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Bulk & Wholesale", href: "/bulk-order" },
+  { label: "Worldwide Bulk Export", href: "/global-export" },
+  { label: "Distributor Opportunity", href: "/distributorship" },
   { label: "Blogs", href: "/blogs" },
-  { label: "Franchise Opportunity", href: "/franchise" },
   { label: "My Wishlist", href: "/wishlist" },
   { label: "Why Choose Us", href: "/why-choose-us" },
 ];

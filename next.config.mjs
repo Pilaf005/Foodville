@@ -20,8 +20,8 @@ const securityHeaders = [
       "connect-src 'self' https://nominatim.openstreetmap.org https://*.r2.dev",
       // media-src allows <video> and <audio> to load from R2 CDN (required for product video playback)
       "media-src 'self' https://*.r2.dev",
-      "frame-src https://api.razorpay.com https://checkout.razorpay.com",
-      "object-src 'none'",
+      "frame-src 'self' blob: data: https://api.razorpay.com https://checkout.razorpay.com",
+      "object-src 'self' blob: data:",
       "base-uri 'self'",
       "form-action 'self'",
     ].join("; "),

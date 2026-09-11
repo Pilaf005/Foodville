@@ -1,0 +1,25 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 90" width="100%" height="100%">
+  <defs>
+    <linearGradient id="haccpRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C62828"/>
+      <stop offset="100%" stop-color="#8E0000"/>
+    </linearGradient>
+    <linearGradient id="haccpGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </linearGradient>
+  </defs>
+
+  <!-- HACCP Seal -->
+  <g transform="translate(10, 6)">
+    <polygon points="38,2 49,9 61,7 68,17 79,20 81,32 89,38 86,50 90,61 80,68 78,80 66,80 58,89 47,84 38,89 29,84 18,89 10,80 -2,80 0,68 -10,61 -6,50 -9,38 -1,32 1,20 12,17 19,7 31,9" transform="scale(0.8) translate(10, 8)" fill="url(#haccpGold)" stroke="#E65100" stroke-width="1"/>
+    <circle cx="38" cy="38" r="28" fill="url(#haccpRed)" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text x="38" y="34" font-family="'Arial Black', sans-serif" font-size="11" font-weight="900" fill="#FFFFFF" text-anchor="middle">HACCP</text>
+    <text x="38" y="47" font-family="Arial, sans-serif" font-size="7.5" font-weight="800" fill="#FFE082" text-anchor="middle">CERTIFIED</text>
+  </g>
+
+  <!-- Typography -->
+  <text x="92" y="36" font-family="'Arial Black', sans-serif" font-size="19" font-weight="900" fill="#C62828">HACCP &amp; GMP</text>
+  <text x="92" y="52" font-family="Arial, sans-serif" font-size="9.5" font-weight="700" fill="#E65100">HAZARD ANALYSIS CONTROL</text>
+  <text x="92" y="66" font-family="Arial, sans-serif" font-size="8" font-weight="600" fill="#546E7A">FOOD SAFETY SYSTEM BENCHMARK</text>
+</svg>

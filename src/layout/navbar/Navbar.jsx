@@ -18,27 +18,45 @@ export const Navbar = () => {
   const [isPickerOpen, setIsPickerOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDesktopVisible, setIsDesktopVisible] = useState(true);
   const lastScrollY = useRef(0);
   const transitionLock = useRef(false);
 
   useEffect(() => {
     const onScroll = () => {
-      if (transitionLock.current) return; // block events during height transition
       const y = window.scrollY;
-      setIsScrolled((prev) => {
-        if (!prev && y > 100) {
-          // lock scroll events for the duration of the CSS transition
-          transitionLock.current = true;
-          setTimeout(() => { transitionLock.current = false; }, 400);
-          return true;
+      const delta = y - lastScrollY.current;
+
+      // Desktop-only hide/show logic (768px and up)
+      if (window.innerWidth >= 768) {
+        if (y < 30) {
+          setIsDesktopVisible(true);
+        } else if (delta > 5) {
+          // Scroll Down: Hide desktop navbar
+          setIsDesktopVisible(false);
+        } else if (delta < -5) {
+          // Scroll Up: Reveal desktop navbar
+          setIsDesktopVisible(true);
         }
-        if (prev && y < 12) {
-          transitionLock.current = true;
-          setTimeout(() => { transitionLock.current = false; }, 400);
-          return false;
-        }
-        return prev; // dead zone — no change
-      });
+      }
+
+      // Original mobile scroll logic
+      if (!transitionLock.current) {
+        setIsScrolled((prev) => {
+          if (!prev && y > 100) {
+            transitionLock.current = true;
+            setTimeout(() => { transitionLock.current = false; }, 400);
+            return true;
+          }
+          if (prev && y < 12) {
+            transitionLock.current = true;
+            setTimeout(() => { transitionLock.current = false; }, 400);
+            return false;
+          }
+          return prev;
+        });
+      }
+
       lastScrollY.current = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -60,7 +78,11 @@ export const Navbar = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-cardline bg-cream/95 backdrop-blur">
+      <header
+        className={`sticky top-0 z-50 border-b border-cardline bg-cream/95 backdrop-blur transition-transform duration-300 ease-in-out ${
+          isDesktopVisible ? "translate-y-0" : "max-md:translate-y-0 md:-translate-y-full"
+        }`}
+      >
         <AnnouncementBar />
         <div className="hidden md:block">
           <DesktopNavigation onLocationClick={handleLocationClick} activeAddress={activeAddress} />

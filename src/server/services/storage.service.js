@@ -44,6 +44,9 @@ export const ALLOWED_VIDEO_TYPES = {
   "video/webm": "webm",
   "video/quicktime": "mov",
   "video/x-matroska": "mkv",
+  "video/avi": "avi",
+  "video/x-msvideo": "avi",
+  "application/octet-stream": "mp4",
 };
 
 /** Upload targets a client may request. Anything else is rejected. */
@@ -225,8 +228,11 @@ export async function uploadImage({ buffer, declaredType, folder, ownerId, repla
 /**
  * Validate + store media (images or videos up to 100MB).
  */
-export async function uploadMedia({ buffer, declaredType, folder, ownerId, replaceUrl }) {
-  if (declaredType && (declaredType.startsWith("video/") || ALLOWED_VIDEO_TYPES[declaredType])) {
+export async function uploadMedia({ buffer, declaredType, fileName, folder, ownerId, replaceUrl }) {
+  const extFromFileName = fileName ? (fileName.split(".").pop() || "").toLowerCase() : "";
+  const isVideoExt = ["mp4", "mov", "webm", "mkv", "avi", "m4v", "3gp", "ts", "flv", "wmv"].includes(extFromFileName);
+
+  if ((declaredType && (declaredType.startsWith("video/") || ALLOWED_VIDEO_TYPES[declaredType])) || isVideoExt) {
     const { buffer: safe, contentType, ext } = validateVideo(buffer, declaredType);
     const key = buildKey({ folder, ownerId, ext });
     const result = await putObject({ key, buffer: safe, contentType });

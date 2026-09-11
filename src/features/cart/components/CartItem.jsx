@@ -20,7 +20,7 @@ export default function CartItem({ item }) {
         {/* Image wrapper */}
         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white border border-gray-100 shrink-0 flex items-center justify-center p-1.5">
           <img
-            src={item.image}
+            src={item.image || PRODUCT_FALLBACK_IMAGE}
             alt={item.name}
             className="w-full h-full object-contain"
             onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = PRODUCT_FALLBACK_IMAGE; }}

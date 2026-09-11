@@ -31,7 +31,7 @@ export default function WishlistCard({ item, onRemove }: WishlistCardProps) {
       {/* Image */}
       <div className="relative h-36 overflow-hidden bg-cream">
         <img
-          src={item.image}
+          src={item.image || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='144'><rect width='400' height='144' fill='%23FAF7F2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='14' fill='%23A8A29E'>No Image</text></svg>"}
           alt={item.name}
           className="w-full h-full object-cover transition group-hover:scale-105 duration-300"
           onError={(e) => {

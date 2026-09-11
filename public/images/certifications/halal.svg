@@ -1,0 +1,28 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 90" width="100%" height="100%">
+  <defs>
+    <linearGradient id="halalGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2E7D32"/>
+      <stop offset="100%" stop-color="#1B5E20"/>
+    </linearGradient>
+    <linearGradient id="halalGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#FFA000"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Halal Round Seal -->
+  <g transform="translate(10, 6)">
+    <circle cx="38" cy="38" r="36" fill="url(#halalGreen)" stroke="#A5D6A7" stroke-width="2"/>
+    <circle cx="38" cy="38" r="30" fill="none" stroke="url(#halalGold)" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <circle cx="38" cy="38" r="22" fill="#FFFFFF"/>
+    <!-- Crescent & Star / Calligraphic Halal -->
+    <path d="M 38 22 C 34 26, 34 36, 40 42 C 32 40, 30 30, 34 22 Z" fill="#2E7D32"/>
+    <circle cx="43" cy="28" r="2" fill="#FFA000"/>
+    <text x="38" y="53" font-family="'Arial Black', sans-serif" font-size="7" font-weight="900" fill="#1B5E20" text-anchor="middle">حلال</text>
+  </g>
+
+  <!-- Typography -->
+  <text x="92" y="36" font-family="'Arial Black', sans-serif" font-size="18" font-weight="900" fill="#1B5E20">HALAL &amp; KOSHER</text>
+  <text x="92" y="52" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#2E7D32">100% PURE PLANT-BASED</text>
+  <text x="92" y="66" font-family="Arial, sans-serif" font-size="8" font-weight="600" fill="#546E7A">INTERNATIONAL DIETARY COMPLIANCE</text>
+</svg>

@@ -24,6 +24,7 @@ export const listProductsQuery = z
     search: z.string().trim().min(1).max(80).optional(),
     sort: z.enum(SORT_OPTIONS).default("relevance"),
     topSellers: z.coerce.boolean().optional(),
+    showInReels: z.coerce.boolean().optional(),
     minPrice: z.coerce.number().min(0).optional(),
     maxPrice: z.coerce.number().min(0).optional(),
     page: z.coerce.number().int().min(1).default(1),

@@ -1,0 +1,30 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 90" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sbGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B5E20"/>
+      <stop offset="100%" stop-color="#0A3810"/>
+    </linearGradient>
+    <linearGradient id="sbGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#FFA000"/>
+    </linearGradient>
+  </defs>
+  <!-- Circular Emblem -->
+  <g transform="translate(10, 5)">
+    <circle cx="40" cy="40" r="38" fill="url(#sbGreen)" stroke="#C8E6C9" stroke-width="2"/>
+    <circle cx="40" cy="40" r="32" fill="none" stroke="url(#sbGold)" stroke-width="1.5" stroke-dasharray="3,2"/>
+    
+    <!-- Stylized spice leaf & seed motif -->
+    <path d="M 40 18 C 52 28, 56 46, 40 60 C 24 46, 28 28, 40 18 Z" fill="#4CAF50" stroke="#81C784" stroke-width="1"/>
+    <path d="M 40 22 C 34 34, 35 48, 40 56 C 40 42, 43 32, 40 22 Z" fill="#81C784"/>
+    <circle cx="34" cy="42" r="3.5" fill="url(#sbGold)"/>
+    <circle cx="46" cy="42" r="3.5" fill="url(#sbGold)"/>
+    <circle cx="40" cy="34" r="3" fill="url(#sbGold)"/>
+    <circle cx="40" cy="48" r="3.5" fill="url(#sbGold)"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="96" y="36" font-family="'Trebuchet MS', Arial, sans-serif" font-size="18" font-weight="900" fill="#0A3810" letter-spacing="0.5">SPICES BOARD</text>
+  <text x="96" y="54" font-family="'Trebuchet MS', Arial, sans-serif" font-size="14" font-weight="800" fill="#2E7D32" letter-spacing="2">INDIA</text>
+  <text x="96" y="70" font-family="Arial, sans-serif" font-size="8" font-weight="600" fill="#616161" letter-spacing="0.2">Ministry of Commerce &amp; Industry</text>
+</svg>

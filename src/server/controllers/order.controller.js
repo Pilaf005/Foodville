@@ -16,6 +16,7 @@ import { priceItems } from "@/server/services/pricing.service";
 import { refundPayment } from "@/server/services/razorpay.service";
 import { cancelShiprocketOrder } from "@/server/services/shiprocket.service";
 import { sendOrderNotificationEmails } from "@/server/services/email.service";
+import { sendOrderWhatsAppNotifications } from "@/server/services/wati.service";
 import { badRequest, notFound } from "@/server/utils/apiError";
 import BlockedPincode from "@/server/models/BlockedPincode";
 
@@ -161,8 +162,12 @@ export async function finaliseOrder(order) {
 
   // Trigger order confirmation emails to Admin & Customer (non-blocking)
   sendOrderNotificationEmails(order).catch((err) => {
-    // eslint-disable-next-line no-console
     console.error("[Order Email Error]:", err?.message || err);
+  });
+
+  // Trigger WhatsApp notifications to Customer & Admin via WATI (non-blocking)
+  sendOrderWhatsAppNotifications(order).catch((err) => {
+    console.error("[Order WhatsApp Error]:", err?.message || err);
   });
 }
 

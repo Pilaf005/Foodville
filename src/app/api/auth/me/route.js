@@ -1,5 +1,5 @@
 import { ok, withRoute } from "@/server/utils/apiResponse";
-import { requireAuth } from "@/server/middleware/auth";
+import { getAuth, requireAuth } from "@/server/middleware/auth";
 import { getMe } from "@/server/controllers/auth.controller";
 import { signAuthToken, setAuthCookie } from "@/server/services/token.service";
 

@@ -522,4 +522,169 @@ export async function sendOrderConfirmationCustomerEmail(order, { customerEmail,
   }
 }
 
+/**
+ * Sends notification to Foodville Team (support@foodvilleindia.com) when a creator submits a video reel.
+ */
+export async function sendCreatorSubmissionAdminNotification(submission) {
+  const t = getTransporter();
+  if (!t) return;
+  try {
+    const address = submission.shippingAddress || {};
+    await t.sendMail({
+      from: env.smtp.from,
+      to: "support@foodvilleindia.com",
+      subject: `🎬 New Creator Reel Submission: ${submission.socialHandle || submission.creatorName} [${submission.submissionId}]`,
+      html: `
+        <div style="font-family: Arial, system-ui, sans-serif; padding: 24px; background: #FAF7F2; color: #2E2A26;">
+          <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #E8E1D5; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+            
+            <div style="background: #56684A; padding: 20px 24px; color: #ffffff;">
+              <h2 style="margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.02em;">🎬 New Creator Reel Submission</h2>
+              <p style="margin: 4px 0 0; font-size: 13px; color: #D1E6C0;">Reference ID: <strong>${submission.submissionId}</strong></p>
+            </div>
+
+            <div style="padding: 24px;">
+              <p style="margin: 0 0 16px; font-size: 14px; line-height: 1.5; color: #5C554D;">
+                A creator has submitted their published video reel link to claim their Foodville spice hamper.
+              </p>
+
+              <!-- Video Link Box -->
+              <div style="background: #FAF7F2; border: 1px solid #E8E1D5; border-radius: 12px; padding: 16px; margin-bottom: 20px; text-align: center;">
+                <div style="font-size: 12px; font-weight: 700; color: #B91C1C; text-transform: uppercase; margin-bottom: 6px;">Published Reel URL</div>
+                <a href="${submission.reelUrl}" target="_blank" style="display: inline-block; background: #56684A; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 13px; margin-bottom: 8px;">
+                  ▶ Open Video Reel
+                </a>
+                <div style="font-size: 12px; color: #5C554D; word-break: break-all;">${submission.reelUrl}</div>
+              </div>
+
+              <!-- Creator Details Table -->
+              <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px;">
+                <tr style="border-bottom: 1px solid #F0EAE1;">
+                  <td style="padding: 8px 0; color: #7A7368; width: 38%;"><strong>Creator Name:</strong></td>
+                  <td style="padding: 8px 0; font-weight: 600; color: #1E1B17;">${submission.creatorName}</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F0EAE1;">
+                  <td style="padding: 8px 0; color: #7A7368;"><strong>Social Handle:</strong></td>
+                  <td style="padding: 8px 0; font-weight: 600; color: #56684A;">${submission.socialHandle || "Not specified"}</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F0EAE1;">
+                  <td style="padding: 8px 0; color: #7A7368;"><strong>Email:</strong></td>
+                  <td style="padding: 8px 0;"><a href="mailto:${submission.email}" style="color: #56684A; text-decoration: none; font-weight: 600;">${submission.email}</a></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F0EAE1;">
+                  <td style="padding: 8px 0; color: #7A7368;"><strong>Phone / WhatsApp:</strong></td>
+                  <td style="padding: 8px 0; font-weight: 600; color: #1E1B17;">${submission.phone}</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F0EAE1;">
+                  <td style="padding: 8px 0; color: #7A7368; vertical-align: top;"><strong>Delivery Address:</strong></td>
+                  <td style="padding: 8px 0; line-height: 1.5; color: #1E1B17;">
+                    ${address.street || ""}<br>
+                    ${address.city || ""}, ${address.state || ""} - <strong>${address.pincode || ""}</strong>
+                  </td>
+                </tr>
+                ${
+                  submission.recipeNotes
+                    ? `<tr>
+                        <td style="padding: 8px 0; color: #7A7368; vertical-align: top;"><strong>Recipe / Notes:</strong></td>
+                        <td style="padding: 8px 0; color: #1E1B17;">${submission.recipeNotes}</td>
+                      </tr>`
+                    : ""
+                }
+              </table>
+
+              <div style="background: #EBF1E6; border: 1px solid #C6D8BC; border-radius: 10px; padding: 12px; font-size: 12px; color: #3F5034;">
+                ✅ <strong>Next Action:</strong> Verify the reel content and tag (@foodville15). Once confirmed, dispatch the spice hamper to the above postal address.
+              </div>
+            </div>
+
+            <div style="background: #FAF7F2; border-top: 1px solid #EDE6D9; padding: 14px 24px; text-align: center; font-size: 11px; color: #8A8275;">
+              Foodville Creator Program • <a href="${env.siteUrl}/collaborate" style="color: #56684A;">foodvilleindia.com/collaborate</a>
+            </div>
+          </div>
+        </div>
+      `,
+    });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("[email] Failed to send creator submission admin notification:", err?.message);
+  }
+}
+
+/**
+ * Sends confirmation email to Creator when their reel submission is received.
+ */
+export async function sendCreatorSubmissionConfirmation(submission) {
+  const t = getTransporter();
+  if (!t) return;
+  try {
+    const address = submission.shippingAddress || {};
+    await t.sendMail({
+      from: env.smtp.from,
+      to: submission.email,
+      subject: `🎁 We received your Foodville Reel submission! [${submission.submissionId}]`,
+      html: `
+        <div style="font-family: Arial, system-ui, sans-serif; padding: 24px; background: #FAF7F2; color: #2E2A26;">
+          <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #E8E1D5; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+            
+            <div style="background: #56684A; padding: 24px; color: #ffffff; text-align: center;">
+              <span style="display: inline-block; background: rgba(255,255,255,0.15); color: #FAF7F2; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px;">
+                REAL FOOD • REAL FLAVOUR • ALWAYS ♡
+              </span>
+              <h1 style="margin: 0; font-size: 22px; font-weight: 800;">Thank You for Collaborating!</h1>
+              <p style="margin: 6px 0 0; font-size: 13px; color: #D1E6C0;">Reference ID: <strong>${submission.submissionId}</strong></p>
+            </div>
+
+            <div style="padding: 24px;">
+              <p style="margin: 0 0 16px; font-size: 15px; color: #1E1B17; font-weight: 600;">
+                Hi ${submission.creatorName},
+              </p>
+              <p style="margin: 0 0 20px; font-size: 14px; line-height: 1.6; color: #5C554D;">
+                We are thrilled to receive your video reel submission! Our creator team is currently reviewing your video and verifying the tag (<strong style="color: #56684A;">@foodville15</strong>).
+              </p>
+
+              <!-- Status Card -->
+              <div style="background: #FDF8F0; border: 1.5px solid #F5E5C9; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
+                <div style="font-size: 13px; font-weight: 700; color: #92400E; margin-bottom: 6px;">
+                  ✨ Submission Details
+                </div>
+                <div style="font-size: 13px; color: #4A433B; line-height: 1.7;">
+                  • <strong>Submission ID:</strong> ${submission.submissionId}<br>
+                  • <strong>Social Handle:</strong> ${submission.socialHandle || "Not specified"}<br>
+                  • <strong>Submitted Reel:</strong> <a href="${submission.reelUrl}" style="color: #56684A; word-break: break-all;">${submission.reelUrl}</a><br>
+                  • <strong>Delivery Address:</strong> ${address.street || ""}, ${address.city || ""}, ${address.state || ""} - ${address.pincode || ""}
+                </div>
+              </div>
+
+              <!-- What happens next -->
+              <div style="margin-bottom: 24px;">
+                <h3 style="margin: 0 0 10px; font-size: 14px; font-weight: 800; color: #1E1B17;">What Happens Next?</h3>
+                <ol style="margin: 0; padding-left: 18px; font-size: 13px; color: #5C554D; line-height: 1.8;">
+                  <li><strong>Verification (24–48 hrs):</strong> Our team confirms the reel is public and tags Foodville.</li>
+                  <li><strong>Hamper Dispatch:</strong> Your 100% free Foodville spice hamper will be packed fresh at our Ghaziabad facility.</li>
+                </ol>
+              </div>
+
+              <!-- Repeat Cycle Reminder -->
+              <div style="background: #EBF1E6; border: 1px solid #C6D8BC; border-radius: 12px; padding: 14px 16px; font-size: 13px; color: #3F5034; line-height: 1.5;">
+                🎁 <strong>Want More Spices?</strong> Create another recipe reel, share it, and submit the new link to unlock bigger deluxe hampers and exclusive chef gift boxes!
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div style="background: #FAF7F2; border-top: 1px solid #EDE6D9; padding: 18px 24px; text-align: center; font-size: 12px; color: #8A8275; line-height: 1.6;">
+              Questions? Reply directly to this email or reach us at <a href="mailto:support@foodvilleindia.com" style="color: #56684A; font-weight: 600; text-decoration: none;">support@foodvilleindia.com</a>.<br>
+              <strong>Foodville Consumer Products Private Limited</strong> • Ghaziabad, UP
+            </div>
+
+          </div>
+        </div>
+      `,
+    });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("[email] Failed to send creator confirmation email:", err?.message);
+  }
+}
+
+
 

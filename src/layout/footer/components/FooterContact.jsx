@@ -56,6 +56,28 @@ export const FooterContact = () => {
             <div className="font-extrabold text-white truncate">{CONTACT_INFO.email.value}</div>
           </div>
         </a>
+
+        {/* Instagram Link */}
+        {CONTACT_INFO.instagram && (
+          <a 
+            href={CONTACT_INFO.instagram.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-xs text-stone-200 hover:text-white transition group focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px] rounded"
+          >
+            <div className="w-7 h-7 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center shrink-0 text-white group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:via-pink-500 group-hover:to-purple-600 group-hover:text-white group-hover:border-transparent transition-all">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </div>
+            <div className="leading-tight">
+              <div className="text-[10px] text-[#F3D08A] font-bold">{CONTACT_INFO.instagram.label}</div>
+              <div className="font-extrabold text-white truncate">{CONTACT_INFO.instagram.value}</div>
+            </div>
+          </a>
+        )}
       </div>
     </div>
   );

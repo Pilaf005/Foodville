@@ -9,6 +9,7 @@ export const INFORMATION_LINKS = [
   { label: "Bulk & Wholesale", href: "/bulk-order" },
   { label: "Worldwide Bulk Export", href: "/global-export" },
   { label: "Distributor Opportunity", href: "/distributorship" },
+  { label: "Creator Collaboration", href: "/collaborate" },
   { label: "Blogs", href: "/blogs" },
   { label: "My Wishlist", href: "/wishlist" },
   { label: "Why Choose Us", href: "/why-choose-us" },
@@ -37,4 +38,10 @@ export const CONTACT_INFO = {
     value: "support@foodvilleindia.com",
     href: "mailto:support@foodvilleindia.com",
   },
+  instagram: {
+    label: "INSTAGRAM",
+    value: "@foodville15",
+    href: "https://www.instagram.com/foodville15?stkn=MTc2dXphZHc3djA0Mw==",
+  },
 };
+

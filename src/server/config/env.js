@@ -90,6 +90,17 @@ export const env = {
   freeDeliveryThreshold: int(process.env.FREE_DELIVERY_THRESHOLD, 299),
   deliveryCharge: int(process.env.DELIVERY_CHARGE, 49),
   currency: process.env.CURRENCY || "INR",
+
+  // WATI (WhatsApp Automation)
+  wati: {
+    endpoint: (process.env.WATI_API_ENDPOINT || "").replace(/\/+$/, ""),
+    accessToken: process.env.WATI_ACCESS_TOKEN || "",
+    templateOrderConfirmation: process.env.WATI_TEMPLATE_ORDER_CONFIRMATION || "foodville_order_confirm",
+    adminWhatsAppNumbers: (process.env.WATI_ADMIN_WHATSAPP_NUMBER || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean),
+  },
 };
 
 /** Throw if a required env value is missing (called at point-of-use). */

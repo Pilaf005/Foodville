@@ -105,7 +105,7 @@ export async function sendOrderConfirmationWhatsApp(order) {
       { name: "pincode", value: pincode },
     ];
 
-    const templateName = templateOrderConfirmation || "foodville_order_confirmation";
+    const templateName = templateOrderConfirmation || "foodville_order_confirm";
     const broadcastName = `order_confirm_${orderId}`;
 
     const authHeader = accessToken.startsWith("Bearer ") ? accessToken : `Bearer ${accessToken}`;

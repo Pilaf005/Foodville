@@ -61,9 +61,13 @@ function ProductNotFoundState() {
   );
 }
 
-/** Back-compat: products without an images[] array fall back to [image] */
+/** Always show primary image first, then additional images (deduped). */
 function resolveProductImages(product) {
-  return product.images?.length > 0 ? product.images : [product.image];
+  const primary = product.image || "";
+  const extras  = (product.images || []).filter(Boolean);
+  // Primary always first; deduplicate if admin also stored it in extras
+  const all = [primary, ...extras.filter((url) => url !== primary)].filter(Boolean);
+  return all.length > 0 ? all : [];
 }
 
 function resolveProductVideos(product) {

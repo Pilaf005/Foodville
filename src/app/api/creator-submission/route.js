@@ -35,6 +35,7 @@ export const POST = withRoute(async (req) => {
     state,
     pincode,
     recipeNotes,
+    agreedPolicy,
     website,     // Honeypot field 1
     b_confirm,   // Honeypot field 2
   } = body;
@@ -49,7 +50,13 @@ export const POST = withRoute(async (req) => {
     });
   }
 
-  // 2. Mandatory Fields Check
+  // 2. Mandatory Fields & Policy Check
+  if (agreedPolicy !== true && agreedPolicy !== "true") {
+    throw badRequest(
+      "You must accept the Collaboration Policy (follow @foodville15, tag required, no deletion) to submit your reel."
+    );
+  }
+
   if (!creatorName || !email || !phone || !reelUrl || !street || !city || !state || !pincode) {
     throw badRequest(
       "Please fill in all required fields (Name, Email, Phone, Reel URL, Street Address, City, State, PIN code)."
@@ -98,6 +105,8 @@ export const POST = withRoute(async (req) => {
       pincode: rawPincode,
     },
     recipeNotes: recipeNotes ? String(recipeNotes).trim() : "",
+    agreedPolicy: true,
+    policyAcceptedAt: new Date(),
     status: "pending",
   });
 
@@ -113,5 +122,6 @@ export const POST = withRoute(async (req) => {
     submissionId: submission.submissionId,
     creatorName: submission.creatorName,
     email: submission.email,
+    collaborationPolicy: "Accepted",
   });
 });

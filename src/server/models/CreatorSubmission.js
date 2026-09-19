@@ -23,6 +23,8 @@ const CreatorSubmissionSchema = new mongoose.Schema(
     },
     trackingNumber: { type: String, default: "" },
     internalNotes: { type: String, default: "" },
+    agreedPolicy: { type: Boolean, default: true, required: true },
+    policyAcceptedAt: { type: Date, default: Date.now },
   },
   { timestamps: true }
 );

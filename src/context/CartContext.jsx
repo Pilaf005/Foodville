@@ -117,17 +117,21 @@ export function CartProvider({ children }) {
      Optimistic locally, then reconciled with the server when signed in.     */
 
   async function addToCart(product, qty = 1) {
+    // Normalize ID to match server format: fromServer() uses `${productId}-${unit}` or `${productId}`
+    const numericId    = getNumericId(product.id);
+    const normalizedId = product.unit ? `${numericId}-${product.unit}` : String(numericId);
+
     setCart((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+      const existing = prev.find((item) => item.id === normalizedId);
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + qty } : item
+          item.id === normalizedId ? { ...item, qty: item.qty + qty } : item
         );
       }
       return [
         ...prev,
         {
-          id: product.id,
+          id: normalizedId,
           slug: product.slug,
           name: product.name,
           brand: product.brand,

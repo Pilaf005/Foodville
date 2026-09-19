@@ -10,6 +10,8 @@ import ErrorBoundary from "@/components/common/ErrorBoundary";
 import { Nunito_Sans } from "next/font/google";
 // ChatWidgetLoader is a "use client" component that lazy-loads FoodvilleChatWidget with ssr:false
 import ChatWidgetLoader from "@/components/common/ChatWidgetLoader";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Self-hosted font via next/font — eliminates the 440ms render-blocking external Google Fonts request
 const nunitoSans = Nunito_Sans({
@@ -146,6 +148,8 @@ export default function RootLayout({ children }) {
             </WishlistProvider>
           </CartProvider>
         </AppProviders>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

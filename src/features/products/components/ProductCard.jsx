@@ -28,9 +28,15 @@ export default function ProductCard({ product, priority = false }) {
   const inWishlist   = isInWishlist(rawProductId) || isInWishlist(product.id);
   const discount     = Math.round(((product.mrp - product.price) / product.mrp) * 100);
 
-  const targetCartId = String(product.id);
-  const cartItem     = cart.find((item) => String(item.id) === targetCartId) || cart.find((item) => String(item.id) === String(rawProductId));
-  const currentQty   = cartItem ? cartItem.qty : 0;
+  // Build the cart ID the same way the server returns it:
+  // fromServer() uses `${productId}-${unit}` if unit exists, else just `${productId}`
+  const baseId    = String(product.numericId ?? product.id).split("-")[0];
+  const targetCartId = product.unit ? `${baseId}-${product.unit}` : baseId;
+
+  const cartItem  = cart.find((item) => String(item.id) === targetCartId)
+                 || cart.find((item) => String(item.id) === String(product.id))
+                 || cart.find((item) => String(item.id) === String(rawProductId));
+  const currentQty = cartItem ? cartItem.qty : 0;
 
   const detailHref = product.unit
     ? `/product/${product.slug}?unit=${encodeURIComponent(product.unit)}`

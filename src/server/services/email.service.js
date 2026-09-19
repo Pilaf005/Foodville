@@ -582,6 +582,10 @@ export async function sendCreatorSubmissionAdminNotification(submission) {
                     ${address.city || ""}, ${address.state || ""} - <strong>${address.pincode || ""}</strong>
                   </td>
                 </tr>
+                <tr style="border-bottom: 1px solid #F0EAE1;">
+                  <td style="padding: 8px 0; color: #7A7368;"><strong>Collaboration Policy:</strong></td>
+                  <td style="padding: 8px 0; font-weight: 700; color: #166534;">Accepted by Creator &#10004;</td>
+                </tr>
                 ${
                   submission.recipeNotes
                     ? `<tr>
@@ -651,7 +655,8 @@ export async function sendCreatorSubmissionConfirmation(submission) {
                   • <strong>Submission ID:</strong> ${submission.submissionId}<br>
                   • <strong>Social Handle:</strong> ${submission.socialHandle || "Not specified"}<br>
                   • <strong>Submitted Reel:</strong> <a href="${submission.reelUrl}" style="color: #56684A; word-break: break-all;">${submission.reelUrl}</a><br>
-                  • <strong>Delivery Address:</strong> ${address.street || ""}, ${address.city || ""}, ${address.state || ""} - ${address.pincode || ""}
+                  • <strong>Delivery Address:</strong> ${address.street || ""}, ${address.city || ""}, ${address.state || ""} - ${address.pincode || ""}<br>
+                  • <strong>Collaboration Policy:</strong> <span style="color: #166534; font-weight: 700;">Accepted &#10004;</span> (Agreed to follow @foodville15, required tags, and no-deletion policy)
                 </div>
               </div>
 

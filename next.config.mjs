@@ -13,11 +13,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.razorpay.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.razorpay.com https://connect.facebook.net",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://*.r2.dev https://images.unsplash.com https://plus.unsplash.com https://*.pinimg.com https://i.pinimg.com",
-      "connect-src 'self' https://nominatim.openstreetmap.org https://*.r2.dev",
+      "img-src 'self' data: blob: https://*.r2.dev https://images.unsplash.com https://plus.unsplash.com https://*.pinimg.com https://i.pinimg.com https://www.facebook.com",
+      "connect-src 'self' https://nominatim.openstreetmap.org https://*.r2.dev https://www.facebook.com https://connect.facebook.net",
       // media-src allows <video> and <audio> to load from R2 CDN (required for product video playback)
       "media-src 'self' https://*.r2.dev",
       "frame-src 'self' blob: data: https://api.razorpay.com https://checkout.razorpay.com",
@@ -31,6 +31,10 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+
+  env: {
+    META_PIXEL_ID: process.env.META_PIXEL_ID || "1820318982485910",
+  },
 
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion", "sonner", "swiper"],

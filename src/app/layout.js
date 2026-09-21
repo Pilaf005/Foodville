@@ -12,6 +12,7 @@ import { Nunito_Sans } from "next/font/google";
 import ChatWidgetLoader from "@/components/common/ChatWidgetLoader";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import MetaPixel from "@/components/analytics/MetaPixel";
 
 // Self-hosted font via next/font — eliminates the 440ms render-blocking external Google Fonts request
 const nunitoSans = Nunito_Sans({
@@ -108,7 +109,7 @@ const jsonLdWebSite = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={nunitoSans.variable}>
+    <html lang="en" className={nunitoSans.variable} suppressHydrationWarning>
       <head>
         {/* Preconnect to Cloudflare R2 CDN — eliminates DNS/TLS handshake delay for all product images */}
         <link rel="preconnect" href="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev" crossOrigin="anonymous" />
@@ -121,7 +122,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
       </head>
-      <body className="min-h-screen bg-cream text-ink antialiased flex flex-col justify-between overflow-x-hidden">
+      <body className="min-h-screen bg-cream text-ink antialiased flex flex-col justify-between overflow-x-hidden" suppressHydrationWarning>
         <AppProviders>
           <CartProvider>
             <WishlistProvider>
@@ -148,6 +149,7 @@ export default function RootLayout({ children }) {
             </WishlistProvider>
           </CartProvider>
         </AppProviders>
+        <MetaPixel />
         <Analytics />
         <SpeedInsights />
       </body>

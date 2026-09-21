@@ -34,6 +34,7 @@ export const MobileNavigation = ({ onLocationClick, activeAddress, onMenuClick, 
         {/* Left: Hamburger — always fixed */}
         <button
           onClick={onMenuClick}
+          suppressHydrationWarning
           aria-label="Open navigation menu"
           className="-ml-2 p-2 rounded-full hover:bg-black/5 transition text-ink min-h-[44px] min-w-[44px] flex items-center justify-center shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised"
         >

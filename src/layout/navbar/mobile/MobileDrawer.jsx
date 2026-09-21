@@ -238,6 +238,7 @@ export const MobileDrawer = ({ isOpen, onClose }) => {
             )}
           </div>
           <button
+            suppressHydrationWarning
             onClick={onClose}
             aria-label="Close menu"
             className="p-2.5 rounded-full hover:bg-gray-100 transition text-gray-600 min-h-[44px] min-w-[44px] flex items-center justify-center"
@@ -307,6 +308,7 @@ export const MobileDrawer = ({ isOpen, onClose }) => {
               })}
               {isAuthenticated && (
                 <button
+                  suppressHydrationWarning
                   onClick={() => {
                     onClose();
                     logout.mutate();

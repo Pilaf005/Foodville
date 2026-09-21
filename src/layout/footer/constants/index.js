@@ -6,6 +6,7 @@ export const COMPANY_INFO = {
 
 export const INFORMATION_LINKS = [
   { label: "Home", href: "/" },
+  { label: "UP Trade Show 2026", href: "/event" },
   { label: "Bulk & Wholesale", href: "/bulk-order" },
   { label: "Worldwide Bulk Export", href: "/global-export" },
   { label: "Distributor Opportunity", href: "/distributorship" },

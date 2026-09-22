@@ -613,17 +613,17 @@ export default function CollaboratePage() {
         {/* Steps Container: Horizontally Scrollable on Mobile, Responsive Grid on Desktop */}
         <div
           onScroll={handleStepScroll}
-          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 pt-1 px-4 md:px-0 -mx-4 md:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="flex items-stretch md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 pt-1 px-4 md:px-0 -mx-4 md:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
               <div
                 key={idx}
-                className="w-[84vw] max-w-[320px] sm:w-[340px] md:w-auto shrink-0 md:shrink snap-center relative bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-7 border border-[#E8E1D5] shadow-2xs hover:shadow-md hover:border-[#56684A]/40 transition-all duration-200 flex flex-col justify-between group"
+                className="w-[85vw] max-w-[340px] sm:w-[360px] md:w-full md:max-w-none shrink-0 md:shrink snap-center relative bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-7 border border-[#E8E1D5] shadow-2xs hover:shadow-md hover:border-[#56684A]/40 transition-all duration-200 flex flex-col justify-between group self-stretch"
               >
                 {/* Step Header: Icon & Number */}
-                <div>
+                <div className="flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-3 sm:mb-4">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#FAF7F2] border border-[#E8E1D5] flex items-center justify-center text-[#56684A] group-hover:scale-105 group-hover:bg-[#56684A] group-hover:text-white transition-all duration-200">
                       <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -637,7 +637,7 @@ export default function CollaboratePage() {
                     {step.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#5C554D] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#5C554D] leading-relaxed flex-1">
                     {step.desc}
                   </p>
                 </div>
@@ -721,7 +721,7 @@ export default function CollaboratePage() {
             {eligibilityTiers.map((tier, idx) => (
               <div
                 key={idx}
-                className={`w-[85vw] max-w-[340px] sm:w-[360px] md:w-auto shrink-0 md:shrink snap-center relative bg-white rounded-2xl p-5 sm:p-6 transition-all duration-200 flex flex-col justify-between ${
+                className={`w-[85vw] max-w-[340px] sm:w-[360px] md:w-full md:max-w-none shrink-0 md:shrink snap-center relative bg-white rounded-2xl p-5 sm:p-6 transition-all duration-200 flex flex-col justify-between self-stretch ${
                   tier.isFeatured
                     ? "border-2 border-[#56684A] shadow-md ring-2 ring-[#56684A]/10"
                     : "border border-[#E5DAC8] shadow-2xs hover:shadow-md hover:border-[#56684A]/40"
@@ -735,7 +735,7 @@ export default function CollaboratePage() {
                   </div>
                 )}
 
-                <div className="space-y-3">
+                <div className="space-y-3 flex-1 flex flex-col">
                   {/* Header: Tier Badge & Reel Step */}
                   <div className="flex items-center justify-between gap-2">
                     <span className={`text-[10px] sm:text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border shadow-2xs ${tier.tierColor}`}>
@@ -866,7 +866,7 @@ export default function CollaboratePage() {
           {hampers.map((item, idx) => (
             <div
               key={idx}
-              className={`w-[85vw] max-w-[340px] sm:w-[360px] md:w-auto shrink-0 md:shrink snap-center relative bg-white rounded-2xl p-5 sm:p-6 transition-all duration-200 flex flex-col justify-between ${
+              className={`w-[85vw] max-w-[340px] sm:w-[360px] md:w-full md:max-w-none shrink-0 md:shrink snap-center relative bg-white rounded-2xl p-5 sm:p-6 transition-all duration-200 flex flex-col justify-between self-stretch ${
                 item.isFeatured
                   ? "border-2 border-[#56684A] shadow-md ring-2 ring-[#56684A]/10"
                   : "border border-[#E5DAC8] shadow-2xs hover:shadow-md hover:border-[#56684A]/40"
@@ -880,7 +880,7 @@ export default function CollaboratePage() {
                 </div>
               )}
 
-              <div className="space-y-3">
+              <div className="space-y-3 flex-1 flex flex-col">
                 {/* Header: Badge & Reel ID */}
                 <div className="flex items-center justify-between gap-2">
                   <span className={`text-[10px] sm:text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border shadow-2xs ${item.badgeColor}`}>
@@ -1015,18 +1015,18 @@ export default function CollaboratePage() {
           {/* 4 Simple Policy Cards: Scrollable on Mobile, 2-Col Grid on Desktop */}
           <div
             onScroll={handlePolicyScroll}
-            className="flex md:grid md:grid-cols-2 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 pt-1 px-4 md:px-0 -mx-4 md:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            className="flex items-stretch md:grid md:grid-cols-2 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 pt-1 px-4 md:px-0 -mx-4 md:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {policyRules.map((rule, idx) => (
               <div
                 key={idx}
-                className={`w-[85vw] max-w-[340px] sm:w-[360px] md:w-auto shrink-0 md:shrink snap-center bg-white rounded-2xl p-5 sm:p-6 border transition-all duration-200 flex flex-col justify-between ${
+                className={`w-[85vw] max-w-[340px] sm:w-[360px] md:w-full md:max-w-none shrink-0 md:shrink snap-center bg-white rounded-2xl p-5 sm:p-6 border transition-all duration-200 flex flex-col justify-between self-stretch ${
                   rule.isWarning
                     ? "border-red-200 hover:border-red-300 shadow-2xs"
                     : "border-[#E5DAC8] hover:border-[#56684A]/40 shadow-2xs"
                 }`}
               >
-                <div>
+                <div className="flex-1 flex flex-col">
                   {/* Top row: Number and Badge */}
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span
@@ -1049,7 +1049,7 @@ export default function CollaboratePage() {
                   <h3 className="font-bold text-[#1E1B17] text-base mb-1.5">
                     {rule.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#635C53] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#635C53] leading-relaxed flex-1">
                     {rule.desc}
                   </p>
                 </div>

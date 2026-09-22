@@ -12,6 +12,7 @@ import {
   ExternalLink,
   Train,
   Car,
+  Bus,
   CheckCircle2,
   CalendarPlus,
 } from "lucide-react";
@@ -202,9 +203,13 @@ export default function EventSchedule() {
                 <div className="flex items-start gap-2.5 p-3 rounded-xl bg-white border border-[#E8DFC8]/60">
                   <Car className="w-4 h-4 text-[#963514] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-[#1E2519] block font-bold">Via Expressway / Cab:</strong>
-                    Located right off the Noida-Greater Noida Expressway. Dedicated on-site visitor parking is available
-                    at India Expo Mart.
+                    <strong className="text-[#1E2519] block font-bold">Via Expressway / Cab / Car:</strong>
+                    Direct connectivity via Noida-Greater Noida Expressway. No general visitor parking at Expo Mart; park for{" "}
+                    <strong className="text-[#1E2519]">Free at NASA Ground Parking</strong>.
+                    <span className="mt-1 flex items-center gap-1 font-semibold text-[#56684A]">
+                      <Bus className="w-3.5 h-3.5 shrink-0 text-[#56684A]" />
+                      <span>Free AC Electric Shuttle buses run to Expo gates.</span>
+                    </span>
                   </div>
                 </div>
               </div>

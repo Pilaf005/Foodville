@@ -49,7 +49,7 @@ export default function EventHero() {
   }, [targetDate]);
 
   return (
-    <section className="relative overflow-hidden bg-[#FAF7F2] pt-6 pb-12 sm:pt-12 sm:pb-16 lg:pt-16 lg:pb-24 border-b border-[#E8DFC8]/60">
+    <section className="relative overflow-hidden bg-[#FAF7F2] pt-4 pb-12 sm:pt-8 sm:pb-16 lg:pt-10 lg:pb-24 border-b border-[#E8DFC8]/60">
       {/* Subtle organic ambient background glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-[#56684A]/10 via-[#FAF7F2]/40 to-transparent rounded-full blur-3xl pointer-events-none -mt-32" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#B91C1C]/5 rounded-full blur-3xl pointer-events-none -mr-24 -mb-24" />

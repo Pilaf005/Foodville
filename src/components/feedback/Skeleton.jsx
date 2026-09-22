@@ -61,15 +61,18 @@ export function BlogGridSkeleton({ count = 6, className = "grid grid-cols-2 gap-
   );
 }
 
-/** Matches the round category tiles on the home page. */
+/** Matches the category tiles (horizontal single-row scroll on mobile, 8-col grid on desktop). */
 export function CategoryFilterSkeleton({ count = 8 }) {
   return (
-    <div className="w-full px-0 py-6 sm:py-8">
-      <div className="grid w-full grid-cols-4 justify-items-center gap-x-2.5 gap-y-6 sm:grid-cols-8 sm:gap-x-4 lg:gap-x-6">
+    <div className="w-full px-0 py-0 sm:py-2 -mt-3 sm:mt-0">
+      {/* Horizontal single row scroll on mobile (full screen width), 8-col grid on desktop */}
+      <div className="flex sm:grid gap-x-2.5 sm:gap-x-4 lg:gap-x-6 gap-y-6 sm:grid-cols-8 overflow-x-auto sm:overflow-x-visible no-scrollbar mobile-bleed-scroll py-2 sm:py-0">
         {Array.from({ length: count }).map((_, i) => (
-          <div key={i} className="flex w-full flex-col items-center gap-2">
-            <Skeleton className="h-14 w-14 rounded-full sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
-            <Skeleton className="h-3 w-16" />
+          <div key={i} className="flex flex-col items-center gap-1.5 w-16 sm:w-full shrink-0 sm:shrink">
+            <div className="p-[3px]">
+              <Skeleton className="h-14 w-14 sm:h-20 sm:w-20 md:h-22 md:w-22 lg:h-24 lg:w-24 rounded-[16px]" />
+            </div>
+            <Skeleton className="h-3 w-12 sm:w-14 rounded-md" />
           </div>
         ))}
       </div>

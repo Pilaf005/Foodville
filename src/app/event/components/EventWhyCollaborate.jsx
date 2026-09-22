@@ -110,16 +110,16 @@ export default function EventWhyCollaborate() {
         {/* 4 Benefits Container: Horizontally Scrollable on Mobile, Responsive Grid on Desktop */}
         <div
           onScroll={handleBenefitScroll}
-          className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-6 mb-4 md:mb-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 pt-1 px-4 md:px-0 -mx-4 md:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="flex items-stretch md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-6 mb-4 md:mb-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 pt-1 px-4 md:px-0 -mx-4 md:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {benefits.map((b) => {
             const Icon = b.icon;
             return (
               <div
                 key={b.title}
-                className={`w-[84vw] max-w-[340px] sm:w-[360px] md:w-full md:max-w-none shrink-0 md:shrink snap-center p-5 sm:p-6 lg:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br ${b.color} border ${b.borderColor} shadow-2xs hover:shadow-md transition duration-300 flex flex-col justify-between group hover:-translate-y-0.5 h-full`}
+                className={`w-[85vw] max-w-[340px] sm:w-[360px] md:w-full md:max-w-none shrink-0 md:shrink snap-center p-5 sm:p-6 lg:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br ${b.color} border ${b.borderColor} shadow-2xs hover:shadow-md transition duration-300 flex flex-col justify-between group hover:-translate-y-0.5 self-stretch`}
               >
-                <div>
+                <div className="flex-1 flex flex-col">
                   <div className="flex items-center justify-between gap-3 mb-3.5 sm:mb-4">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white shadow-2xs border border-[#E8DFC8]/60 flex items-center justify-center">
                       <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -135,7 +135,7 @@ export default function EventWhyCollaborate() {
                   <p className="text-xs sm:text-sm font-bold text-[#963514] mb-2 sm:mb-3">
                     {b.subtitle}
                   </p>
-                  <p className="text-xs sm:text-sm text-[#524C44] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#524C44] leading-relaxed flex-1">
                     {b.description}
                   </p>
                 </div>

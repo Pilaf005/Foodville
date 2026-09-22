@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function BulkSection({ className = "" }) {
   return (
-    <div className="relative w-full max-w-full mx-auto px-2 sm:px-4">
+    <div className="relative w-full max-w-full mx-auto px-0 sm:px-4">
       <div
         className={`w-full rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white shadow-md relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-olive/30 bg-cover bg-center ${className}`}
         style={{ backgroundImage: "url('/images/bulk_wholesale_banner.png')" }}

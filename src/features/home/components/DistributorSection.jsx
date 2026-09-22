@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function DistributorSection({ className = "" }) {
   return (
-    <div className="relative w-full max-w-full mx-auto px-2 sm:px-4">
+    <div className="relative w-full max-w-full mx-auto px-0 sm:px-4">
       <div className={`w-full relative rounded-2xl sm:rounded-3xl overflow-hidden text-white p-6 sm:p-8 shadow-md border border-[#56684A]/30 bg-stone-900 ${className}`}>
         {/* Background Image Layer */}
         <div className="absolute inset-0 z-0">

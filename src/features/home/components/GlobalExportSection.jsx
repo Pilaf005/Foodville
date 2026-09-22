@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function GlobalExportSection({ className = "" }) {
   return (
-    <div className="relative w-full max-w-full mx-auto px-2 sm:px-4">
+    <div className="relative w-full max-w-full mx-auto px-0 sm:px-4">
       <div
         className={`w-full rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white shadow-md relative overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border border-[#6B7F59]/30 bg-[#1E2519] ${className}`}
       >

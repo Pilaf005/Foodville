@@ -20,8 +20,8 @@ export default function EventFaq() {
       a: "The morning window (11:00 AM – 3:00 PM) is dedicated to B2B meetings, distributor agreements, bulk wholesale purchasing, and global export partnerships. If you operate a retail chain, supermarket, or import-export business, this is the best time to connect with our founding directors.",
     },
     {
-      q: "How do I reach the venue by Metro or car?",
-      a: "India Expo Centre & Mart is conveniently located in Knowledge Park II, Greater Noida. By metro, take the Noida Metro Aqua Line to 'Knowledge Park II Metro Station', which is only a 2-minute walk from the venue gates. For drivers, the venue sits right off the Noida-Greater Noida Expressway with spacious on-site visitor parking.",
+      q: "How do I reach the venue by Metro or car? Where is visitor parking?",
+      a: "India Expo Centre & Mart is located in Knowledge Park II, Greater Noida. By Metro, take the Aqua Line to 'Knowledge Park II Station' (just a 2-minute walk from the gates). For personal vehicles, note that there is no general parking inside the Expo Mart; visitors can park free of charge at the designated NASA Ground Parking, where free AC electric shuttle buses operate continuously to take you directly to and from the Expo Mart gates.",
     },
     {
       q: "Can I buy spices and dehydrated powders at the stall?",

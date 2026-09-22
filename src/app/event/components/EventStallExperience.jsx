@@ -164,35 +164,37 @@ export default function EventStallExperience() {
         {/* 3 Step Process: Horizontally Scrollable on Mobile, 3-Col Grid on Desktop */}
         <div
           onScroll={handleStepScroll}
-          className="flex md:grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-4 md:mb-16 relative overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 pt-1 px-4 md:px-0 -mx-4 md:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="flex items-stretch md:grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-4 md:mb-16 relative overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 pt-1 px-4 md:px-0 -mx-4 md:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.number}
-                className="w-[84vw] max-w-[320px] sm:w-[340px] md:w-full md:max-w-none shrink-0 md:shrink snap-center p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E8DFC8] shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative group hover:-translate-y-1 h-full"
+                className="w-[85vw] max-w-[340px] sm:w-[360px] md:w-full md:max-w-none shrink-0 md:shrink snap-center p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E8DFC8] shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative group hover:-translate-y-1 self-stretch"
               >
-                {/* Step Pill */}
-                <div className="flex items-center justify-between gap-3 mb-4 sm:mb-6">
-                  <span className={`w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center font-extrabold text-lg sm:text-xl border ${step.color}`}>
-                    {step.number}
-                  </span>
-                  <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#8C8275] bg-[#FAF7F2] px-2.5 sm:px-3 py-1 rounded-full border border-[#E8DFC8]">
-                    {step.badge}
-                  </span>
-                </div>
+                <div className="flex-1 flex flex-col">
+                  {/* Step Pill */}
+                  <div className="flex items-center justify-between gap-3 mb-4 sm:mb-6">
+                    <span className={`w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center font-extrabold text-lg sm:text-xl border ${step.color}`}>
+                      {step.number}
+                    </span>
+                    <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#8C8275] bg-[#FAF7F2] px-2.5 sm:px-3 py-1 rounded-full border border-[#E8DFC8]">
+                      {step.badge}
+                    </span>
+                  </div>
 
-                <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
-                  <h3 className="text-lg sm:text-2xl font-serif font-bold text-[#1E2519]">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm font-bold text-[#963514]">
-                    {step.subtitle}
-                  </p>
-                  <p className="text-xs sm:text-sm text-[#524C44] leading-relaxed pt-1.5">
-                    {step.description}
-                  </p>
+                  <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 flex-1 flex flex-col">
+                    <h3 className="text-lg sm:text-2xl font-serif font-bold text-[#1E2519]">
+                      {step.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-bold text-[#963514]">
+                      {step.subtitle}
+                    </p>
+                    <p className="text-xs sm:text-sm text-[#524C44] leading-relaxed pt-1.5 flex-1">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
 
                 <div className="pt-3 sm:pt-4 border-t border-[#E8DFC8]/60 flex items-center gap-2 text-xs font-bold text-[#56684A]">
@@ -247,16 +249,16 @@ export default function EventStallExperience() {
           {/* 4 Feature Pillars: Scrollable on Mobile, Responsive Grid on Desktop */}
           <div
             onScroll={handleHamperScroll}
-            className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-3 pt-1 px-4 sm:px-0 -mx-4 sm:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            className="flex items-stretch md:grid md:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-3 pt-1 px-4 sm:px-0 -mx-4 sm:mx-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {hamperFeatures.map((feat) => {
               const Icon = feat.icon;
               return (
                 <div
                   key={feat.title}
-                  className="w-[74vw] max-w-[270px] sm:w-auto md:w-full md:max-w-none shrink-0 md:shrink snap-center p-4 sm:p-6 rounded-2xl bg-[#FAF7F2] border border-[#E8DFC8]/70 hover:border-[#56684A]/40 transition-all duration-300 flex flex-col justify-between group hover:bg-white hover:shadow-md h-full"
+                  className="w-[75vw] max-w-[280px] sm:w-auto md:w-full md:max-w-none shrink-0 md:shrink snap-center p-4 sm:p-6 rounded-2xl bg-[#FAF7F2] border border-[#E8DFC8]/70 hover:border-[#56684A]/40 transition-all duration-300 flex flex-col justify-between group hover:bg-white hover:shadow-md self-stretch"
                 >
-                  <div>
+                  <div className="flex-1 flex flex-col">
                     <div className="flex items-center justify-between gap-2 mb-3 sm:mb-4">
                       <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-[#E8DFC8] flex items-center justify-center text-[#56684A] group-hover:bg-[#56684A] group-hover:text-white transition-colors">
                         <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -268,7 +270,7 @@ export default function EventStallExperience() {
                     <h4 className="text-sm sm:text-base font-serif font-bold text-[#1E2519] mb-1.5 sm:mb-2">
                       {feat.title}
                     </h4>
-                    <p className="text-xs sm:text-sm text-[#524C44] leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#524C44] leading-relaxed flex-1">
                       {feat.desc}
                     </p>
                   </div>

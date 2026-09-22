@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useCategories } from "@/features/categories/hooks/useCategories";
@@ -11,6 +11,11 @@ const SCROLL_KEY = "categoryFilter_scrollLeft";
 export default function CategoryFilter({ active }) {
   const router = useRouter();
   const { categories, isPending } = useCategories();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const scrollRef = useRef(null);       // ref on the scroll container
   const activeRef = useRef(null);        // ref on the active button
@@ -19,7 +24,7 @@ export default function CategoryFilter({ active }) {
   // ── On mount: restore saved scroll position OR scroll active item into view ──
   // useEffect with requestAnimationFrame avoids synchronous layout recalculation (forced reflow)
   useEffect(() => {
-    if (didRestoreRef.current) return;
+    if (!mounted || didRestoreRef.current) return;
     const container = scrollRef.current;
     if (!container) return;
 
@@ -39,7 +44,7 @@ export default function CategoryFilter({ active }) {
         didRestoreRef.current = true;
       }
     });
-  }, [categories]); // re-run once categories are loaded
+  }, [mounted, categories]); // re-run once categories are loaded
 
   // ── Navigate: save scroll position then push to new category page ──
   const handleCategoryClick = useCallback(
@@ -53,7 +58,7 @@ export default function CategoryFilter({ active }) {
     [router]
   );
 
-  if (isPending) return <CategoryFilterSkeleton />;
+  if (!mounted || isPending) return <CategoryFilterSkeleton />;
 
   const categoriesList = [
     { id: "all", name: "All Products", image: "/images/category_all.png" },
@@ -91,9 +96,11 @@ export default function CategoryFilter({ active }) {
                 >
                   <Image
                     src={item.image}
-                    alt=""
+                    alt={item.name || ""}
                     width={96}
                     height={96}
+                    priority={true}
+                    sizes="(max-width: 640px) 56px, 96px"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     draggable={false}
                   />

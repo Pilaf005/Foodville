@@ -71,53 +71,55 @@ export default function EventFooterBanner() {
         </div>
 
         {/* Micro Value Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[11px] sm:text-xs font-semibold text-white/80 pt-1">
-          <span className="flex items-center gap-1.5 bg-black/10 sm:bg-transparent px-2.5 py-1 sm:p-0 rounded-full">
-            <CheckCircle2 className="w-3.5 h-3.5 text-[#A3E635]" />
-            100% Pure Natural Spices
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[11px] sm:text-xs font-semibold text-white/90 pt-1">
+          <span className="inline-flex items-center gap-1.5 bg-black/15 backdrop-blur-xs px-3 py-1 rounded-full border border-white/15 shadow-2xs">
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#A3E635] shrink-0" />
+            100% Pure Spices
           </span>
-          <span className="hidden sm:inline text-white/30">•</span>
-          <span className="flex items-center gap-1.5 bg-black/10 sm:bg-transparent px-2.5 py-1 sm:p-0 rounded-full">
-            <CheckCircle2 className="w-3.5 h-3.5 text-[#A3E635]" />
-            Complimentary Creator Hampers
+          <span className="inline-flex items-center gap-1.5 bg-black/15 backdrop-blur-xs px-3 py-1 rounded-full border border-white/15 shadow-2xs">
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#A3E635] shrink-0" />
+            Creator Hampers
           </span>
-          <span className="hidden sm:inline text-white/30">•</span>
-          <span className="flex items-center gap-1.5 bg-black/10 sm:bg-transparent px-2.5 py-1 sm:p-0 rounded-full">
-            <CheckCircle2 className="w-3.5 h-3.5 text-[#A3E635]" />
-            Sensory Booth Tasting
+          <span className="inline-flex items-center gap-1.5 bg-black/15 backdrop-blur-xs px-3 py-1 rounded-full border border-white/15 shadow-2xs">
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#A3E635] shrink-0" />
+            Sensory Tasting
           </span>
         </div>
 
-        {/* Action Buttons (Stacked on Mobile, Row on Desktop) */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3.5 pt-3 sm:pt-4">
+        {/* Action Buttons: Primary CTA + Balanced Secondary Buttons on Mobile, Row on Desktop */}
+        <div className="max-w-md sm:max-w-none mx-auto w-full pt-3 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3.5">
+          {/* Primary Instagram CTA */}
           <a
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-[#B91C1C] to-[#963514] hover:from-[#963514] hover:to-[#B91C1C] text-white text-xs sm:text-base font-bold shadow-lg shadow-black/25 transition-all transform hover:-translate-y-0.5 min-h-[46px]"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-[#B91C1C] to-[#963514] hover:from-[#963514] hover:to-[#B91C1C] text-white text-xs sm:text-base font-bold shadow-lg shadow-black/25 transition-all transform hover:-translate-y-0.5 min-h-[46px] group"
           >
-            <InstagramIcon className="w-4 h-4" />
+            <InstagramIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
             <span>Follow {instagramHandle}</span>
-            <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+            <ExternalLink className="w-3.5 h-3.5 opacity-75" />
           </a>
 
-          <Link
-            href="/shop"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-white hover:bg-[#FAF7F2] text-[#1E2519] text-xs sm:text-base font-bold shadow-lg transition-all transform hover:-translate-y-0.5 min-h-[46px]"
-          >
-            <ShoppingBag className="w-4 h-4 text-[#56684A]" />
-            <span>Browse Online Store</span>
-          </Link>
+          {/* Secondary Action Buttons (50/50 Grid on Mobile, Flex on Desktop) */}
+          <div className="grid grid-cols-2 gap-2.5 sm:flex sm:items-center sm:gap-3.5 w-full sm:w-auto">
+            <Link
+              href="/shop"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-full bg-white hover:bg-[#FAF7F2] text-[#1E2519] text-xs sm:text-base font-bold shadow-md transition-all transform hover:-translate-y-0.5 min-h-[46px] text-center"
+            >
+              <ShoppingBag className="w-4 h-4 text-[#56684A] shrink-0" />
+              <span>Online Store</span>
+            </Link>
 
-          <a
-            href="https://maps.google.com/?q=India+Expo+Centre+%26+Mart+Greater+Noida"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 sm:py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/20 text-xs sm:text-base font-bold backdrop-blur-xs transition-all transform hover:-translate-y-0.5 min-h-[46px]"
-          >
-            <MapPin className="w-4 h-4 text-[#E6C987]" />
-            <span>Venue Map</span>
-          </a>
+            <a
+              href="https://maps.google.com/?q=India+Expo+Centre+%26+Mart+Greater+Noida"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 sm:py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs sm:text-base font-bold backdrop-blur-xs transition-all transform hover:-translate-y-0.5 min-h-[46px] text-center"
+            >
+              <MapPin className="w-4 h-4 text-[#E6C987] shrink-0" />
+              <span>Venue Map</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -19,7 +19,7 @@ const Carousel_005 = ({
   spaceBetween = 0,
 }) => {
   return (
-    <div className={cn("relative w-full max-w-full mx-auto px-2 sm:px-4", className)}>
+    <div className={cn("relative w-full max-w-full mx-auto px-0 sm:px-4", className)}>
       <div className="w-full aspect-[16/9] sm:h-[380px] overflow-hidden rounded-lg sm:rounded-3xl relative bg-stone-150">
         <Swiper
           spaceBetween={spaceBetween}

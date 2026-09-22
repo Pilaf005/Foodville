@@ -97,7 +97,7 @@ export default function EventPage() {
   };
 
   return (
-    <div className="-mx-4 sm:-mx-6 min-h-screen bg-[#FAF7F2] text-[#2E2A26] selection:bg-[#56684A] selection:text-white pb-0 overflow-x-hidden pt-2 sm:pt-3">
+    <div className="-mx-4 sm:-mx-6 -mt-4 sm:-mt-6 min-h-screen bg-[#FAF7F2] text-[#2E2A26] selection:bg-[#56684A] selection:text-white pb-0 overflow-x-hidden pt-0">
       {/* Structured Data Script */}
       <script
         type="application/ld+json"

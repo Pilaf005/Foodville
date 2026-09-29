@@ -46,6 +46,7 @@ export const env = {
 
   // Email
   emailDevMode: bool(process.env.EMAIL_DEV_MODE, true),
+  resendApiKey: process.env.RESEND_API_KEY || "",
   smtp: {
     host: process.env.SMTP_HOST || "",
     port: int(process.env.SMTP_PORT, 587),

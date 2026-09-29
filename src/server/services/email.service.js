@@ -1,30 +1,25 @@
 /**
- * Transactional email via Nodemailer/SMTP (Gmail).
+ * Transactional email via Resend API.
  *
  * Behaviour:
- *  - EMAIL_DEV_MODE=true (or no SMTP_HOST): the code is printed to the server
- *    console instead of emailed — handy for local testing.
- *  - Otherwise it sends for real. If sending fails outside production we fall
- *    back to logging the code so local development is never blocked; in
- *    production a failure is surfaced as a proper error.
+ *  - EMAIL_DEV_MODE=true (or no RESEND_API_KEY): the code is printed to the
+ *    server console instead of emailed — handy for local testing.
+ *  - Otherwise it sends for real via Resend HTTP API (works on Vercel/serverless).
+ *  - If sending fails outside production we fall back to logging the code;
+ *    in production a failure is surfaced as a proper error.
  */
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { env } from "@/server/config/env";
 import { AppError } from "@/server/utils/apiError";
 import User from "@/server/models/User";
 
-let transporter = null;
+let resendClient = null;
 
-function getTransporter() {
-  if (transporter) return transporter;
-  if (!env.smtp.host) return null;
-  transporter = nodemailer.createTransport({
-    host: env.smtp.host,
-    port: env.smtp.port,
-    secure: env.smtp.secure, // true => 465, false => 587 (STARTTLS)
-    auth: env.smtp.user ? { user: env.smtp.user, pass: env.smtp.pass } : undefined,
-  });
-  return transporter;
+function getResend() {
+  if (resendClient) return resendClient;
+  if (!env.resendApiKey) return null;
+  resendClient = new Resend(env.resendApiKey);
+  return resendClient;
 }
 
 function logCode(to, code, why) {
@@ -56,26 +51,27 @@ function otpEmailHtml(code, minutes) {
 
 export async function sendOtpEmail({ to, code, expiresInMinutes }) {
   // Dev/console mode
-  if (env.emailDevMode || !env.smtp.host) {
+  if (env.emailDevMode || !env.resendApiKey) {
     logCode(to, code, "EMAIL_DEV_MODE — not emailed");
     return { delivered: false, dev: true };
   }
 
   try {
-    const t = getTransporter();
-    await t.sendMail({
-      from: env.smtp.from,
+    const resend = getResend();
+    const { error } = await resend.emails.send({
+      from: env.smtp.from || "Foodville <support@foodvilleindia.com>",
       to,
       subject: `${code} is your Foodville verification code`,
       text: `Your Foodville verification code is ${code}. It expires in ${expiresInMinutes} minutes.`,
       html: otpEmailHtml(code, expiresInMinutes),
     });
+    if (error) throw new Error(error.message);
     return { delivered: true };
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.error("[email] SMTP send failed:", err?.message);
+    console.error("[email] Resend send failed:", err?.message);
     if (!env.isProd) {
-      logCode(to, code, "SMTP failed — dev fallback");
+      logCode(to, code, "Resend failed — dev fallback");
       return { delivered: false, dev: true };
     }
     throw new AppError(
@@ -87,11 +83,11 @@ export async function sendOtpEmail({ to, code, expiresInMinutes }) {
 }
  
 export async function sendBulkInquiryNotification(inquiry) {
-  const t = getTransporter();
-  if (!t) return;
+  const resend = getResend();
+  if (env.emailDevMode || !resend) return;
   try {
-    await t.sendMail({
-      from: env.smtp.from,
+    const { error } = await resend.emails.send({
+      from: env.smtp.from || "Foodville <support@foodvilleindia.com>",
       to: "support@foodvilleindia.com",
       subject: `New Bulk Order Inquiry - ${inquiry.inquiryId}`,
       html: `
@@ -113,6 +109,7 @@ export async function sendBulkInquiryNotification(inquiry) {
         </div>
       `,
     });
+    if (error) throw new Error(error.message);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error("[email] Failed to send bulk inquiry notification:", err?.message);
@@ -120,8 +117,8 @@ export async function sendBulkInquiryNotification(inquiry) {
 }
  
 export async function sendDistributorApplicationNotification(app) {
-  const t = getTransporter();
-  if (!t) return;
+  const resend = getResend();
+  if (env.emailDevMode || !resend) return;
   try {
     const distributorTypeLabels = {
       area_distributor: "Area FMCG Distributor",
@@ -138,8 +135,8 @@ export async function sendDistributorApplicationNotification(app) {
       "3000_plus": "3,000+ sq. ft.",
     };
 
-    await t.sendMail({
-      from: env.smtp.from,
+    const { error } = await resend.emails.send({
+      from: env.smtp.from || "Foodville <support@foodvilleindia.com>",
       to: "support@foodvilleindia.com",
       subject: `New FMCG Distributor Application - ${app.applicationId} (${app.firmName})`,
       html: `
@@ -167,6 +164,7 @@ export async function sendDistributorApplicationNotification(app) {
         </div>
       `,
     });
+    if (error) throw new Error(error.message);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error("[email] Failed to send distributor application notification:", err?.message);
@@ -207,7 +205,7 @@ export async function sendOrderNotificationEmails(order) {
 }
 
 export async function sendOrderPlacementAdminNotification(order, { customerEmail, customerName }) {
-  const t = getTransporter();
+  const resend = getResend();
   const paymentMethodLabel = order.paymentMethod === "cod" ? "Cash on Delivery (COD)" : "Online Payment (Razorpay)";
   const paymentStatusLabel = order.paymentStatus === "paid" ? "✅ Paid" : "⏳ Pending Payment / COD";
   const dateStr = new Date(order.placedAt || Date.now()).toLocaleString("en-IN", {
@@ -245,7 +243,7 @@ export async function sendOrderPlacementAdminNotification(order, { customerEmail
   const recipients = ["support@foodvilleindia.com", ...(env.adminEmails || [])];
   const uniqueRecipients = [...new Set(recipients)].filter(Boolean);
 
-  if (env.emailDevMode || !t) {
+  if (env.emailDevMode || !resend) {
     // eslint-disable-next-line no-console
     console.log(
       `\n──────────────────────────────────────────\n📧 [DEV EMAIL] Admin Order Notification for ${order.orderId}\nTo: ${uniqueRecipients.join(", ")}\nTotal: ₹${order.amounts?.total}\nCustomer: ${customerName} (${customerEmail || "No Email"})\nPhone: ${order.address?.phone}\n──────────────────────────────────────────\n`
@@ -254,8 +252,8 @@ export async function sendOrderPlacementAdminNotification(order, { customerEmail
   }
 
   try {
-    await t.sendMail({
-      from: env.smtp.from,
+    const { error } = await resend.emails.send({
+      from: env.smtp.from || "Foodville <support@foodvilleindia.com>",
       to: uniqueRecipients.join(", "),
       subject: `🛒 New Order Placed: ${order.orderId} (₹${order.amounts?.total}) - ${customerName}`,
       html: `
@@ -360,6 +358,7 @@ export async function sendOrderPlacementAdminNotification(order, { customerEmail
         </div>
       `,
     });
+    if (error) throw new Error(error.message);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error("[email] Failed to send admin order notification:", err?.message);
@@ -367,7 +366,7 @@ export async function sendOrderPlacementAdminNotification(order, { customerEmail
 }
 
 export async function sendOrderConfirmationCustomerEmail(order, { customerEmail, customerName }) {
-  const t = getTransporter();
+  const resend = getResend();
   const paymentMethodLabel = order.paymentMethod === "cod" ? "Cash on Delivery (Pay on arrival)" : "Online Payment (Paid via Razorpay)";
   const dateStr = new Date(order.placedAt || Date.now()).toLocaleString("en-IN", {
     timeZone: "Asia/Kolkata",
@@ -400,7 +399,7 @@ export async function sendOrderConfirmationCustomerEmail(order, { customerEmail,
     )
     .join("");
 
-  if (env.emailDevMode || !t) {
+  if (env.emailDevMode || !resend) {
     // eslint-disable-next-line no-console
     console.log(
       `\n──────────────────────────────────────────\n📧 [DEV EMAIL] Customer Order Confirmation for ${order.orderId}\nTo: ${customerEmail}\nCustomer: ${customerName}\nTotal: ₹${order.amounts?.total}\n──────────────────────────────────────────\n`
@@ -409,8 +408,8 @@ export async function sendOrderConfirmationCustomerEmail(order, { customerEmail,
   }
 
   try {
-    await t.sendMail({
-      from: env.smtp.from,
+    const { error } = await resend.emails.send({
+      from: env.smtp.from || "Foodville <support@foodvilleindia.com>",
       to: customerEmail,
       subject: `🎉 Order Confirmed! Your Foodville Order #${order.orderId}`,
       html: `
@@ -516,6 +515,7 @@ export async function sendOrderConfirmationCustomerEmail(order, { customerEmail,
         </div>
       `,
     });
+    if (error) throw new Error(error.message);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error("[email] Failed to send customer order confirmation email:", err?.message);
@@ -526,12 +526,12 @@ export async function sendOrderConfirmationCustomerEmail(order, { customerEmail,
  * Sends notification to Foodville Team (support@foodvilleindia.com) when a creator submits a video reel.
  */
 export async function sendCreatorSubmissionAdminNotification(submission) {
-  const t = getTransporter();
-  if (!t) return;
+  const resend = getResend();
+  if (env.emailDevMode || !resend) return;
   try {
     const address = submission.shippingAddress || {};
-    await t.sendMail({
-      from: env.smtp.from,
+    const { error } = await resend.emails.send({
+      from: env.smtp.from || "Foodville <support@foodvilleindia.com>",
       to: "support@foodvilleindia.com",
       subject: `🎬 New Creator Reel Submission: ${submission.socialHandle || submission.creatorName} [${submission.submissionId}]`,
       html: `
@@ -608,6 +608,7 @@ export async function sendCreatorSubmissionAdminNotification(submission) {
         </div>
       `,
     });
+    if (error) throw new Error(error.message);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error("[email] Failed to send creator submission admin notification:", err?.message);
@@ -618,12 +619,12 @@ export async function sendCreatorSubmissionAdminNotification(submission) {
  * Sends confirmation email to Creator when their reel submission is received.
  */
 export async function sendCreatorSubmissionConfirmation(submission) {
-  const t = getTransporter();
-  if (!t) return;
+  const resend = getResend();
+  if (env.emailDevMode || !resend) return;
   try {
     const address = submission.shippingAddress || {};
-    await t.sendMail({
-      from: env.smtp.from,
+    const { error } = await resend.emails.send({
+      from: env.smtp.from || "Foodville <support@foodvilleindia.com>",
       to: submission.email,
       subject: `🎁 We received your Foodville Reel submission! [${submission.submissionId}]`,
       html: `
@@ -685,6 +686,7 @@ export async function sendCreatorSubmissionConfirmation(submission) {
         </div>
       `,
     });
+    if (error) throw new Error(error.message);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error("[email] Failed to send creator confirmation email:", err?.message);

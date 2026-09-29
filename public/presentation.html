@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foodville × UPITS 4.0 — Presentation Video</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* ──────────────────────────────────────────────
+       FOODVILLE DESIGN SYSTEM COLOR TOKENS
+       ────────────────────────────────────────────── */
+    :root {
+      --bg-cream: #FAF7F2;
+      --bg-dark: #1E2519;
+      --bg-olive: #56684A;
+      --bg-ink: #3B412C;
+      --primary-green: #6B7F59;
+      --primary-hover: #56684A;
+      --accent-red: #963514;
+      --text-earth: #1E2519;
+      --text-secondary: #524C44;
+      --text-muted: #78716A;
+      --gold-sun: #FBD535;
+      --gold-brand: #C9A86C;
+      --card-border: rgba(107, 127, 89, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: #0c0f0a;
+      font-family: 'Nunito Sans', sans-serif;
+      color: var(--text-earth);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100vw;
+    }
+
+    /* 16:9 Viewport Container */
+    #cinema-stage {
+      position: relative;
+      width: 100vw;
+      height: 56.25vw; /* 16:9 Aspect Ratio */
+      max-height: 100vh;
+      max-width: 177.78vh;
+      background: var(--bg-dark);
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+      border-radius: 4px;
+    }
+
+    /* Scene Transitions */
+    .scene {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transform: scale(1.02);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3.5vw 4.5vw 2.5vw;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .scene.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: scale(1);
+      z-index: 10;
+    }
+
+    /* Top Badges & Header */
+    .scene-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      z-index: 5;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6vw;
+      padding: 0.4vw 1.2vw;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(251, 213, 53, 0.35);
+      border-radius: 100px;
+      color: var(--gold-sun);
+      font-size: 0.95vw;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .event-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5vw;
+      padding: 0.4vw 1.2vw;
+      background: rgba(107, 127, 89, 0.25);
+      border: 1px solid rgba(107, 127, 89, 0.5);
+      border-radius: 100px;
+      color: #E8F0DF;
+      font-size: 0.9vw;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* Scene Specific Themes */
+    .theme-dark {
+      background: linear-gradient(135deg, #131810 0%, #1E2519 50%, #2A3323 100%);
+      color: var(--bg-cream);
+    }
+
+    .theme-cream {
+      background: radial-gradient(circle at top left, #FFFFFF 0%, #FAF7F2 60%, #EFE9DE 100%);
+      color: var(--text-earth);
+    }
+
+    .theme-olive {
+      background: linear-gradient(135deg, #323E2A 0%, #56684A 60%, #6B7F59 100%);
+      color: #FFFFFF;
+    }
+
+    /* Typography */
+    h1, h2, h3, .heading-font {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+    }
+
+    .title-large {
+      font-size: 3.6vw;
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .title-medium {
+      font-size: 2.5vw;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      font-size: 1.35vw;
+      line-height: 1.45;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .text-gold {
+      color: var(--gold-sun) !important;
+    }
+
+    .text-green {
+      color: var(--primary-green) !important;
+    }
+
+    .text-red {
+      color: var(--accent-red) !important;
+    }
+
+    /* Floating Particles Background */
+    .ambient-glow {
+      position: absolute;
+      width: 35vw;
+      height: 35vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(107, 127, 89, 0.25) 0%, rgba(251, 213, 53, 0.08) 40%, transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+      animation: pulseGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: translate(-10%, -10%) scale(0.9); opacity: 0.6; }
+      100% { transform: translate(15%, 15%) scale(1.15); opacity: 0.9; }
+    }
+
+    /* ─── SCENE 1: HOOK ─── */
+    .scene-1-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      gap: 1.8vw;
+      position: relative;
+      z-index: 5;
+    }
+
+    .brand-logo-hero {
+      font-family: 'Outfit', sans-serif;
+      font-size: 4.8vw;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+      text-shadow: 0 4px 25px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 1vw;
+    }
+
+    .brand-logo-hero span.leaf {
+      color: var(--gold-sun);
+      animation: spinLeaf 6s ease-in-out infinite;
+    }
+
+    @keyframes spinLeaf {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(15deg) scale(1.1); }
+    }
+
+    .hook-pill {
+      background: rgba(251, 213, 53, 0.15);
+      border: 1.5px solid var(--gold-sun);
+      padding: 0.6vw 2vw;
+      border-radius: 100px;
+      color: var(--gold-sun);
+      font-size: 1.4vw;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* ─── SCENE 2: WHO WE ARE ─── */
+    .stat-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4vw;
+      margin-top: 1.5vw;
+    }
+
+    .stat-card {
+      background: #FFFFFF;
+      border: 1.5px solid rgba(107, 127, 89, 0.25);
+      padding: 1.6vw 1.2vw;
+      border-radius: 1.2vw;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(30, 37, 25, 0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6vw;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card .icon {
+      font-size: 2.2vw;
+    }
+
+    .stat-card .val {
+      font-size: 1.5vw;
+      font-weight: 800;
+      color: var(--primary-green);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .stat-card .lbl {
+      font-size: 0.95vw;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* ─── SCENE 3A & 3B: PRODUCT SHOWCASES ─── */
+    .product-grid-sc3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 0.85vw;
+      height: 72%;
+      margin-top: 0.6vw;
+    }
+
+    .product-grid-sc3b {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1.2vw;
+      height: 72%;
+      margin-top: 1vw;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0.9vw;
+      padding: 0.6vw 1vw;
+      display: flex;
+      align-items: center;
+      gap: 0.9vw;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .theme-cream .product-card {
+      background: #FFFFFF;
+      border: 1.5px solid rgba(107, 127, 89, 0.2);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .product-img-box {
+      width: 4.2vw;
+      height: 4.2vw;
+      min-width: 4.2vw;
+      border-radius: 0.6vw;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3vw;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .product-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2vw;
+      flex: 1;
+    }
+
+    .product-name {
+      font-size: 1.1vw;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .product-sub {
+      font-size: 0.8vw;
+      opacity: 0.8;
+      font-weight: 600;
+    }
+
+    .product-price-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4vw;
+      font-size: 0.85vw;
+      font-weight: 800;
+      color: var(--gold-sun);
+    }
+
+    .theme-cream .product-price-tag {
+      color: var(--primary-green);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 0.4vw;
+      right: 0.6vw;
+      font-size: 0.65vw;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.15vw 0.5vw;
+      border-radius: 100px;
+    }
+
+    .badge-bestseller { background: #963514; color: #FFFFFF; }
+    .badge-trending { background: #FBD535; color: #1E2519; }
+    .badge-new { background: #6B7F59; color: #FFFFFF; }
+    .badge-value { background: #3B412C; color: #FFFFFF; }
+
+    /* ─── SCENE 4: PURITY PROMISE ─── */
+    .purity-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2vw;
+      margin-top: 1.2vw;
+    }
+
+    .purity-item {
+      background: #FFFFFF;
+      border: 1.5px solid rgba(107, 127, 89, 0.25);
+      border-radius: 1vw;
+      padding: 1.2vw 1.5vw;
+      display: flex;
+      align-items: center;
+      gap: 1.2vw;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+
+    .purity-icon {
+      width: 2.8vw;
+      height: 2.8vw;
+      min-width: 2.8vw;
+      border-radius: 50%;
+      background: #F0F4EC;
+      color: var(--primary-green);
+      font-size: 1.4vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .purity-text h4 {
+      font-size: 1.2vw;
+      font-weight: 800;
+      color: var(--text-earth);
+      margin-bottom: 0.2vw;
+    }
+
+    .purity-text p {
+      font-size: 0.9vw;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* ─── SCENE 5: CERTIFICATIONS ─── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1vw;
+      margin-top: 1.2vw;
+    }
+
+    .cert-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(251, 213, 53, 0.3);
+      border-radius: 1vw;
+      padding: 1.2vw 1vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.5vw;
+      backdrop-filter: blur(10px);
+    }
+
+    .cert-emoji {
+      font-size: 2vw;
+    }
+
+    .cert-name {
+      font-size: 1.05vw;
+      font-weight: 800;
+      color: var(--gold-sun);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .cert-desc {
+      font-size: 0.78vw;
+      opacity: 0.85;
+      line-height: 1.3;
+    }
+
+    /* ─── SCENE 6: COMING SOON ─── */
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2vw;
+      margin-top: 1.2vw;
+    }
+
+    .pipeline-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1.5px dashed rgba(251, 213, 53, 0.45);
+      border-radius: 1.2vw;
+      padding: 1.6vw 1.2vw;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6vw;
+      backdrop-filter: blur(12px);
+      position: relative;
+    }
+
+    .pipeline-badge {
+      position: absolute;
+      top: -0.6vw;
+      background: var(--gold-sun);
+      color: #1E2519;
+      font-size: 0.7vw;
+      font-weight: 900;
+      padding: 0.2vw 0.8vw;
+      border-radius: 100px;
+      text-transform: uppercase;
+    }
+
+    /* ─── SCENE 7: PARTNERSHIP & B2B ─── */
+    .b2b-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4vw;
+      margin-top: 1.2vw;
+    }
+
+    .b2b-card {
+      background: #FFFFFF;
+      color: var(--text-earth);
+      border-radius: 1.2vw;
+      padding: 1.6vw 1.4vw;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8vw;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .b2b-card h4 {
+      font-size: 1.3vw;
+      font-weight: 900;
+      color: var(--primary-green);
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 0.5vw;
+    }
+
+    .b2b-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45vw;
+      font-size: 0.88vw;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .b2b-card ul li::before {
+      content: "✔ ";
+      color: var(--primary-green);
+      font-weight: 900;
+    }
+
+    /* ─── SCENE 8: CLOSING CONTACT ─── */
+    .closing-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(251, 213, 53, 0.4);
+      border-radius: 1.5vw;
+      padding: 2vw 3vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5vw;
+      backdrop-filter: blur(15px);
+      margin-top: 1vw;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1vw;
+      font-size: 1.2vw;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .contact-item .icon-box {
+      width: 2.8vw;
+      height: 2.8vw;
+      background: var(--gold-sun);
+      color: #1E2519;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3vw;
+      font-weight: 900;
+    }
+
+    /* ─── BOTTOM CONTROLS & TIMELINE DOCK ─── */
+    #player-controls {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3.8vw;
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 70%, transparent 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2vw;
+      z-index: 50;
+      transition: opacity 0.3s;
+    }
+
+    .progress-bar-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+    }
+
+    #progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary-green) 0%, var(--gold-sun) 100%);
+      transition: width 0.1s linear;
+    }
+
+    .btn-ctrl {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
+      padding: 0.4vw 1vw;
+      border-radius: 0.5vw;
+      font-size: 0.85vw;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4vw;
+      transition: all 0.2s;
+    }
+
+    .btn-ctrl:hover {
+      background: var(--gold-sun);
+      color: #1E2519;
+      border-color: var(--gold-sun);
+    }
+
+    .time-indicator {
+      color: #FFFFFF;
+      font-family: monospace;
+      font-size: 0.9vw;
+      font-weight: 700;
+    }
+
+    /* Teleprompter Subtitles Overlay */
+    #subtitle-overlay {
+      position: absolute;
+      bottom: 4.2vw;
+      left: 5%;
+      right: 5%;
+      background: rgba(18, 24, 15, 0.92);
+      border: 1px solid rgba(251, 213, 53, 0.4);
+      border-radius: 0.8vw;
+      padding: 0.8vw 1.5vw;
+      color: #FFFFFF;
+      text-align: center;
+      z-index: 45;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+    }
+
+    #sub-hindi {
+      font-size: 1.15vw;
+      font-weight: 700;
+      color: var(--gold-sun);
+      margin-bottom: 0.2vw;
+    }
+
+    #sub-eng {
+      font-size: 0.95vw;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    /* Screen recording guide */
+    #rec-guide {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(251, 213, 53, 0.5);
+      padding: 8px 14px;
+      border-radius: 8px;
+      color: #FBD535;
+      font-size: 12px;
+      font-weight: 700;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="rec-guide">
+    <span>🔴 Press <strong>F11</strong> for Fullscreen · Press <strong>Space</strong> to Play/Pause Video Recording</span>
+  </div>
+
+  <main id="cinema-stage">
+
+    <div class="ambient-glow" style="top: 10%; left: 10%;"></div>
+    <div class="ambient-glow" style="bottom: 10%; right: 10%; background: radial-gradient(circle, rgba(150, 53, 20, 0.2) 0%, transparent 70%);"></div>
+
+    <!-- ──────────────────────────────────────────────
+         SCENE 1: HOOK (0:00 - 0:15)
+         ────────────────────────────────────────────── -->
+    <section class="scene theme-dark active" id="scene-0" data-duration="15"
+      data-sub-hi="भारत की धरती से, सीधा आपकी रसोई तक..."
+      data-sub-en="From the heart of India, straight to your kitchen...">
+      
+      <div class="scene-header">
+        <div class="brand-pill">🌱 100% Pure & Natural</div>
+        <div class="event-badge">UP International Trade Show 2026</div>
+      </div>
+
+      <div class="scene-1-content">
+        <div class="hook-pill">✨ The Taste of India — Powered by Purity</div>
+        <div class="brand-logo-hero">
+          FOODVILLE <span class="leaf">🌿</span>
+        </div>
+        <h1 class="title-large" style="max-width: 70vw;">
+          What if every spice in your kitchen was <span class="text-gold">100% Pure?</span>
+        </h1>
+        <p class="subtitle" style="color: #E2E8DE; max-width: 55vw;">
+          Foodville Consumer Products Private Limited — Proudly Manufactured in Uttar Pradesh.
+        </p>
+      </div>
+
+      <div style="text-align: center; color: rgba(255,255,255,0.7); font-size: 0.9vw; font-weight: 700;">
+        Pure Dehydrated Spices · Zero Preservatives · Export Quality
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         SCENE 2: BRAND INTRO (0:15 - 0:40)
+         ────────────────────────────────────────────── -->
+    <section class="scene theme-cream" id="scene-1" data-duration="25"
+      data-sub-hi="फूडविले उत्तर प्रदेश का एक प्रमुख ब्रांड है, जो बिना किसी प्रिजर्वेटिव के शुद्ध मसाले आप तक पहुँचाता है।"
+      data-sub-en="Foodville is a UP-born brand delivering pure, preservative-free, farm-sourced spices to your kitchen.">
+      
+      <div class="scene-header">
+        <div class="brand-pill" style="background: rgba(107, 127, 89, 0.15); border-color: var(--primary-green); color: var(--primary-green);">
+          🏢 About The Company
+        </div>
+        <div class="event-badge" style="background: rgba(30, 37, 25, 0.08); color: var(--text-earth); border-color: rgba(30, 37, 25, 0.2);">
+          Make In India · Vocal For Local
+        </div>
+      </div>
+
+      <div style="margin-top: 1vw;">
+        <h2 class="title-medium" style="color: var(--text-earth);">
+          Foodville Consumer Products <span class="text-green">Pvt. Ltd.</span>
+        </h2>
+        <p class="subtitle" style="color: var(--text-secondary); max-width: 65vw; margin-top: 0.3vw;">
+          Bridging local agricultural excellence from Uttar Pradesh with world-class hygienic food processing.
+        </p>
+
+        <div class="stat-grid-4">
+          <div class="stat-card">
+            <span class="icon">🏭</span>
+            <div class="val">Made in UP</div>
+            <div class="lbl">State-of-the-Art Processing</div>
+          </div>
+          <div class="stat-card">
+            <span class="icon">🌿</span>
+            <div class="val">15 Active SKUs</div>
+            <div class="lbl">Live & Orderable Today</div>
+          </div>
+          <div class="stat-card">
+            <span class="icon">🚀</span>
+            <div class="val">24,000+ PINs</div>
+            <div class="lbl">Pan-India Doorstep Delivery</div>
+          </div>
+          <div class="stat-card">
+            <span class="icon">🛡️</span>
+            <div class="val">8 Certifications</div>
+            <div class="lbl">Spices Board & APEDA Export Ready</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #EAE3D2; border-radius: 0.8vw; padding: 0.6vw 1.2vw; display: flex; justify-content: space-between; font-size: 0.9vw; font-weight: 700; color: var(--text-earth);">
+        <span>🌱 100% Single Ingredient Guarantee</span>
+        <span>🚚 B2C Online & B2B Bulk Dispatch</span>
+        <span>🇮🇳 Contributing to UP's $1 Trillion Vision</span>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         SCENE 3A: SPICE POWDERS HERO (0:40 - 1:10)
+         ────────────────────────────────────────────── -->
+    <section class="scene theme-dark" id="scene-2" data-duration="30"
+      data-sub-hi="हमारे 9 मुख्य शुद्ध मसाले - लहसुन, अदरक, लाल प्याज, टमाटर, मोरिंगा और हरी मिर्च पाउडर।"
+      data-sub-en="Our 9 Pure Spice Powders — Garlic, Ginger, Red Onion, Tomato, Moringa & Green Chilli.">
+      
+      <div class="scene-header">
+        <div class="brand-pill">🌶️ Hero Range · 9 Active Spice Powders</div>
+        <div class="event-badge">Starting from ₹75 | 50g, 100g, 200g</div>
+      </div>
+
+      <div class="product-grid-sc3">
+        <!-- 1. Red Onion -->
+        <div class="product-card">
+          <span class="product-badge badge-new">New In</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png" alt="Red Onion Powder"></div>
+          <div class="product-info">
+            <div class="product-name">Red Onion Powder</div>
+            <div class="product-sub">Rich Gravies & Curries</div>
+            <div class="product-price-tag">₹75 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g/200g)</span></div>
+          </div>
+        </div>
+        <!-- 2. White Onion -->
+        <div class="product-card">
+          <span class="product-badge badge-value">Value Buy</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/08bba875-d3a4-45a5-aac3-9ee1c65d960c.png" alt="White Onion Powder"></div>
+          <div class="product-info">
+            <div class="product-name">White Onion Powder</div>
+            <div class="product-sub">Dips & White Sauces</div>
+            <div class="product-price-tag">₹75 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g/200g)</span></div>
+          </div>
+        </div>
+        <!-- 3. Garlic -->
+        <div class="product-card">
+          <span class="product-badge badge-trending">Trending</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/457bb7d1-e10a-4bcd-9224-7999b6fb7303.png" alt="Garlic Powder"></div>
+          <div class="product-info">
+            <div class="product-name">Garlic Powder</div>
+            <div class="product-sub">Universal Seasoning</div>
+            <div class="product-price-tag">₹75 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g/200g)</span></div>
+          </div>
+        </div>
+        <!-- 4. Ginger -->
+        <div class="product-card">
+          <span class="product-badge badge-bestseller">Bestseller</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/df3f91c8-ecd9-44ce-a399-3a73b294a1fa.png" alt="Ginger Powder"></div>
+          <div class="product-info">
+            <div class="product-name">Ginger Powder</div>
+            <div class="product-sub">Chai, Wellness & Food</div>
+            <div class="product-price-tag">₹75 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g/200g)</span></div>
+          </div>
+        </div>
+        <!-- 5. Tomato -->
+        <div class="product-card">
+          <span class="product-badge badge-new">New In</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f6ef4db2-3bad-460e-9e62-caf89ef59696.png" alt="Tomato Powder"></div>
+          <div class="product-info">
+            <div class="product-name">Tomato Powder</div>
+            <div class="product-sub">Instant Soup & Curries</div>
+            <div class="product-price-tag">₹99 <span style="font-size:0.7vw; opacity:0.7;">(100g/200g)</span></div>
+          </div>
+        </div>
+        <!-- 7. Mint -->
+        <div class="product-card">
+          <span class="product-badge badge-trending">Trending</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0b8876ef-e3eb-4968-bf6d-ec854fae46ed.png" alt="Mint Powder"></div>
+          <div class="product-info">
+            <div class="product-name">Mint Powder</div>
+            <div class="product-sub">Chutney, Raita & Drinks</div>
+            <div class="product-price-tag">₹75 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g)</span></div>
+          </div>
+        </div>
+        <!-- 8. Green Chilli -->
+        <div class="product-card">
+          <span class="product-badge badge-bestseller">Bestseller</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/3c04973e-187c-47e7-99af-c0fe2def4b2c.png" alt="Green Chilli Powder"></div>
+          <div class="product-info">
+            <div class="product-name">Green Chilli Powder</div>
+            <div class="product-sub">Fiery Pure Indian Flavour</div>
+            <div class="product-price-tag">₹75 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g/200g)</span></div>
+          </div>
+        </div>
+        <!-- 12. Moringa -->
+        <div class="product-card">
+          <span class="product-badge badge-bestseller">Export Hit</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png" alt="Moringa Powder"></div>
+          <div class="product-info">
+            <div class="product-name">Moringa Powder</div>
+            <div class="product-sub">Superfood Antioxidant</div>
+            <div class="product-price-tag">₹155 <span style="font-size:0.7vw; opacity:0.7;">(200g Jar)</span></div>
+          </div>
+        </div>
+        <!-- 13. Beetroot -->
+        <div class="product-card">
+          <span class="product-badge badge-new">New In</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/b338e9ae-49af-4598-8be7-8b61de5d97dd.png" alt="Beetroot Powder"></div>
+          <div class="product-info">
+            <div class="product-name">Beetroot Powder</div>
+            <div class="product-sub">Smoothies & Natural Color</div>
+            <div class="product-price-tag">₹99 <span style="font-size:0.7vw; opacity:0.7;">(100g/200g)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; color: var(--gold-sun); font-size: 0.95vw; font-weight: 800;">
+        ✔ 100% Single Ingredient · No Fillers · No Anti-Caking Chemical Agents
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         SCENE 3B: SEASONINGS & HERBS (1:10 - 1:25)
+         ────────────────────────────────────────────── -->
+    <section class="scene theme-cream" id="scene-3" data-duration="15"
+      data-sub-hi="हर्ब्स और सीज़निंग - ओरिगैनो, पेरी-पेरी, चिली फ्लेक्स और पिज़्ज़ा पास्ता मसाला।"
+      data-sub-en="Herbs & Seasonings — Oregano, Peri-Peri, Chilli Flakes & Pizza Pasta Masala.">
+      
+      <div class="scene-header">
+        <div class="brand-pill" style="background: rgba(107, 127, 89, 0.15); border-color: var(--primary-green); color: var(--primary-green);">
+          🌿 6 Active Seasonings & Blends
+        </div>
+        <div class="event-badge" style="background: rgba(30, 37, 25, 0.08); color: var(--text-earth); border-color: rgba(30, 37, 25, 0.2);">
+          HoReCa & Retail Ready
+        </div>
+      </div>
+
+      <div class="product-grid-sc3b">
+        <!-- 6. Potato Flakes -->
+        <div class="product-card">
+          <span class="product-badge badge-value">Value Buy</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/5c34a4aa-eff5-4f82-a246-afc38a8c5715.png" alt="Potato Flakes"></div>
+          <div class="product-info">
+            <div class="product-name">Potato Flakes</div>
+            <div class="product-sub">Instant Mash & Food Processing</div>
+            <div class="product-price-tag">₹79 <span style="font-size:0.7vw; opacity:0.7;">(100g/200g/500g)</span></div>
+          </div>
+        </div>
+        <!-- 9. Oregano -->
+        <div class="product-card">
+          <span class="product-badge badge-new">New In</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/456d70bb-3eb0-49d3-a2c3-debbfbd243e3.png" alt="Oregano"></div>
+          <div class="product-info">
+            <div class="product-name">Pure Oregano</div>
+            <div class="product-sub">Aromatic Mediterranean Herb</div>
+            <div class="product-price-tag">₹79 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g)</span></div>
+          </div>
+        </div>
+        <!-- 10. Oregano Seasoning -->
+        <div class="product-card">
+          <span class="product-badge badge-value">Value Buy</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/f4da849d-15b4-4d1f-b427-c2c8527278d5.png" alt="Oregano Seasoning"></div>
+          <div class="product-info">
+            <div class="product-name">Oregano Seasoning</div>
+            <div class="product-sub">Pizzeria Grade Blend</div>
+            <div class="product-price-tag">₹149 <span style="font-size:0.7vw; opacity:0.7;">(100g/200g)</span></div>
+          </div>
+        </div>
+        <!-- 11. Pizza Pasta Masala -->
+        <div class="product-card">
+          <span class="product-badge badge-trending">Trending</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/0f9a417b-a71-42f8-884d-ee83ded678e1.png" alt="Pizza Pasta Masala"></div>
+          <div class="product-info">
+            <div class="product-name">Pizza Pasta Masala</div>
+            <div class="product-sub">Fusion Indian-Italian Blend</div>
+            <div class="product-price-tag">₹89 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g/200g)</span></div>
+          </div>
+        </div>
+        <!-- 14. Red Chilli Flakes -->
+        <div class="product-card">
+          <span class="product-badge badge-value">Value Buy</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/6598ac82-021d-4309-b629-b6eced1843a2.png" alt="Red Chilli Flakes"></div>
+          <div class="product-info">
+            <div class="product-name">Red Chilli Flakes</div>
+            <div class="product-sub">Crushed Sun-Dried Chillies</div>
+            <div class="product-price-tag">₹75 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g/200g)</span></div>
+          </div>
+        </div>
+        <!-- 15. Peri-Peri Masala -->
+        <div class="product-card">
+          <span class="product-badge badge-trending">Trending</span>
+          <div class="product-img-box"><img src="https://pub-ea082eb584df4a42a07e202cd67dcb02.r2.dev/media/products/catalog/76d75845-e7eb-4bb3-9879-235505ee7dd7.png" alt="Peri-Peri Masala"></div>
+          <div class="product-info">
+            <div class="product-name">Peri-Peri Masala</div>
+            <div class="product-sub">Zesty Fries & Snack Sprinkler</div>
+            <div class="product-price-tag">₹75 <span style="font-size:0.7vw; opacity:0.7;">(50g/100g/200g)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; color: var(--primary-green); font-size: 0.95vw; font-weight: 800;">
+        ✨ Restaurant Quality Blends for Modern Indian & Global Cuisines
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         SCENE 4: PURITY PROMISE (1:25 - 1:45)
+         ────────────────────────────────────────────── -->
+    <section class="scene theme-cream" id="scene-4" data-duration="20"
+      data-sub-hi="फूडविले का वादा - 100% शुद्धता, कोई मिलावट नहीं, कोई प्रिजर्वेटिव नहीं।"
+      data-sub-en="The Foodville Promise — 100% Purity, Zero Additives, Zero Preservatives.">
+      
+      <div class="scene-header">
+        <div class="brand-pill" style="background: rgba(107, 127, 89, 0.15); border-color: var(--primary-green); color: var(--primary-green);">
+          🛡️ Quality Assurance
+        </div>
+        <div class="event-badge" style="background: rgba(30, 37, 25, 0.08); color: var(--text-earth); border-color: rgba(30, 37, 25, 0.2);">
+          Lab Tested & Certified
+        </div>
+      </div>
+
+      <div>
+        <h2 class="title-medium" style="color: var(--text-earth);">
+          Why Choose Foodville? <span class="text-green">The Purity Standard</span>
+        </h2>
+        <p class="subtitle" style="color: var(--text-secondary); margin-top: 0.2vw;">
+          What is written on our label is exactly what is inside the pack. Nothing else.
+        </p>
+
+        <div class="purity-grid">
+          <div class="purity-item">
+            <div class="purity-icon">🌿</div>
+            <div class="purity-text">
+              <h4>100% Pure & Single Ingredient</h4>
+              <p>Raw spices dehydrated at optimal temperatures to lock natural aroma.</p>
+            </div>
+          </div>
+          <div class="purity-item">
+            <div class="purity-icon">🚫</div>
+            <div class="purity-text">
+              <h4>Zero Preservatives or Chemicals</h4>
+              <p>No MSG, no artificial colors, no anti-caking silicon agents added.</p>
+            </div>
+          </div>
+          <div class="purity-item">
+            <div class="purity-icon">🌱</div>
+            <div class="purity-text">
+              <h4>100% Vegetarian & Vegan</h4>
+              <p>Processed in dedicated clean plant-based facility with zero contamination.</p>
+            </div>
+          </div>
+          <div class="purity-item">
+            <div class="purity-icon">🔒</div>
+            <div class="purity-text">
+              <h4>Airtight 12-Month Shelf Life</h4>
+              <p>Hygienically packaged in food-grade multilayer pouches and airtight jars.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #F0F4EC; border: 1px solid rgba(107, 127, 89, 0.3); border-radius: 0.8vw; padding: 0.6vw 1.2vw; text-align: center; font-size: 0.95vw; font-weight: 800; color: var(--text-earth);">
+        "Shuddh Swaad, Pakka Bharosa" — Farm Fresh to Your Kitchen
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         SCENE 5: CERTIFICATIONS (1:45 - 2:03)
+         ────────────────────────────────────────────── -->
+    <section class="scene theme-dark" id="scene-5" data-duration="18"
+      data-sub-hi="ग्लोबल एक्सपोर्ट सर्टिफाइड - स्पाइसेस बोर्ड, अपीडा, एफएसएसएआई और यूएस एफडीए अनुपालन।"
+      data-sub-en="Global Export Certified — Spices Board, APEDA, FSSAI & US FDA Compliant.">
+      
+      <div class="scene-header">
+        <div class="brand-pill">🌍 International Trade Ready</div>
+        <div class="event-badge">All Incoterms: FOB · CIF · CFR · DDP · EXW</div>
+      </div>
+
+      <div>
+        <h2 class="title-medium text-gold">
+          Export-Ready. World-Certified.
+        </h2>
+        <p class="subtitle" style="color: #E2E8DE; margin-top: 0.2vw;">
+          Authorized by Government of India export councils for port dispatch from Nhava Sheva & Mundra.
+        </p>
+
+        <div class="cert-grid">
+          <div class="cert-card">
+            <span class="cert-emoji">🌿</span>
+            <div class="cert-name">Spices Board CRES</div>
+            <div class="cert-desc">Ministry of Commerce & Industry registered spice exporter</div>
+          </div>
+          <div class="cert-card">
+            <span class="cert-emoji">🌾</span>
+            <div class="cert-name">APEDA RCMC</div>
+            <div class="cert-desc">Agricultural & Processed Food Products Export Registration</div>
+          </div>
+          <div class="cert-card">
+            <span class="cert-emoji">🛡️</span>
+            <div class="cert-name">FSSAI Central</div>
+            <div class="cert-desc">Highest Indian Central Food Manufacturing & Export License</div>
+          </div>
+          <div class="cert-card">
+            <span class="cert-emoji">🏛️</span>
+            <div class="cert-name">DGFT IEC Code</div>
+            <div class="cert-desc">Directorate General of Foreign Trade Import-Export Code</div>
+          </div>
+          <div class="cert-card">
+            <span class="cert-emoji">🔬</span>
+            <div class="cert-name">ISO 9001:2015</div>
+            <div class="cert-desc">Standardized Quality Management System Protocols</div>
+          </div>
+          <div class="cert-card">
+            <span class="cert-emoji">🇺🇸</span>
+            <div class="cert-name">US FDA Compliant</div>
+            <div class="cert-desc">Meets US FSMA Facility & International Labeling Benchmarks</div>
+          </div>
+          <div class="cert-card">
+            <span class="cert-emoji">🧼</span>
+            <div class="cert-name">HACCP & GMP</div>
+            <div class="cert-desc">Hazard Analysis Critical Control Point clean-room packaging</div>
+          </div>
+          <div class="cert-card">
+            <span class="cert-emoji">🌙</span>
+            <div class="cert-name">Halal & Kosher Ready</div>
+            <div class="cert-desc">Dedicated 100% pure plant-based processing line</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; color: var(--gold-sun); font-size: 0.9vw; font-weight: 700;">
+        ⚡ Technical COA, Lab Specification Sheets & Sample Air-Courier Dispatch within 24–48 Hours
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         SCENE 6: COMING SOON PIPELINE (2:03 - 2:13)
+         ────────────────────────────────────────────── -->
+    <section class="scene theme-dark" id="scene-6" data-duration="10"
+      data-sub-hi="117 नए उत्पाद जल्द आ रहे हैं - सुपरफूड बीज, ड्राई फ्रूट्स और 70 से अधिक कॉम्बो पैक्स।"
+      data-sub-en="117 More Products Coming Soon — Superfood Seeds, Dry Fruits & 70+ Combo Packs.">
+      
+      <div class="scene-header">
+        <div class="brand-pill">🚀 The Expansion Pipeline</div>
+        <div class="event-badge">117 Products in Development</div>
+      </div>
+
+      <div>
+        <h2 class="title-medium text-gold">
+          The Foodville Universe is Just Getting Started
+        </h2>
+        <p class="subtitle" style="color: #E2E8DE; margin-top: 0.2vw;">
+          Expanding rapidly into organic seeds, dry fruits, Ayurvedic wellness and curated consumer gift sets.
+        </p>
+
+        <div class="pipeline-grid">
+          <div class="pipeline-card">
+            <span class="pipeline-badge">Coming Soon</span>
+            <div style="font-size: 2.8vw; margin-top: 0.5vw;">🫘</div>
+            <h4 style="font-size: 1.2vw; font-weight: 800; color: #FFFFFF;">Superfood Seeds</h4>
+            <p style="font-size: 0.8vw; opacity: 0.85;">Chia, Basil, Flax, Pumpkin, Watermelon & Sunflower Seeds</p>
+          </div>
+          <div class="pipeline-card">
+            <span class="pipeline-badge">Coming Soon</span>
+            <div style="font-size: 2.8vw; margin-top: 0.5vw;">🥜</div>
+            <h4 style="font-size: 1.2vw; font-weight: 800; color: #FFFFFF;">Dry Fruits & Nuts</h4>
+            <p style="font-size: 0.8vw; opacity: 0.85;">Premium Almonds, Kaju, Raisins, Apricots & Pistachios</p>
+          </div>
+          <div class="pipeline-card">
+            <span class="pipeline-badge">Coming Soon</span>
+            <div style="font-size: 2.8vw; margin-top: 0.5vw;">🌱</div>
+            <h4 style="font-size: 1.2vw; font-weight: 800; color: #FFFFFF;">Herbal & Wellness</h4>
+            <p style="font-size: 0.8vw; opacity: 0.85;">Ashwagandha, Dry Amla, Mulethi & Ayurvedic Herbal Blends</p>
+          </div>
+          <div class="pipeline-card">
+            <span class="pipeline-badge">Coming Soon</span>
+            <div style="font-size: 2.8vw; margin-top: 0.5vw;">📦</div>
+            <h4 style="font-size: 1.2vw; font-weight: 800; color: #FFFFFF;">70+ Combo Packs</h4>
+            <p style="font-size: 0.8vw; opacity: 0.85;">Festive Gift Sets, Daily Fitness Combos & ODOP Hampers</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; color: var(--gold-sun); font-size: 0.9vw; font-weight: 700;">
+        💡 Register with Foodville today to secure priority distribution and wholesale allocations!
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         SCENE 7: PARTNERSHIPS & B2B (2:13 - 2:33)
+         ────────────────────────────────────────────── -->
+    <section class="scene theme-olive" id="scene-7" data-duration="20"
+      data-sub-hi="हमारे साथ व्यापार करें - ग्लोबल एक्सपोर्ट, होलसेल और डिस्ट्रीब्यूटरशिप प्रोग्राम।"
+      data-sub-en="Partner with Foodville — Global Export, Bulk Wholesale & Distributorship.">
+      
+      <div class="scene-header">
+        <div class="brand-pill" style="background: rgba(0,0,0,0.25); border-color: var(--gold-sun); color: var(--gold-sun);">
+          🤝 Business Opportunities
+        </div>
+        <div class="event-badge" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3);">
+          Three Ways to Partner
+        </div>
+      </div>
+
+      <div>
+        <h2 class="title-medium" style="color: #FFFFFF;">
+          Grow Your Business with <span class="text-gold">Foodville</span>
+        </h2>
+        <p class="subtitle" style="color: #EAE3D2; margin-top: 0.2vw;">
+          Structured programs tailored for international traders, domestic wholesalers, and regional distributors.
+        </p>
+
+        <div class="b2b-grid">
+          <div class="b2b-card">
+            <h4>🌍 Global Export</h4>
+            <ul>
+              <li>FOB, CIF, CFR, DDP & EXW pricing</li>
+              <li>Custom packaging & private label</li>
+              <li>Full COA & port customs documentation</li>
+              <li>Direct dispatch: Nhava Sheva / Mundra</li>
+            </ul>
+          </div>
+          <div class="b2b-card">
+            <h4>📦 Bulk Wholesale</h4>
+            <ul>
+              <li>Direct factory pricing with zero middlemen</li>
+              <li>Flexible Minimum Order Quantity (MOQ)</li>
+              <li>Fast Pan-India road logistics</li>
+              <li>Ideal for HoReCa & Food Processing</li>
+            </ul>
+          </div>
+          <div class="b2b-card">
+            <h4>🤝 Distributorship</h4>
+            <ul>
+              <li>Exclusive city and district territory rights</li>
+              <li>High retailer margins & trade schemes</li>
+              <li>BTL marketing, POS displays & samples</li>
+              <li>Dedicated business growth manager</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: rgba(0,0,0,0.3); border-radius: 0.8vw; padding: 0.6vw 1.2vw; text-align: center; font-size: 0.95vw; font-weight: 800; color: #FFFFFF;">
+        Visit our booth at UPITS 4.0 or submit an inquiry on www.foodville.in
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────
+         SCENE 8: CLOSING CONTACT (2:33 - 2:45)
+         ────────────────────────────────────────────── -->
+    <section class="scene theme-dark" id="scene-8" data-duration="15"
+      data-sub-hi="फूडविले - शुद्ध स्वाद, पक्का भरोसा। यूपी इंटरनेशनल ट्रेड शो 2026 में हमसे अवश्य मिलें।"
+      data-sub-en="Foodville — Pure Taste, Pure Trust. Visit us at UP International Trade Show 2026.">
+      
+      <div class="scene-header">
+        <div class="brand-pill">🌿 Made in Uttar Pradesh</div>
+        <div class="event-badge">India Expo Centre & Mart, Greater Noida</div>
+      </div>
+
+      <div style="text-align: center; margin-top: 0.5vw;">
+        <div class="brand-logo-hero" style="justify-content: center; font-size: 3.8vw;">
+          FOODVILLE <span class="leaf">🌿</span>
+        </div>
+        <h2 class="title-medium text-gold" style="font-size: 2.2vw;">
+          "Taste the Difference. Trust the Purity."
+        </h2>
+        <p class="subtitle" style="color: #E2E8DE; margin-top: 0.2vw;">
+          Foodville Consumer Products Private Limited
+        </p>
+
+        <div class="closing-box">
+          <div class="contact-item">
+            <div class="icon-box">🌐</div>
+            <div style="text-align: left;">
+              <div style="font-size: 0.8vw; opacity: 0.7; text-transform: uppercase;">Official Website</div>
+              <div>www.foodville.in</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon-box">📧</div>
+            <div style="text-align: left;">
+              <div style="font-size: 0.8vw; opacity: 0.7; text-transform: uppercase;">Trade & Support Email</div>
+              <div>support@foodvilleindia.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon-box">📞</div>
+            <div style="text-align: left;">
+              <div style="font-size: 0.8vw; opacity: 0.7; text-transform: uppercase;">Phone / WhatsApp Direct</div>
+              <div>+91 99115 75605</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon-box">📸</div>
+            <div style="text-align: left;">
+              <div style="font-size: 0.8vw; opacity: 0.7; text-transform: uppercase;">Instagram Official</div>
+              <div>@foodville15</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: rgba(251, 213, 53, 0.15); border: 1px solid var(--gold-sun); border-radius: 0.8vw; padding: 0.6vw 1.2vw; text-align: center; font-size: 0.95vw; font-weight: 800; color: var(--gold-sun);">
+        📍 Meet Us at UPITS 4.0 (Sept 25–29, 2026) · Stall: TBD · Greater Noida
+      </div>
+    </section>
+
+    <!-- Subtitles / Teleprompter Display -->
+    <div id="subtitle-overlay">
+      <div id="sub-hindi">भारत की धरती से, सीधा आपकी रसोई तक...</div>
+      <div id="sub-eng">From the heart of India, straight to your kitchen...</div>
+    </div>
+
+    <!-- ──────────────────────────────────────────────
+         BOTTOM PLAYER CONTROLS DOCK
+         ────────────────────────────────────────────── -->
+    <div id="player-controls">
+      <div class="progress-bar-container" id="timeline-scrubber">
+        <div id="progress-fill"></div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.8vw;">
+        <button class="btn-ctrl" id="btn-play-pause">⏸ Pause</button>
+        <button class="btn-ctrl" id="btn-prev">⏮ Prev</button>
+        <button class="btn-ctrl" id="btn-next">⏭ Next</button>
+        <button class="btn-ctrl" id="btn-restart">🔄 Restart</button>
+      </div>
+
+      <div class="time-indicator">
+        <span id="current-time-text">00:00</span> / <span id="total-time-text">02:43</span>
+        <span style="margin-left: 0.8vw; color: var(--gold-sun); font-weight: 800;" id="scene-idx-text">Scene 1 / 8</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 0.8vw;">
+        <button class="btn-ctrl" id="btn-toggle-sub">💬 Toggle Voiceover Script</button>
+        <button class="btn-ctrl" id="btn-loop">🔁 Loop: ON</button>
+        <button class="btn-ctrl" id="btn-fullscreen" style="background: var(--gold-sun); color: #1E2519; border-color: var(--gold-sun);">⛶ Fullscreen</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    /* ──────────────────────────────────────────────
+       INTERACTIVE ANIMATED VIDEO ENGINE
+       ────────────────────────────────────────────── */
+    const scenes = Array.from(document.querySelectorAll('.scene'));
+    const durations = scenes.map(s => parseFloat(s.dataset.duration) || 15);
+    const totalDuration = durations.reduce((a, b) => a + b, 0);
+
+    let currentScene = 0;
+    let sceneStartTime = Date.now();
+    let isPlaying = true;
+    let loopEnabled = true;
+    let subEnabled = true;
+    let animationFrameId = null;
+
+    // Elements
+    const progressFill = document.getElementById('progress-fill');
+    const currentTimeText = document.getElementById('current-time-text');
+    const totalTimeText = document.getElementById('total-time-text');
+    const sceneIdxText = document.getElementById('scene-idx-text');
+    const subHindi = document.getElementById('sub-hindi');
+    const subEng = document.getElementById('sub-eng');
+    const subOverlay = document.getElementById('subtitle-overlay');
+    const btnPlayPause = document.getElementById('btn-play-pause');
+    const btnLoop = document.getElementById('btn-loop');
+    const btnToggleSub = document.getElementById('btn-toggle-sub');
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    totalTimeText.textContent = formatTime(totalDuration);
+
+    function getElapsedTime() {
+      let prior = 0;
+      for (let i = 0; i < currentScene; i++) {
+        prior += durations[i];
+      }
+      const inScene = (Date.now() - sceneStartTime) / 1000;
+      return Math.min(prior + inScene, totalDuration);
+    }
+
+    function switchScene(index) {
+      if (index < 0) index = 0;
+      if (index >= scenes.length) {
+        if (loopEnabled) {
+          index = 0;
+        } else {
+          isPlaying = false;
+          btnPlayPause.textContent = '▶ Play';
+          return;
+        }
+      }
+
+      scenes[currentScene].classList.remove('active');
+      currentScene = index;
+      scenes[currentScene].classList.add('active');
+      sceneStartTime = Date.now();
+
+      // Update Subtitles
+      subHindi.textContent = scenes[currentScene].dataset.subHi || '';
+      subEng.textContent = scenes[currentScene].dataset.subEn || '';
+      sceneIdxText.textContent = `Scene ${currentScene + 1} / ${scenes.length}`;
+    }
+
+    function tick() {
+      if (isPlaying) {
+        const elapsedInScene = (Date.now() - sceneStartTime) / 1000;
+        const targetDuration = durations[currentScene];
+
+        if (elapsedInScene >= targetDuration) {
+          switchScene(currentScene + 1);
+        }
+
+        const totalElapsed = getElapsedTime();
+        const pct = (totalElapsed / totalDuration) * 100;
+        progressFill.style.width = `${pct}%`;
+        currentTimeText.textContent = formatTime(totalElapsed);
+      }
+      animationFrameId = requestAnimationFrame(tick);
+    }
+
+    // Playback Controls
+    btnPlayPause.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      btnPlayPause.textContent = isPlaying ? '⏸ Pause' : '▶ Play';
+      if (isPlaying) {
+        sceneStartTime = Date.now();
+      }
+    });
+
+    document.getElementById('btn-next').addEventListener('click', () => {
+      switchScene(currentScene + 1);
+    });
+
+    document.getElementById('btn-prev').addEventListener('click', () => {
+      switchScene(currentScene - 1);
+    });
+
+    document.getElementById('btn-restart').addEventListener('click', () => {
+      switchScene(0);
+      progressFill.style.width = '0%';
+    });
+
+    btnLoop.addEventListener('click', () => {
+      loopEnabled = !loopEnabled;
+      btnLoop.textContent = loopEnabled ? '🔁 Loop: ON' : '🔁 Loop: OFF';
+    });
+
+    btnToggleSub.addEventListener('click', () => {
+      subEnabled = !subEnabled;
+      subOverlay.style.display = subEnabled ? 'block' : 'none';
+      btnToggleSub.textContent = subEnabled ? '💬 Subtitles: ON' : '💬 Subtitles: OFF';
+    });
+
+    document.getElementById('btn-fullscreen').addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => alert(err.message));
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    // Keyboard Shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        btnPlayPause.click();
+      } else if (e.code === 'ArrowRight') {
+        switchScene(currentScene + 1);
+      } else if (e.code === 'ArrowLeft') {
+        switchScene(currentScene - 1);
+      } else if (e.code === 'KeyF') {
+        document.getElementById('btn-fullscreen').click();
+      }
+    });
+
+    // Scrubber click
+    document.getElementById('timeline-scrubber').addEventListener('click', (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const pct = clickX / rect.width;
+      let targetSec = pct * totalDuration;
+
+      let acc = 0;
+      for (let i = 0; i < durations.length; i++) {
+        if (targetSec <= acc + durations[i]) {
+          switchScene(i);
+          sceneStartTime = Date.now() - ((targetSec - acc) * 1000);
+          break;
+        }
+        acc += durations[i];
+      }
+    });
+
+    // Auto-hide controls when mouse is inactive
+    let hideTimer = null;
+    const stage = document.getElementById('cinema-stage');
+    const controls = document.getElementById('player-controls');
+
+    stage.addEventListener('mousemove', () => {
+      controls.style.opacity = '1';
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        if (isPlaying) {
+          controls.style.opacity = '0.15';
+        }
+      }, 3000);
+    });
+
+    // Start engine
+    switchScene(0);
+    animationFrameId = requestAnimationFrame(tick);
+  </script>
+</body>
+</html>

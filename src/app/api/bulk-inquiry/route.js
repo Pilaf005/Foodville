@@ -2,7 +2,10 @@ import { ok, withRoute } from "@/server/utils/apiResponse";
 import { badRequest } from "@/server/utils/apiError";
 import BulkInquiry from "@/server/models/BulkInquiry";
 import Sequence from "@/server/models/Sequence";
-import { sendBulkInquiryNotification } from "@/server/services/email.service";
+import {
+  sendBulkInquiryNotification,
+  sendBulkInquiryCustomerConfirmation,
+} from "@/server/services/email.service";
 
 export const runtime = "nodejs";
 
@@ -29,6 +32,9 @@ export const POST = withRoute(async (req) => {
     phone,
     productName,
     quantityKg,
+    deliveryAddress,
+    deliveryCity,
+    deliveryState,
     deliveryPincode,
     notes,
     website,     // Honeypot field 1
@@ -86,13 +92,19 @@ export const POST = withRoute(async (req) => {
     phone: rawPhone,
     productName: String(productName).trim(),
     quantityKg: parsedQty,
+    deliveryAddress: String(deliveryAddress || "").trim(),
+    deliveryCity:    String(deliveryCity    || "").trim(),
+    deliveryState:   String(deliveryState   || "").trim(),
     deliveryPincode: rawPincode,
     notes: String(notes || "").trim(),
     status: "pending",
   });
  
-  // Trigger email notification in background
-  sendBulkInquiryNotification(doc).catch(() => {});
+  // Trigger email notifications in background (admin alert & customer confirmation)
+  Promise.allSettled([
+    sendBulkInquiryNotification(doc),
+    sendBulkInquiryCustomerConfirmation(doc),
+  ]).catch(() => {});
  
   return ok({
     success: true,

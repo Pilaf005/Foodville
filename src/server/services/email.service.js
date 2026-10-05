@@ -103,8 +103,11 @@ export async function sendBulkInquiryNotification(inquiry) {
             <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Phone</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.phone}</td></tr>
             <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Product Name</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.productName}</td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Quantity Required</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.quantityKg} kg</td></tr>
-            <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Delivery Pincode</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.deliveryPincode}</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Additional Notes</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.notes || "—"}</td></tr>
+            <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Delivery Address</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.deliveryAddress || "—"}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Delivery City</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.deliveryCity || "—"}</td></tr>
+            <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Delivery State</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.deliveryState || "—"}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Delivery Pincode</td><td style="padding: 8px; border: 1px solid #ddd; font-family: monospace;">${inquiry.deliveryPincode}</td></tr>
+            <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Additional Notes</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.notes || "—"}</td></tr>
           </table>
         </div>
       `,
@@ -115,7 +118,140 @@ export async function sendBulkInquiryNotification(inquiry) {
     console.error("[email] Failed to send bulk inquiry notification:", err?.message);
   }
 }
- 
+
+/**
+ * Sends quotation request confirmation email to the Customer who submitted the B2B Wholesale inquiry.
+ */
+export async function sendBulkInquiryCustomerConfirmation(inquiry) {
+  const resend = getResend();
+  if (env.emailDevMode || !resend) {
+    if (env.emailDevMode) {
+      // eslint-disable-next-line no-console
+      console.log(
+        `\n──────────────────────────────────────────\n📧 [DEV EMAIL] B2B Inquiry Customer Confirmation for ${inquiry.inquiryId}\nTo: ${inquiry.email}\nCustomer: ${inquiry.fullName}\nProduct: ${inquiry.productName} (${inquiry.quantityKg} kg)\n──────────────────────────────────────────\n`
+      );
+    }
+    return;
+  }
+
+  if (!inquiry.email) return;
+
+  const destinationAddress = [
+    inquiry.deliveryAddress,
+    inquiry.deliveryCity,
+    inquiry.deliveryState ? `${inquiry.deliveryState} - ${inquiry.deliveryPincode}` : inquiry.deliveryPincode,
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  try {
+    const { error } = await resend.emails.send({
+      from: env.smtp.from || "Foodville <support@foodvilleindia.com>",
+      to: inquiry.email,
+      subject: `📋 We received your Wholesale B2B Quotation Request [${inquiry.inquiryId}]`,
+      html: `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #FAF7F2; padding: 24px 12px; color: #2E2A26;">
+          <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #EDE6D9; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+            
+            <!-- Brand Header -->
+            <div style="background: #56684A; padding: 28px 24px; text-align: center; color: #ffffff;">
+              <span style="display: inline-block; background: rgba(255,255,255,0.18); color: #FAF7F2; padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px;">
+                FOODVILLE DIRECT COMMERCIAL DIVISION
+              </span>
+              <h1 style="margin: 0; font-size: 22px; font-weight: 800; color: #ffffff;">Quotation Request Received! 🌿</h1>
+              <p style="margin: 6px 0 0; font-size: 13px; color: #D1E6C0;">Reference ID: <strong style="font-family: monospace; color: #ffffff;">${inquiry.inquiryId}</strong></p>
+            </div>
+
+            <!-- Body -->
+            <div style="padding: 24px;">
+              <p style="margin: 0 0 12px; font-size: 15px; color: #1E1B17; font-weight: 600;">
+                Hi ${inquiry.fullName},
+              </p>
+              <p style="margin: 0 0 20px; font-size: 14px; line-height: 1.6; color: #5C554D;">
+                Thank you for contacting the Foodville Commercial Division. We have received your wholesale bulk quotation request. Our Wholesale Pricing Director is currently reviewing your volume requirements to apply our direct factory pricing tier.
+              </p>
+
+              <!-- Request Details Summary Card -->
+              <div style="background: #FDFBF8; border: 1.5px solid #F0EAE1; border-radius: 12px; padding: 18px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #56684A; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
+                  📋 Your Requirement Summary
+                </div>
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.6;">
+                  <tr style="border-bottom: 1px solid #F0ECE4;">
+                    <td style="padding: 6px 0; color: #7A7368; width: 40%;"><strong>Inquiry ID:</strong></td>
+                    <td style="padding: 6px 0; font-family: monospace; font-weight: bold; color: #56684A;">${inquiry.inquiryId}</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #F0ECE4;">
+                    <td style="padding: 6px 0; color: #7A7368;"><strong>Product Name:</strong></td>
+                    <td style="padding: 6px 0; font-weight: 600; color: #1E1B17;">${inquiry.productName}</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #F0ECE4;">
+                    <td style="padding: 6px 0; color: #7A7368;"><strong>Target Volume:</strong></td>
+                    <td style="padding: 6px 0; font-weight: 700; color: #2E7D32;">${inquiry.quantityKg} kg</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #F0ECE4;">
+                    <td style="padding: 6px 0; color: #7A7368;"><strong>Company / Firm:</strong></td>
+                    <td style="padding: 6px 0; color: #1E1B17;">${inquiry.companyName || "Individual / Proprietary"}</td>
+                  </tr>
+                  ${inquiry.gstin ? `
+                  <tr style="border-bottom: 1px solid #F0ECE4;">
+                    <td style="padding: 6px 0; color: #7A7368;"><strong>GSTIN:</strong></td>
+                    <td style="padding: 6px 0; font-family: monospace; color: #1E1B17;">${inquiry.gstin}</td>
+                  </tr>
+                  ` : ""}
+                  <tr style="border-bottom: 1px solid #F0ECE4;">
+                    <td style="padding: 6px 0; color: #7A7368; vertical-align: top;"><strong>Delivery Destination:</strong></td>
+                    <td style="padding: 6px 0; color: #1E1B17;">${destinationAddress}</td>
+                  </tr>
+                  ${inquiry.notes ? `
+                  <tr>
+                    <td style="padding: 6px 0; color: #7A7368; vertical-align: top;"><strong>Specifications / Notes:</strong></td>
+                    <td style="padding: 6px 0; color: #1E1B17;">${inquiry.notes}</td>
+                  </tr>
+                  ` : ""}
+                </table>
+              </div>
+
+              <!-- Next Steps Roadmap -->
+              <div style="margin-bottom: 24px;">
+                <h3 style="margin: 0 0 12px; font-size: 14px; font-weight: 800; color: #1E1B17; text-transform: uppercase; letter-spacing: 0.5px;">
+                  What Happens Next?
+                </h3>
+                <ol style="margin: 0; padding-left: 20px; font-size: 13px; color: #5C554D; line-height: 1.8;">
+                  <li><strong>Commercial Assessment (2–4 hours):</strong> Our pricing desk evaluates current spice mandi &amp; lot prices to formulate your best tier rate.</li>
+                  <li><strong>Quotation Delivery:</strong> An official quotation along with product certificates and batch specs will be sent to this email.</li>
+                  <li><strong>Immediate Inquiries:</strong> Need an expedited sample batch or container booking? Call / WhatsApp our direct wholesale hotline below.</li>
+                </ol>
+              </div>
+
+              <!-- Wholesale Hotline Card -->
+              <div style="background: #EBF1E6; border: 1px solid #C6D8BC; border-radius: 12px; padding: 16px; margin-bottom: 20px; font-size: 13px; color: #3F5034; line-height: 1.5;">
+                <div style="font-weight: 700; margin-bottom: 4px;">
+                  📞 Direct Wholesale Contact
+                </div>
+                <div>Call / WhatsApp: <a href="tel:+919911575605" style="color: #2E5A1C; font-weight: 700; text-decoration: none;">+91 9911575605</a></div>
+                <div>Email: <a href="mailto:support@foodvilleindia.com" style="color: #2E5A1C; font-weight: 600; text-decoration: none;">support@foodvilleindia.com</a></div>
+              </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div style="background: #FAF7F2; border-top: 1px solid #EDE6D9; padding: 18px 24px; text-align: center; font-size: 12px; color: #8A8275; line-height: 1.6;">
+              Foodville Consumer Products Private Limited • H-112, 1st Floor, Patel Nagar-III, Ghaziabad, U.P. 201001<br>
+              Real Food • Pure Spices &amp; Premium Dry Fruits
+            </div>
+
+          </div>
+        </div>
+      `,
+    });
+    if (error) throw new Error(error.message);
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("[email] Failed to send bulk inquiry customer confirmation:", err?.message);
+  }
+}
+
 export async function sendDistributorApplicationNotification(app) {
   const resend = getResend();
   if (env.emailDevMode || !resend) return;

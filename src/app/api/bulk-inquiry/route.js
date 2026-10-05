@@ -48,11 +48,48 @@ export const POST = withRoute(async (req) => {
   }
 
   // 2. Mandatory Fields Check
-  if (!fullName || !email || !phone || !productName || !quantityKg || !deliveryPincode) {
-    throw badRequest("Please fill in all required fields (Name, Email, Phone, Product, Quantity, Pincode).");
+  if (!fullName || !email || !phone || !deliveryPincode) {
+    throw badRequest("Please fill in all required contact and delivery fields (Name, Email, Phone, Pincode).");
   }
 
-  // 3. Strict Phone & Pincode Regex Validation (DO NOT STRIP NON-DIGITS FIRST!)
+  // 3. Normalize & Validate Products (multi-item support)
+  let normalizedItems = [];
+  if (Array.isArray(body.items) && body.items.length > 0) {
+    normalizedItems = body.items
+      .map((it) => ({
+        productName: String(it?.productName || "").trim(),
+        quantityKg: Number(it?.quantityKg),
+      }))
+      .filter((it) => it.productName);
+  } else if (body.productName) {
+    const singleQty = Number(body.quantityKg);
+    if (!isNaN(singleQty)) {
+      normalizedItems = [
+        {
+          productName: String(body.productName).trim(),
+          quantityKg: singleQty,
+        },
+      ];
+    }
+  }
+
+  if (normalizedItems.length === 0) {
+    throw badRequest("Please specify at least one product with a target quantity.");
+  }
+
+  for (const it of normalizedItems) {
+    if (!it.productName) {
+      throw badRequest("Please enter a valid product name for all requested items.");
+    }
+    if (isNaN(it.quantityKg) || it.quantityKg <= 0) {
+      throw badRequest(`Please enter a valid quantity for ${it.productName || "each product"}.`);
+    }
+  }
+
+  const computedProductName = normalizedItems.map((it) => it.productName).join(", ");
+  const computedTotalKg = normalizedItems.reduce((sum, it) => sum + it.quantityKg, 0);
+
+  // 4. Strict Phone & Pincode Regex Validation (DO NOT STRIP NON-DIGITS FIRST!)
   const rawPhone = String(phone).trim();
   if (!PHONE_REGEX.test(rawPhone)) {
     throw badRequest("Please enter a valid 10-digit Indian phone number starting with 6, 7, 8, or 9.");
@@ -75,11 +112,6 @@ export const POST = withRoute(async (req) => {
     return ok({ success: true, message: "Quotation request submitted successfully." }); // Fake success for bot
   }
 
-  const parsedQty = Number(quantityKg);
-  if (isNaN(parsedQty) || parsedQty < 10) {
-    throw badRequest("Minimum bulk order quantity is 10kg.");
-  }
-
   const nextVal = await getNextSequence("bulk_inquiry");
   const inquiryId = `BQ${100000 + nextVal}`;
 
@@ -90,8 +122,9 @@ export const POST = withRoute(async (req) => {
     gstin: String(gstin || "").trim(),
     email: cleanEmail,
     phone: rawPhone,
-    productName: String(productName).trim(),
-    quantityKg: parsedQty,
+    items: normalizedItems,
+    productName: computedProductName,
+    quantityKg: computedTotalKg,
     deliveryAddress: String(deliveryAddress || "").trim(),
     deliveryCity:    String(deliveryCity    || "").trim(),
     deliveryState:   String(deliveryState   || "").trim(),

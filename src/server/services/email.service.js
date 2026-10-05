@@ -85,11 +85,30 @@ export async function sendOtpEmail({ to, code, expiresInMinutes }) {
 export async function sendBulkInquiryNotification(inquiry) {
   const resend = getResend();
   if (env.emailDevMode || !resend) return;
+
+  const itemsList =
+    Array.isArray(inquiry.items) && inquiry.items.length > 0
+      ? inquiry.items
+      : [{ productName: inquiry.productName, quantityKg: inquiry.quantityKg }];
+
+  const totalKg = itemsList.reduce((sum, it) => sum + (Number(it.quantityKg) || 0), 0);
+
+  const itemsHtml = itemsList
+    .map(
+      (it, idx) => `
+      <tr style="border-bottom: 1px solid #EAEAEA; ${idx % 2 === 0 ? "background: #FAFAFA;" : ""}">
+        <td style="padding: 8px 12px; font-weight: 600; color: #2E2A26;">${it.productName}</td>
+        <td style="padding: 8px 12px; text-align: right; color: #2E7D32; font-weight: bold;">${it.quantityKg} kg</td>
+      </tr>
+    `
+    )
+    .join("");
+
   try {
     const { error } = await resend.emails.send({
       from: env.smtp.from || "Foodville <support@foodvilleindia.com>",
       to: "support@foodvilleindia.com",
-      subject: `New Bulk Order Inquiry - ${inquiry.inquiryId}`,
+      subject: `New Bulk Order Inquiry - ${inquiry.inquiryId} (${itemsList.length} items, ${totalKg} kg)`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; color: #333;">
           <h2 style="color: #6B7F59; border-bottom: 2px solid #6B7F59; padding-bottom: 8px;">New Bulk Order Quotation Request</h2>
@@ -101,14 +120,31 @@ export async function sendBulkInquiryNotification(inquiry) {
             <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Company GSTIN</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.gstin || "—"}</td></tr>
             <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Email</td><td style="padding: 8px; border: 1px solid #ddd;"><a href="mailto:${inquiry.email}">${inquiry.email}</a></td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Phone</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.phone}</td></tr>
-            <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Product Name</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.productName}</td></tr>
-            <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Quantity Required</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.quantityKg} kg</td></tr>
             <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Delivery Address</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.deliveryAddress || "—"}</td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Delivery City</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.deliveryCity || "—"}</td></tr>
             <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Delivery State</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.deliveryState || "—"}</td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Delivery Pincode</td><td style="padding: 8px; border: 1px solid #ddd; font-family: monospace;">${inquiry.deliveryPincode}</td></tr>
             <tr style="background-color: #f9f9f9;"><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Additional Notes</td><td style="padding: 8px; border: 1px solid #ddd;">${inquiry.notes || "—"}</td></tr>
           </table>
+
+          <div style="margin-top: 20px;">
+            <h3 style="color: #6B7F59; margin-bottom: 8px; font-size: 15px;">📦 Requested Products (${itemsList.length} items)</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #EAEAEA;">
+              <thead>
+                <tr style="background: #EFEBE4; text-align: left; color: #4A453E;">
+                  <th style="padding: 8px 12px; font-weight: 700;">Product</th>
+                  <th style="padding: 8px 12px; text-align: right; font-weight: 700;">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${itemsHtml}
+                <tr style="background: #F5F1E8; font-weight: 800; border-top: 1.5px solid #D5CEBF;">
+                  <td style="padding: 8px 12px; color: #2C3624;">Total Volume</td>
+                  <td style="padding: 8px 12px; text-align: right; color: #2E7D32; font-size: 14px;">${totalKg} kg</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       `,
     });
@@ -128,13 +164,20 @@ export async function sendBulkInquiryCustomerConfirmation(inquiry) {
     if (env.emailDevMode) {
       // eslint-disable-next-line no-console
       console.log(
-        `\n──────────────────────────────────────────\n📧 [DEV EMAIL] B2B Inquiry Customer Confirmation for ${inquiry.inquiryId}\nTo: ${inquiry.email}\nCustomer: ${inquiry.fullName}\nProduct: ${inquiry.productName} (${inquiry.quantityKg} kg)\n──────────────────────────────────────────\n`
+        `\n──────────────────────────────────────────\n📧 [DEV EMAIL] B2B Inquiry Customer Confirmation for ${inquiry.inquiryId}\nTo: ${inquiry.email}\nCustomer: ${inquiry.fullName}\nProducts: ${inquiry.productName} (${inquiry.quantityKg} kg)\n──────────────────────────────────────────\n`
       );
     }
     return;
   }
 
   if (!inquiry.email) return;
+
+  const itemsList =
+    Array.isArray(inquiry.items) && inquiry.items.length > 0
+      ? inquiry.items
+      : [{ productName: inquiry.productName, quantityKg: inquiry.quantityKg }];
+
+  const totalKg = itemsList.reduce((sum, it) => sum + (Number(it.quantityKg) || 0), 0);
 
   const destinationAddress = [
     inquiry.deliveryAddress,
@@ -143,6 +186,17 @@ export async function sendBulkInquiryCustomerConfirmation(inquiry) {
   ]
     .filter(Boolean)
     .join(", ");
+
+  const itemsHtml = itemsList
+    .map(
+      (it, idx) => `
+      <tr style="border-bottom: 1px solid #EFEFEF; ${idx % 2 === 0 ? "background: #FCFBFA;" : ""}">
+        <td style="padding: 9px 12px; font-weight: 600; color: #2E2A26;">${it.productName}</td>
+        <td style="padding: 9px 12px; text-align: right; color: #2E7D32; font-weight: bold;">${it.quantityKg} kg</td>
+      </tr>
+    `
+    )
+    .join("");
 
   try {
     const { error } = await resend.emails.send({
@@ -176,18 +230,10 @@ export async function sendBulkInquiryCustomerConfirmation(inquiry) {
                 <div style="font-size: 12px; font-weight: 700; color: #56684A; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
                   📋 Your Requirement Summary
                 </div>
-                <table style="width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.6;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.6; margin-bottom: 16px;">
                   <tr style="border-bottom: 1px solid #F0ECE4;">
                     <td style="padding: 6px 0; color: #7A7368; width: 40%;"><strong>Inquiry ID:</strong></td>
                     <td style="padding: 6px 0; font-family: monospace; font-weight: bold; color: #56684A;">${inquiry.inquiryId}</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid #F0ECE4;">
-                    <td style="padding: 6px 0; color: #7A7368;"><strong>Product Name:</strong></td>
-                    <td style="padding: 6px 0; font-weight: 600; color: #1E1B17;">${inquiry.productName}</td>
-                  </tr>
-                  <tr style="border-bottom: 1px solid #F0ECE4;">
-                    <td style="padding: 6px 0; color: #7A7368;"><strong>Target Volume:</strong></td>
-                    <td style="padding: 6px 0; font-weight: 700; color: #2E7D32;">${inquiry.quantityKg} kg</td>
                   </tr>
                   <tr style="border-bottom: 1px solid #F0ECE4;">
                     <td style="padding: 6px 0; color: #7A7368;"><strong>Company / Firm:</strong></td>
@@ -209,6 +255,26 @@ export async function sendBulkInquiryCustomerConfirmation(inquiry) {
                     <td style="padding: 6px 0; color: #1E1B17;">${inquiry.notes}</td>
                   </tr>
                   ` : ""}
+                </table>
+
+                <!-- Items Breakdown Table -->
+                <div style="font-size: 11px; font-weight: 700; color: #78716C; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
+                  Requested Items (${itemsList.length})
+                </div>
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #EFEAE1; border-radius: 8px; overflow: hidden;">
+                  <thead>
+                    <tr style="background: #F4EFE6; color: #4A453E; text-align: left;">
+                      <th style="padding: 8px 10px; font-weight: 700;">Product</th>
+                      <th style="padding: 8px 10px; text-align: right; font-weight: 700;">Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${itemsHtml}
+                    <tr style="background: #FAF7F2; font-weight: 800; border-top: 1.5px solid #E0D7C6;">
+                      <td style="padding: 8px 10px; color: #2C3624;">Total Volume</td>
+                      <td style="padding: 8px 10px; text-align: right; color: #2E7D32; font-size: 14px;">${totalKg} kg</td>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
 

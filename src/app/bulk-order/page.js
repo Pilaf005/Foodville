@@ -14,6 +14,24 @@ const INDIAN_STATES = [
   "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
 ];
 
+const MAIN_ACTIVE_PRODUCTS = [
+  "Red Onion Powder",
+  "White Onion Powder",
+  "Garlic Powder",
+  "Ginger Powder",
+  "Tomato Powder",
+  "Potato Flakes",
+  "Mint Powder",
+  "Green Chilli Powder",
+  "Oregano",
+  "Oregano Seasoning",
+  "Pizza Pasta Masala",
+  "Moringa Powder",
+  "Beetroot Powder",
+  "Red Chilli Flakes",
+  "Peri-Peri Masala",
+];
+
 const INPUT_CLS =
   "w-full px-3.5 py-2.5 text-sm rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-olive-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-raised min-h-[44px]";
 
@@ -25,8 +43,7 @@ function BulkOrderForm() {
     gstin: "",
     email: "",
     phone: "",
-    productName: "",
-    quantityKg: "",
+    items: [{ productName: "", quantityKg: "" }],
     deliveryAddress: "",
     deliveryCity: "",
     deliveryState: "",
@@ -41,11 +58,57 @@ function BulkOrderForm() {
   useEffect(() => {
     const prefilledProduct = searchParams.get("productName") || searchParams.get("product") || "";
     if (prefilledProduct) {
-      setFormData((prev) => ({ ...prev, productName: prefilledProduct }));
+      const match =
+        MAIN_ACTIVE_PRODUCTS.find(
+          (p) =>
+            p.toLowerCase() === prefilledProduct.toLowerCase() ||
+            p.toLowerCase().includes(prefilledProduct.toLowerCase()) ||
+            prefilledProduct.toLowerCase().includes(p.toLowerCase())
+        ) || "";
+
+      if (match) {
+        setFormData((prev) => ({
+          ...prev,
+          items: [
+            {
+              productName: match,
+              quantityKg: prev.items[0]?.quantityKg || "",
+            },
+            ...prev.items.slice(1),
+          ],
+        }));
+      }
     }
   }, [searchParams]);
 
   const set = (key) => (e) => setFormData((prev) => ({ ...prev, [key]: e.target.value }));
+
+  const handleItemChange = (index, field, value) => {
+    setFormData((prev) => {
+      const nextItems = [...prev.items];
+      nextItems[index] = { ...nextItems[index], [field]: value };
+      return { ...prev, items: nextItems };
+    });
+  };
+
+  const handleAddItem = () => {
+    setFormData((prev) => ({
+      ...prev,
+      items: [...prev.items, { productName: "", quantityKg: "" }],
+    }));
+  };
+
+  const handleRemoveItem = (index) => {
+    setFormData((prev) => {
+      if (prev.items.length <= 1) return prev;
+      return {
+        ...prev,
+        items: prev.items.filter((_, i) => i !== index),
+      };
+    });
+  };
+
+  const totalVolumeKg = formData.items.reduce((sum, it) => sum + (Number(it.quantityKg) || 0), 0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -134,23 +197,109 @@ function BulkOrderForm() {
             </div>
           </div>
 
-          {/* Row 3: GSTIN & Product */}
+          {/* Row 3: GSTIN */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-semibold text-stone-700 mb-1">Company GSTIN (For Input Tax Credit)</label>
               <input type="text" value={formData.gstin} onChange={set("gstin")} placeholder="07AAAAA1111A1Z1" className={INPUT_CLS} />
             </div>
-            <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">Product Description / Name *</label>
-              <input type="text" required value={formData.productName} onChange={set("productName")} placeholder="e.g. Turmeric Powder - Bulk Pack" className={INPUT_CLS} />
-            </div>
           </div>
 
-          {/* Row 4: Quantity */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-semibold text-stone-700 mb-1">Target Quantity (in KG) *</label>
-              <input type="number" required min="10" value={formData.quantityKg} onChange={set("quantityKg")} placeholder="Minimum 10 kg" className={INPUT_CLS} />
+          {/* ── Required Products & Quantities Section ── */}
+          <div className="space-y-3 pt-1">
+            <div className="flex items-center gap-2">
+              <div className="h-px flex-1 bg-stone-200" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-stone-400">
+                Required Products &amp; Quantities
+              </span>
+              <div className="h-px flex-1 bg-stone-200" />
+            </div>
+
+            <div className="space-y-3">
+              {formData.items.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="p-3.5 sm:p-4 bg-stone-50/90 rounded-2xl border border-stone-200/90 space-y-2.5 transition-all"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-olive-dark flex items-center gap-1.5">
+                      <span className="w-5 h-5 rounded-full bg-olive-dark text-white text-[10px] flex items-center justify-center font-bold">
+                        {idx + 1}
+                      </span>
+                      Product Item
+                    </span>
+                    {formData.items.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveItem(idx)}
+                        className="text-stone-400 hover:text-red-600 px-2 py-1 rounded-lg hover:bg-red-50 transition text-xs flex items-center gap-1 cursor-pointer"
+                        title="Remove product"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                        <span className="text-[10px] font-semibold">Remove</span>
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                    <div className="sm:col-span-8">
+                      <label className="block text-xs font-semibold text-stone-700 mb-1">
+                        Select Active Product *
+                      </label>
+                      <select
+                        required
+                        value={item.productName}
+                        onChange={(e) => handleItemChange(idx, "productName", e.target.value)}
+                        className={INPUT_CLS + " bg-white cursor-pointer"}
+                      >
+                        <option value="">-- Select Active Product --</option>
+                        {MAIN_ACTIVE_PRODUCTS.map((pName) => (
+                          <option key={pName} value={pName}>
+                            {pName}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="sm:col-span-4">
+                      <label className="block text-xs font-semibold text-stone-700 mb-1">
+                        Target Quantity (in KG) *
+                      </label>
+                      <input
+                        type="number"
+                        required
+                        min="1"
+                        step="any"
+                        value={item.quantityKg}
+                        onChange={(e) => handleItemChange(idx, "quantityKg", e.target.value)}
+                        placeholder="e.g. 50"
+                        className={INPUT_CLS + " bg-white"}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Add product button & total volume summary */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1">
+              <button
+                type="button"
+                onClick={handleAddItem}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-olive-dark text-olive-dark hover:bg-olive-dark/5 font-bold text-xs transition cursor-pointer self-start min-h-[40px]"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+                Add Another Product
+              </button>
+
+              {totalVolumeKg > 0 && (
+                <div className="text-xs font-semibold text-stone-600 bg-stone-100 px-3 py-1.5 rounded-xl border border-stone-200 self-end sm:self-auto">
+                  Total Volume: <strong className="text-olive-dark font-bold">{totalVolumeKg} kg</strong> ({formData.items.length} {formData.items.length === 1 ? "item" : "items"})
+                </div>
+              )}
             </div>
           </div>
 
